@@ -1,0 +1,1184 @@
+fileFormatVersion: 2
+guid: edb28abf32997dd4090e088c9bc296ca
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4585242663725906438
+    second: Gear
+  - first:
+      213: -2905182182240326821
+    second: Press Effect
+  - first:
+      213: 8338918144517480282
+    second: Judgement Line
+  - first:
+      213: 3564317976766771647
+    second: Blue Idle
+  - first:
+      213: -1874307198187183385
+    second: White Idle
+  - first:
+      213: 4799865599665927151
+    second: Blue Press
+  - first:
+      213: 8348241403962205225
+    second: White Press
+  - first:
+      213: 6194617516896501986
+    second: Groove Light 0
+  - first:
+      213: 6631850424606243347
+    second: Groove Light 1
+  - first:
+      213: 2438776541738975741
+    second: Groove Light 2
+  - first:
+      213: 6154201981857398255
+    second: Groove Light 3
+  - first:
+      213: 6112964545499888943
+    second: Groove Light 4
+  - first:
+      213: 2438353297765192125
+    second: Groove Light 5
+  - first:
+      213: -3256110647659855968
+    second: Groove Light 6
+  - first:
+      213: -8665800067112883574
+    second: Groove Light 7
+  - first:
+      213: -7110719952345158609
+    second: Combo Effect 0
+  - first:
+      213: -3005923662319522752
+    second: Combo Effect 1
+  - first:
+      213: 4766255273591357535
+    second: Blue Note 0
+  - first:
+      213: -7683342276909823570
+    second: Blue Note 1
+  - first:
+      213: 1348013832907876514
+    second: Blue Note 2
+  - first:
+      213: -4298647718954860094
+    second: Blue Note 3
+  - first:
+      213: 5827562353989089174
+    second: Blue Note 4
+  - first:
+      213: -6198980428743499039
+    second: Blue Note 5
+  - first:
+      213: -7918418736321743314
+    second: Blue Note 6
+  - first:
+      213: 7573381705659743713
+    second: Blue Note 7
+  - first:
+      213: 2101506007736477410
+    second: White Note 0
+  - first:
+      213: 2162731801659400317
+    second: White Note 1
+  - first:
+      213: 8231333992205513148
+    second: White Note 2
+  - first:
+      213: 273357227473974638
+    second: White Note 3
+  - first:
+      213: 3619560541494830476
+    second: White Note 4
+  - first:
+      213: -2570651183115529564
+    second: White Note 5
+  - first:
+      213: 3064233131552360492
+    second: White Note 6
+  - first:
+      213: 2354799804753770634
+    second: White Note 7
+  - first:
+      213: -6390581284270584392
+    second: Combo 0
+  - first:
+      213: -4765740138146339543
+    second: Combo 1
+  - first:
+      213: 7519083187913277185
+    second: Combo 2
+  - first:
+      213: -4279443121264959680
+    second: Combo 3
+  - first:
+      213: 9157663762917276967
+    second: Combo 4
+  - first:
+      213: 3682239543250768664
+    second: Combo 5
+  - first:
+      213: -3706606014471549761
+    second: Combo 6
+  - first:
+      213: -1726111775699891490
+    second: Combo 7
+  - first:
+      213: -3150771332107901248
+    second: Combo 8
+  - first:
+      213: -4084774610034511148
+    second: Combo 9
+  - first:
+      213: -2510922069210170312
+    second: Groove Meter
+  - first:
+      213: 263607566179398324
+    second: Fever Meter
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Gear
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 920
+        height: 2160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af5c6ab4712fd50c0800000000000000
+      internalID: -4585242663725906438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Press Effect
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 235
+        width: 200
+        height: 1925
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5b65c39238bea7d0800000000000000
+      internalID: -2905182182240326821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Judgement Line
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 2060
+        width: 800
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5f1607fed9c9b370800000000000000
+      internalID: 8338918144517480282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Idle
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1940
+        width: 200
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb1f8b7b050077130800000000000000
+      internalID: 3564317976766771647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White Idle
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 1940
+        width: 200
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e26814a88f1df5e0800000000000000
+      internalID: -1874307198187183385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Press
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 1940
+        width: 200
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe374b5055c8c9240800000000000000
+      internalID: 4799865599665927151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White Press
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 1940
+        width: 200
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92420667359ead370800000000000000
+      internalID: 8348241403962205225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Groove Light 0
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1873
+        width: 800
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e04706afc3b7f550800000000000000
+      internalID: 6194617516896501986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Groove Light 1
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1806
+        width: 800
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31abd2af2d0190c50800000000000000
+      internalID: 6631850424606243347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Groove Light 2
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1739
+        width: 800
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df148e0f75648d120800000000000000
+      internalID: 2438776541738975741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Groove Light 3
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1672
+        width: 800
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fed7d9c981e186550800000000000000
+      internalID: 6154201981857398255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Groove Light 4
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1605
+        width: 800
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2df313cddc95d450800000000000000
+      internalID: 6112964545499888943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Groove Light 5
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1538
+        width: 800
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db15236c765c6d120800000000000000
+      internalID: 2438353297765192125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Groove Light 6
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1471
+        width: 800
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0affdd81e98ffc2d0800000000000000
+      internalID: -3256110647659855968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Groove Light 7
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1404
+        width: 800
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8a2e2990c4ecb780800000000000000
+      internalID: -8665800067112883574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combo Effect 0
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1304
+        width: 500
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2c2f27a0e5a15d90800000000000000
+      internalID: -7110719952345158609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combo Effect 1
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1204
+        width: 500
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04ce08dea50d846d0800000000000000
+      internalID: -3005923662319522752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Note 0
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1154
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f50ce3b2be3252240800000000000000
+      internalID: 4766255273591357535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Note 1
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1104
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea98c0148e84f5590800000000000000
+      internalID: -7683342276909823570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Note 2
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1054
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a869ce507b15b210800000000000000
+      internalID: 1348013832907876514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Note 3
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1005
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c10721cca22854c0800000000000000
+      internalID: -4298647718954860094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Note 4
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 954
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69775ffc519afd050800000000000000
+      internalID: 5827562353989089174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Note 5
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 904
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e22527c42cc8f9a0800000000000000
+      internalID: -6198980428743499039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Note 6
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 854
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e26beb6ec102c1290800000000000000
+      internalID: -7918418736321743314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Note 7
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 804
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ed7a4a298e0a1960800000000000000
+      internalID: 7573381705659743713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White Note 0
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 1154
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e66b7c649c0a2d10800000000000000
+      internalID: 2101506007736477410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White Note 1
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 1104
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d70695e6d11930e10800000000000000
+      internalID: 2162731801659400317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White Note 2
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 1054
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb1f10987a29b3270800000000000000
+      internalID: 8231333992205513148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White Note 3
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 1004
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e653f5833f82bc300800000000000000
+      internalID: 273357227473974638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White Note 4
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 954
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c85e1de92234b3230800000000000000
+      internalID: 3619560541494830476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White Note 5
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 904
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a216fc6e56335cd0800000000000000
+      internalID: -2570651183115529564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White Note 6
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 854
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2849235cc7568a20800000000000000
+      internalID: 3064233131552360492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: White Note 7
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 804
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 24}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a88f18732fdeda020800000000000000
+      internalID: 2354799804753770634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combo 0
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 804
+        width: 200
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bdcac24e281057a0800000000000000
+      internalID: -6390581284270584392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combo 1
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 804
+        width: 200
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92567f52890bcddb0800000000000000
+      internalID: -4765740138146339543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combo 2
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 484
+        width: 200
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10fbe245256295860800000000000000
+      internalID: 7519083187913277185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combo 3
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 484
+        width: 200
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04f5388972d5c94c0800000000000000
+      internalID: -4279443121264959680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combo 4
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 484
+        width: 200
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72db6294cae861f70800000000000000
+      internalID: 9157663762917276967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combo 5
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 484
+        width: 200
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 813db51fa51f91330800000000000000
+      internalID: 3682239543250768664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combo 6
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 164
+        width: 200
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbcc811e77d7f8cc0800000000000000
+      internalID: -3706606014471549761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combo 7
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 164
+        width: 200
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eda0ace3c7e9b08e0800000000000000
+      internalID: -1726111775699891490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combo 8
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 164
+        width: 200
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c6693dba263644d0800000000000000
+      internalID: -3150771332107901248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combo 9
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 164
+        width: 200
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d2bb5d5227ff47c0800000000000000
+      internalID: -4084774610034511148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Groove Meter
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 472
+        width: 20
+        height: 1688
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83cf9067ea9672dd0800000000000000
+      internalID: -2510922069210170312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fever Meter
+      rect:
+        serializedVersion: 2
+        x: 1940
+        y: 472
+        width: 20
+        height: 1688
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b27a3e4fa588a300800000000000000
+      internalID: 263607566179398324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

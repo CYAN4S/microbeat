@@ -15,7 +15,6 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        OnPlayKey += n => {};
     }
 
     private void Update()

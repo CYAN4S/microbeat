@@ -8,11 +8,13 @@ public class EffectsManager : MonoBehaviour
 
     private void Start()
     {
-        InputManager.OnPlayKeyDown += n => {
+        InputManager.OnPlayKeyDown += n =>
+        {
             pressEffectObjects[n].SetActive(true);
         };
 
-        InputManager.OnPlayKeyUp += n => {
+        InputManager.OnPlayKeyUp += n =>
+        {
             pressEffectObjects[n].SetActive(false);
         };
     }

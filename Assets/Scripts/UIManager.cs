@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class EffectsManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     public GameObject[] pressEffectObjects;
+    public Text speedText, scoreText;
+    public Text timeText;
+
 
     private void Start()
     {
@@ -17,5 +21,10 @@ public class EffectsManager : MonoBehaviour
         {
             pressEffectObjects[n].SetActive(false);
         };
+    }
+
+    private void LateUpdate()
+    {
+        timeText.text = GameManager.CurrentTime.ToString("F3");
     }
 }

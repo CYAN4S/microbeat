@@ -6,6 +6,7 @@ using UnityEngine;
 public class Sheet : MonoBehaviour
 {
     #region INSPECTOR
+
     public double bpm;
     public List<Note> notes;
     public List<LongNote> longNotes;
@@ -13,34 +14,17 @@ public class Sheet : MonoBehaviour
     #endregion
 }
 
-public interface INote : IComparable { }
-
 [Serializable]
-public class Note : INote
+public class Note
 {
     public int line;
     public double timing;
 
-    public int CompareTo(object obj)
-    {
-        if (obj is Note note)
-        {
-            return timing.CompareTo(note.timing);
-        }
-        throw new NotImplementedException();
-    }
+    public int CompareTo(Note other) => timing.CompareTo(other.timing);
 }
 
 [Serializable]
 public class LongNote : Note
 {
     public double length;
-}
-
-[Serializable]
-public class SerializableSheet
-{
-    public double bpm;
-    public List<Note> notes;
-    public List<LongNote> longNotes;
 }

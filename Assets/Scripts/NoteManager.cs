@@ -6,10 +6,8 @@ public class NoteManager : MonoBehaviour
 {
     #region INSPECTOR
 
-    public Sheet sheet;
     public Transform notesParent;
     public GameObject notePrefab;
-    public float[] linePositions;
 
     #endregion
 
@@ -26,22 +24,24 @@ public class NoteManager : MonoBehaviour
         {
             noteSystemsByLine.Add(new List<NoteSystem>());
         }
+
+        GameManager.OnCallSheet += PrepareNotes;
     }
 
-    private void Start()
+    private void PrepareNotes()
     {
-        foreach (Note item in sheet.notes)
+        foreach (Note item in GameManager.CurrentSheet.notes)
         {
             var noteSystem = Instantiate(notePrefab, notesParent).GetComponent<NoteSystem>();
             noteSystemsByLine[item.line].Add(noteSystem);
-            noteSystem.noteData = item;
+            noteSystem.note = item;
         }
 
-        foreach (LongNote item in sheet.longNotes)
+        foreach (LongNote item in GameManager.CurrentSheet.longNotes)
         {
             var noteSystem = Instantiate(notePrefab, notesParent).GetComponent<NoteSystem>();
             noteSystemsByLine[item.line].Add(noteSystem);
-            noteSystem.noteData = item;
+            noteSystem.note = item;
         }
 
         foreach (var item in noteSystemsByLine)
@@ -53,8 +53,7 @@ public class NoteManager : MonoBehaviour
         {
             foreach (var noteSystem in item)
             {
-                Note note = noteSystem.noteData;
-                noteSystem.gameObject.transform.localPosition = new Vector3(linePositions[note.line], (float)note.timing * 400);
+                Note note = noteSystem.note;
             }
         }
     }

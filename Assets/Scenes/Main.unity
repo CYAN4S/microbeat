@@ -484,7 +484,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da9d94b44916944889963eea39740d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sheet: {fileID: 689366695}
   notesParent: {fileID: 1725833717}
   notePrefab: {fileID: 3140704049987846472, guid: 9f7faad7eb79664499b3edf458341e50,
     type: 3}
@@ -2003,6 +2002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8efa98fa58c26d4f894e8372cbabf9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SheetInInspector: {fileID: 689366695}
 --- !u!4 &1857436745
 Transform:
   m_ObjectHideFlags: 0

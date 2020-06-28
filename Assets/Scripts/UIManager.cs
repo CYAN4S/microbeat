@@ -9,8 +9,7 @@ public class UIManager : MonoBehaviour
     public Text speedText, scoreText;
     public Text timeText;
 
-
-    private void Start()
+    private void Awake()
     {
         InputManager.OnPlayKeyDown += n =>
         {
@@ -25,6 +24,12 @@ public class UIManager : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (!GameManager.IsWorking)
+        {
+            return;
+        }
+
+        speedText.text = GameManager.ScrollSpeed.ToString("F2");
         timeText.text = GameManager.CurrentTime.ToString("F3");
     }
 }

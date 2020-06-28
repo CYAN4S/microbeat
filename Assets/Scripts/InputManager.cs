@@ -7,10 +7,10 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
 
-    public static readonly KeyCode[] playKeyCodes = { KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K };
-    public static readonly KeyCode[] speedKeyCodes = { KeyCode.T, KeyCode.Y };
-    public static Action<int> OnPlayKey = _ => {}, OnPlayKeyDown = _ => {}, OnPlayKeyUp = _ => {};
-    public static Action<int> OnSpeedKeyDown = _ => {};
+    public static readonly KeyCode[] PLAYKEYCODES = { KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K };
+    public static readonly KeyCode[] SPEEDKEYCODES = { KeyCode.E, KeyCode.R, KeyCode.T, KeyCode.Y, KeyCode.U, KeyCode.I };
+    public static Action<int> OnPlayKey = _ => { }, OnPlayKeyDown = _ => { }, OnPlayKeyUp = _ => { };
+    public static Action<int> OnSpeedKeyDown = _ => { };
 
     private void Awake()
     {
@@ -19,9 +19,9 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        for (int i = 0; i < playKeyCodes.Length; i++)
+        for (int i = 0; i < PLAYKEYCODES.Length; i++)
         {
-            KeyCode key = playKeyCodes[i];
+            KeyCode key = PLAYKEYCODES[i];
 
             if (Input.GetKey(key))
                 OnPlayKey(i);
@@ -33,9 +33,9 @@ public class InputManager : MonoBehaviour
                 OnPlayKeyUp(i);
         }
 
-        for (int i = 0; i < speedKeyCodes.Length; i++)
+        for (int i = 0; i < SPEEDKEYCODES.Length; i++)
         {
-            KeyCode key = speedKeyCodes[i];
+            KeyCode key = SPEEDKEYCODES[i];
             if (Input.GetKeyDown(key))
                 OnSpeedKeyDown(i);
         }

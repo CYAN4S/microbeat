@@ -2,19 +2,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Scripting.APIUpdating;
 
 public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
 {
-    public Note noteData;
+    public Note note;
+    public static readonly float[] LINEXPOS = { -300, -100, 100, 300 };
+
+
 
     public int CompareTo(NoteSystem other)
     {
-        return noteData.CompareTo(other.noteData);
+        return note.CompareTo(other.note);
     }
 
     private void Awake() 
     {
-        if (noteData is LongNote)
+        if (note is LongNote)
         {
             GameManager.OnScrollSpeedChange += ChangeLength;
         }
@@ -25,10 +29,17 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
         if (!GameManager.IsWorking)
             return;
 
+        Move();
+
     }
 
     private void ChangeLength()
     {
 
+    }
+
+    private void Move()
+    {
+        transform.localPosition = new Vector3(LINEXPOS[note.line], (float)(note.timing * GameManager.ScrollSpeed * 100));
     }
 }

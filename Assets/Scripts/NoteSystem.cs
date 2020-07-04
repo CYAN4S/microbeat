@@ -7,6 +7,8 @@ using UnityEngine.Scripting.APIUpdating;
 public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
 {
     public Note note;
+    public float time;
+
     public static readonly float[] LINEXPOS = { -300, -100, 100, 300 };
 
     public int CompareTo(NoteSystem other)
@@ -27,10 +29,16 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
         if (!GameManager.IsWorking)
             return;
 
+        RemoveBreak();
         Move();
     }
 
     private void ChangeLength()
+    {
+
+    }
+
+    private void RemoveBreak()
     {
 
     }
@@ -42,6 +50,6 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
 
     private float getCurrentYPos()
     {
-        return (float)(note.beat - GameManager.CurrentTime * GameManager.CurrentSheet.bpm * (1f / 60f)) * 100f * (float)GameManager.ScrollSpeed;
+        return (float)(note.beat - GameManager.CurrentTime * GameManager.CurrentSheet.bpm * (1f / 60f)) * 120f * (float)GameManager.ScrollSpeed;
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public GameObject[] pressEffectObjects;
+    public GameObject[] pressButtonObjects;
     public Text speedText, scoreText;
     public Text timeText;
 
@@ -14,11 +15,13 @@ public class UIManager : MonoBehaviour
         InputManager.OnPlayKeyDown += n =>
         {
             pressEffectObjects[n].SetActive(true);
+            pressButtonObjects[n].SetActive(true);
         };
 
         InputManager.OnPlayKeyUp += n =>
         {
             pressEffectObjects[n].SetActive(false);
+            pressButtonObjects[n].SetActive(false);
         };
     }
 

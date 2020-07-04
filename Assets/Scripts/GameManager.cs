@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public static bool IsWorking { get; private set; }
     public static Action OnCallSheet = () => IsWorking = true;
 
-    public static double CurrentTime { get; private set; }
+    public static float CurrentTime { get; private set; }
 
     public static double ScrollSpeed { get; private set; }
     public static Action OnScrollSpeedChange = () => { };
@@ -22,12 +22,14 @@ public class GameManager : MonoBehaviour
     public static Sheet CurrentSheet { get; private set; }
     public Sheet SheetInInspector;
 
+    public static readonly float[] JUDGESTD = { 0.05f, 0.1f, 0.3f, 0.5f };
+
     private void Awake()
     {
         instance = this;
         IsWorking = false;
 
-        InputManager.OnSpeedKeyDown += ChangeSpeed;
+        OnCallSheet += () => InputManager.OnSpeedKeyDown += ChangeSpeed;
     }
 
     private void Start()
@@ -61,6 +63,7 @@ public class GameManager : MonoBehaviour
     public void Launch()
     {
         OnCallSheet();
+
     }
 
 }

@@ -32,11 +32,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        CurrentTime = 0;
+        CurrentTime = -5;
         ScrollSpeed = 2.5;
 
         CurrentSheet = SheetInInspector;
-        OnCallSheet();
     }
 
     private void Update()
@@ -59,5 +58,9 @@ public class GameManager : MonoBehaviour
         OnScrollSpeedChange();
     }
 
+    public void Launch()
+    {
+        OnCallSheet();
+    }
 
 }

@@ -9,14 +9,12 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
     public Note note;
     public static readonly float[] LINEXPOS = { -300, -100, 100, 300 };
 
-
-
     public int CompareTo(NoteSystem other)
     {
         return note.CompareTo(other.note);
     }
 
-    private void Awake() 
+    private void Awake()
     {
         if (note is LongNote)
         {
@@ -30,7 +28,6 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
             return;
 
         Move();
-
     }
 
     private void ChangeLength()
@@ -40,6 +37,11 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
 
     private void Move()
     {
-        transform.localPosition = new Vector3(LINEXPOS[note.line], (float)(note.timing * GameManager.ScrollSpeed * 100));
+        transform.localPosition = new Vector3(LINEXPOS[note.line], getCurrentYPos());
+    }
+
+    private float getCurrentYPos()
+    {
+        return (float)(note.beat - GameManager.CurrentTime * GameManager.CurrentSheet.bpm * (1f / 60f)) * 100f * (float)GameManager.ScrollSpeed;
     }
 }

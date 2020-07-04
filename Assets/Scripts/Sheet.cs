@@ -18,9 +18,9 @@ public class Sheet : MonoBehaviour
 public class Note
 {
     public int line;
-    public double timing;
+    public double beat;
 
-    public int CompareTo(Note other) => timing.CompareTo(other.timing);
+    public int CompareTo(Note other) => beat.CompareTo(other.beat);
 }
 
 [Serializable]

@@ -6,6 +6,8 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.VFX;
 
+public enum JUDGES { PRECISE, GREAT, NICE, BAD, BREAK };
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -42,18 +44,25 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (IsWorking)
+        if (!IsWorking)
         {
-            CurrentTime += Time.deltaTime;
+            return;
         }
+
+        CurrentTime += Time.deltaTime;
     }
 
     private void ChangeSpeed(int input)
     {
         double value = ScrollSpeed + DELTASPEED[input];
-        if (value < 0.5 || value > 9.5)
+
+        if (value < 0.5)
         {
-            return;
+            value = 0.5;
+        }
+        else if (value > 9.5)
+        {
+            value = 9.5;
         }
 
         ScrollSpeed = value;
@@ -63,7 +72,11 @@ public class GameManager : MonoBehaviour
     public void Launch()
     {
         OnCallSheet();
+    }
 
+    public void ActOnJudge(JUDGES judge, float gap)
+    {
+        UIManager.instance.LaunchJudge(judge);
     }
 
 }

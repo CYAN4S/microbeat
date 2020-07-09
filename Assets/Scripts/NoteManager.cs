@@ -27,7 +27,6 @@ public class NoteManager : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             noteSystemsByLine.Add(new List<NoteSystem>());
-
         }
 
         GameManager.OnCallSheet += PrepareNotes;
@@ -60,9 +59,30 @@ public class NoteManager : MonoBehaviour
 
     }
 
-    private void Update()
+    private void LateUpdate()
     {
+        RemoveBreakNotes();
+    }
 
+    private void RemoveBreakNotes()
+    {
+        for (int i = 0; i < noteSystemQs.Count; i++)
+        {
+            Queue<NoteSystem> item = noteSystemQs[i];
+            if (item.Count == 0)
+            {
+                continue;
+            }
+
+            NoteSystem target = item.Peek();
+            float gap = GameManager.CurrentTime - target.time;
+            if (gap > GameManager.JUDGESTD[(int)JUDGES.BAD])
+            {
+                GameManager.instance.ActOnJudge(JUDGES.BREAK, gap);
+                RemoveOneFromQ(i);
+            }
+
+        }
     }
 
     private void JudgePlayKeyDown(int key)
@@ -72,20 +92,36 @@ public class NoteManager : MonoBehaviour
 
         NoteSystem target = noteSystemQs[key].Peek();
         float gap = target.time - GameManager.CurrentTime;
+        float absGap = Math.Abs(gap);
 
-        if (gap > GameManager.JUDGESTD[3]) // DONT CARE
+        if (absGap > GameManager.JUDGESTD[(int)JUDGES.BAD]) // DONT CARE
         {
             return;
         }
 
-        if (Math.Abs(gap) > GameManager.JUDGESTD[2])
+        if (absGap > GameManager.JUDGESTD[(int)JUDGES.NICE])
         {
-
+            GameManager.instance.ActOnJudge(JUDGES.BAD, gap);
         }
-        else if (true)
+        else if (absGap > GameManager.JUDGESTD[(int)JUDGES.GREAT])
         {
-
+            GameManager.instance.ActOnJudge(JUDGES.NICE, gap);
         }
+        else if (absGap > GameManager.JUDGESTD[(int)JUDGES.PRECISE])
+        {
+            GameManager.instance.ActOnJudge(JUDGES.GREAT, gap);
+        }
+        else
+        {
+            GameManager.instance.ActOnJudge(JUDGES.PRECISE, gap);
+        }
+
+        RemoveOneFromQ(key);
     }
 
+    private void RemoveOneFromQ(int index)
+    {
+        NoteSystem target = noteSystemQs[index].Dequeue();
+        Destroy(target.gameObject);
+    }
 }

@@ -9,8 +9,8 @@ public class InputManager : MonoBehaviour
 
     public static readonly KeyCode[] PLAYKEYCODES = { KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K };
     public static readonly KeyCode[] SPEEDKEYCODES = { KeyCode.E, KeyCode.R, KeyCode.T, KeyCode.Y, KeyCode.U, KeyCode.I };
-    public static Action<int> OnPlayKey = _ => { }, OnPlayKeyDown = _ => { }, OnPlayKeyUp = _ => { };
-    public static Action<int> OnSpeedKeyDown = _ => { };
+    public static Action<int> OnPlayKey = _ => { }, OnPlayKeyDown, OnPlayKeyUp = _ => { };
+    public static Action<int> OnSpeedKeyDown;
 
     private void Awake()
     {

@@ -29,16 +29,10 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
         if (!GameManager.IsWorking)
             return;
 
-        RemoveBreak();
         Move();
     }
 
     private void ChangeLength()
-    {
-
-    }
-
-    private void RemoveBreak()
     {
 
     }

@@ -5,13 +5,19 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
+
     public GameObject[] pressEffectObjects;
     public GameObject[] pressButtonObjects;
     public Text speedText, scoreText;
     public Text timeText;
+    public Image judgeImage;
+    public Sprite[] judgeSprites;
 
     private void Awake()
     {
+        instance = this;
+
         InputManager.OnPlayKeyDown += n =>
         {
             pressEffectObjects[n].SetActive(true);
@@ -34,5 +40,10 @@ public class UIManager : MonoBehaviour
 
         speedText.text = GameManager.ScrollSpeed.ToString("F2");
         timeText.text = GameManager.CurrentTime.ToString("F3");
+    }
+
+    public void LaunchJudge(JUDGES judge)
+    {
+        judgeImage.sprite = judgeSprites[(int)judge];
     }
 }

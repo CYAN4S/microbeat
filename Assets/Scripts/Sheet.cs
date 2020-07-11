@@ -12,6 +12,19 @@ public class Sheet : MonoBehaviour
     public List<LongNote> longNotes;
 
     #endregion
+
+    private void Awake()
+    {
+        for (int i = 0; i < 300; i++)
+        {
+            var x = new Note
+            {
+                beat = i / 2f,
+                line = i % 4
+            };
+            notes.Add(x);
+        }
+    }
 }
 
 [Serializable]

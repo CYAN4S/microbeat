@@ -43,14 +43,6 @@ public class NoteManager : MonoBehaviour
             noteSystem.time = (float)(item.beat * (1f / GameManager.CurrentSheet.bpm) * 60f);
         }
 
-        foreach (LongNote item in GameManager.CurrentSheet.longNotes)
-        {
-            var noteSystem = Instantiate(notePrefab, notesParent).GetComponent<NoteSystem>();
-            noteSystemsByLine[item.line].Add(noteSystem);
-            noteSystem.note = item;
-            noteSystem.time = (float)(item.beat * GameManager.CurrentSheet.bpm * (1f / 60f));
-        }
-
         foreach (var item in noteSystemsByLine)
         {
             item.Sort();

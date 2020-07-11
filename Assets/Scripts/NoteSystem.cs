@@ -44,6 +44,6 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
 
     private float getCurrentYPos()
     {
-        return (float)(note.beat - GameManager.CurrentTime * GameManager.CurrentSheet.bpm * (1f / 60f)) * 120f * (float)GameManager.ScrollSpeed;
+        return (float)(note.beat - GameManager.CurrentTime * GameManager.CurrentSheet.bpm * (1f / 60f)) * 120f * 2f * (float)GameManager.ScrollSpeed;
     }
 }

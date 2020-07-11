@@ -77,6 +77,15 @@ public class GameManager : MonoBehaviour
     public void ActOnJudge(JUDGES judge, float gap)
     {
         UIManager.instance.LaunchJudge(judge);
+
+        if (judge == JUDGES.BREAK)
+        {
+            UIManager.instance.EraseGap();
+        }
+        else
+        {
+            UIManager.instance.ShowGap(gap);
+        }
     }
 
 }

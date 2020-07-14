@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using System;
 
 public class InputManager : MonoBehaviour
 {
@@ -9,12 +7,20 @@ public class InputManager : MonoBehaviour
 
     public static readonly KeyCode[] PLAYKEYCODES = { KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K };
     public static readonly KeyCode[] SPEEDKEYCODES = { KeyCode.E, KeyCode.R, KeyCode.T, KeyCode.Y, KeyCode.U, KeyCode.I };
-    public static Action<int> OnPlayKey = _ => { }, OnPlayKeyDown, OnPlayKeyUp = _ => { };
-    public static Action<int> OnSpeedKeyDown;
+
+    public Action<int> OnPlayKey = _ => { }, OnPlayKeyDown = _ => { }, OnPlayKeyUp = _ => { };
+    public Action<int> OnSpeedKeyDown = _ => { };
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     private void Update()
@@ -24,20 +30,28 @@ public class InputManager : MonoBehaviour
             KeyCode key = PLAYKEYCODES[i];
 
             if (Input.GetKey(key))
+            {
                 OnPlayKey(i);
+            }
 
             if (Input.GetKeyDown(key))
+            {
                 OnPlayKeyDown(i);
+            }
 
             if (Input.GetKeyUp(key))
+            {
                 OnPlayKeyUp(i);
+            }
         }
 
         for (int i = 0; i < SPEEDKEYCODES.Length; i++)
         {
             KeyCode key = SPEEDKEYCODES[i];
             if (Input.GetKeyDown(key))
+            {
                 OnSpeedKeyDown(i);
+            }
         }
     }
 }

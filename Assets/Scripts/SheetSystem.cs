@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.WSA.Input;
 
-public class NoteManager : MonoBehaviour
+public class SheetSystem : MonoBehaviour
 {
     #region INSPECTOR
 
@@ -13,15 +11,11 @@ public class NoteManager : MonoBehaviour
 
     #endregion
 
-    public static NoteManager Instance { get; private set; }
-
     private List<List<NoteSystem>> noteSystemsByLine;
     private List<Queue<NoteSystem>> noteSystemQs;
 
     private void Awake()
     {
-        Instance = this;
-
         noteSystemsByLine = new List<List<NoteSystem>>();
         noteSystemQs = new List<Queue<NoteSystem>>();
         for (int i = 0; i < 4; i++)
@@ -30,25 +24,29 @@ public class NoteManager : MonoBehaviour
         }
 
         GameManager.OnCallSheet += PrepareNotes;
-        GameManager.OnCallSheet += () => { InputManager.OnPlayKeyDown += JudgePlayKeyDown; };
+        GameManager.OnCallSheet += () => { InputManager.Instance.OnPlayKeyDown += JudgePlayKeyDown; };
     }
 
     private void PrepareNotes()
     {
+        GameManager.EndTime = 3f;
+
         foreach (Note item in GameManager.CurrentSheet.notes)
         {
-            var noteSystem = Instantiate(notePrefab, notesParent).GetComponent<NoteSystem>();
+            NoteSystem noteSystem = Instantiate(notePrefab, notesParent).GetComponent<NoteSystem>();
             noteSystemsByLine[item.line].Add(noteSystem);
             noteSystem.note = item;
             noteSystem.time = (float)(item.beat * (1f / GameManager.CurrentSheet.bpm) * 60f);
+            GameManager.EndTime = Math.Max(GameManager.EndTime, noteSystem.time);
         }
 
-        foreach (var item in noteSystemsByLine)
+        foreach (List<NoteSystem> item in noteSystemsByLine)
         {
             item.Sort();
             noteSystemQs.Add(new Queue<NoteSystem>(item));
         }
 
+        GameManager.EndTime += 2f;
     }
 
     private void LateUpdate()
@@ -70,7 +68,7 @@ public class NoteManager : MonoBehaviour
             float gap = GameManager.CurrentTime - target.time;
             if (gap > GameManager.JUDGESTD[(int)JUDGES.BAD])
             {
-                GameManager.instance.ActOnJudge(JUDGES.BREAK, gap);
+                GameManager.Instance.ActOnJudge(JUDGES.BREAK, gap);
                 RemoveOneFromQ(i);
             }
 
@@ -80,7 +78,9 @@ public class NoteManager : MonoBehaviour
     private void JudgePlayKeyDown(int key)
     {
         if (noteSystemQs[key].Count == 0)
+        {
             return;
+        }
 
         NoteSystem target = noteSystemQs[key].Peek();
         float gap = target.time - GameManager.CurrentTime;
@@ -93,19 +93,19 @@ public class NoteManager : MonoBehaviour
 
         if (absGap > GameManager.JUDGESTD[(int)JUDGES.NICE])
         {
-            GameManager.instance.ActOnJudge(JUDGES.BAD, gap);
+            GameManager.Instance.ActOnJudge(JUDGES.BAD, gap);
         }
         else if (absGap > GameManager.JUDGESTD[(int)JUDGES.GREAT])
         {
-            GameManager.instance.ActOnJudge(JUDGES.NICE, gap);
+            GameManager.Instance.ActOnJudge(JUDGES.NICE, gap);
         }
         else if (absGap > GameManager.JUDGESTD[(int)JUDGES.PRECISE])
         {
-            GameManager.instance.ActOnJudge(JUDGES.GREAT, gap);
+            GameManager.Instance.ActOnJudge(JUDGES.GREAT, gap);
         }
         else
         {
-            GameManager.instance.ActOnJudge(JUDGES.PRECISE, gap);
+            GameManager.Instance.ActOnJudge(JUDGES.PRECISE, gap);
         }
 
         RemoveOneFromQ(key);

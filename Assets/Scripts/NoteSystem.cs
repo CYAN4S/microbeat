@@ -27,7 +27,9 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
     private void LateUpdate()
     {
         if (!GameManager.IsWorking)
+        {
             return;
+        }
 
         Move();
     }

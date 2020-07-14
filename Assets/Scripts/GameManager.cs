@@ -10,7 +10,7 @@ public enum JUDGES { PRECISE, GREAT, NICE, BAD, BREAK };
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance { get; private set; }
 
     public static bool IsWorking { get; private set; }
     public static Action OnCallSheet = () => IsWorking = true;
@@ -23,15 +23,25 @@ public class GameManager : MonoBehaviour
 
     public static Sheet CurrentSheet { get; private set; }
     public Sheet SheetInInspector;
+    public static float EndTime { get; set; }
 
     public static readonly float[] JUDGESTD = { 0.05f, 0.1f, 0.3f, 0.5f };
 
+    public UIManager ui;
+
     private void Awake()
     {
-        instance = this;
-        IsWorking = false;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
 
-        OnCallSheet += () => InputManager.OnSpeedKeyDown += ChangeSpeed;
+        IsWorking = false;
+        OnCallSheet += () => InputManager.Instance.OnSpeedKeyDown += ChangeSpeed;
     }
 
     private void Start()
@@ -50,6 +60,11 @@ public class GameManager : MonoBehaviour
         }
 
         CurrentTime += Time.deltaTime;
+
+        if (CurrentTime >= EndTime)
+        {
+            NongameUIManager.Instance.DisplayResult();
+        }
     }
 
     private void ChangeSpeed(int input)
@@ -76,15 +91,15 @@ public class GameManager : MonoBehaviour
 
     public void ActOnJudge(JUDGES judge, float gap)
     {
-        UIManager.instance.LaunchJudge(judge);
+        ui.LaunchJudge(judge);
 
         if (judge == JUDGES.BREAK)
         {
-            UIManager.instance.EraseGap();
+            ui.EraseGap();
         }
         else
         {
-            UIManager.instance.ShowGap(gap);
+            ui.ShowGap(gap);
         }
     }
 

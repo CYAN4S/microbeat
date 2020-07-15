@@ -58,4 +58,9 @@ public class UIManager : MonoBehaviour
         detailText.text = "";
     }
 
+    public void ShowScore(double score)
+    {
+        scoreText.text = score.ToString("F0");
+    }
+
 }

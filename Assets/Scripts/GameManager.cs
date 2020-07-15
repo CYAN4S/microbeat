@@ -25,9 +25,15 @@ public class GameManager : MonoBehaviour
     public Sheet SheetInInspector;
     public static float EndTime { get; set; }
 
-    public static readonly float[] JUDGESTD = { 0.05f, 0.1f, 0.3f, 0.5f };
+    public static readonly float[] JUDGESTD = { 0.05f, 0.1f, 0.2f, 0.3f };
+
+    private int dataScore;
+    private double score;
+    public static readonly int[] JUDGESCORE = { 5, 3, 2, 1 };
 
     public UIManager ui;
+
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -46,10 +52,14 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        CurrentTime = -5;
+        CurrentTime = -3;
         ScrollSpeed = 2.5;
+        dataScore = 0;
+        score = 0;
 
         CurrentSheet = SheetInInspector;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -59,12 +69,14 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        CurrentTime += Time.deltaTime;
-
         if (CurrentTime >= EndTime)
         {
             NongameUIManager.Instance.DisplayResult();
+            return;
         }
+
+        CurrentTime += Time.deltaTime;
+
     }
 
     private void ChangeSpeed(int input)
@@ -84,9 +96,16 @@ public class GameManager : MonoBehaviour
         OnScrollSpeedChange();
     }
 
+    public void StartMusic()
+    {
+        audioSource.clip = CurrentSheet.audioClip;
+        audioSource.Play();
+    }
+
     public void Launch()
     {
         OnCallSheet();
+        Invoke("StartMusic", 3f);
     }
 
     public void ActOnJudge(JUDGES judge, float gap)
@@ -100,6 +119,9 @@ public class GameManager : MonoBehaviour
         else
         {
             ui.ShowGap(gap);
+            dataScore += JUDGESCORE[(int)judge];
+            score = (double)dataScore / (JUDGESCORE[0] * CurrentSheet.notes.Count) * 300000d;
+            ui.ShowScore(score);
         }
     }
 

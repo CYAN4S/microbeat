@@ -116,4 +116,9 @@ public class SheetSystem : MonoBehaviour
         NoteSystem target = noteSystemQs[index].Dequeue();
         Destroy(target.gameObject);
     }
+
+    private bool Translate(SerializableInfo info, SerializableSheet sheet)
+    {
+        return true;
+    }
 }

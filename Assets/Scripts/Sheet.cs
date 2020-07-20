@@ -86,14 +86,26 @@ public class Sheet : MonoBehaviour
             notes.Add(new Note { beat = i, line = 0 });
         }
     }
+}
 
+[Serializable]
+public class SerializableInfo
+{
+    public string name;
+    public string artist;
 
+    public double bpm;
+
+    public string musicPath;
 }
 
 [Serializable]
 public class SerializableSheet
 {
-    public double bpm;
+    public int line;
+    public int level;
+    public int pattern;
+
     public List<Note> notes;
     public List<LongNote> longNotes;
 }

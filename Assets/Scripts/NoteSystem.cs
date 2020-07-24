@@ -9,8 +9,6 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
     public Note note;
     public float time;
 
-    public static readonly float[] LINEXPOS = { -300, -100, 100, 300 };
-
     public int CompareTo(NoteSystem other)
     {
         return note.CompareTo(other.note);
@@ -41,7 +39,7 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
 
     private void Move()
     {
-        transform.localPosition = new Vector3(LINEXPOS[note.line], getCurrentYPos());
+        transform.localPosition = new Vector3(CONST.LINEXPOS[note.line], getCurrentYPos());
     }
 
     private float getCurrentYPos()

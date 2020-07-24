@@ -438,8 +438,9 @@ GameObject:
   - component: {fileID: 161953819}
   - component: {fileID: 161953818}
   - component: {fileID: 161953817}
+  - component: {fileID: 161953820}
   m_Layer: 5
-  m_Name: Mood Zero
+  m_Name: LI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -568,6 +569,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161953815}
   m_CullTransparentMesh: 0
+--- !u!114 &161953820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161953815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b81fbc3f5a4181246914ec5add58147e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: {fileID: 333989419}
+  info: {fileID: 1883115203}
 --- !u!1 &172704010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,6 +1403,7 @@ GameObject:
   - component: {fileID: 522699034}
   - component: {fileID: 522699035}
   - component: {fileID: 522699036}
+  - component: {fileID: 522699037}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1600,6 +1616,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &522699037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522699028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953fb581608c1a34f8ecbe76a884c067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &577940575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,62 +1932,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26732416342fcf041964eafceffab751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm: 125
-  notes:
-  - line: 3
-    beat: 0
-  - line: 1
-    beat: 3.5
-  - line: 2
-    beat: 7.5
-  - line: 0
-    beat: 11.5
-  - line: 1
-    beat: 14.5
-  - line: 3
-    beat: 16
-  - line: 1
-    beat: 19.5
-  - line: 2
-    beat: 23.5
-  - line: 0
-    beat: 27.5
-  - line: 1
-    beat: 30.5
-  - line: 3
-    beat: 30.75
-  - line: 3
-    beat: 31
-  - line: 2
-    beat: 31.25
-  - line: 0
-    beat: 31.75
-  - line: 0
-    beat: 0
-  - line: 1
-    beat: 0
-  - line: 3
-    beat: 128
-  - line: 1
-    beat: 131.5
-  - line: 2
-    beat: 135.5
-  - line: 0
-    beat: 139.5
-  - line: 1
-    beat: 142.5
-  - line: 3
-    beat: 144
-  - line: 1
-    beat: 147.5
-  - line: 2
-    beat: 151.5
-  - line: 0
-    beat: 155.5
-  - line: 1
-    beat: 158.5
+  bpm: 0
+  notes: []
   longNotes: []
-  audioClip: {fileID: 8300000, guid: eeddd9916fd3168458bc2afee83d63b9, type: 3}
+  audioClip: {fileID: 0}
 --- !u!1 &753863251
 GameObject:
   m_ObjectHideFlags: 0

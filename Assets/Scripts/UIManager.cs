@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class UIManager : MonoBehaviour
 {
@@ -61,6 +62,11 @@ public class UIManager : MonoBehaviour
     public void ShowScore(double score)
     {
         scoreText.text = score.ToString("F0");
+    }
+
+    public void DisplayMusics()
+    {
+
     }
 
 }

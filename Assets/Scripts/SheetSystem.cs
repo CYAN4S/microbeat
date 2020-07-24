@@ -66,7 +66,7 @@ public class SheetSystem : MonoBehaviour
 
             NoteSystem target = item.Peek();
             float gap = GameManager.CurrentTime - target.time;
-            if (gap > GameManager.JUDGESTD[(int)JUDGES.BAD])
+            if (gap > CONST.JUDGESTD[(int)JUDGES.BAD])
             {
                 GameManager.Instance.ActOnJudge(JUDGES.BREAK, gap);
                 RemoveOneFromQ(i);
@@ -86,20 +86,20 @@ public class SheetSystem : MonoBehaviour
         float gap = target.time - GameManager.CurrentTime;
         float absGap = Math.Abs(gap);
 
-        if (absGap > GameManager.JUDGESTD[(int)JUDGES.BAD]) // DONT CARE
+        if (absGap > CONST.JUDGESTD[(int)JUDGES.BAD]) // DONT CARE
         {
             return;
         }
 
-        if (absGap > GameManager.JUDGESTD[(int)JUDGES.NICE])
+        if (absGap > CONST.JUDGESTD[(int)JUDGES.NICE])
         {
             GameManager.Instance.ActOnJudge(JUDGES.BAD, gap);
         }
-        else if (absGap > GameManager.JUDGESTD[(int)JUDGES.GREAT])
+        else if (absGap > CONST.JUDGESTD[(int)JUDGES.GREAT])
         {
             GameManager.Instance.ActOnJudge(JUDGES.NICE, gap);
         }
-        else if (absGap > GameManager.JUDGESTD[(int)JUDGES.PRECISE])
+        else if (absGap > CONST.JUDGESTD[(int)JUDGES.PRECISE])
         {
             GameManager.Instance.ActOnJudge(JUDGES.GREAT, gap);
         }
@@ -117,7 +117,7 @@ public class SheetSystem : MonoBehaviour
         Destroy(target.gameObject);
     }
 
-    private bool Translate(SerializableInfo info, SerializableSheet sheet)
+    private bool Translate(SerializableDesc info, SerializableSheet sheet)
     {
         return true;
     }

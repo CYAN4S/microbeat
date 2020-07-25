@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using UnityEngine;
 
 public class Sheet : MonoBehaviour
@@ -33,6 +34,7 @@ public class SerializableDesc
 {
     public string name;
     public string artist;
+    public string genre;
 
     public double bpm;
 

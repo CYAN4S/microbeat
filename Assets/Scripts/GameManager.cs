@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
+using System.IO;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     public static float CurrentTime { get; private set; }
     public static double ScrollSpeed { get; private set; }
 
-    public static Action OnCallSheet = () => IsWorking = true;
+    public static Action OnCallSheet;
     public static Action OnScrollSpeedChange = () => { };
 
     public static Sheet CurrentSheet { get; private set; }
@@ -55,7 +56,12 @@ public class GameManager : MonoBehaviour
         }
 
         IsWorking = false;
-        OnCallSheet += () => InputManager.Instance.OnSpeedKeyDown += ChangeSpeed;
+
+        OnCallSheet += () =>
+        {
+            IsWorking = true;
+            InputManager.Instance.OnSpeedKeyDown += ChangeSpeed;
+        };
     }
 
     private void Start()
@@ -109,11 +115,20 @@ public class GameManager : MonoBehaviour
     public void StartMusic()
     {
         audioSource.clip = CurrentSheet.audioClip;
-        audioSource.Play();
+        if (audioSource.clip != null)
+        {
+            audioSource.Play();
+        }
     }
 
-    public void Launch()
+    public void Launch(DirectoryInfo dir, SerializableDesc desc, SerializableSheet sheet)
     {
+        string audioPath = Path.Combine(dir.FullName, desc.musicPath);
+        //audioSource.clip = FileExplorer.GetAudioClip(audioPath);
+        CurrentSheet.SetFrom(desc, sheet, audioSource.clip);
+        SheetInInspector = CurrentSheet;
+        print(sheet.notes.Count);
+
         OnCallSheet();
         Invoke("StartMusic", 3f);
     }

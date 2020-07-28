@@ -24,18 +24,16 @@ public static class CONST
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static GameManager instance;
 
     public static bool IsWorking { get; private set; }
     public static float CurrentTime { get; private set; }
     public static double ScrollSpeed { get; private set; }
-
-    public static Action OnCallSheet;
-    public static Action OnScrollSpeedChange = () => { };
-
-    public static Sheet CurrentSheet { get; private set; }
-    public Sheet SheetInInspector;
     public static float EndTime { get; set; }
+
+    public Action OnCallSheet;
+    public Action OnScrollSpeedChange = () => { };
+    public Sheet CurrentSheet { get; private set; }
 
     private int dataScore;
     private double score;
@@ -43,16 +41,17 @@ public class GameManager : MonoBehaviour
     public UIManager ui;
 
     private AudioSource audioSource;
+    public AudioClip audioClip;
 
     private void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
 
         IsWorking = false;
@@ -70,8 +69,6 @@ public class GameManager : MonoBehaviour
         ScrollSpeed = 2.5;
         dataScore = 0;
         score = 0;
-
-        CurrentSheet = SheetInInspector;
 
         audioSource = GetComponent<AudioSource>();
     }
@@ -114,7 +111,20 @@ public class GameManager : MonoBehaviour
 
     public void StartMusic()
     {
-        audioSource.clip = CurrentSheet.audioClip;
+        audioSource.clip = audioClip;
+        if (audioSource.clip != null)
+        {
+            audioSource.Play();
+        }
+    }
+
+    public IEnumerator StartMusicAsync(float time)
+    {
+        while (time > CurrentTime)
+        {
+            yield return null;
+        }
+        audioSource.clip = audioClip;
         if (audioSource.clip != null)
         {
             audioSource.Play();
@@ -124,13 +134,15 @@ public class GameManager : MonoBehaviour
     public void Launch(DirectoryInfo dir, SerializableDesc desc, SerializableSheet sheet)
     {
         string audioPath = Path.Combine(dir.FullName, desc.musicPath);
-        //audioSource.clip = FileExplorer.GetAudioClip(audioPath);
-        CurrentSheet.SetFrom(desc, sheet, audioSource.clip);
-        SheetInInspector = CurrentSheet;
-        print(sheet.notes.Count);
 
-        OnCallSheet();
-        Invoke("StartMusic", 3f);
+        StartCoroutine(GetComponent<FileExplorer>().GetAudioClip(audioPath, () =>
+        {
+            CurrentSheet = new Sheet();
+            CurrentSheet.SetFrom(desc, sheet, audioSource.clip);
+
+            OnCallSheet();
+            StartCoroutine(StartMusicAsync(0));
+        }));
     }
 
     public void ActOnJudge(JUDGES judge, float gap)

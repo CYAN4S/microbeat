@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -45,6 +46,7 @@ public class FileExplorer : MonoBehaviour
             if (descFile == null)
             {
                 continue;
+
             }
 
             FileInfo[] sheetFiles = musicPack.GetFiles("*.musheet");
@@ -71,7 +73,6 @@ public class FileExplorer : MonoBehaviour
                 }
             }
 
-            print(musicPack.FullName + " / " + desc.name + " / " + sheets.Count.ToString() + " file(s).");
             musicData.Add((musicPack, desc, sheets));
         }
 
@@ -83,20 +84,21 @@ public class FileExplorer : MonoBehaviour
         return JsonUtility.FromJson<T>(json);
     }
 
-    public static AudioClip GetAudioClip(string path)
+    public IEnumerator GetAudioClip(string path, Action callback)
     {
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(path, AudioType.WAV))
         {
-            www.SendWebRequest();
+            var x = www.SendWebRequest();
+            x.completed += _ => callback();
+            yield return x;
 
             if (www.isNetworkError)
             {
                 Debug.Log(www.error);
-                return null;
             }
             else
             {
-                return DownloadHandlerAudioClip.GetContent(www);
+                GetComponent<GameManager>().audioClip = DownloadHandlerAudioClip.GetContent(www);
             }
         }
     }

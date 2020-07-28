@@ -11,11 +11,14 @@ public class SheetSystem : MonoBehaviour
 
     #endregion
 
+    private GameManager gameManager;
     private List<List<NoteSystem>> noteSystemsByLine;
     private List<Queue<NoteSystem>> noteSystemQs;
 
     private void Awake()
     {
+        gameManager = GetComponent<GameManager>();
+
         noteSystemsByLine = new List<List<NoteSystem>>();
         noteSystemQs = new List<Queue<NoteSystem>>();
         for (int i = 0; i < 4; i++)
@@ -23,20 +26,20 @@ public class SheetSystem : MonoBehaviour
             noteSystemsByLine.Add(new List<NoteSystem>());
         }
 
-        GameManager.OnCallSheet += PrepareNotes;
-        GameManager.OnCallSheet += () => { InputManager.Instance.OnPlayKeyDown += JudgePlayKeyDown; };
+        gameManager.OnCallSheet += PrepareNotes;
+        gameManager.OnCallSheet += () => { InputManager.Instance.OnPlayKeyDown += JudgePlayKeyDown; };
     }
 
     private void PrepareNotes()
     {
         GameManager.EndTime = 3f;
 
-        foreach (Note item in GameManager.CurrentSheet.notes)
+        foreach (Note item in gameManager.CurrentSheet.notes)
         {
             NoteSystem noteSystem = Instantiate(notePrefab, notesParent).GetComponent<NoteSystem>();
             noteSystemsByLine[item.line].Add(noteSystem);
             noteSystem.note = item;
-            noteSystem.time = (float)(item.beat * (1f / GameManager.CurrentSheet.bpm) * 60f);
+            noteSystem.time = (float)(item.beat * (1f / gameManager.CurrentSheet.bpm) * 60f);
             GameManager.EndTime = Math.Max(GameManager.EndTime, noteSystem.time);
         }
 
@@ -68,7 +71,7 @@ public class SheetSystem : MonoBehaviour
             float gap = GameManager.CurrentTime - target.time;
             if (gap > CONST.JUDGESTD[(int)JUDGES.BAD])
             {
-                GameManager.Instance.ActOnJudge(JUDGES.BREAK, gap);
+                gameManager.ActOnJudge(JUDGES.BREAK, gap);
                 RemoveOneFromQ(i);
             }
 
@@ -93,19 +96,19 @@ public class SheetSystem : MonoBehaviour
 
         if (absGap > CONST.JUDGESTD[(int)JUDGES.NICE])
         {
-            GameManager.Instance.ActOnJudge(JUDGES.BAD, gap);
+            gameManager.ActOnJudge(JUDGES.BAD, gap);
         }
         else if (absGap > CONST.JUDGESTD[(int)JUDGES.GREAT])
         {
-            GameManager.Instance.ActOnJudge(JUDGES.NICE, gap);
+            gameManager.ActOnJudge(JUDGES.NICE, gap);
         }
         else if (absGap > CONST.JUDGESTD[(int)JUDGES.PRECISE])
         {
-            GameManager.Instance.ActOnJudge(JUDGES.GREAT, gap);
+            gameManager.ActOnJudge(JUDGES.GREAT, gap);
         }
         else
         {
-            GameManager.Instance.ActOnJudge(JUDGES.PRECISE, gap);
+            gameManager.ActOnJudge(JUDGES.PRECISE, gap);
         }
 
         RemoveOneFromQ(key);

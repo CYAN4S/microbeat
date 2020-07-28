@@ -4,22 +4,13 @@ using System.Collections.Generic;
 using System.Security.Permissions;
 using UnityEngine;
 
-public class Sheet : MonoBehaviour
+public class Sheet
 {
-    #region INSPECTOR
-
     public double bpm;
     public List<Note> notes;
     public List<LongNote> longNotes;
 
     public AudioClip audioClip;
-
-    #endregion
-
-    private void Awake()
-    {
-        //SetFrom();
-    }
 
     public void SetFrom(SerializableDesc desc, SerializableSheet sheet, AudioClip audioClip)
     {

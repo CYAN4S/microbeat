@@ -21,13 +21,13 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        InputManager.Instance.OnPlayKeyDown += n =>
+        GetComponent<InputManager>().OnPlayKeyDown += n =>
            {
                pressEffectObjects[n].SetActive(true);
                pressButtonObjects[n].SetActive(true);
            };
 
-        InputManager.Instance.OnPlayKeyUp += n =>
+        GetComponent<InputManager>().OnPlayKeyUp += n =>
         {
             pressEffectObjects[n].SetActive(false);
             pressButtonObjects[n].SetActive(false);
@@ -68,8 +68,8 @@ public class UIManager : MonoBehaviour
 
     public void DisplayMusics()
     {
-        print("RENDER BEGIN");
         var fe = GetComponent<FileExplorer>();
+        int count = 0;
         foreach (var item in fe.musicData)
         {
             for (int i = 0; i < item.Item3.Count; i++)
@@ -77,9 +77,7 @@ public class UIManager : MonoBehaviour
                 SerializableSheet sheet = item.Item3[i];
 
                 var target = Instantiate(LIPrefab, UL);
-                target.transform.Translate(0, -250 * i, 0);
-
-                print("RENDER: " + item.Item2.name);
+                target.transform.Translate(0, -250 * count++, 0);
 
                 target.GetComponent<Button>().onClick.AddListener(() =>
                 {

@@ -98,7 +98,7 @@ public class FileExplorer : MonoBehaviour
             }
             else
             {
-                GetComponent<GameManager>().audioClip = DownloadHandlerAudioClip.GetContent(www);
+                GetComponent<GameManager>().AudioClip = DownloadHandlerAudioClip.GetContent(www);
             }
         }
     }

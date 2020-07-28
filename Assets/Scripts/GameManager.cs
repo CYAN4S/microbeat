@@ -38,10 +38,10 @@ public class GameManager : MonoBehaviour
     private int dataScore;
     private double score;
 
-    public UIManager ui;
+    private UIManager ui;
 
     private AudioSource audioSource;
-    public AudioClip audioClip;
+    public AudioClip AudioClip { get; set; }
 
     private void Awake()
     {
@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        ui = GetComponent<UIManager>();
 
         IsWorking = false;
 
@@ -111,7 +113,7 @@ public class GameManager : MonoBehaviour
 
     public void StartMusic()
     {
-        audioSource.clip = audioClip;
+        audioSource.clip = AudioClip;
         if (audioSource.clip != null)
         {
             audioSource.Play();
@@ -124,7 +126,7 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
-        audioSource.clip = audioClip;
+        audioSource.clip = AudioClip;
         if (audioSource.clip != null)
         {
             audioSource.Play();

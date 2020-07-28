@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SheetSystem : MonoBehaviour
+public class NoteManager : MonoBehaviour
 {
     #region INSPECTOR
 

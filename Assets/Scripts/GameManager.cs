@@ -19,6 +19,8 @@ public static class CONST
     public static readonly KeyCode[] SPEEDKEYCODES = { KeyCode.E, KeyCode.R, KeyCode.T, KeyCode.Y, KeyCode.U, KeyCode.I };
 
     public static readonly float[] LINEXPOS = { -300, -100, 100, 300 };
+
+    public static readonly string[] PATTERN = { "NM", "HD", "MX", "SC" };
 }
 
 
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
     public static float CurrentTime { get; private set; }
     public static double ScrollSpeed { get; private set; }
     public static float EndTime { get; set; }
+    public static int combo { get; private set; }
 
     public Action OnCallSheet;
     public Action OnScrollSpeedChange = () => { };
@@ -57,6 +60,7 @@ public class GameManager : MonoBehaviour
         ui = GetComponent<UIManager>();
 
         IsWorking = false;
+        combo = 0;
 
         OnCallSheet += () =>
         {
@@ -85,6 +89,7 @@ public class GameManager : MonoBehaviour
         if (CurrentTime >= EndTime)
         {
             NongameUIManager.Instance.DisplayResult();
+            GetComponent<UIManager>().StopGroove();
 
             IsWorking = false;
             return;
@@ -154,6 +159,8 @@ public class GameManager : MonoBehaviour
         if (judge == JUDGES.BREAK)
         {
             ui.EraseGap();
+            ui.EraseCombo();
+            combo = 0;
         }
         else
         {
@@ -161,6 +168,14 @@ public class GameManager : MonoBehaviour
             dataScore += CONST.JUDGESCORE[(int)judge];
             score = (double)dataScore / (CONST.JUDGESCORE[0] * CurrentSheet.notes.Count) * 300000d;
             ui.ShowScore(score);
+            combo += 1;
+            ui.ShowCombo(combo);
+        }
+
+        if (judge == JUDGES.BAD)
+        {
+            ui.EraseCombo();
+            combo = 0;
         }
     }
 

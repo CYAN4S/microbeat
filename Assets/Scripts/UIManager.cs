@@ -15,12 +15,18 @@ public class UIManager : MonoBehaviour
     public Animator judgeAnimator;
     public GameObject LIPrefab;
     public Transform UL;
+    public Animator grooveLight;
+    public Text comboText;
 
     public static readonly Color[] detailColor = { new Color(0, 222f / 256f, 1), new Color(1, 171f / 256f, 0) };
     public static readonly string[] judgeTriggers = { "Precise", "Great", "Nice", "Bad", "Break" };
 
+    private GameManager gameManager;
+
     private void Awake()
     {
+        gameManager = GetComponent<GameManager>();
+
         GetComponent<InputManager>().OnPlayKeyDown += n =>
            {
                pressEffectObjects[n].SetActive(true);
@@ -32,6 +38,11 @@ public class UIManager : MonoBehaviour
             pressEffectObjects[n].SetActive(false);
             pressButtonObjects[n].SetActive(false);
         };
+
+        gameManager.OnCallSheet += () =>
+        {
+            StartGroove(gameManager.CurrentSheet.bpm);
+        };
     }
 
     private void LateUpdate()
@@ -41,7 +52,10 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        speedText.text = GameManager.ScrollSpeed.ToString("F2");
+        speedText.text = 
+            gameManager.CurrentSheet.bpm.ToString("F0") + " X " 
+            + GameManager.ScrollSpeed.ToString("F2") + " = \n" 
+            + (gameManager.CurrentSheet.bpm * GameManager.ScrollSpeed).ToString("F2");
         timeText.text = GameManager.CurrentTime.ToString("F3");
     }
 
@@ -88,8 +102,29 @@ public class UIManager : MonoBehaviour
                 var lis = target.GetComponent<LISystem>();
                 lis.title.text = item.Item2.name;
                 lis.info.text = item.Item2.artist + " / " + item.Item2.genre;
+                lis.level.text = CONST.PATTERN[sheet.pattern] + "\n" + sheet.level.ToString();
             }
         }
     }
 
+    public void StartGroove(double bpm)
+    {
+        grooveLight.SetFloat("BPM", (float)bpm / 60f);
+        grooveLight.SetTrigger("Begin");
+    }
+
+    public void StopGroove()
+    {
+        grooveLight.SetTrigger("End");
+    }
+
+    public void ShowCombo(int combo)
+    {
+        comboText.text = combo.ToString();
+    }
+
+    public void EraseCombo()
+    {
+        comboText.text = "";
+    }
 }

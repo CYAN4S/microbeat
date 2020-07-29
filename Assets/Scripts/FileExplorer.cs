@@ -20,17 +20,68 @@ public class FileExplorer : MonoBehaviour
 
     private void Start()
     {
-        musicData = ExploreMusics();
-        GetComponent<UIManager>().DisplayMusics();
+        //musicData = ExploreMusics();
+        //GetComponent<UIManager>().DisplayMusics();
+        StartCoroutine(Explore(GetComponent<UIManager>().DisplayMusics));
+    }
+
+    public IEnumerator Explore(Action callback = null)
+    {
+        musicData = new List<(DirectoryInfo, SerializableDesc, List<SerializableSheet>)>();
+
+        DirectoryInfo musicPathInfo = new DirectoryInfo(Path.Combine(path, "Musics"));
+        if (!musicPathInfo.Exists)
+        {
+            musicPathInfo.Create();
+            yield break;
+        }
+
+        IEnumerable<DirectoryInfo> musicPacks = musicPathInfo.EnumerateDirectories();
+
+        foreach (DirectoryInfo musicPack in musicPacks)
+        {
+            FileInfo descFile = musicPack.GetFiles("info.mudesc")?[0];
+            if (descFile == null)
+            {
+                continue;
+            }
+
+            FileInfo[] sheetFiles = musicPack.GetFiles("*.musheet");
+            if (sheetFiles.Length == 0)
+            {
+                continue;
+            }
+
+            string text;
+
+            using (StreamReader sr = descFile.OpenText())
+            {
+                text = sr.ReadToEnd();
+            }
+            var desc = FromJson<SerializableDesc>(text);
+
+            List<SerializableSheet> sheets = new List<SerializableSheet>();
+            foreach (var item in sheetFiles)
+            {
+                using (StreamReader sr = item.OpenText())
+                {
+                    text = sr.ReadToEnd();
+                    sheets.Add(FromJson<SerializableSheet>(text));
+                }
+            }
+
+            musicData.Add((musicPack, desc, sheets));
+            yield return null;
+        }
+
+        callback?.Invoke();
     }
 
     public List<(DirectoryInfo, SerializableDesc, List<SerializableSheet>)> ExploreMusics()
     {
         var musicData = new List<(DirectoryInfo, SerializableDesc, List<SerializableSheet>)>();
 
-        string musicPath = Path.Combine(path, "Musics");
-
-        DirectoryInfo musicPathInfo = new DirectoryInfo(musicPath);
+        DirectoryInfo musicPathInfo = new DirectoryInfo(Path.Combine(path, "Musics"));
         if (!musicPathInfo.Exists)
         {
             musicPathInfo.Create();
@@ -38,7 +89,6 @@ public class FileExplorer : MonoBehaviour
         }
 
         IEnumerable<DirectoryInfo> musicPacks = musicPathInfo.EnumerateDirectories();
-
 
         foreach (DirectoryInfo musicPack in musicPacks)
         {

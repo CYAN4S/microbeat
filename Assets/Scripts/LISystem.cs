@@ -8,6 +8,7 @@ public class LISystem : MonoBehaviour
 {
     public Text title;
     public Text info;
+    public Text level;
 
     public DirectoryInfo dir;
     public SerializableDesc desc;

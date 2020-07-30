@@ -6,9 +6,11 @@ using UnityEngine.UI;
 
 public class LISystem : MonoBehaviour
 {
+    #region INSPECTOR
     public Text title;
     public Text info;
     public Text level;
+    #endregion
 
     public DirectoryInfo dir;
     public SerializableDesc desc;

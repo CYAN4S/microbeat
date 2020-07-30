@@ -32,19 +32,22 @@ public class GameManager : MonoBehaviour
     public static float CurrentTime { get; private set; }
     public static double ScrollSpeed { get; private set; }
     public static float EndTime { get; set; }
-    public static int combo { get; private set; }
+    public static int Combo { get; private set; }
+    public static double Score { get; private set; }
 
-    public Action OnCallSheet;
-    public Action OnScrollSpeedChange = () => { };
+    public Action OnGameStart;
+    public Action OnMusicStart;
+    public Action OnScrollSpeedChange;
+    public Action<JUDGES, float> OnJudge;
+    public Action OnGameEnd;
+
+    public AudioClip AudioClip { get; set; }
+
     public Sheet CurrentSheet { get; private set; }
 
     private int dataScore;
-    private double score;
-
-    private UIManager ui;
 
     private AudioSource audioSource;
-    public AudioClip AudioClip { get; set; }
 
     private void Awake()
     {
@@ -57,26 +60,30 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        ui = GetComponent<UIManager>();
+        audioSource = GetComponent<AudioSource>();
 
-        IsWorking = false;
-        combo = 0;
-
-        OnCallSheet += () =>
+        OnGameStart += () =>
         {
             IsWorking = true;
             InputManager.Instance.OnSpeedKeyDown += ChangeSpeed;
+        };
+
+        OnMusicStart += () =>
+        {
+
         };
     }
 
     private void Start()
     {
+        IsWorking = false;
         CurrentTime = -3;
         ScrollSpeed = 2.5;
-        dataScore = 0;
-        score = 0;
+        EndTime = 1000f;
+        Combo = 0;
+        Score = 0;
 
-        audioSource = GetComponent<AudioSource>();
+        dataScore = 0;
     }
 
     private void Update()
@@ -89,7 +96,7 @@ public class GameManager : MonoBehaviour
         if (CurrentTime >= EndTime)
         {
             NongameUIManager.Instance.DisplayResult();
-            GetComponent<UIManager>().StopGroove();
+            OnGameEnd();
 
             IsWorking = false;
             return;
@@ -113,7 +120,7 @@ public class GameManager : MonoBehaviour
         }
 
         ScrollSpeed = value;
-        OnScrollSpeedChange();
+        OnScrollSpeedChange?.Invoke();
     }
 
     public void StartMusic()
@@ -123,9 +130,10 @@ public class GameManager : MonoBehaviour
         {
             audioSource.Play();
         }
+        OnMusicStart?.Invoke();
     }
 
-    public IEnumerator StartMusicAsync(float time)
+    public IEnumerator StartMusicOnTime(float time)
     {
         while (time > CurrentTime)
         {
@@ -138,45 +146,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Launch(DirectoryInfo dir, SerializableDesc desc, SerializableSheet sheet)
+    public void SheetSelect(DirectoryInfo dir, SerializableDesc desc, SerializableSheet sheet)
     {
         string audioPath = Path.Combine(dir.FullName, desc.musicPath);
 
         StartCoroutine(GetComponent<FileExplorer>().GetAudioClip(audioPath, () =>
         {
-            CurrentSheet = new Sheet();
-            CurrentSheet.SetFrom(desc, sheet, audioSource.clip);
+            CurrentSheet = new Sheet(desc, sheet, audioSource.clip);
 
-            OnCallSheet();
-            StartCoroutine(StartMusicAsync(0));
+            OnGameStart?.Invoke();
+            StartCoroutine(StartMusicOnTime(0));
         }));
     }
 
     public void ActOnJudge(JUDGES judge, float gap)
     {
-        ui.LaunchJudge(judge);
-
         if (judge == JUDGES.BREAK)
         {
-            ui.EraseGap();
-            ui.EraseCombo();
-            combo = 0;
+            Combo = 0;
         }
         else
         {
-            ui.ShowGap(gap);
             dataScore += CONST.JUDGESCORE[(int)judge];
-            score = (double)dataScore / (CONST.JUDGESCORE[0] * CurrentSheet.notes.Count) * 300000d;
-            ui.ShowScore(score);
-            combo += 1;
-            ui.ShowCombo(combo);
+            Score = (double)dataScore / (CONST.JUDGESCORE[0] * CurrentSheet.notes.Count) * 300000d;
+            Combo = (judge != JUDGES.BAD) ? (Combo + 1) : 0;
         }
 
-        if (judge == JUDGES.BAD)
-        {
-            ui.EraseCombo();
-            combo = 0;
-        }
+        OnJudge(judge, gap);
     }
 
 }

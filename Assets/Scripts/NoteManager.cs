@@ -5,10 +5,8 @@ using UnityEngine;
 public class NoteManager : MonoBehaviour
 {
     #region INSPECTOR
-
     public Transform notesParent;
     public GameObject notePrefab;
-
     #endregion
 
     private GameManager gameManager;
@@ -26,8 +24,8 @@ public class NoteManager : MonoBehaviour
             noteSystemsByLine.Add(new List<NoteSystem>());
         }
 
-        gameManager.OnCallSheet += PrepareNotes;
-        gameManager.OnCallSheet += () => { InputManager.Instance.OnPlayKeyDown += JudgePlayKeyDown; };
+        gameManager.OnGameStart += PrepareNotes;
+        gameManager.OnGameStart += () => { InputManager.Instance.OnPlayKeyDown += JudgePlayKeyDown; };
     }
 
     private void PrepareNotes()

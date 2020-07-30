@@ -9,10 +9,9 @@ public class Sheet
     public double bpm;
     public List<Note> notes;
     public List<LongNote> longNotes;
-
     public AudioClip audioClip;
 
-    public void SetFrom(SerializableDesc desc, SerializableSheet sheet, AudioClip audioClip)
+    public Sheet(SerializableDesc desc, SerializableSheet sheet, AudioClip audioClip)
     {
         bpm = desc.bpm;
         notes = sheet.notes;

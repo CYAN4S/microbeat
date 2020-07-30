@@ -27,21 +27,49 @@ public class UIManager : MonoBehaviour
     {
         gameManager = GetComponent<GameManager>();
 
-        GetComponent<InputManager>().OnPlayKeyDown += n =>
-           {
-               pressEffectObjects[n].SetActive(true);
-               pressButtonObjects[n].SetActive(true);
-           };
+        InputManager.Instance.OnPlayKeyDown += n =>
+        {
+            pressEffectObjects[n].SetActive(true);
+            pressButtonObjects[n].SetActive(true);
+        };
 
-        GetComponent<InputManager>().OnPlayKeyUp += n =>
+        InputManager.Instance.OnPlayKeyUp += n =>
         {
             pressEffectObjects[n].SetActive(false);
             pressButtonObjects[n].SetActive(false);
         };
 
-        gameManager.OnCallSheet += () =>
+        GameManager.instance.OnMusicStart += () =>
         {
             StartGroove(gameManager.CurrentSheet.bpm);
+        };
+
+        GameManager.instance.OnJudge += (JUDGES judge, float gap) =>
+        {
+            TriggerJudgeAnimation(judge);
+
+            if (judge == JUDGES.BREAK)
+            {
+                EraseGap();
+                EraseCombo();
+            }
+            else if (judge == JUDGES.BAD)
+            {
+                ShowGap(gap);
+                EraseGap();
+                EraseCombo();
+            }
+            else
+            {
+                ShowGap(gap);
+                ShowScore(GameManager.Score);
+                ShowCombo(GameManager.Combo);
+            }
+        };
+
+        GameManager.instance.OnGameEnd += () =>
+        {
+            StopGroove();
         };
     }
 
@@ -52,14 +80,14 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        speedText.text = 
-            gameManager.CurrentSheet.bpm.ToString("F0") + " X " 
-            + GameManager.ScrollSpeed.ToString("F2") + " = \n" 
+        speedText.text =
+            gameManager.CurrentSheet.bpm.ToString("F0") + " X "
+            + GameManager.ScrollSpeed.ToString("F2") + " = \n"
             + (gameManager.CurrentSheet.bpm * GameManager.ScrollSpeed).ToString("F2");
         timeText.text = GameManager.CurrentTime.ToString("F3");
     }
 
-    public void LaunchJudge(JUDGES judge)
+    public void TriggerJudgeAnimation(JUDGES judge)
     {
         judgeAnimator.SetTrigger(judgeTriggers[(int)judge]);
     }
@@ -95,7 +123,7 @@ public class UIManager : MonoBehaviour
 
                 target.GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    GetComponent<GameManager>().Launch(item.Item1, item.Item2, sheet);
+                    GameManager.instance.SheetSelect(item.Item1, item.Item2, sheet);
                     GetComponent<NongameUIManager>().selection.SetActive(false);
                 });
 

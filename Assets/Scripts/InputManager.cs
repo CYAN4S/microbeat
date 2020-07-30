@@ -5,8 +5,8 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
 
-    public Action<int> OnPlayKey = _ => { }, OnPlayKeyDown = _ => { }, OnPlayKeyUp = _ => { };
-    public Action<int> OnSpeedKeyDown = _ => { };
+    public Action<int> OnPlayKey, OnPlayKeyDown, OnPlayKeyUp;
+    public Action<int> OnSpeedKeyDown;
 
     private void Awake()
     {
@@ -28,17 +28,17 @@ public class InputManager : MonoBehaviour
 
             if (Input.GetKey(key))
             {
-                OnPlayKey(i);
+                OnPlayKey?.Invoke(i);
             }
 
             if (Input.GetKeyDown(key))
             {
-                OnPlayKeyDown(i);
+                OnPlayKeyDown?.Invoke(i);
             }
 
             if (Input.GetKeyUp(key))
             {
-                OnPlayKeyUp(i);
+                OnPlayKeyUp?.Invoke(i);
             }
         }
 
@@ -47,7 +47,7 @@ public class InputManager : MonoBehaviour
             KeyCode key = CONST.SPEEDKEYCODES[i];
             if (Input.GetKeyDown(key))
             {
-                OnSpeedKeyDown(i);
+                OnSpeedKeyDown?.Invoke(i);
             }
         }
     }

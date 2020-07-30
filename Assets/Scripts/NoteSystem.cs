@@ -8,7 +8,6 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
 {
     public Note note;
     public float time;
-    private GameManager gameManager;
 
     public int CompareTo(NoteSystem other)
     {
@@ -17,11 +16,9 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
 
     private void Awake()
     {
-        gameManager = GameManager.instance;
-
         if (note is LongNote)
         {
-            gameManager.OnScrollSpeedChange += ChangeLength;
+            GameManager.instance.OnScrollSpeedChange += ChangeLength;
         }
     }
 
@@ -47,6 +44,6 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
 
     private float getCurrentYPos()
     {
-        return (float)(note.beat - GameManager.CurrentTime * gameManager.CurrentSheet.bpm * (1f / 60f)) * 120f * 2f * (float)GameManager.ScrollSpeed;
+        return (float)(note.beat - GameManager.CurrentTime * GameManager.instance.CurrentSheet.bpm * (1f / 60f)) * 120f * 2f * (float)GameManager.ScrollSpeed;
     }
 }

@@ -20,8 +20,6 @@ public class FileExplorer : MonoBehaviour
 
     private void Start()
     {
-        //musicData = ExploreMusics();
-        //GetComponent<UIManager>().DisplayMusics();
         StartCoroutine(Explore(GetComponent<UIManager>().DisplayMusics));
     }
 
@@ -58,7 +56,7 @@ public class FileExplorer : MonoBehaviour
             {
                 text = sr.ReadToEnd();
             }
-            var desc = FromJson<SerializableDesc>(text);
+            var desc = JsonUtility.FromJson<SerializableDesc>(text);
 
             List<SerializableSheet> sheets = new List<SerializableSheet>();
             foreach (var item in sheetFiles)
@@ -66,7 +64,7 @@ public class FileExplorer : MonoBehaviour
                 using (StreamReader sr = item.OpenText())
                 {
                     text = sr.ReadToEnd();
-                    sheets.Add(FromJson<SerializableSheet>(text));
+                    sheets.Add(JsonUtility.FromJson<SerializableSheet>(text));
                 }
             }
 
@@ -77,64 +75,7 @@ public class FileExplorer : MonoBehaviour
         callback?.Invoke();
     }
 
-    public List<(DirectoryInfo, SerializableDesc, List<SerializableSheet>)> ExploreMusics()
-    {
-        var musicData = new List<(DirectoryInfo, SerializableDesc, List<SerializableSheet>)>();
-
-        DirectoryInfo musicPathInfo = new DirectoryInfo(Path.Combine(path, "Musics"));
-        if (!musicPathInfo.Exists)
-        {
-            musicPathInfo.Create();
-            return musicData;
-        }
-
-        IEnumerable<DirectoryInfo> musicPacks = musicPathInfo.EnumerateDirectories();
-
-        foreach (DirectoryInfo musicPack in musicPacks)
-        {
-            FileInfo descFile = musicPack.GetFiles("info.mudesc")?[0];
-            if (descFile == null)
-            {
-                continue;
-
-            }
-
-            FileInfo[] sheetFiles = musicPack.GetFiles("*.musheet");
-            if (sheetFiles.Length == 0)
-            {
-                continue;
-            }
-
-            string text;
-
-            using (StreamReader sr = descFile.OpenText())
-            {
-                text = sr.ReadToEnd();
-            }
-            var desc = FromJson<SerializableDesc>(text);
-
-            List<SerializableSheet> sheets = new List<SerializableSheet>();
-            foreach (var item in sheetFiles)
-            {
-                using (StreamReader sr = item.OpenText())
-                {
-                    text = sr.ReadToEnd();
-                    sheets.Add(FromJson<SerializableSheet>(text));
-                }
-            }
-
-            musicData.Add((musicPack, desc, sheets));
-        }
-
-        return musicData;
-    }
-
-    public T FromJson<T>(string json)
-    {
-        return JsonUtility.FromJson<T>(json);
-    }
-
-    public IEnumerator GetAudioClip(string path, Action callback)
+    public IEnumerator GetAudioClip(string path, Action callback = null)
     {
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(path, AudioType.WAV))
         {
@@ -148,7 +89,7 @@ public class FileExplorer : MonoBehaviour
             }
             else
             {
-                GetComponent<GameManager>().AudioClip = DownloadHandlerAudioClip.GetContent(www);
+                GameManager.instance.AudioClip = DownloadHandlerAudioClip.GetContent(www);
             }
         }
     }

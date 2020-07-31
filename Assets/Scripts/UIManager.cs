@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class UIManager : MonoBehaviour
     public Transform UL;
     public Animator grooveLight;
     public Text comboText;
+    public TextMeshProUGUI comboTMPro;
+    public Animator comboAnimator;
+    public Animator comboHeadingAnimator;
 
     public static readonly Color[] detailColor = { new Color(0, 222f / 256f, 1), new Color(1, 171f / 256f, 0) };
     public static readonly string[] judgeTriggers = { "Precise", "Great", "Nice", "Bad", "Break" };
@@ -148,11 +152,28 @@ public class UIManager : MonoBehaviour
 
     public void ShowCombo(int combo)
     {
-        comboText.text = combo.ToString();
+        //comboText.text = combo.ToString();
+        comboTMPro.text = ComboToString(combo);
+        comboAnimator.SetTrigger("Combo");
+        comboHeadingAnimator.SetTrigger("ComboHeading");
     }
 
     public void EraseCombo()
     {
-        comboText.text = "";
+        //comboText.text = "";
+        //comboTMPro.text = "";
+    }
+
+    public string ComboToString(int combo)
+    {
+        const string prefix = "<style=\"CB\">", suffix = ">";
+        string result = "";
+
+        foreach (var item in combo.ToString())
+        {
+            result = result + prefix + item + suffix;
+        }
+
+        return result;
     }
 }

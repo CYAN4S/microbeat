@@ -17,7 +17,6 @@ public class UIManager : MonoBehaviour
     public GameObject LIPrefab;
     public Transform UL;
     public Animator grooveLight;
-    public Text comboText;
     public TextMeshProUGUI comboTMPro;
     public Animator comboAnimator;
     public Animator comboHeadingAnimator;
@@ -55,13 +54,11 @@ public class UIManager : MonoBehaviour
             if (judge == JUDGES.BREAK)
             {
                 EraseGap();
-                EraseCombo();
             }
             else if (judge == JUDGES.BAD)
             {
                 ShowGap(gap);
                 EraseGap();
-                EraseCombo();
             }
             else
             {
@@ -84,10 +81,7 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        speedText.text =
-            gameManager.CurrentSheet.bpm.ToString("F0") + " X "
-            + GameManager.ScrollSpeed.ToString("F2") + " = \n"
-            + (gameManager.CurrentSheet.bpm * GameManager.ScrollSpeed).ToString("F2");
+        speedText.text = "X" + GameManager.ScrollSpeed.ToString("F1");
         timeText.text = GameManager.CurrentTime.ToString("F3");
     }
 
@@ -152,16 +146,9 @@ public class UIManager : MonoBehaviour
 
     public void ShowCombo(int combo)
     {
-        //comboText.text = combo.ToString();
         comboTMPro.text = ComboToString(combo);
         comboAnimator.SetTrigger("Combo");
         comboHeadingAnimator.SetTrigger("ComboHeading");
-    }
-
-    public void EraseCombo()
-    {
-        //comboText.text = "";
-        //comboTMPro.text = "";
     }
 
     public string ComboToString(int combo)

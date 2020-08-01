@@ -39,6 +39,7 @@ public class NoteManager : MonoBehaviour
             noteSystem.note = item;
             noteSystem.time = (float)(item.beat * (1f / gameManager.CurrentSheet.bpm) * 60f);
             GameManager.EndTime = Math.Max(GameManager.EndTime, noteSystem.time);
+            noteSystem.GetComponent<Animator>().SetTrigger(GetTriggerString(item.line));
         }
 
         foreach (List<NoteSystem> item in noteSystemsByLine)
@@ -118,8 +119,15 @@ public class NoteManager : MonoBehaviour
         Destroy(target.gameObject);
     }
 
-    private bool Translate(SerializableDesc info, SerializableSheet sheet)
+    private string GetTriggerString(int line)
     {
-        return true;
+        if (line == 0 || line == 3)
+        {
+            return "ExecuteBlue";
+        }
+        else
+        {
+            return "ExecuteWhite";
+        }
     }
 }

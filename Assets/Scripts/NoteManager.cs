@@ -100,14 +100,17 @@ public class NoteManager : MonoBehaviour
         else if (absGap > CONST.JUDGESTD[(int)JUDGES.GREAT])
         {
             gameManager.ActOnJudge(JUDGES.NICE, gap);
+            gameManager.ExplodeNote(key);
         }
         else if (absGap > CONST.JUDGESTD[(int)JUDGES.PRECISE])
         {
             gameManager.ActOnJudge(JUDGES.GREAT, gap);
+            gameManager.ExplodeNote(key);
         }
         else
         {
             gameManager.ActOnJudge(JUDGES.PRECISE, gap);
+            gameManager.ExplodeNote(key);
         }
 
         RemoveOneFromQ(key);

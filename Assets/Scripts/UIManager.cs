@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI comboTMPro;
     public Animator comboAnimator;
     public Animator comboHeadingAnimator;
+    public Animator[] noteEffects;
 
     public static readonly Color[] detailColor = { new Color(0, 222f / 256f, 1), new Color(1, 171f / 256f, 0) };
     public static readonly string[] judgeTriggers = { "Precise", "Great", "Nice", "Bad", "Break" };
@@ -67,6 +68,8 @@ public class UIManager : MonoBehaviour
                 ShowCombo(GameManager.Combo);
             }
         };
+
+        GameManager.instance.OnNoteExplode += Effect;
 
         GameManager.instance.OnGameEnd += () =>
         {
@@ -162,5 +165,10 @@ public class UIManager : MonoBehaviour
         }
 
         return result;
+    }
+
+    public void Effect(int line)
+    {
+        noteEffects[line].SetTrigger("Effect");
     }
 }

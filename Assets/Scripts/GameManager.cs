@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public Action OnScrollSpeedChange;
     public Action<JUDGES, float> OnJudge;
     public Action OnGameEnd;
+    public Action<int> OnNoteExplode;
 
     public AudioClip AudioClip { get; set; }
 
@@ -164,6 +165,11 @@ public class GameManager : MonoBehaviour
         }
 
         OnJudge(judge, gap);
+    }
+
+    public void ExplodeNote(int line)
+    {
+        OnNoteExplode(line);
     }
 
 }

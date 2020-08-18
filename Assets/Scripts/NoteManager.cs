@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NoteManager : MonoBehaviour
 {
     #region INSPECTOR
     public Transform notesParent;
     public GameObject notePrefab;
+    public Sprite[] noteSprites;
     #endregion
 
     private GameManager gameManager;
@@ -39,7 +41,8 @@ public class NoteManager : MonoBehaviour
             noteSystem.note = item;
             noteSystem.time = (float)(item.beat * (1f / gameManager.CurrentSheet.bpm) * 60f);
             GameManager.EndTime = Math.Max(GameManager.EndTime, noteSystem.time);
-            noteSystem.GetComponent<Animator>().SetTrigger(GetTriggerString(item.line));
+            //noteSystem.GetComponent<Animator>().SetTrigger(GetTriggerString(item.line));
+            noteSystem.GetComponent<Image>().sprite = noteSprites[(item.line == 1 || item.line == 2) ? 1 : 0];
         }
 
         foreach (List<NoteSystem> item in noteSystemsByLine)
@@ -122,15 +125,15 @@ public class NoteManager : MonoBehaviour
         Destroy(target.gameObject);
     }
 
-    private string GetTriggerString(int line)
-    {
-        if (line == 0 || line == 3)
-        {
-            return "ExecuteBlue";
-        }
-        else
-        {
-            return "ExecuteWhite";
-        }
-    }
+    //private string GetTriggerString(int line)
+    //{
+    //    if (line == 0 || line == 3)
+    //    {
+    //        return "ExecuteBlue";
+    //    }
+    //    else
+    //    {
+    //        return "ExecuteWhite";
+    //    }
+    //}
 }

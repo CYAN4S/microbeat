@@ -12,8 +12,8 @@ public enum JUDGES { PRECISE, GREAT, NICE, BAD, BREAK };
 public static class CONST
 {
     public static readonly double[] DELTASPEED = { -0.1, -0.5, 0.5, 0.1 };
-    public static readonly float[] JUDGESTD = { 0.05f, 0.1f, 0.2f, 0.3f };
-    public static readonly int[] JUDGESCORE = { 5, 3, 2, 1 };
+    public static readonly float[]  JUDGESTD = { 0.05f, 0.1f, 0.2f, 0.3f };
+    public static readonly int[]    JUDGESCORE = { 5, 3, 2, 1 };
 
     public static readonly KeyCode[] PLAYKEYCODES = { KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K };
     public static readonly KeyCode[] SPEEDKEYCODES = { KeyCode.E, KeyCode.R, KeyCode.U, KeyCode.I };
@@ -21,6 +21,9 @@ public static class CONST
     public static readonly float[] LINEXPOS = { -300, -100, 100, 300 };
 
     public static readonly string[] PATTERN = { "NM", "HD", "MX", "SC" };
+
+    public static readonly int[]    RANK = { 295000, 290000, 275000, 250000, 200000 };
+    public static readonly string[] RANKNAME = { "S", "A", "B", "C", "D", "F" };
 }
 
 
@@ -28,12 +31,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public static bool IsWorking { get; private set; }
-    public static float CurrentTime { get; private set; }
-    public static double ScrollSpeed { get; private set; }
-    public static float EndTime { get; set; }
-    public static int Combo { get; private set; }
-    public static double Score { get; private set; }
+    public static bool      IsWorking { get; private set; }
+    public static float     CurrentTime { get; private set; }
+    public static double    ScrollSpeed { get; private set; }
+    public static float     EndTime { get; set; }
+    public static int       Combo { get; private set; }
+    public static double    Score { get; private set; }
 
     public Action OnGameStart;
     public Action OnMusicStart;
@@ -47,6 +50,8 @@ public class GameManager : MonoBehaviour
     public Sheet CurrentSheet { get; private set; }
 
     private int dataScore;
+
+    public int[] JudgeCounts { get; private set; } = { 0, 0, 0, 0, 0 };
 
     private AudioSource audioSource;
 
@@ -104,7 +109,6 @@ public class GameManager : MonoBehaviour
         }
 
         CurrentTime += Time.deltaTime;
-
     }
 
     private void ChangeSpeed(int input)
@@ -153,6 +157,8 @@ public class GameManager : MonoBehaviour
 
     public void ActOnJudge(JUDGES judge, float gap)
     {
+        JudgeCounts[(int)judge]++;
+
         if (judge == JUDGES.BREAK)
         {
             Combo = 0;
@@ -171,5 +177,4 @@ public class GameManager : MonoBehaviour
     {
         OnNoteExplode(line);
     }
-
 }

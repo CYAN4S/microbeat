@@ -8,6 +8,7 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    public RectTransform canvas;
     public GameObject[] pressEffectObjects;
     public GameObject[] pressButtonObjects;
     public Text speedText, scoreText;
@@ -21,6 +22,8 @@ public class UIManager : MonoBehaviour
     public Animator comboAnimator;
     public Animator comboHeadingAnimator;
     public Animator[] noteEffects;
+    public Text[] judgeCountTexts;
+    public Text resultText;
 
     public static readonly Color[] detailColor = { new Color(0, 222f / 256f, 1), new Color(1, 171f / 256f, 0) };
     public static readonly string[] judgeTriggers = { "Precise", "Great", "Nice", "Bad", "Break" };
@@ -74,6 +77,7 @@ public class UIManager : MonoBehaviour
         GameManager.instance.OnGameEnd += () =>
         {
             StopGroove();
+            DisplayResult();
         };
     }
 
@@ -113,6 +117,7 @@ public class UIManager : MonoBehaviour
     {
         var fe = GetComponent<FileExplorer>();
         int count = 0;
+        float yMultiply = canvas.localScale.y;
         foreach (var item in fe.musicData)
         {
             for (int i = 0; i < item.Item3.Count; i++)
@@ -120,7 +125,7 @@ public class UIManager : MonoBehaviour
                 SerializableSheet sheet = item.Item3[i];
 
                 var target = Instantiate(LIPrefab, UL);
-                target.transform.Translate(0, -250 * count++, 0);
+                target.transform.Translate(0, -250 * count++ * yMultiply, 0);
 
                 target.GetComponent<Button>().onClick.AddListener(() =>
                 {
@@ -170,5 +175,25 @@ public class UIManager : MonoBehaviour
     public void Effect(int line)
     {
         noteEffects[line].SetTrigger("Effect");
+    }
+
+    public void DisplayResult()
+    {
+        for (int i = 0; i < GameManager.instance.JudgeCounts.Length; i++)
+        {
+            judgeCountTexts[i].text = GameManager.instance.JudgeCounts[i].ToString();
+        }
+
+        string rank = CONST.RANKNAME[CONST.RANKNAME.Length - 1];
+        for (int i = 0; i < CONST.RANK.Length; i++)
+        {
+            if (GameManager.Score >= CONST.RANK[i])
+            {
+                rank = CONST.RANKNAME[i];
+                break;
+            }
+        }
+
+        resultText.text = GameManager.Score.ToString("F0") + " / RANK " + rank;
     }
 }

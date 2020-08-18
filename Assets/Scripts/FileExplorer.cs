@@ -10,7 +10,7 @@ using UnityEngine.Networking;
 
 public class FileExplorer : MonoBehaviour
 {
-    private string path;
+    public static string path;
     public List<(DirectoryInfo, SerializableDesc, List<SerializableSheet>)> musicData;
 
     private void Awake()

@@ -158,6 +158,7 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -192,6 +193,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -225,9 +227,9 @@ TextureImporter:
       name: Gear
       rect:
         serializedVersion: 2
-        x: 0
+        x: 40
         y: 0
-        width: 920
+        width: 840
         height: 2160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

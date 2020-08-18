@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4026097936831215436}
   - component: {fileID: 6935863956093731273}
   - component: {fileID: 3680125057597730625}
-  - component: {fileID: 6056454483854636341}
   m_Layer: 5
   m_Name: Note
   m_TagString: Untagged
@@ -62,6 +61,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -93,22 +93,3 @@ MonoBehaviour:
     line: 0
     beat: 0
   time: 0
---- !u!95 &6056454483854636341
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3140704049987846472}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2fc526f82a931e44593a8cdbf425c8f1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 1
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

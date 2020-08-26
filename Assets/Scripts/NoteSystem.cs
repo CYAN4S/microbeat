@@ -6,20 +6,21 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
 {
-    public Note note;
+    public int Line { get; protected set; }
+    public double Beat { get; protected set; }
     public float time;
 
-    public int CompareTo(NoteSystem other)
+    public int CompareTo(NoteSystem other) => Beat.CompareTo(other.Beat);
+
+    public void SetFromData(SerializableNote data)
     {
-        return note.CompareTo(other.note);
+        Line = data.line;
+        Beat = data.beat;
     }
 
     private void Awake()
     {
-        if (note is LongNote)
-        {
-            GameManager.instance.OnScrollSpeedChange += ChangeLength;
-        }
+
     }
 
     private void LateUpdate()
@@ -32,14 +33,9 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
         Move();
     }
 
-    private void ChangeLength()
-    {
-
-    }
-
     private void Move()
     {
-        transform.localPosition = new Vector3(CONST.LINEXPOS[note.line], getCurrentYPos());
+        transform.localPosition = new Vector3(CONST.LINEXPOS[Line], getCurrentYPos());
     }
 
     private float getCurrentYPos()

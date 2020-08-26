@@ -7,8 +7,8 @@ using UnityEngine;
 public class Sheet
 {
     public double bpm;
-    public List<Note> notes;
-    public List<LongNote> longNotes;
+    public List<SerializableNote> notes;
+    public List<SerializableLongNote> longNotes;
     public AudioClip audioClip;
 
     public Sheet(SerializableDesc desc, SerializableSheet sheet, AudioClip audioClip)
@@ -38,21 +38,21 @@ public class SerializableSheet
     public int level;
     public int pattern;
 
-    public List<Note> notes;
-    public List<LongNote> longNotes;
+    public List<SerializableNote> notes;
+    public List<SerializableLongNote> longNotes;
 }
 
 [Serializable]
-public class Note
+public class SerializableNote
 {
     public int line;
     public double beat;
 
-    public int CompareTo(Note other) => beat.CompareTo(other.beat);
+    public int CompareTo(SerializableNote other) => beat.CompareTo(other.beat);
 }
 
 [Serializable]
-public class LongNote : Note
+public class SerializableLongNote : SerializableNote
 {
     public double length;
 }

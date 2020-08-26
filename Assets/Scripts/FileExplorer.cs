@@ -10,11 +10,21 @@ using UnityEngine.Networking;
 
 public class FileExplorer : MonoBehaviour
 {
+    public static FileExplorer Instance { get; private set; }
     public static string path;
-    public List<(DirectoryInfo, SerializableDesc, List<SerializableSheet>)> musicData;
+    public List<Music> musicData;
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+
         path = Application.persistentDataPath;
     }
 
@@ -25,26 +35,25 @@ public class FileExplorer : MonoBehaviour
 
     public IEnumerator Explore(Action callback = null)
     {
-        musicData = new List<(DirectoryInfo, SerializableDesc, List<SerializableSheet>)>();
+        musicData = new List<Music>();
 
-        DirectoryInfo musicPathInfo = new DirectoryInfo(Path.Combine(path, "Musics"));
-        if (!musicPathInfo.Exists)
+        DirectoryInfo musicDirectory = new DirectoryInfo(Path.Combine(path, "Musics"));
+        if (!musicDirectory.Exists)
         {
-            musicPathInfo.Create();
+            musicDirectory.Create();
             yield break;
         }
 
-        IEnumerable<DirectoryInfo> musicPacks = musicPathInfo.EnumerateDirectories();
-
-        foreach (DirectoryInfo musicPack in musicPacks)
+        IEnumerable<DirectoryInfo> directories = musicDirectory.EnumerateDirectories();
+        foreach (DirectoryInfo directory in directories)
         {
-            FileInfo descFile = musicPack.GetFiles("info.mudesc")?[0];
+            FileInfo descFile = directory.GetFiles("info.mudesc")?[0];
             if (descFile == null)
             {
                 continue;
             }
 
-            FileInfo[] sheetFiles = musicPack.GetFiles("*.musheet");
+            FileInfo[] sheetFiles = directory.GetFiles("*.musheet");
             if (sheetFiles.Length == 0)
             {
                 continue;
@@ -56,7 +65,7 @@ public class FileExplorer : MonoBehaviour
             {
                 text = sr.ReadToEnd();
             }
-            var desc = JsonUtility.FromJson<SerializableDesc>(text);
+            SerializableDesc desc = JsonUtility.FromJson<SerializableDesc>(text);
 
             List<SerializableSheet> sheets = new List<SerializableSheet>();
             foreach (var item in sheetFiles)
@@ -68,7 +77,7 @@ public class FileExplorer : MonoBehaviour
                 }
             }
 
-            musicData.Add((musicPack, desc, sheets));
+            musicData.Add(new Music(directory, desc, sheets));
             yield return null;
         }
 
@@ -79,8 +88,8 @@ public class FileExplorer : MonoBehaviour
     {
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(path, AudioType.WAV))
         {
-            var x = www.SendWebRequest();
-            x.completed += _ => callback();
+            UnityWebRequestAsyncOperation x = www.SendWebRequest();
+            x.completed += _ => callback?.Invoke();
             yield return x;
 
             if (www.isNetworkError)
@@ -92,5 +101,19 @@ public class FileExplorer : MonoBehaviour
                 GameManager.instance.AudioClip = DownloadHandlerAudioClip.GetContent(www);
             }
         }
+    }
+}
+
+public struct Music
+{
+    public DirectoryInfo directory;
+    public SerializableDesc desc;
+    public List<SerializableSheet> sheets;
+
+    public Music(DirectoryInfo item1, SerializableDesc item2, List<SerializableSheet> item3)
+    {
+        directory = item1;
+        desc = item2;
+        sheets = item3;
     }
 }

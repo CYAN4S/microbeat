@@ -11,14 +11,11 @@ public class NoteManager : MonoBehaviour
     public Sprite[] noteSprites;
     #endregion
 
-    private GameManager gameManager;
     private List<List<NoteSystem>> noteSystemsByLine;
     private List<Queue<NoteSystem>> noteSystemQs;
 
     private void Awake()
     {
-        gameManager = GetComponent<GameManager>();
-
         noteSystemsByLine = new List<List<NoteSystem>>();
         noteSystemQs = new List<Queue<NoteSystem>>();
         for (int i = 0; i < 4; i++)
@@ -26,22 +23,26 @@ public class NoteManager : MonoBehaviour
             noteSystemsByLine.Add(new List<NoteSystem>());
         }
 
-        gameManager.OnGameStart += PrepareNotes;
-        gameManager.OnGameStart += () => { InputManager.Instance.OnPlayKeyDown += JudgePlayKeyDown; };
+
+    }
+
+    private void Start()
+    {
+        GameManager.instance.OnGameStart += PrepareNotes;
+        GameManager.instance.OnGameStart += () => { InputManager.Instance.OnPlayKeyDown += JudgePlayKeyDown; };
     }
 
     private void PrepareNotes()
     {
         GameManager.EndTime = 3f;
 
-        foreach (Note item in gameManager.CurrentSheet.notes)
+        foreach (SerializableNote item in GameManager.instance.CurrentSheet.notes)
         {
             NoteSystem noteSystem = Instantiate(notePrefab, notesParent).GetComponent<NoteSystem>();
             noteSystemsByLine[item.line].Add(noteSystem);
-            noteSystem.note = item;
-            noteSystem.time = (float)(item.beat * (1f / gameManager.CurrentSheet.bpm) * 60f);
+            noteSystem.SetFromData(item);
+            noteSystem.time = (float)(item.beat * (1f / GameManager.instance.CurrentSheet.bpm) * 60f);
             GameManager.EndTime = Math.Max(GameManager.EndTime, noteSystem.time);
-            //noteSystem.GetComponent<Animator>().SetTrigger(GetTriggerString(item.line));
             noteSystem.GetComponent<Image>().sprite = noteSprites[(item.line == 1 || item.line == 2) ? 1 : 0];
         }
 
@@ -73,7 +74,7 @@ public class NoteManager : MonoBehaviour
             float gap = GameManager.CurrentTime - target.time;
             if (gap > CONST.JUDGESTD[(int)JUDGES.BAD])
             {
-                gameManager.ActOnJudge(JUDGES.BREAK, gap);
+                GameManager.instance.ActOnJudge(JUDGES.BREAK, gap);
                 RemoveOneFromQ(i);
             }
 
@@ -98,22 +99,22 @@ public class NoteManager : MonoBehaviour
 
         if (absGap > CONST.JUDGESTD[(int)JUDGES.NICE])
         {
-            gameManager.ActOnJudge(JUDGES.BAD, gap);
+            GameManager.instance.ActOnJudge(JUDGES.BAD, gap);
         }
         else if (absGap > CONST.JUDGESTD[(int)JUDGES.GREAT])
         {
-            gameManager.ActOnJudge(JUDGES.NICE, gap);
-            gameManager.ExplodeNote(key);
+            GameManager.instance.ActOnJudge(JUDGES.NICE, gap);
+            GameManager.instance.ExplodeNote(key);
         }
         else if (absGap > CONST.JUDGESTD[(int)JUDGES.PRECISE])
         {
-            gameManager.ActOnJudge(JUDGES.GREAT, gap);
-            gameManager.ExplodeNote(key);
+            GameManager.instance.ActOnJudge(JUDGES.GREAT, gap);
+            GameManager.instance.ExplodeNote(key);
         }
         else
         {
-            gameManager.ActOnJudge(JUDGES.PRECISE, gap);
-            gameManager.ExplodeNote(key);
+            GameManager.instance.ActOnJudge(JUDGES.PRECISE, gap);
+            GameManager.instance.ExplodeNote(key);
         }
 
         RemoveOneFromQ(key);
@@ -124,16 +125,4 @@ public class NoteManager : MonoBehaviour
         NoteSystem target = noteSystemQs[index].Dequeue();
         Destroy(target.gameObject);
     }
-
-    //private string GetTriggerString(int line)
-    //{
-    //    if (line == 0 || line == 3)
-    //    {
-    //        return "ExecuteBlue";
-    //    }
-    //    else
-    //    {
-    //        return "ExecuteWhite";
-    //    }
-    //}
 }

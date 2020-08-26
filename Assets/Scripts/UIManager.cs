@@ -9,31 +9,34 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     public RectTransform canvas;
+    public GameObject selection, pause, result;
+
+    public GameObject LIPrefab;
+    public Transform UL;
+
     public GameObject[] pressEffectObjects;
     public GameObject[] pressButtonObjects;
+
     public Text speedText, scoreText;
     public Text timeText;
     public Text detailText;
+
     public Animator judgeAnimator;
-    public GameObject LIPrefab;
-    public Transform UL;
     public Animator grooveLight;
-    public TextMeshProUGUI comboTMPro;
     public Animator comboAnimator;
     public Animator comboHeadingAnimator;
     public Animator[] noteEffects;
+
+    public TextMeshProUGUI comboTMPro;
+
     public Text[] judgeCountTexts;
     public Text resultText;
 
     public static readonly Color[] detailColor = { new Color(0, 222f / 256f, 1), new Color(1, 171f / 256f, 0) };
     public static readonly string[] judgeTriggers = { "Precise", "Great", "Nice", "Bad", "Break" };
 
-    private GameManager gameManager;
-
     private void Awake()
     {
-        gameManager = GetComponent<GameManager>();
-
         InputManager.Instance.OnPlayKeyDown += n =>
         {
             pressEffectObjects[n].SetActive(true);
@@ -45,10 +48,20 @@ public class UIManager : MonoBehaviour
             pressEffectObjects[n].SetActive(false);
             pressButtonObjects[n].SetActive(false);
         };
+    }
+
+    private void Start()
+    {
+        selection.SetActive(true);
+
+        GameManager.instance.OnSheetSelect += () =>
+        {
+            selection.SetActive(false);
+        };
 
         GameManager.instance.OnMusicStart += () =>
         {
-            StartGroove(gameManager.CurrentSheet.bpm);
+            StartGroove(GameManager.instance.CurrentSheet.bpm);
         };
 
         GameManager.instance.OnJudge += (JUDGES judge, float gap) =>
@@ -115,28 +128,26 @@ public class UIManager : MonoBehaviour
 
     public void DisplayMusics()
     {
-        var fe = GetComponent<FileExplorer>();
         int count = 0;
         float yMultiply = canvas.localScale.y;
-        foreach (var item in fe.musicData)
+        foreach (Music music in FileExplorer.Instance.musicData)
         {
-            for (int i = 0; i < item.Item3.Count; i++)
+            for (int i = 0; i < music.sheets.Count; i++)
             {
-                SerializableSheet sheet = item.Item3[i];
+                SerializableSheet sheet = music.sheets[i];
 
-                var target = Instantiate(LIPrefab, UL);
-                target.transform.Translate(0, -250 * count++ * yMultiply, 0);
+                GameObject gameObject = Instantiate(LIPrefab, UL);
+                gameObject.transform.Translate(0, -250 * count++ * yMultiply, 0);
 
-                target.GetComponent<Button>().onClick.AddListener(() =>
+                gameObject.GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    GameManager.instance.SheetSelect(item.Item1, item.Item2, sheet);
-                    GetComponent<NongameUIManager>().selection.SetActive(false);
+                    GameManager.instance.SheetSelect(music.desc, sheet, Path.Combine(music.directory.FullName, music.desc.musicPath));
                 });
 
-                var lis = target.GetComponent<LISystem>();
-                lis.title.text = item.Item2.name;
-                lis.info.text = item.Item2.artist + " / " + item.Item2.genre;
-                lis.level.text = CONST.PATTERN[sheet.pattern] + "\n" + sheet.level.ToString();
+                LISystem LiSystem = gameObject.GetComponent<LISystem>();
+                LiSystem.title.text = music.desc.name;
+                LiSystem.info.text = music.desc.artist + " / " + music.desc.genre;
+                LiSystem.level.text = CONST.PATTERN[sheet.pattern] + "\n" + sheet.level.ToString();
             }
         }
     }
@@ -195,5 +206,7 @@ public class UIManager : MonoBehaviour
         }
 
         resultText.text = GameManager.Score.ToString("F0") + " / RANK " + rank;
+
+        result.SetActive(true);
     }
 }

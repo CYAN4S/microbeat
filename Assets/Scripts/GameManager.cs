@@ -12,8 +12,8 @@ public enum JUDGES { PRECISE, GREAT, NICE, BAD, BREAK };
 public static class CONST
 {
     public static readonly double[] DELTASPEED = { -0.1, -0.5, 0.5, 0.1 };
-    public static readonly float[]  JUDGESTD = { 0.05f, 0.1f, 0.2f, 0.3f };
-    public static readonly int[]    JUDGESCORE = { 5, 3, 2, 1 };
+    public static readonly float[] JUDGESTD = { 0.05f, 0.1f, 0.2f, 0.3f };
+    public static readonly int[] JUDGESCORE = { 5, 3, 2, 1 };
 
     public static readonly KeyCode[] PLAYKEYCODES = { KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K };
     public static readonly KeyCode[] SPEEDKEYCODES = { KeyCode.E, KeyCode.R, KeyCode.U, KeyCode.I };
@@ -22,7 +22,7 @@ public static class CONST
 
     public static readonly string[] PATTERN = { "NM", "HD", "MX", "SC" };
 
-    public static readonly int[]    RANK = { 295000, 290000, 275000, 250000, 200000 };
+    public static readonly int[] RANK = { 295000, 290000, 275000, 250000, 200000 };
     public static readonly string[] RANKNAME = { "S", "A", "B", "C", "D", "F" };
 }
 
@@ -30,30 +30,32 @@ public static class CONST
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    private AudioSource audioSource;
 
-    public static bool      IsWorking { get; private set; }
-    public static float     CurrentTime { get; private set; }
-    public static double    ScrollSpeed { get; private set; }
-    public static float     EndTime { get; set; }
-    public static int       Combo { get; private set; }
-    public static double    Score { get; private set; }
+    public static bool IsWorking { get; private set; }
+    public static float CurrentTime { get; private set; }
+    public static double ScrollSpeed { get; private set; }
+    public static float EndTime { get; set; }
+    public static int Combo { get; private set; }
+    public static double Score { get; private set; }
 
+    public Action OnSheetSelect;
     public Action OnGameStart;
     public Action OnMusicStart;
+
     public Action OnScrollSpeedChange;
     public Action<JUDGES, float> OnJudge;
-    public Action OnGameEnd;
     public Action<int> OnNoteExplode;
+
+    public Action OnGameEnd;
 
     public AudioClip AudioClip { get; set; }
 
     public Sheet CurrentSheet { get; private set; }
 
     private int dataScore;
-
     public int[] JudgeCounts { get; private set; } = { 0, 0, 0, 0, 0 };
 
-    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -65,7 +67,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
         audioSource = GetComponent<AudioSource>();
 
         OnGameStart += () =>
@@ -101,7 +102,6 @@ public class GameManager : MonoBehaviour
 
         if (CurrentTime >= EndTime)
         {
-            NongameUIManager.Instance.DisplayResult();
             OnGameEnd();
 
             IsWorking = false;
@@ -142,9 +142,9 @@ public class GameManager : MonoBehaviour
         OnMusicStart?.Invoke();
     }
 
-    public void SheetSelect(DirectoryInfo dir, SerializableDesc desc, SerializableSheet sheet)
+    public void SheetSelect(SerializableDesc desc, SerializableSheet sheet, string audioPath)
     {
-        string audioPath = Path.Combine(dir.FullName, desc.musicPath);
+        OnSheetSelect?.Invoke();
 
         StartCoroutine(GetComponent<FileExplorer>().GetAudioClip(audioPath, () =>
         {

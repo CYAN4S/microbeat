@@ -64,7 +64,7 @@ public class UIManager : MonoBehaviour
             StartGroove(GameManager.instance.CurrentSheet.bpm);
         };
 
-        GameManager.instance.OnJudge += (JUDGES judge, float gap) =>
+        GameManager.instance.OnJudge += (int line, JUDGES judge, float gap) =>
         {
             TriggerJudgeAnimation(judge);
 
@@ -82,10 +82,9 @@ public class UIManager : MonoBehaviour
                 ShowGap(gap);
                 ShowScore(GameManager.Score);
                 ShowCombo(GameManager.Combo);
+                noteEffects[line].SetTrigger("Effect");
             }
         };
-
-        GameManager.instance.OnNoteExplode += Effect;
 
         GameManager.instance.OnGameEnd += () =>
         {
@@ -181,11 +180,6 @@ public class UIManager : MonoBehaviour
         }
 
         return result;
-    }
-
-    public void Effect(int line)
-    {
-        noteEffects[line].SetTrigger("Effect");
     }
 
     public void DisplayResult()

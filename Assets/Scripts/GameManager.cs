@@ -7,26 +7,6 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.VFX;
 
-public enum JUDGES { PRECISE, GREAT, NICE, BAD, BREAK };
-
-public static class CONST
-{
-    public static readonly double[] DELTASPEED = { -0.1, -0.5, 0.5, 0.1 };
-    public static readonly float[] JUDGESTD = { 0.05f, 0.1f, 0.2f, 0.3f };
-    public static readonly int[] JUDGESCORE = { 5, 3, 2, 1 };
-
-    public static readonly KeyCode[] PLAYKEYCODES = { KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K };
-    public static readonly KeyCode[] SPEEDKEYCODES = { KeyCode.E, KeyCode.R, KeyCode.U, KeyCode.I };
-
-    public static readonly float[] LINEXPOS = { -300, -100, 100, 300 };
-
-    public static readonly string[] PATTERN = { "NM", "HD", "MX", "SC" };
-
-    public static readonly int[] RANK = { 295000, 290000, 275000, 250000, 200000 };
-    public static readonly string[] RANKNAME = { "S", "A", "B", "C", "D", "F" };
-}
-
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -44,8 +24,7 @@ public class GameManager : MonoBehaviour
     public Action OnMusicStart;
 
     public Action OnScrollSpeedChange;
-    public Action<JUDGES, float> OnJudge;
-    public Action<int> OnNoteExplode;
+    public Action<int, JUDGES, float> OnJudge;
 
     public Action OnGameEnd;
 
@@ -111,6 +90,33 @@ public class GameManager : MonoBehaviour
         CurrentTime += Time.deltaTime;
     }
 
+    public void SheetSelect(SerializableDesc desc, SerializableSheet sheet, string audioPath)
+    {
+        OnSheetSelect?.Invoke();
+
+        StartCoroutine(GetComponent<FileExplorer>().GetAudioClip(audioPath, () =>
+        {
+            CurrentSheet = new Sheet(desc, sheet, audioSource.clip);
+
+            OnGameStart?.Invoke();
+            StartCoroutine(StartMusicOnTime(0));
+        }));
+    }
+
+    public IEnumerator StartMusicOnTime(float time)
+    {
+        while (time > CurrentTime)
+        {
+            yield return null;
+        }
+        audioSource.clip = AudioClip;
+        if (audioSource.clip != null)
+        {
+            audioSource.Play();
+        }
+        OnMusicStart?.Invoke();
+    }
+
     private void ChangeSpeed(int input)
     {
         double value = ScrollSpeed + CONST.DELTASPEED[input];
@@ -128,34 +134,7 @@ public class GameManager : MonoBehaviour
         OnScrollSpeedChange?.Invoke();
     }
 
-    public IEnumerator StartMusicOnTime(float time)
-    {
-        while (time > CurrentTime)
-        {
-            yield return null;
-        }
-        audioSource.clip = AudioClip;
-        if (audioSource.clip != null)
-        {
-            audioSource.Play();
-        }
-        OnMusicStart?.Invoke();
-    }
-
-    public void SheetSelect(SerializableDesc desc, SerializableSheet sheet, string audioPath)
-    {
-        OnSheetSelect?.Invoke();
-
-        StartCoroutine(GetComponent<FileExplorer>().GetAudioClip(audioPath, () =>
-        {
-            CurrentSheet = new Sheet(desc, sheet, audioSource.clip);
-
-            OnGameStart?.Invoke();
-            StartCoroutine(StartMusicOnTime(0));
-        }));
-    }
-
-    public void ActOnJudge(JUDGES judge, float gap)
+    public void HandleJudge(int line, JUDGES judge, float gap)
     {
         JudgeCounts[(int)judge]++;
 
@@ -170,11 +149,6 @@ public class GameManager : MonoBehaviour
             Combo = (judge != JUDGES.BAD) ? (Combo + 1) : 0;
         }
 
-        OnJudge(judge, gap);
-    }
-
-    public void ExplodeNote(int line)
-    {
-        OnNoteExplode(line);
+        OnJudge(line, judge, gap);
     }
 }

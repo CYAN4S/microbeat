@@ -11,42 +11,49 @@ public class NoteManager : MonoBehaviour
     public Sprite[] noteSprites;
     #endregion
 
-    private List<List<NoteSystem>> noteSystemsByLine;
+    
     private List<Queue<NoteSystem>> noteSystemQs;
 
     private void Awake()
     {
-        noteSystemsByLine = new List<List<NoteSystem>>();
         noteSystemQs = new List<Queue<NoteSystem>>();
-        for (int i = 0; i < 4; i++)
-        {
-            noteSystemsByLine.Add(new List<NoteSystem>());
-        }
-
-
     }
 
     private void Start()
     {
-        GameManager.instance.OnGameStart += PrepareNotes;
-        GameManager.instance.OnGameStart += () => { InputManager.Instance.OnPlayKeyDown += JudgePlayKeyDown; };
+        GameManager.instance.OnGameStart += () => 
+        {
+            PrepareNotes();
+
+            InputManager.Instance.OnPlayKeyDown += JudgePlayKeyDown;
+            InputManager.Instance.OnPlayKey += JudgePlayKey;
+            InputManager.Instance.OnPlayKeyUp += JudgePlayKeyUp;
+        };
     }
 
     private void PrepareNotes()
     {
         GameManager.EndTime = 3f;
+        List<List<NoteSystem>> sortReady = new List<List<NoteSystem>>();
+        for (int i = 0; i < 4; i++)
+        {
+            sortReady.Add(new List<NoteSystem>());
+        }
 
         foreach (SerializableNote item in GameManager.instance.CurrentSheet.notes)
         {
             NoteSystem noteSystem = Instantiate(notePrefab, notesParent).GetComponent<NoteSystem>();
-            noteSystemsByLine[item.line].Add(noteSystem);
+
             noteSystem.SetFromData(item);
             noteSystem.time = (float)(item.beat * (1f / GameManager.instance.CurrentSheet.bpm) * 60f);
-            GameManager.EndTime = Math.Max(GameManager.EndTime, noteSystem.time);
+
             noteSystem.GetComponent<Image>().sprite = noteSprites[(item.line == 1 || item.line == 2) ? 1 : 0];
+
+            GameManager.EndTime = Math.Max(GameManager.EndTime, noteSystem.time);
+            sortReady[item.line].Add(noteSystem);
         }
 
-        foreach (List<NoteSystem> item in noteSystemsByLine)
+        foreach (List<NoteSystem> item in sortReady)
         {
             item.Sort();
             noteSystemQs.Add(new Queue<NoteSystem>(item));
@@ -74,7 +81,7 @@ public class NoteManager : MonoBehaviour
             float gap = GameManager.CurrentTime - target.time;
             if (gap > CONST.JUDGESTD[(int)JUDGES.BAD])
             {
-                GameManager.instance.ActOnJudge(JUDGES.BREAK, gap);
+                GameManager.instance.HandleJudge(i, JUDGES.BREAK, gap);
                 RemoveOneFromQ(i);
             }
 
@@ -88,41 +95,72 @@ public class NoteManager : MonoBehaviour
             return;
         }
 
-        NoteSystem target = noteSystemQs[key].Peek();
-        float gap = target.time - GameManager.CurrentTime;
-        float absGap = Math.Abs(gap);
+        float gap = noteSystemQs[key].Peek().time - GameManager.CurrentTime;
 
-        if (absGap > CONST.JUDGESTD[(int)JUDGES.BAD]) // DONT CARE
+        if (gap > CONST.JUDGESTD[(int)JUDGES.BAD]) // DONT CARE
         {
             return;
         }
 
-        if (absGap > CONST.JUDGESTD[(int)JUDGES.NICE])
-        {
-            GameManager.instance.ActOnJudge(JUDGES.BAD, gap);
-        }
-        else if (absGap > CONST.JUDGESTD[(int)JUDGES.GREAT])
-        {
-            GameManager.instance.ActOnJudge(JUDGES.NICE, gap);
-            GameManager.instance.ExplodeNote(key);
-        }
-        else if (absGap > CONST.JUDGESTD[(int)JUDGES.PRECISE])
-        {
-            GameManager.instance.ActOnJudge(JUDGES.GREAT, gap);
-            GameManager.instance.ExplodeNote(key);
-        }
-        else
-        {
-            GameManager.instance.ActOnJudge(JUDGES.PRECISE, gap);
-            GameManager.instance.ExplodeNote(key);
-        }
+        HandleNote(key, gap);
+    }
 
-        RemoveOneFromQ(key);
+    private void JudgePlayKey(int key)
+    {
+
+    }
+
+    private void JudgePlayKeyUp(int key)
+    {
+
     }
 
     private void RemoveOneFromQ(int index)
     {
         NoteSystem target = noteSystemQs[index].Dequeue();
         Destroy(target.gameObject);
+    }
+
+    private void HandleNote(int key, float gap)
+    {
+        GameManager.instance.HandleJudge(key, GetJudgeFormGap(gap), gap);
+        RemoveOneFromQ(key);
+    }
+
+    private void HandleLongNoteDown(int key, float gap)
+    {
+
+    }
+
+    private void HandleLongNote(int key)
+    {
+
+
+    }
+
+    private void HandleLongNoteUp(int key, float gap)
+    {
+
+    }
+
+    private JUDGES GetJudgeFormGap(float gap)
+    {
+        float absGap = Math.Abs(gap);
+        if (absGap > CONST.JUDGESTD[(int)JUDGES.NICE])
+        {
+            return JUDGES.BAD;
+        }
+        else if (absGap > CONST.JUDGESTD[(int)JUDGES.GREAT])
+        {
+            return JUDGES.NICE;
+        }
+        else if (absGap > CONST.JUDGESTD[(int)JUDGES.PRECISE])
+        {
+            return JUDGES.GREAT;
+        }
+        else
+        {
+            return JUDGES.PRECISE;
+        }
     }
 }

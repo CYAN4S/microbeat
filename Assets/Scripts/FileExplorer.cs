@@ -12,7 +12,7 @@ public class FileExplorer : MonoBehaviour
 {
     public static FileExplorer Instance { get; private set; }
     public static string path;
-    public List<Music> musicData;
+    public List<Musicpack> musicpacks;
 
     private void Awake()
     {
@@ -35,7 +35,7 @@ public class FileExplorer : MonoBehaviour
 
     public IEnumerator Explore(Action callback = null)
     {
-        musicData = new List<Music>();
+        musicpacks = new List<Musicpack>();
 
         DirectoryInfo musicDirectory = new DirectoryInfo(Path.Combine(path, "Musics"));
         if (!musicDirectory.Exists)
@@ -77,7 +77,7 @@ public class FileExplorer : MonoBehaviour
                 }
             }
 
-            musicData.Add(new Music(directory, desc, sheets));
+            musicpacks.Add(new Musicpack(directory, desc, sheets));
             yield return null;
         }
 
@@ -98,19 +98,19 @@ public class FileExplorer : MonoBehaviour
             }
             else
             {
-                GameManager.instance.AudioClip = DownloadHandlerAudioClip.GetContent(www);
+                GetComponent<AudioSource>().clip = DownloadHandlerAudioClip.GetContent(www);
             }
         }
     }
 }
 
-public struct Music
+public struct Musicpack
 {
     public DirectoryInfo directory;
     public SerializableDesc desc;
     public List<SerializableSheet> sheets;
 
-    public Music(DirectoryInfo item1, SerializableDesc item2, List<SerializableSheet> item3)
+    public Musicpack(DirectoryInfo item1, SerializableDesc item2, List<SerializableSheet> item3)
     {
         directory = item1;
         desc = item2;

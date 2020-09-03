@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public AudioClip AudioClip { get; set; }
 
     public Sheet CurrentSheet { get; private set; }
+    public BpmMeta CurrentBpm { get; private set; }
 
     private int dataScore;
     public int[] JudgeCounts { get; private set; } = { 0, 0, 0, 0, 0 };
@@ -94,12 +95,16 @@ public class GameManager : MonoBehaviour
     {
         OnSheetSelect?.Invoke();
 
+        CurrentSheet = new Sheet(desc, sheet);
+        if (CurrentSheet.bpms?.Count is int x && x != 0)
+        {
+            CurrentBpm = new BpmMeta(CurrentSheet.bpms, CurrentSheet.endBeat);
+        }
+        
         StartCoroutine(GetComponent<FileExplorer>().GetAudioClip(audioPath, () =>
         {
-            CurrentSheet = new Sheet(desc, sheet, audioSource.clip);
-
-            OnGameStart?.Invoke();
             StartCoroutine(StartMusicOnTime(0));
+            OnGameStart?.Invoke();
         }));
     }
 
@@ -109,7 +114,6 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
-        audioSource.clip = AudioClip;
         if (audioSource.clip != null)
         {
             audioSource.Play();

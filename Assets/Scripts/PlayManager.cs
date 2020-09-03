@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NoteManager : MonoBehaviour
+public class PlayManager : MonoBehaviour
 {
     #region INSPECTOR
     public Transform notesParent;
@@ -11,17 +11,18 @@ public class NoteManager : MonoBehaviour
     public Sprite[] noteSprites;
     #endregion
 
-    
     private List<Queue<NoteSystem>> noteSystemQs;
+    private List<bool> isInLongNote;
 
     private void Awake()
     {
         noteSystemQs = new List<Queue<NoteSystem>>();
+        isInLongNote = new List<bool>();
     }
 
     private void Start()
     {
-        GameManager.instance.OnGameStart += () => 
+        GameManager.instance.OnGameStart += () =>
         {
             PrepareNotes();
 
@@ -38,6 +39,7 @@ public class NoteManager : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             sortReady.Add(new List<NoteSystem>());
+            isInLongNote.Add(false);
         }
 
         foreach (SerializableNote item in GameManager.instance.CurrentSheet.notes)
@@ -84,7 +86,6 @@ public class NoteManager : MonoBehaviour
                 GameManager.instance.HandleJudge(i, JUDGES.BREAK, gap);
                 RemoveOneFromQ(i);
             }
-
         }
     }
 
@@ -95,24 +96,39 @@ public class NoteManager : MonoBehaviour
             return;
         }
 
-        float gap = noteSystemQs[key].Peek().time - GameManager.CurrentTime;
-
+        NoteSystem peek = noteSystemQs[key].Peek();
+        float gap = peek.time - GameManager.CurrentTime;
+        
         if (gap > CONST.JUDGESTD[(int)JUDGES.BAD]) // DONT CARE
         {
             return;
         }
 
-        HandleNote(key, gap);
+        if (peek.notecode == NOTECODE.LONGNOTE)
+        {
+            HandleLongNoteDown(key, gap);
+            isInLongNote[key] = true;
+        }
+        else
+        {
+            HandleNote(key, gap);
+        }
     }
 
     private void JudgePlayKey(int key)
     {
-
+        if (!isInLongNote[key])
+        {
+            return;
+        }
     }
 
     private void JudgePlayKeyUp(int key)
     {
-
+        if (!isInLongNote[key])
+        {
+            return;
+        }
     }
 
     private void RemoveOneFromQ(int index)
@@ -129,7 +145,7 @@ public class NoteManager : MonoBehaviour
 
     private void HandleLongNoteDown(int key, float gap)
     {
-
+        GameManager.instance.HandleJudge(key, GetJudgeFormGap(gap), gap);
     }
 
     private void HandleLongNote(int key)

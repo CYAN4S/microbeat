@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.VFX;
 
 public enum JUDGES { PRECISE, GREAT, NICE, BAD, BREAK };
+public enum NOTECODE { NOTE, LONGNOTE };
 
 public static class CONST
 {

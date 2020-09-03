@@ -35,8 +35,11 @@ public class UIManager : MonoBehaviour
     public static readonly Color[] detailColor = { new Color(0, 222f / 256f, 1), new Color(1, 171f / 256f, 0) };
     public static readonly string[] judgeTriggers = { "Precise", "Great", "Nice", "Bad", "Break" };
 
-    private void Awake()
+
+    private void Start()
     {
+        selection.SetActive(true);
+
         InputManager.Instance.OnPlayKeyDown += n =>
         {
             pressEffectObjects[n].SetActive(true);
@@ -48,11 +51,6 @@ public class UIManager : MonoBehaviour
             pressEffectObjects[n].SetActive(false);
             pressButtonObjects[n].SetActive(false);
         };
-    }
-
-    private void Start()
-    {
-        selection.SetActive(true);
 
         GameManager.instance.OnSheetSelect += () =>
         {
@@ -129,7 +127,7 @@ public class UIManager : MonoBehaviour
     {
         int count = 0;
         float yMultiply = canvas.localScale.y;
-        foreach (Music music in FileExplorer.Instance.musicData)
+        foreach (Musicpack music in FileExplorer.Instance.musicpacks)
         {
             for (int i = 0; i < music.sheets.Count; i++)
             {

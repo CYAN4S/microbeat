@@ -5,6 +5,9 @@ using UnityEngine;
 public class LongNoteSystem : NoteSystem
 {
     public double Length { get; protected set; }
+    public Queue<float> tickTimeDelta;
+
+    public new readonly NOTECODE notecode = NOTECODE.LONGNOTE;
 
     private void Awake()
     {
@@ -21,5 +24,10 @@ public class LongNoteSystem : NoteSystem
     private void ChangeLength()
     {
 
+    }
+
+    private float getCurrentEndYPos()
+    {
+        return (float)((time - GameManager.CurrentTime) * (float)GameManager.ScrollSpeed * 600f);
     }
 }

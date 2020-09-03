@@ -9,6 +9,7 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
     public int Line { get; protected set; }
     public double Beat { get; protected set; }
     public float time;
+    public readonly NOTECODE notecode = NOTECODE.NOTE;
 
     public int CompareTo(NoteSystem other) => Beat.CompareTo(other.Beat);
 
@@ -43,3 +44,4 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
         return (float)((time - GameManager.CurrentTime) * (float)GameManager.ScrollSpeed * 600f);
     }
 }
+

@@ -1,13 +1,6 @@
-﻿using JetBrains.Annotations;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Permissions;
-using UnityEditor.UIElements;
-using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Sheet
 {
@@ -110,5 +103,5 @@ public class BpmMeta
         }
     }
 
-    
+
 }

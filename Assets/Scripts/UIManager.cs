@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using System.IO;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -84,6 +82,13 @@ public class UIManager : MonoBehaviour
             }
         };
 
+        GameManager.instance.OnTickJudge += (int line, JUDGES judge) =>
+        {
+            TriggerJudgeAnimation(judge);
+            ShowCombo(GameManager.Combo);
+            noteEffects[line].SetTrigger("Effect");
+        };
+
         GameManager.instance.OnGameEnd += () =>
         {
             StopGroove();
@@ -99,7 +104,7 @@ public class UIManager : MonoBehaviour
         }
 
         speedText.text = "X" + GameManager.ScrollSpeed.ToString("F1");
-        timeText.text = GameManager.CurrentTime.ToString("F3");
+        timeText.text = GameManager.CurrentTime.ToString("F3") + " / " + GameManager.CurrentBeat.ToString("F0");
     }
 
     public void TriggerJudgeAnimation(JUDGES judge)

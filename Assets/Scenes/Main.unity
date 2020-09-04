@@ -1565,9 +1565,12 @@ MonoBehaviour:
   notesParent: {fileID: 1725833717}
   notePrefab: {fileID: 3140704049987846472, guid: 9f7faad7eb79664499b3edf458341e50,
     type: 3}
+  longNotePrefab: {fileID: 3140704049987846472, guid: 5165f488cbd553542806fa7f112a2d1b,
+    type: 3}
   noteSprites:
   - {fileID: 4766255273591357535, guid: edb28abf32997dd4090e088c9bc296ca, type: 3}
   - {fileID: 2101506007736477410, guid: edb28abf32997dd4090e088c9bc296ca, type: 3}
+  longNoteProcesses: []
 --- !u!114 &522699032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2764,7 +2767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &981386496
 RectTransform:
   m_ObjectHideFlags: 0

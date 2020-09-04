@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1287825601347957021}
   - component: {fileID: 4026097936831215436}
   - component: {fileID: 6935863956093731273}
-  - component: {fileID: 3680125057597730625}
+  - component: {fileID: 1462977543257870842}
   m_Layer: 5
   m_Name: Long Note
   m_TagString: Untagged
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3680125057597730625
+--- !u!114 &1462977543257870842
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,10 +86,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3140704049987846472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef44a42b64da77e40ae5534983ce78e9, type: 3}
+  m_Script: {fileID: 11500000, guid: ff121c2c52996c044b06daa23771edb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  note:
-    line: 0
-    beat: 0
   time: 0
+  endTime: 0

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.SymbolStore;
-using System.IO;
-using System.Runtime.CompilerServices;
-using UnityEngine;
-using UnityEngine.VFX;
+﻿using UnityEngine;
 
 public enum JUDGES { PRECISE, GREAT, NICE, BAD, BREAK };
 public enum NOTECODE { NOTE, LONGNOTE };

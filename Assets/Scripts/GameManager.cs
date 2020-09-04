@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.SymbolStore;
-using System.IO;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.VFX;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +13,7 @@ public class GameManager : MonoBehaviour
     public static float EndTime { get; set; }
     public static int Combo { get; private set; }
     public static double Score { get; private set; }
+    public static double CurrentBeat { get; private set; }
 
     public Action OnSheetSelect;
     public Action OnGameStart;
@@ -25,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     public Action OnScrollSpeedChange;
     public Action<int, JUDGES, float> OnJudge;
+    public Action<int, JUDGES> OnTickJudge;
 
     public Action OnGameEnd;
 
@@ -69,6 +66,7 @@ public class GameManager : MonoBehaviour
         EndTime = 1000f;
         Combo = 0;
         Score = 0;
+        CurrentBeat = 0;
 
         dataScore = 0;
     }
@@ -89,6 +87,8 @@ public class GameManager : MonoBehaviour
         }
 
         CurrentTime += Time.deltaTime;
+
+        CurrentBeat = CurrentTime * CurrentSheet.bpm / 60.0;
     }
 
     public void SheetSelect(SerializableDesc desc, SerializableSheet sheet, string audioPath)
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
         {
             CurrentBpm = new BpmMeta(CurrentSheet.bpms, CurrentSheet.endBeat);
         }
-        
+
         StartCoroutine(GetComponent<FileExplorer>().GetAudioClip(audioPath, () =>
         {
             StartCoroutine(StartMusicOnTime(0));
@@ -149,10 +149,22 @@ public class GameManager : MonoBehaviour
         else
         {
             dataScore += CONST.JUDGESCORE[(int)judge];
-            Score = (double)dataScore / (CONST.JUDGESCORE[0] * CurrentSheet.notes.Count) * 300000d;
+            Score = (double)dataScore / (CONST.JUDGESCORE[0] * (CurrentSheet.notes.Count + CurrentSheet.longNotes.Count)) * 300000d;
             Combo = (judge != JUDGES.BAD) ? (Combo + 1) : 0;
         }
 
-        OnJudge(line, judge, gap);
+        OnJudge?.Invoke(line, judge, gap);
+    }
+
+    public void HandleFirstTickJudge(int line, JUDGES judge, float gap)
+    {
+        Combo++;
+        OnJudge?.Invoke(line, judge, gap);
+    }
+
+    public void HandleTickJudge(int line, JUDGES judge)
+    {
+        Combo++;
+        OnTickJudge?.Invoke(line, judge);
     }
 }

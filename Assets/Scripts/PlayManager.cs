@@ -7,17 +7,20 @@ public class PlayManager : MonoBehaviour
 {
     #region INSPECTOR
     public Transform notesParent;
+
     public GameObject notePrefab;
+    public GameObject longNotePrefab;
+
     public Sprite[] noteSprites;
     #endregion
 
     private List<Queue<NoteSystem>> noteSystemQs;
-    private List<bool> isInLongNote;
+    public List<LongNoteProcess> longNoteProcesses;
 
     private void Awake()
     {
         noteSystemQs = new List<Queue<NoteSystem>>();
-        isInLongNote = new List<bool>();
+        longNoteProcesses = new List<LongNoteProcess>();
     }
 
     private void Start()
@@ -39,7 +42,7 @@ public class PlayManager : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             sortReady.Add(new List<NoteSystem>());
-            isInLongNote.Add(false);
+            longNoteProcesses.Add(new LongNoteProcess());
         }
 
         foreach (SerializableNote item in GameManager.instance.CurrentSheet.notes)
@@ -47,12 +50,26 @@ public class PlayManager : MonoBehaviour
             NoteSystem noteSystem = Instantiate(notePrefab, notesParent).GetComponent<NoteSystem>();
 
             noteSystem.SetFromData(item);
-            noteSystem.time = (float)(item.beat * (1f / GameManager.instance.CurrentSheet.bpm) * 60f);
+            noteSystem.time = (float)(item.beat * (1f / GameManager.instance.CurrentSheet.bpm) * 60f); // OLD
 
             noteSystem.GetComponent<Image>().sprite = noteSprites[(item.line == 1 || item.line == 2) ? 1 : 0];
 
             GameManager.EndTime = Math.Max(GameManager.EndTime, noteSystem.time);
             sortReady[item.line].Add(noteSystem);
+        }
+
+        foreach (SerializableLongNote item in GameManager.instance.CurrentSheet.longNotes)
+        {
+            LongNoteSystem longNoteSystem = Instantiate(longNotePrefab, notesParent).GetComponent<LongNoteSystem>();
+
+            longNoteSystem.SetFromData(item);
+            longNoteSystem.time = (float)(item.beat * (1f / GameManager.instance.CurrentSheet.bpm) * 60f); // OLD
+            longNoteSystem.endTime = (float)((item.beat + item.length) * (1f / GameManager.instance.CurrentSheet.bpm) * 60f);
+
+            longNoteSystem.GetComponent<Image>().sprite = noteSprites[(item.line == 1 || item.line == 2) ? 1 : 0];
+
+            GameManager.EndTime = Math.Max(GameManager.EndTime, longNoteSystem.endTime);
+            sortReady[item.line].Add(longNoteSystem);
         }
 
         foreach (List<NoteSystem> item in sortReady)
@@ -73,6 +90,11 @@ public class PlayManager : MonoBehaviour
     {
         for (int i = 0; i < noteSystemQs.Count; i++)
         {
+            if (longNoteProcesses[i].isIn)
+            {
+                continue;
+            }
+
             Queue<NoteSystem> item = noteSystemQs[i];
             if (item.Count == 0)
             {
@@ -98,7 +120,7 @@ public class PlayManager : MonoBehaviour
 
         NoteSystem peek = noteSystemQs[key].Peek();
         float gap = peek.time - GameManager.CurrentTime;
-        
+
         if (gap > CONST.JUDGESTD[(int)JUDGES.BAD]) // DONT CARE
         {
             return;
@@ -106,8 +128,10 @@ public class PlayManager : MonoBehaviour
 
         if (peek.notecode == NOTECODE.LONGNOTE)
         {
+            longNoteProcesses[key].isIn = true;
+            longNoteProcesses[key].startBeat = GameManager.CurrentBeat;
+            longNoteProcesses[key].target = peek as LongNoteSystem;
             HandleLongNoteDown(key, gap);
-            isInLongNote[key] = true;
         }
         else
         {
@@ -117,18 +141,22 @@ public class PlayManager : MonoBehaviour
 
     private void JudgePlayKey(int key)
     {
-        if (!isInLongNote[key])
+        if (!longNoteProcesses[key].isIn)
         {
             return;
         }
+
+        HandleLongNoteTick(key);
     }
 
     private void JudgePlayKeyUp(int key)
     {
-        if (!isInLongNote[key])
+        if (!longNoteProcesses[key].isIn)
         {
             return;
         }
+
+        HandleLongNoteUp(key);
     }
 
     private void RemoveOneFromQ(int index)
@@ -145,18 +173,44 @@ public class PlayManager : MonoBehaviour
 
     private void HandleLongNoteDown(int key, float gap)
     {
-        GameManager.instance.HandleJudge(key, GetJudgeFormGap(gap), gap);
+        longNoteProcesses[key].judge = GetJudgeFormGap(gap);
+        GameManager.instance.HandleFirstTickJudge(key, longNoteProcesses[key].judge, gap);
     }
 
-    private void HandleLongNote(int key)
+    private void HandleLongNoteTick(int key)
     {
+        LongNoteProcess process = longNoteProcesses[key];
 
+        if (process.target.endTime + CONST.JUDGESTD[(int)JUDGES.NICE] <= GameManager.CurrentTime)
+        {
+            GameManager.instance.HandleJudge(key, JUDGES.NICE, CONST.JUDGESTD[(int)JUDGES.NICE]);
+            process.Reset();
+            RemoveOneFromQ(key);
+            return;
+        }
 
+        if (process.target.ticks.Count == 0)
+        {
+            return;
+        }
+
+        if (process.target.ticks.Peek() + process.startBeat <= GameManager.CurrentBeat)
+        {
+            GameManager.instance.HandleTickJudge(key, process.judge);
+            process.target.ticks.Dequeue();
+        }
     }
 
-    private void HandleLongNoteUp(int key, float gap)
+    private void HandleLongNoteUp(int key)
     {
+        LongNoteProcess process = longNoteProcesses[key];
 
+        float gap = GameManager.CurrentTime - process.target.endTime;
+        JUDGES j = GetJudgeFormGap(gap);
+        j = j != JUDGES.BAD ? process.judge : JUDGES.BAD;
+        GameManager.instance.HandleJudge(key, j, gap);
+        process.Reset();
+        RemoveOneFromQ(key);
     }
 
     private JUDGES GetJudgeFormGap(float gap)
@@ -178,5 +232,29 @@ public class PlayManager : MonoBehaviour
         {
             return JUDGES.PRECISE;
         }
+    }
+
+
+}
+
+[Serializable]
+public class LongNoteProcess
+{
+    public bool isIn;
+    public double startBeat;
+    public JUDGES judge;
+    public LongNoteSystem target;
+
+    public LongNoteProcess()
+    {
+        Reset();
+    }
+
+    public void Reset()
+    {
+        isIn = false;
+        startBeat = 0;
+        judge = JUDGES.BREAK;
+        target = null;
     }
 }

@@ -50,7 +50,7 @@ public class PlayManager : MonoBehaviour
             NoteSystem noteSystem = Instantiate(notePrefab, notesParent).GetComponent<NoteSystem>();
 
             noteSystem.SetFromData(item);
-            noteSystem.time = (float)(item.beat * (1f / GameManager.instance.CurrentSheet.bpm) * 60f); // OLD
+            noteSystem.time = (float)(item.beat * (1f / GameManager.instance.CurrentSheet.bpmMeta.stdBpm) * 60f); // OLD
 
             noteSystem.GetComponent<Image>().sprite = noteSprites[(item.line == 1 || item.line == 2) ? 1 : 0];
 
@@ -63,8 +63,8 @@ public class PlayManager : MonoBehaviour
             LongNoteSystem longNoteSystem = Instantiate(longNotePrefab, notesParent).GetComponent<LongNoteSystem>();
 
             longNoteSystem.SetFromData(item);
-            longNoteSystem.time = (float)(item.beat * (1f / GameManager.instance.CurrentSheet.bpm) * 60f); // OLD
-            longNoteSystem.endTime = (float)((item.beat + item.length) * (1f / GameManager.instance.CurrentSheet.bpm) * 60f);
+            longNoteSystem.time = (float)(item.beat * (1f / GameManager.instance.CurrentSheet.bpmMeta.stdBpm) * 60f); // OLD
+            longNoteSystem.endTime = (float)((item.beat + item.length) * (1f / GameManager.instance.CurrentSheet.bpmMeta.stdBpm) * 60f);
 
             longNoteSystem.GetComponent<Image>().sprite = noteSprites[(item.line == 1 || item.line == 2) ? 1 : 0];
 

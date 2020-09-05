@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
 
         GameManager.instance.OnMusicStart += () =>
         {
-            StartGroove(GameManager.instance.CurrentSheet.bpm);
+            StartGroove(GameManager.instance.CurrentSheet.bpmMeta.stdBpm);
         };
 
         GameManager.instance.OnJudge += (int line, JUDGES judge, float gap) =>

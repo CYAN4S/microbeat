@@ -4,9 +4,7 @@ using System.Linq;
 
 public class Sheet
 {
-    public double bpm;
-    public List<SerializableBpm> bpms;
-    public double endBeat;
+    public BpmMeta bpmMeta;
 
     public List<SerializableNote> notes;
     public List<SerializableLongNote> longNotes;
@@ -14,9 +12,6 @@ public class Sheet
 
     public Sheet(SerializableDesc desc, SerializableSheet sheet)
     {
-        bpm = desc.bpm;
-        bpms = desc.bpms;
-
         notes = sheet.notes;
         longNotes = sheet.longNotes;
     }
@@ -75,10 +70,26 @@ public class BpmMeta
     public List<double> bpm;
     public List<double> length;
     public List<double> time;
+    public double stdBpm;
 
-    public BpmMeta(List<SerializableBpm> bpms, double endBeat)
+    public BpmMeta(List<SerializableBpm> bpms, double endBeat, double stdBpm)
     {
         GetMeta(bpms, endBeat);
+        this.stdBpm = stdBpm;
+    }
+
+    public BpmMeta(double stdBpm)
+    {
+        List<SerializableBpm> b = new List<SerializableBpm>
+        {
+            new SerializableBpm()
+            {
+                beat = 0,
+                bpm = stdBpm
+            }
+        };
+        GetMeta(b, 0);
+        this.stdBpm = stdBpm;
     }
 
     public void GetMeta(List<SerializableBpm> bpms, double endBeat)
@@ -92,7 +103,7 @@ public class BpmMeta
         bpm.AddRange(from item in bpms select item.bpm);
         beat.Add(endBeat);
 
-        length.Add(60.0 * beat[1] * (1.0 / bpm[1]));
+        length.Add(60.0 * beat[1] * (1.0 / bpm[0]));
         time.Add(length[0]);
 
         for (int i = 1; i < bpms.Count; i++)

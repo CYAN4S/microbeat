@@ -55,7 +55,7 @@ public class LongNoteSystem : NoteSystem
 
     private void ChangeLengthIfIsIn()
     {
-        float l = (float)(length * GameManager.ScrollSpeed * 36000f / GameManager.instance.CurrentSheet.bpm);
+        float l = (float)(length * GameManager.ScrollSpeed * 36000f / GameManager.instance.CurrentSheet.bpmMeta.stdBpm);
         rt.sizeDelta = new Vector2(rt.sizeDelta.x, l);
     }
 
@@ -66,7 +66,7 @@ public class LongNoteSystem : NoteSystem
 
     private float GetCurrentEndYPos()
     {
-        return (float)((Beat + length - GameManager.CurrentBeat) * (float)GameManager.ScrollSpeed * 36000f / GameManager.instance.CurrentSheet.bpm);
+        return (float)((Beat + length - GameManager.CurrentBeat) * (float)GameManager.ScrollSpeed * 36000f / GameManager.instance.CurrentSheet.bpmMeta.stdBpm);
     }
 
     private void GetPoses()

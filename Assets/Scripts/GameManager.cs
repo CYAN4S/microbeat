@@ -51,11 +51,6 @@ public class GameManager : MonoBehaviour
             IsWorking = true;
             InputManager.Instance.OnSpeedKeyDown += ChangeSpeed;
         };
-
-        OnMusicStart += () =>
-        {
-
-        };
     }
 
     private void Start()
@@ -88,7 +83,7 @@ public class GameManager : MonoBehaviour
 
         CurrentTime += Time.deltaTime;
 
-        CurrentBeat = CurrentTime * CurrentSheet.bpm / 60.0;
+        CurrentBeat = CurrentTime * CurrentSheet.bpmMeta.stdBpm / 60.0;
     }
 
     public void SheetSelect(SerializableDesc desc, SerializableSheet sheet, string audioPath)
@@ -96,19 +91,18 @@ public class GameManager : MonoBehaviour
         OnSheetSelect?.Invoke();
 
         CurrentSheet = new Sheet(desc, sheet);
-        if (CurrentSheet.bpms?.Count is int x && x != 0)
-        {
-            CurrentBpm = new BpmMeta(CurrentSheet.bpms, CurrentSheet.endBeat);
-        }
+        CurrentSheet.bpmMeta = desc.bpms?.Count is int x && x != 0
+            ? new BpmMeta(desc.bpms, desc.endBeat, desc.bpm)
+            : new BpmMeta(desc.bpm);
 
         StartCoroutine(GetComponent<FileExplorer>().GetAudioClip(audioPath, () =>
         {
-            StartCoroutine(StartMusicOnTime(0));
+            StartCoroutine(PlayAudio(0));
             OnGameStart?.Invoke();
         }));
     }
 
-    public IEnumerator StartMusicOnTime(float time)
+    public IEnumerator PlayAudio(float time)
     {
         while (time > CurrentTime)
         {

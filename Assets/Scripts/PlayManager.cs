@@ -180,6 +180,7 @@ public class PlayManager : MonoBehaviour
     private void HandleLongNoteTick(int key)
     {
         LongNoteProcess process = longNoteProcesses[key];
+        process.target.isIn = true;
 
         if (process.target.endTime + CONST.JUDGESTD[(int)JUDGES.NICE] <= GameManager.CurrentTime)
         {

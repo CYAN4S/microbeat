@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f14f35c992239194f91c085969ca5b2e
+guid: 38edb351583c28d4e95cb90706281ed6
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,8 +9,9 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Manrope
-  fallbackFontReferences: []
+  - SpoqaHanSans
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 7d694e0057a361843b8ce4e009a9f381, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

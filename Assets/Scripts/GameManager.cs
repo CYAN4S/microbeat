@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    private AudioSource audioSource;
+    private AudioSource ads;
 
     public static bool IsWorking { get; private set; }
     public static float CurrentTime { get; private set; }
@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public static int Combo { get; private set; }
     public static double Score { get; private set; }
     public static double CurrentBeat { get; private set; }
+    public static double CurrentBpm { get; private set; }
 
     public Action OnSheetSelect;
     public Action OnGameStart;
@@ -27,8 +28,7 @@ public class GameManager : MonoBehaviour
 
     public AudioClip AudioClip { get; set; }
 
-    public Sheet CurrentSheet { get; private set; }
-    public BpmMeta CurrentBpm { get; private set; }
+    public Sheet Now { get; private set; }
 
     private int dataScore;
     public int[] JudgeCounts { get; private set; } = { 0, 0, 0, 0, 0 };
@@ -44,7 +44,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        audioSource = GetComponent<AudioSource>();
+
+        ads = GetComponent<AudioSource>();
 
         OnGameStart += () =>
         {
@@ -62,9 +63,11 @@ public class GameManager : MonoBehaviour
         Combo = 0;
         Score = 0;
         CurrentBeat = 0;
+        CurrentBpm = 0;
 
         dataScore = 0;
     }
+
 
     private void Update()
     {
@@ -83,17 +86,40 @@ public class GameManager : MonoBehaviour
 
         CurrentTime += Time.deltaTime;
 
-        CurrentBeat = CurrentTime * CurrentSheet.bpmMeta.stdBpm / 60.0;
+        //CurrentBeat = CurrentTime * now.bpmMeta.std / 60.0;
+        (double, double) bnb = GetCurrentBeatAndBpm();
+        CurrentBeat = bnb.Item1;
+        CurrentBpm = bnb.Item2;
+    }
+
+    private int index = 0;
+    private (double, double) GetCurrentBeatAndBpm()
+    {
+        if (Now.bpmMeta.endTimes[index] <= CurrentTime)
+        {
+            index++;
+        }
+
+        if (index == 0)
+        {
+            return (CurrentTime * Now.bpmMeta.bpms[0] / 60.0, Now.bpmMeta.bpms[0]);
+        }
+
+        return (Now.bpmMeta.beats[index] + (CurrentTime - Now.bpmMeta.endTimes[index - 1]) * Now.bpmMeta.bpms[index] / 60.0, Now.bpmMeta.bpms[index]);
     }
 
     public void SheetSelect(SerializableDesc desc, SerializableSheet sheet, string audioPath)
     {
         OnSheetSelect?.Invoke();
 
-        CurrentSheet = new Sheet(desc, sheet);
-        CurrentSheet.bpmMeta = desc.bpms?.Count is int x && x != 0
-            ? new BpmMeta(desc.bpms, desc.endBeat, desc.bpm)
-            : new BpmMeta(desc.bpm);
+        Now = new Sheet(desc, sheet)
+        {
+            bpmMeta = desc.bpms?.Count is int x && x != 0
+            ? new BpmMeta(desc.bpms, desc.bpm)
+            : new BpmMeta(desc.bpm)
+        };
+
+        //print(JsonUtility.ToJson(Now.bpmMeta));
 
         StartCoroutine(GetComponent<FileExplorer>().GetAudioClip(audioPath, () =>
         {
@@ -108,9 +134,9 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
-        if (audioSource.clip != null)
+        if (ads.clip != null)
         {
-            audioSource.Play();
+            ads.Play();
         }
         OnMusicStart?.Invoke();
     }
@@ -143,7 +169,7 @@ public class GameManager : MonoBehaviour
         else
         {
             dataScore += CONST.JUDGESCORE[(int)judge];
-            Score = (double)dataScore / (CONST.JUDGESCORE[0] * (CurrentSheet.notes.Count + CurrentSheet.longNotes.Count)) * 300000d;
+            Score = (double)dataScore / (CONST.JUDGESCORE[0] * (Now.notes.Count + Now.longNotes.Count)) * 300000d;
             Combo = (judge != JUDGES.BAD) ? (Combo + 1) : 0;
         }
 

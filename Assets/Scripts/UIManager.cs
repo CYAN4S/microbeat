@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
 
         GameManager.instance.OnMusicStart += () =>
         {
-            StartGroove(GameManager.instance.CurrentSheet.bpmMeta.stdBpm);
+            StartGroove(GameManager.instance.Now.bpmMeta.std);
         };
 
         GameManager.instance.OnJudge += (int line, JUDGES judge, float gap) =>
@@ -104,7 +104,7 @@ public class UIManager : MonoBehaviour
         }
 
         speedText.text = "X" + GameManager.ScrollSpeed.ToString("F1");
-        timeText.text = GameManager.CurrentTime.ToString("F3") + " / " + GameManager.CurrentBeat.ToString("F0");
+        timeText.text = GameManager.CurrentTime.ToString("F3") + " / " + GameManager.CurrentBeat.ToString("F0") + " / " + GameManager.CurrentBpm.ToString("F1") + " BPM";
     }
 
     public void TriggerJudgeAnimation(JUDGES judge)
@@ -177,7 +177,7 @@ public class UIManager : MonoBehaviour
         const string prefix = "<style=\"CB\">", suffix = ">";
         string result = "";
 
-        foreach (var item in combo.ToString())
+        foreach (char item in combo.ToString())
         {
             result = result + prefix + item + suffix;
         }

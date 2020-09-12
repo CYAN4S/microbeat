@@ -45,26 +45,28 @@ public class PlayManager : MonoBehaviour
             longNoteProcesses.Add(new LongNoteProcess());
         }
 
-        foreach (SerializableNote item in GameManager.instance.CurrentSheet.notes)
+        foreach (SerializableNote item in GameManager.instance.Now.notes)
         {
             NoteSystem noteSystem = Instantiate(notePrefab, notesParent).GetComponent<NoteSystem>();
 
             noteSystem.SetFromData(item);
-            noteSystem.time = (float)(item.beat * (1f / GameManager.instance.CurrentSheet.bpmMeta.stdBpm) * 60f); // OLD
-
+            //noteSystem.time = (float)(item.beat * (1f / GameManager.instance.Now.bpmMeta.std) * 60f); // OLD
+            noteSystem.time = GameManager.instance.Now.bpmMeta.GetTime(item.beat);
             noteSystem.GetComponent<Image>().sprite = noteSprites[(item.line == 1 || item.line == 2) ? 1 : 0];
 
             GameManager.EndTime = Math.Max(GameManager.EndTime, noteSystem.time);
             sortReady[item.line].Add(noteSystem);
         }
 
-        foreach (SerializableLongNote item in GameManager.instance.CurrentSheet.longNotes)
+        foreach (SerializableLongNote item in GameManager.instance.Now.longNotes)
         {
             LongNoteSystem longNoteSystem = Instantiate(longNotePrefab, notesParent).GetComponent<LongNoteSystem>();
 
             longNoteSystem.SetFromData(item);
-            longNoteSystem.time = (float)(item.beat * (1f / GameManager.instance.CurrentSheet.bpmMeta.stdBpm) * 60f); // OLD
-            longNoteSystem.endTime = (float)((item.beat + item.length) * (1f / GameManager.instance.CurrentSheet.bpmMeta.stdBpm) * 60f);
+            //longNoteSystem.time = (float)(item.beat * (1f / GameManager.instance.Now.bpmMeta.std) * 60f); // OLD
+            longNoteSystem.time = GameManager.instance.Now.bpmMeta.GetTime(item.beat);
+            //longNoteSystem.endTime = (float)((item.beat + item.length) * (1f / GameManager.instance.Now.bpmMeta.std) * 60f);
+            longNoteSystem.endTime = GameManager.instance.Now.bpmMeta.GetTime(item.beat + item.length);
 
             longNoteSystem.GetComponent<Image>().sprite = noteSprites[(item.line == 1 || item.line == 2) ? 1 : 0];
 
@@ -126,7 +128,7 @@ public class PlayManager : MonoBehaviour
             return;
         }
 
-        if (peek.notecode == NOTECODE.LONGNOTE)
+        if (peek.CompareTag("LongNote"))
         {
             longNoteProcesses[key].isIn = true;
             longNoteProcesses[key].startBeat = GameManager.CurrentBeat;

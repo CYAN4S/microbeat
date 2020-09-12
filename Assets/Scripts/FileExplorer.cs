@@ -65,7 +65,7 @@ public class FileExplorer : MonoBehaviour
             SerializableDesc desc = JsonUtility.FromJson<SerializableDesc>(text);
 
             List<SerializableSheet> sheets = new List<SerializableSheet>();
-            foreach (var item in sheetFiles)
+            foreach (FileInfo item in sheetFiles)
             {
                 using (StreamReader sr = item.OpenText())
                 {

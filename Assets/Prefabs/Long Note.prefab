@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1462977543257870842}
   m_Layer: 5
   m_Name: Long Note
-  m_TagString: Untagged
+  m_TagString: LongNote
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,4 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0
+  notecode: 0
   endTime: 0
+  length: 0
+  isIn: 0

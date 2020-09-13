@@ -78,7 +78,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 'EX
+
+    99'
 --- !u!1 &7587274292215187185
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 38edb351583c28d4e95cb90706281ed6, type: 3}
+  m_Material: {fileID: 2100000, guid: 8c55be76386fa0e4a9be24769b2956ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -145,7 +147,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 38edb351583c28d4e95cb90706281ed6, type: 3}
+    m_Font: {fileID: 12800000, guid: 8c55be76386fa0e4a9be24769b2956ef, type: 3}
     m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 0
@@ -157,7 +159,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Template
 --- !u!1 &7587274292379777231
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +304,6 @@ MonoBehaviour:
     genre: 
     bpm: 0
     bpms: []
-    endBeat: 0
     musicPath: 
   sheet:
     line: 0
@@ -367,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 8c55be76386fa0e4a9be24769b2956ef, type: 3}
+  m_Material: {fileID: 2100000, guid: 7d694e0057a361843b8ce4e009a9f381, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -376,7 +377,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8c55be76386fa0e4a9be24769b2956ef, type: 3}
+    m_Font: {fileID: 12800000, guid: 7d694e0057a361843b8ce4e009a9f381, type: 3}
     m_FontSize: 55
     m_FontStyle: 0
     m_BestFit: 0
@@ -388,4 +389,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Info

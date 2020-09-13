@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     public GameObject[] pressButtonObjects;
 
     public Text speedText, scoreText;
-    public Text timeText;
+    public Text timeText, beatText, bpmText;
     public Text detailText;
 
     public Animator judgeAnimator;
@@ -104,7 +104,10 @@ public class UIManager : MonoBehaviour
         }
 
         speedText.text = "X" + GameManager.ScrollSpeed.ToString("F1");
-        timeText.text = GameManager.CurrentTime.ToString("F3") + " / " + GameManager.CurrentBeat.ToString("F0") + " / " + GameManager.CurrentBpm.ToString("F1") + " BPM";
+        timeText.text = GameManager.CurrentTime.ToString("F3");
+        beatText.text = GameManager.CurrentBeat.ToString("F0");
+        bpmText.text = GameManager.CurrentBpm.ToString("F1") + " BPM";
+
     }
 
     public void TriggerJudgeAnimation(JUDGES judge)

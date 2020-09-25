@@ -25,7 +25,7 @@ public class PlayManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.OnGameStart += () =>
+        GameManager.Instance.OnGameStart += () =>
         {
             PrepareNotes();
 
@@ -45,28 +45,25 @@ public class PlayManager : MonoBehaviour
             longNoteProcesses.Add(new LongNoteProcess());
         }
 
-        foreach (SerializableNote item in GameManager.instance.Now.notes)
+        foreach (SerializableNote item in GameManager.Instance.Now.notes)
         {
             NoteSystem noteSystem = Instantiate(notePrefab, notesParent).GetComponent<NoteSystem>();
 
             noteSystem.SetFromData(item);
-            //noteSystem.time = (float)(item.beat * (1f / GameManager.instance.Now.bpmMeta.std) * 60f); // OLD
-            noteSystem.time = GameManager.instance.Now.bpmMeta.GetTime(item.beat);
+            noteSystem.time = GameManager.Instance.Now.bpmMeta.GetTime(item.beat);
             noteSystem.GetComponent<Image>().sprite = noteSprites[(item.line == 1 || item.line == 2) ? 1 : 0];
 
             GameManager.EndTime = Math.Max(GameManager.EndTime, noteSystem.time);
             sortReady[item.line].Add(noteSystem);
         }
 
-        foreach (SerializableLongNote item in GameManager.instance.Now.longNotes)
+        foreach (SerializableLongNote item in GameManager.Instance.Now.longNotes)
         {
             LongNoteSystem longNoteSystem = Instantiate(longNotePrefab, notesParent).GetComponent<LongNoteSystem>();
 
             longNoteSystem.SetFromData(item);
-            //longNoteSystem.time = (float)(item.beat * (1f / GameManager.instance.Now.bpmMeta.std) * 60f); // OLD
-            longNoteSystem.time = GameManager.instance.Now.bpmMeta.GetTime(item.beat);
-            //longNoteSystem.endTime = (float)((item.beat + item.length) * (1f / GameManager.instance.Now.bpmMeta.std) * 60f);
-            longNoteSystem.endTime = GameManager.instance.Now.bpmMeta.GetTime(item.beat + item.length);
+            longNoteSystem.time = GameManager.Instance.Now.bpmMeta.GetTime(item.beat);
+            longNoteSystem.endTime = GameManager.Instance.Now.bpmMeta.GetTime(item.beat + item.length);
 
             longNoteSystem.GetComponent<Image>().sprite = noteSprites[(item.line == 1 || item.line == 2) ? 1 : 0];
 
@@ -107,7 +104,7 @@ public class PlayManager : MonoBehaviour
             float gap = GameManager.CurrentTime - target.time;
             if (gap > CONST.JUDGESTD[(int)JUDGES.BAD])
             {
-                GameManager.instance.HandleJudge(i, JUDGES.BREAK, gap);
+                GameManager.Instance.HandleJudge(i, JUDGES.BREAK, gap);
                 RemoveOneFromQ(i);
             }
         }
@@ -169,14 +166,14 @@ public class PlayManager : MonoBehaviour
 
     private void HandleNote(int key, float gap)
     {
-        GameManager.instance.HandleJudge(key, GetJudgeFormGap(gap), gap);
+        GameManager.Instance.HandleJudge(key, GetJudgeFormGap(gap), gap);
         RemoveOneFromQ(key);
     }
 
     private void HandleLongNoteDown(int key, float gap)
     {
         longNoteProcesses[key].judge = GetJudgeFormGap(gap);
-        GameManager.instance.HandleFirstTickJudge(key, longNoteProcesses[key].judge, gap);
+        GameManager.Instance.HandleFirstTickJudge(key, longNoteProcesses[key].judge, gap);
     }
 
     private void HandleLongNoteTick(int key)
@@ -186,7 +183,7 @@ public class PlayManager : MonoBehaviour
 
         if (process.target.endTime + CONST.JUDGESTD[(int)JUDGES.NICE] <= GameManager.CurrentTime)
         {
-            GameManager.instance.HandleJudge(key, JUDGES.NICE, CONST.JUDGESTD[(int)JUDGES.NICE]);
+            GameManager.Instance.HandleJudge(key, JUDGES.NICE, CONST.JUDGESTD[(int)JUDGES.NICE]);
             process.Reset();
             RemoveOneFromQ(key);
             return;
@@ -199,7 +196,7 @@ public class PlayManager : MonoBehaviour
 
         if (process.target.ticks.Peek() + process.startBeat <= GameManager.CurrentBeat)
         {
-            GameManager.instance.HandleTickJudge(key, process.judge);
+            GameManager.Instance.HandleTickJudge(key, process.judge);
             process.target.ticks.Dequeue();
         }
     }
@@ -211,7 +208,7 @@ public class PlayManager : MonoBehaviour
         float gap = GameManager.CurrentTime - process.target.endTime;
         JUDGES j = GetJudgeFormGap(gap);
         j = j != JUDGES.BAD ? process.judge : JUDGES.BAD;
-        GameManager.instance.HandleJudge(key, j, gap);
+        GameManager.Instance.HandleJudge(key, j, gap);
         process.Reset();
         RemoveOneFromQ(key);
     }

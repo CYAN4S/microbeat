@@ -9,7 +9,9 @@ public class FileExplorer : MonoBehaviour
 {
     public static FileExplorer Instance { get; private set; }
     public static string path;
+
     public List<Musicpack> musicpacks;
+    public AudioClip streamAudio;
 
     private void Awake()
     {
@@ -25,16 +27,11 @@ public class FileExplorer : MonoBehaviour
         path = Application.persistentDataPath;
     }
 
-    private void Start()
-    {
-        StartCoroutine(Explore(GetComponent<UIManager>().DisplayMusics));
-    }
-
-    public IEnumerator Explore(Action callback = null)
+    public IEnumerator ExploreAsync(Action callback = null)
     {
         musicpacks = new List<Musicpack>();
-
         DirectoryInfo musicDirectory = new DirectoryInfo(Path.Combine(path, "Musics"));
+
         if (!musicDirectory.Exists)
         {
             musicDirectory.Create();
@@ -56,21 +53,18 @@ public class FileExplorer : MonoBehaviour
                 continue;
             }
 
-            string text;
-
+            SerializableDesc desc;
             using (StreamReader sr = descFile.OpenText())
             {
-                text = sr.ReadToEnd();
+                desc = JsonUtility.FromJson<SerializableDesc>(sr.ReadToEnd());
             }
-            SerializableDesc desc = JsonUtility.FromJson<SerializableDesc>(text);
 
             List<SerializableSheet> sheets = new List<SerializableSheet>();
             foreach (FileInfo item in sheetFiles)
             {
                 using (StreamReader sr = item.OpenText())
                 {
-                    text = sr.ReadToEnd();
-                    sheets.Add(JsonUtility.FromJson<SerializableSheet>(text));
+                    sheets.Add(JsonUtility.FromJson<SerializableSheet>(sr.ReadToEnd()));
                 }
             }
 
@@ -95,7 +89,8 @@ public class FileExplorer : MonoBehaviour
             }
             else
             {
-                GetComponent<AudioSource>().clip = DownloadHandlerAudioClip.GetContent(www);
+                //GetComponent<AudioSource>().clip = DownloadHandlerAudioClip.GetContent(www);
+                streamAudio = DownloadHandlerAudioClip.GetContent(www);
             }
         }
     }

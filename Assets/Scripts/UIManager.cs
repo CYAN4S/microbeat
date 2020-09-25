@@ -50,17 +50,17 @@ public class UIManager : MonoBehaviour
             pressButtonObjects[n].SetActive(false);
         };
 
-        GameManager.instance.OnSheetSelect += () =>
+        GameManager.Instance.OnSheetSelect += () =>
         {
             selection.SetActive(false);
         };
 
-        GameManager.instance.OnMusicStart += () =>
+        GameManager.Instance.OnMusicStart += () =>
         {
-            StartGroove(GameManager.instance.Now.bpmMeta.std);
+            StartGroove(GameManager.Instance.Now.bpmMeta.std);
         };
 
-        GameManager.instance.OnJudge += (int line, JUDGES judge, float gap) =>
+        GameManager.Instance.OnJudge += (int line, JUDGES judge, float gap) =>
         {
             TriggerJudgeAnimation(judge);
 
@@ -82,14 +82,14 @@ public class UIManager : MonoBehaviour
             }
         };
 
-        GameManager.instance.OnTickJudge += (int line, JUDGES judge) =>
+        GameManager.Instance.OnTickJudge += (int line, JUDGES judge) =>
         {
             TriggerJudgeAnimation(judge);
             ShowCombo(GameManager.Combo);
             noteEffects[line].SetTrigger("Effect");
         };
 
-        GameManager.instance.OnGameEnd += () =>
+        GameManager.Instance.OnGameEnd += () =>
         {
             StopGroove();
             DisplayResult();
@@ -146,7 +146,7 @@ public class UIManager : MonoBehaviour
 
                 gameObject.GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    GameManager.instance.SheetSelect(music.desc, sheet, Path.Combine(music.directory.FullName, music.desc.musicPath));
+                    GameManager.Instance.SheetSelect(music.desc, sheet, Path.Combine(music.directory.FullName, music.desc.musicPath));
                 });
 
                 LISystem LiSystem = gameObject.GetComponent<LISystem>();
@@ -170,7 +170,8 @@ public class UIManager : MonoBehaviour
 
     public void ShowCombo(int combo)
     {
-        comboTMPro.text = ComboToString(combo);
+        //comboTMPro.text = ComboToString(combo);
+        comboTMPro.text = combo.ToString();
         comboAnimator.SetTrigger("Combo");
         comboHeadingAnimator.SetTrigger("ComboHeading");
     }
@@ -190,9 +191,9 @@ public class UIManager : MonoBehaviour
 
     public void DisplayResult()
     {
-        for (int i = 0; i < GameManager.instance.JudgeCounts.Length; i++)
+        for (int i = 0; i < GameManager.Instance.JudgeCounts.Length; i++)
         {
-            judgeCountTexts[i].text = GameManager.instance.JudgeCounts[i].ToString();
+            judgeCountTexts[i].text = GameManager.Instance.JudgeCounts[i].ToString();
         }
 
         string rank = CONST.RANKNAME[CONST.RANKNAME.Length - 1];

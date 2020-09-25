@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
-    private AudioSource ads;
+    public static GameManager Instance { get; private set; }
+
+    private AudioSource audioSource;
+    private InputManager im;
+    private FileExplorer fe;
+    private UIManager ui;
 
     public static bool IsWorking { get; private set; }
     public static float CurrentTime { get; private set; }
@@ -36,25 +40,54 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {
             Destroy(gameObject);
         }
 
-        ads = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
+        im = GetComponent<InputManager>();
+        fe = GetComponent<FileExplorer>();
+        ui = GetComponent<UIManager>();
+
+        OnSheetSelect += PrepareGame;
 
         OnGameStart += () =>
         {
             IsWorking = true;
-            InputManager.Instance.OnSpeedKeyDown += ChangeSpeed;
+            im.OnSpeedKeyDown += ChangeSpeed;
         };
     }
 
+
     private void Start()
+    {
+        InitVariables();
+        PrepareSelection();
+    }
+
+
+    private void Update()
+    {
+        if (!IsWorking)
+        {
+            return;
+        }
+
+        RefreshTime();
+    }
+
+    private void PrepareGame()
+    {
+
+    }
+
+
+    private void InitVariables()
     {
         IsWorking = false;
         CurrentTime = -3;
@@ -68,14 +101,13 @@ public class GameManager : MonoBehaviour
         dataScore = 0;
     }
 
-
-    private void Update()
+    private void PrepareSelection()
     {
-        if (!IsWorking)
-        {
-            return;
-        }
+        StartCoroutine(fe.ExploreAsync(GetComponent<UIManager>().DisplayMusics));
+    }
 
+    private void RefreshTime()
+    {
         if (CurrentTime >= EndTime)
         {
             OnGameEnd();
@@ -86,26 +118,26 @@ public class GameManager : MonoBehaviour
 
         CurrentTime += Time.deltaTime;
 
-        //CurrentBeat = CurrentTime * now.bpmMeta.std / 60.0;
-        (double, double) bnb = GetCurrentBeatAndBpm();
-        CurrentBeat = bnb.Item1;
-        CurrentBpm = bnb.Item2;
+        RefreshBeatAndBpm();
     }
 
-    private int index = 0;
-    private (double, double) GetCurrentBeatAndBpm()
+    private int currentMetaIndex = 0;
+    private void RefreshBeatAndBpm()
     {
-        if (Now.bpmMeta.endTimes[index] <= CurrentTime)
+        if (Now.bpmMeta.endTimes[currentMetaIndex] <= CurrentTime)
         {
-            index++;
+            currentMetaIndex++;
         }
 
-        if (index == 0)
+        if (currentMetaIndex == 0)
         {
-            return (CurrentTime * Now.bpmMeta.bpms[0] / 60.0, Now.bpmMeta.bpms[0]);
+            CurrentBeat = CurrentTime * Now.bpmMeta.bpms[0] / 60.0;
+            CurrentBpm = Now.bpmMeta.bpms[0];
+            return;
         }
 
-        return (Now.bpmMeta.beats[index] + (CurrentTime - Now.bpmMeta.endTimes[index - 1]) * Now.bpmMeta.bpms[index] / 60.0, Now.bpmMeta.bpms[index]);
+        CurrentBeat = Now.bpmMeta.beats[currentMetaIndex] + (CurrentTime - Now.bpmMeta.endTimes[currentMetaIndex - 1]) * Now.bpmMeta.bpms[currentMetaIndex] / 60.0;
+        CurrentBpm = Now.bpmMeta.bpms[currentMetaIndex];
     }
 
     public void SheetSelect(SerializableDesc desc, SerializableSheet sheet, string audioPath)
@@ -119,11 +151,13 @@ public class GameManager : MonoBehaviour
             : new BpmMeta(desc.bpm)
         };
 
-        //print(JsonUtility.ToJson(Now.bpmMeta));
-
         StartCoroutine(GetComponent<FileExplorer>().GetAudioClip(audioPath, () =>
         {
-            StartCoroutine(PlayAudio(0));
+            audioSource.clip = fe.streamAudio;
+            if (audioSource.clip != null)
+            {
+                StartCoroutine(PlayAudio(0));
+            }
             OnGameStart?.Invoke();
         }));
     }
@@ -134,10 +168,7 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
-        if (ads.clip != null)
-        {
-            ads.Play();
-        }
+        audioSource.Play();
         OnMusicStart?.Invoke();
     }
 

@@ -50,7 +50,7 @@ public class UIManager : MonoBehaviour
             pressButtonObjects[n].SetActive(false);
         };
 
-        GameManager.Instance.OnSheetSelect += () =>
+        GameManager.Instance.OnSheetSelect += (_) =>
         {
             selection.SetActive(false);
         };
@@ -146,7 +146,13 @@ public class UIManager : MonoBehaviour
 
                 gameObject.GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    GameManager.Instance.SheetSelect(music.desc, sheet, Path.Combine(music.directory.FullName, music.desc.musicPath));
+                    GameManager.Instance.OnSheetSelect(new SheetData
+                    {
+                        audioPath = Path.Combine(music.directory.FullName, music.desc.musicPath),
+                        desc = music.desc,
+                        sheet = sheet,
+                    });
+                    //GameManager.Instance.SheetSelect(music.desc, sheet, Path.Combine(music.directory.FullName, music.desc.musicPath));
                 });
 
                 LISystem LiSystem = gameObject.GetComponent<LISystem>();

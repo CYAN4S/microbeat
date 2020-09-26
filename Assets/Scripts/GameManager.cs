@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public static double CurrentBeat { get; private set; }
     public static double CurrentBpm { get; private set; }
 
-    public Action OnSheetSelect;
+    public Action<SheetData> OnSheetSelect;
     public Action OnGameStart;
     public Action OnMusicStart;
 
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         fe = GetComponent<FileExplorer>();
         ui = GetComponent<UIManager>();
 
-        OnSheetSelect += PrepareGame;
+        OnSheetSelect += _ => PrepareGame(_);
 
         OnGameStart += () =>
         {
@@ -81,9 +81,25 @@ public class GameManager : MonoBehaviour
         RefreshTime();
     }
 
-    private void PrepareGame()
+    private void PrepareGame(SheetData sheetData)
     {
+        var desc = sheetData.desc;
+        var sheet = sheetData.sheet;
 
+        Now = new Sheet(desc, sheet)
+        {
+            bpmMeta = desc.bpms?.Count is int x && x != 0 ? new BpmMeta(desc.bpms, desc.bpm) : new BpmMeta(desc.bpm)
+        };
+
+        StartCoroutine(fe.GetAudioClip(sheetData.audioPath, () =>
+        {
+            audioSource.clip = fe.streamAudio;
+            if (audioSource.clip != null)
+            {
+                StartCoroutine(PlayAudio(0));
+            }
+            OnGameStart?.Invoke();
+        }));
     }
 
 
@@ -138,28 +154,6 @@ public class GameManager : MonoBehaviour
 
         CurrentBeat = Now.bpmMeta.beats[currentMetaIndex] + (CurrentTime - Now.bpmMeta.endTimes[currentMetaIndex - 1]) * Now.bpmMeta.bpms[currentMetaIndex] / 60.0;
         CurrentBpm = Now.bpmMeta.bpms[currentMetaIndex];
-    }
-
-    public void SheetSelect(SerializableDesc desc, SerializableSheet sheet, string audioPath)
-    {
-        OnSheetSelect?.Invoke();
-
-        Now = new Sheet(desc, sheet)
-        {
-            bpmMeta = desc.bpms?.Count is int x && x != 0
-            ? new BpmMeta(desc.bpms, desc.bpm)
-            : new BpmMeta(desc.bpm)
-        };
-
-        StartCoroutine(GetComponent<FileExplorer>().GetAudioClip(audioPath, () =>
-        {
-            audioSource.clip = fe.streamAudio;
-            if (audioSource.clip != null)
-            {
-                StartCoroutine(PlayAudio(0));
-            }
-            OnGameStart?.Invoke();
-        }));
     }
 
     public IEnumerator PlayAudio(float time)

@@ -109,3 +109,10 @@ public struct Musicpack
         sheets = item3;
     }
 }
+
+public struct SheetData
+{
+    public string audioPath;
+    public SerializableDesc desc;
+    public SerializableSheet sheet;
+}

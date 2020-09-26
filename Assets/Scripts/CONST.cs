@@ -3,6 +3,8 @@
 public enum JUDGES { PRECISE, GREAT, NICE, BAD, BREAK };
 public enum NOTECODE { NOTE, LONGNOTE };
 
+public enum SHEETVER { A1, A3 };
+
 public static class CONST
 {
     public static readonly double[] DELTASPEED = { -0.1, -0.5, 0.5, 0.1 };

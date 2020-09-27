@@ -88,12 +88,6 @@ public class UIManager : MonoBehaviour
             ShowCombo(GameManager.Combo);
             noteEffects[line].SetTrigger("Effect");
         };
-
-        GameManager.Instance.OnGameEnd += () =>
-        {
-            StopGroove();
-            DisplayResult();
-        };
     }
 
     private void LateUpdate()
@@ -176,23 +170,9 @@ public class UIManager : MonoBehaviour
 
     public void ShowCombo(int combo)
     {
-        //comboTMPro.text = ComboToString(combo);
         comboTMPro.text = combo.ToString();
         comboAnimator.SetTrigger("Combo");
         comboHeadingAnimator.SetTrigger("ComboHeading");
-    }
-
-    public string ComboToString(int combo)
-    {
-        const string prefix = "<style=\"CB\">", suffix = ">";
-        string result = "";
-
-        foreach (char item in combo.ToString())
-        {
-            result = result + prefix + item + suffix;
-        }
-
-        return result;
     }
 
     public void DisplayResult()

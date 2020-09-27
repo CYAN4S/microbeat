@@ -27,15 +27,13 @@ public class PlayManager : MonoBehaviour
     {
         GameManager.Instance.OnGameStart += () =>
         {
-            PrepareNotes();
-
             InputManager.Instance.OnPlayKeyDown += JudgePlayKeyDown;
             InputManager.Instance.OnPlayKey += JudgePlayKey;
             InputManager.Instance.OnPlayKeyUp += JudgePlayKeyUp;
         };
     }
 
-    private void PrepareNotes()
+    public void PrepareNotes()
     {
         GameManager.EndTime = 3f;
         List<List<NoteSystem>> sortReady = new List<List<NoteSystem>>();

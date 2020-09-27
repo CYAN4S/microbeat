@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private InputManager im;
     private FileExplorer fe;
     private UIManager ui;
+    private PlayManager pm;
 
     public static bool IsWorking { get; private set; }
     public static float CurrentTime { get; private set; }
@@ -27,8 +28,6 @@ public class GameManager : MonoBehaviour
     public Action OnScrollSpeedChange;
     public Action<int, JUDGES, float> OnJudge;
     public Action<int, JUDGES> OnTickJudge;
-
-    public Action OnGameEnd;
 
     public AudioClip AudioClip { get; set; }
 
@@ -53,21 +52,16 @@ public class GameManager : MonoBehaviour
         im = GetComponent<InputManager>();
         fe = GetComponent<FileExplorer>();
         ui = GetComponent<UIManager>();
+        pm = GetComponent<PlayManager>();
 
         OnSheetSelect += _ => PrepareGame(_);
-
-        OnGameStart += () =>
-        {
-            IsWorking = true;
-            im.OnSpeedKeyDown += ChangeSpeed;
-        };
     }
 
 
     private void Start()
     {
         InitVariables();
-        PrepareSelection();
+        PrepareSongList();
     }
 
 
@@ -91,6 +85,8 @@ public class GameManager : MonoBehaviour
             bpmMeta = desc.bpms?.Count is int x && x != 0 ? new BpmMeta(desc.bpms, desc.bpm) : new BpmMeta(desc.bpm)
         };
 
+        pm.PrepareNotes();
+
         StartCoroutine(fe.GetAudioClip(sheetData.audioPath, () =>
         {
             audioSource.clip = fe.streamAudio;
@@ -98,10 +94,22 @@ public class GameManager : MonoBehaviour
             {
                 StartCoroutine(PlayAudio(0));
             }
+            StartGame();
             OnGameStart?.Invoke();
         }));
     }
 
+    private void StartGame()
+    {
+        IsWorking = true;
+        im.OnSpeedKeyDown += ChangeSpeed;
+    }
+
+    private void EndGame()
+    {
+        ui.StopGroove();
+        ui.DisplayResult();
+    }
 
     private void InitVariables()
     {
@@ -113,11 +121,11 @@ public class GameManager : MonoBehaviour
         Score = 0;
         CurrentBeat = 0;
         CurrentBpm = 0;
-
+        currentMetaIndex = 0;
         dataScore = 0;
     }
 
-    private void PrepareSelection()
+    private void PrepareSongList()
     {
         StartCoroutine(fe.ExploreAsync(GetComponent<UIManager>().DisplayMusics));
     }
@@ -126,8 +134,7 @@ public class GameManager : MonoBehaviour
     {
         if (CurrentTime >= EndTime)
         {
-            OnGameEnd();
-
+            EndGame();
             IsWorking = false;
             return;
         }

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private FileExplorer fe;
     private UIManager ui;
     private PlayManager pm;
+    private IngameGraphicsManager igm;
 
     public static bool IsWorking { get; private set; }
     public static float CurrentTime { get; private set; }
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     public static double Score { get; private set; }
     public static double CurrentBeat { get; private set; }
     public static double CurrentBpm { get; private set; }
+    public int[] JudgeCounts { get; private set; } = { 0, 0, 0, 0, 0 };
 
     public Action<SheetData> OnSheetSelect;
     public Action OnGameStart;
@@ -34,7 +36,6 @@ public class GameManager : MonoBehaviour
     public Sheet Now { get; private set; }
 
     private int dataScore;
-    public int[] JudgeCounts { get; private set; } = { 0, 0, 0, 0, 0 };
 
 
     private void Awake()
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
         fe = GetComponent<FileExplorer>();
         ui = GetComponent<UIManager>();
         pm = GetComponent<PlayManager>();
+        igm = GetComponent<IngameGraphicsManager>();
 
         OnSheetSelect += _ => PrepareGame(_);
     }
@@ -77,8 +79,10 @@ public class GameManager : MonoBehaviour
 
     private void PrepareGame(SheetData sheetData)
     {
-        var desc = sheetData.desc;
-        var sheet = sheetData.sheet;
+        ui.selection.SetActive(false);
+
+        SerializableDesc desc = sheetData.desc;
+        SerializableSheet sheet = sheetData.sheet;
 
         Now = new Sheet(desc, sheet)
         {
@@ -87,16 +91,19 @@ public class GameManager : MonoBehaviour
 
         pm.PrepareNotes();
 
-        StartCoroutine(fe.GetAudioClip(sheetData.audioPath, () =>
-        {
-            audioSource.clip = fe.streamAudio;
-            if (audioSource.clip != null)
+        StartCoroutine
+        (
+            fe.GetAudioClip(sheetData.audioPath, () =>
             {
-                StartCoroutine(PlayAudio(0));
-            }
-            StartGame();
-            OnGameStart?.Invoke();
-        }));
+                audioSource.clip = fe.streamAudio;
+                if (audioSource.clip != null)
+                {
+                    StartCoroutine(PlayAudio(0));
+                }
+                StartGame();
+                OnGameStart?.Invoke();
+            })
+        );
     }
 
     private void StartGame()
@@ -107,7 +114,7 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
-        ui.StopGroove();
+        igm.StopGroove();
         ui.DisplayResult();
     }
 

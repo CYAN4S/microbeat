@@ -4,7 +4,7 @@ using UnityEngine;
 public class LongNoteSystem : NoteSystem
 {
     public float endTime;
-    public static float noteHeight = 50f;
+    public readonly static float noteHeight = 50f;
     public double length;
     public Queue<double> ticks;
     public bool isIn = false;
@@ -53,12 +53,6 @@ public class LongNoteSystem : NoteSystem
         rt.sizeDelta = new Vector2(rt.sizeDelta.x, l);
     }
 
-    private void ChangeLengthIfIsIn()
-    {
-        float l = (float)(length * GameManager.ScrollSpeed * 36000f / GameManager.Instance.Now.bpmMeta.std);
-        rt.sizeDelta = new Vector2(rt.sizeDelta.x, l);
-    }
-
     private void Move()
     {
         transform.localPosition = new Vector3(CONST.LINEXPOS[Line], (startPos + endPos) / 2f);
@@ -66,7 +60,7 @@ public class LongNoteSystem : NoteSystem
 
     private float GetCurrentEndYPos()
     {
-        return (float)((Beat + length - GameManager.CurrentBeat) * (float)GameManager.ScrollSpeed * 36000f / GameManager.Instance.Now.bpmMeta.std);
+        return (float)((Beat + length - GameManager.CurrentBeat) * (float)GameManager.ScrollSpeed * 36000f / GameManager.Instance.Meta.std);
     }
 
     private void GetPoses()

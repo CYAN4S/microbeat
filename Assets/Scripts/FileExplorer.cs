@@ -41,38 +41,43 @@ public class FileExplorer : MonoBehaviour
         IEnumerable<DirectoryInfo> directories = musicDirectory.EnumerateDirectories();
         foreach (DirectoryInfo directory in directories)
         {
-            FileInfo descFile = directory.GetFiles("info.mudesc")?[0];
-            if (descFile == null)
-            {
-                continue;
-            }
-
-            FileInfo[] sheetFiles = directory.GetFiles("*.musheet");
-            if (sheetFiles.Length == 0)
-            {
-                continue;
-            }
-
-            SerializableDesc desc;
-            using (StreamReader sr = descFile.OpenText())
-            {
-                desc = JsonUtility.FromJson<SerializableDesc>(sr.ReadToEnd());
-            }
-
-            List<SerializableSheet> sheets = new List<SerializableSheet>();
-            foreach (FileInfo item in sheetFiles)
-            {
-                using (StreamReader sr = item.OpenText())
-                {
-                    sheets.Add(JsonUtility.FromJson<SerializableSheet>(sr.ReadToEnd()));
-                }
-            }
-
-            musicpacks.Add(new Musicpack(directory, desc, sheets));
+            SeekDirectory(directory);
             yield return null;
         }
 
         callback?.Invoke();
+    }
+
+    private void SeekDirectory(DirectoryInfo directory)
+    {
+        FileInfo descFile = directory.GetFiles("info.mudesc")?[0];
+        if (descFile == null)
+        {
+            return;
+        }
+
+        FileInfo[] sheetFiles = directory.GetFiles("*.musheet");
+        if (sheetFiles.Length == 0)
+        {
+            return;
+        }
+
+        SerializableDesc desc;
+        using (StreamReader sr = descFile.OpenText())
+        {
+            desc = JsonUtility.FromJson<SerializableDesc>(sr.ReadToEnd());
+        }
+
+        List<SerializableSheet> sheets = new List<SerializableSheet>();
+        foreach (FileInfo item in sheetFiles)
+        {
+            using (StreamReader sr = item.OpenText())
+            {
+                sheets.Add(JsonUtility.FromJson<SerializableSheet>(sr.ReadToEnd()));
+            }
+        }
+
+        musicpacks.Add(new Musicpack(directory, desc, sheets));
     }
 
     public IEnumerator GetAudioClip(string path, Action callback = null)
@@ -89,7 +94,6 @@ public class FileExplorer : MonoBehaviour
             }
             else
             {
-                //GetComponent<AudioSource>().clip = DownloadHandlerAudioClip.GetContent(www);
                 streamAudio = DownloadHandlerAudioClip.GetContent(www);
             }
         }

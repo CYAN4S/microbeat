@@ -23,8 +23,7 @@ public class IngameGraphicsManager : MonoBehaviour
     public static readonly Color[] detailColor = { new Color(0, 222f / 256f, 1), new Color(1, 171f / 256f, 0) };
     public static readonly string[] judgeTriggers = { "Precise", "Great", "Nice", "Bad", "Break" };
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         InputManager.Instance.OnPlayKeyDown += n =>
         {
@@ -37,40 +36,6 @@ public class IngameGraphicsManager : MonoBehaviour
             pressEffectObjects[n].SetActive(false);
             pressButtonObjects[n].SetActive(false);
         };
-
-        GameManager.Instance.OnMusicStart += () =>
-        {
-            StartGroove(GameManager.Instance.Now.bpmMeta.std);
-        };
-
-        GameManager.Instance.OnJudge += (int line, JUDGES judge, float gap) =>
-        {
-            TriggerJudgeAnimation(judge);
-
-            if (judge == JUDGES.BREAK)
-            {
-                EraseGap();
-            }
-            else if (judge == JUDGES.BAD)
-            {
-                ShowGap(gap);
-                EraseGap();
-            }
-            else
-            {
-                ShowGap(gap);
-                ShowScore(GameManager.Score);
-                ShowCombo(GameManager.Combo);
-                noteEffects[line].SetTrigger("Effect");
-            }
-        };
-
-        GameManager.Instance.OnTickJudge += (int line, JUDGES judge) =>
-        {
-            TriggerJudgeAnimation(judge);
-            ShowCombo(GameManager.Combo);
-            noteEffects[line].SetTrigger("Effect");
-        };
     }
 
     private void LateUpdate()
@@ -80,11 +45,40 @@ public class IngameGraphicsManager : MonoBehaviour
             return;
         }
 
+        grooveLight.SetFloat("BPM", (float)GameManager.CurrentBpm / 60f);
         speedText.text = "X" + GameManager.ScrollSpeed.ToString("F1");
         timeText.text = GameManager.CurrentTime.ToString("F3");
         beatText.text = GameManager.CurrentBeat.ToString("F0");
         bpmText.text = GameManager.CurrentBpm.ToString("F1") + " BPM";
+    }
 
+    public void VisualizeJudge(int line, JUDGES judge, float gap)
+    {
+        TriggerJudgeAnimation(judge);
+
+        if (judge == JUDGES.BREAK)
+        {
+            EraseGap();
+        }
+        else if (judge == JUDGES.BAD)
+        {
+            ShowGap(gap);
+            EraseGap();
+        }
+        else
+        {
+            ShowGap(gap);
+            ShowScore(GameManager.Score);
+            ShowCombo(GameManager.Combo);
+            noteEffects[line].SetTrigger("Effect");
+        }
+    }
+
+    public void VisualizeTickJudge(int line, JUDGES judge)
+    {
+        TriggerJudgeAnimation(judge);
+        ShowCombo(GameManager.Combo);
+        noteEffects[line].SetTrigger("Effect");
     }
 
     public void TriggerJudgeAnimation(JUDGES judge)
@@ -108,9 +102,8 @@ public class IngameGraphicsManager : MonoBehaviour
         scoreText.text = score.ToString("F0");
     }
 
-    public void StartGroove(double bpm)
+    public void StartGroove()
     {
-        grooveLight.SetFloat("BPM", (float)bpm / 60f);
         grooveLight.SetTrigger("Begin");
     }
 

@@ -14,54 +14,51 @@ public class PlayManager : MonoBehaviour
     public Sprite[] noteSprites;
     #endregion
 
-    private List<Queue<NoteSystem>> noteSystemQs;
-    public List<LongNoteProcess> longNoteProcesses;
+    private List<Queue<NoteSystem>> noteQueues;
+    public List<NoteState> noteStates;
 
     private void Awake()
     {
-        noteSystemQs = new List<Queue<NoteSystem>>();
-        longNoteProcesses = new List<LongNoteProcess>();
+        noteQueues = new List<Queue<NoteSystem>>();
+        noteStates = new List<NoteState>();
     }
 
-    private void Start()
+    public void SetPlayKey()
     {
-        GameManager.Instance.OnGameStart += () =>
-        {
-            InputManager.Instance.OnPlayKeyDown += JudgePlayKeyDown;
-            InputManager.Instance.OnPlayKey += JudgePlayKey;
-            InputManager.Instance.OnPlayKeyUp += JudgePlayKeyUp;
-        };
+        InputManager.Instance.OnPlayKeyDown += JudgePlayKeyDown;
+        InputManager.Instance.OnPlayKey += JudgePlayKey;
+        InputManager.Instance.OnPlayKeyUp += JudgePlayKeyUp;
     }
 
-    public void PrepareNotes()
+    public void PrepareNotes(SerializableDesc desc, SerializableSheet sheet)
     {
         GameManager.EndTime = 3f;
         List<List<NoteSystem>> sortReady = new List<List<NoteSystem>>();
         for (int i = 0; i < 4; i++)
         {
             sortReady.Add(new List<NoteSystem>());
-            longNoteProcesses.Add(new LongNoteProcess());
+            noteStates.Add(new NoteState());
         }
 
-        foreach (SerializableNote item in GameManager.Instance.Now.notes)
+        foreach (SerializableNote item in sheet.notes)
         {
             NoteSystem noteSystem = Instantiate(notePrefab, notesParent).GetComponent<NoteSystem>();
 
             noteSystem.SetFromData(item);
-            noteSystem.time = GameManager.Instance.Now.bpmMeta.GetTime(item.beat);
+            noteSystem.time = GameManager.Instance.Meta.GetTime(item.beat);
             noteSystem.GetComponent<Image>().sprite = noteSprites[(item.line == 1 || item.line == 2) ? 1 : 0];
 
             GameManager.EndTime = Math.Max(GameManager.EndTime, noteSystem.time);
             sortReady[item.line].Add(noteSystem);
         }
 
-        foreach (SerializableLongNote item in GameManager.Instance.Now.longNotes)
+        foreach (SerializableLongNote item in sheet.longNotes)
         {
             LongNoteSystem longNoteSystem = Instantiate(longNotePrefab, notesParent).GetComponent<LongNoteSystem>();
 
             longNoteSystem.SetFromData(item);
-            longNoteSystem.time = GameManager.Instance.Now.bpmMeta.GetTime(item.beat);
-            longNoteSystem.endTime = GameManager.Instance.Now.bpmMeta.GetTime(item.beat + item.length);
+            longNoteSystem.time = GameManager.Instance.Meta.GetTime(item.beat);
+            longNoteSystem.endTime = GameManager.Instance.Meta.GetTime(item.beat + item.length);
 
             longNoteSystem.GetComponent<Image>().sprite = noteSprites[(item.line == 1 || item.line == 2) ? 1 : 0];
 
@@ -72,7 +69,7 @@ public class PlayManager : MonoBehaviour
         foreach (List<NoteSystem> item in sortReady)
         {
             item.Sort();
-            noteSystemQs.Add(new Queue<NoteSystem>(item));
+            noteQueues.Add(new Queue<NoteSystem>(item));
         }
 
         GameManager.EndTime += 2f;
@@ -85,37 +82,35 @@ public class PlayManager : MonoBehaviour
 
     private void RemoveBreakNotes()
     {
-        for (int i = 0; i < noteSystemQs.Count; i++)
+        for (int i = 0; i < noteQueues.Count; i++)
         {
-            if (longNoteProcesses[i].isIn)
+            if (noteStates[i].isIn)
             {
                 continue;
             }
 
-            Queue<NoteSystem> item = noteSystemQs[i];
-            if (item.Count == 0)
+            if (noteQueues[i].Count == 0)
             {
                 continue;
             }
 
-            NoteSystem target = item.Peek();
-            float gap = GameManager.CurrentTime - target.time;
+            float gap = GameManager.CurrentTime - noteQueues[i].Peek().time;
             if (gap > CONST.JUDGESTD[(int)JUDGES.BAD])
             {
                 GameManager.Instance.HandleJudge(i, JUDGES.BREAK, gap);
-                RemoveOneFromQ(i);
+                DequeueNote(i);
             }
         }
     }
 
     private void JudgePlayKeyDown(int key)
     {
-        if (noteSystemQs[key].Count == 0)
+        if (noteQueues[key].Count == 0)
         {
             return;
         }
 
-        NoteSystem peek = noteSystemQs[key].Peek();
+        NoteSystem peek = noteQueues[key].Peek();
         float gap = peek.time - GameManager.CurrentTime;
 
         if (gap > CONST.JUDGESTD[(int)JUDGES.BAD]) // DONT CARE
@@ -125,9 +120,9 @@ public class PlayManager : MonoBehaviour
 
         if (peek.CompareTag("LongNote"))
         {
-            longNoteProcesses[key].isIn = true;
-            longNoteProcesses[key].startBeat = GameManager.CurrentBeat;
-            longNoteProcesses[key].target = peek as LongNoteSystem;
+            noteStates[key].isIn = true;
+            noteStates[key].startBeat = GameManager.CurrentBeat;
+            noteStates[key].target = peek as LongNoteSystem;
             HandleLongNoteDown(key, gap);
         }
         else
@@ -138,7 +133,7 @@ public class PlayManager : MonoBehaviour
 
     private void JudgePlayKey(int key)
     {
-        if (!longNoteProcesses[key].isIn)
+        if (!noteStates[key].isIn)
         {
             return;
         }
@@ -148,7 +143,7 @@ public class PlayManager : MonoBehaviour
 
     private void JudgePlayKeyUp(int key)
     {
-        if (!longNoteProcesses[key].isIn)
+        if (!noteStates[key].isIn)
         {
             return;
         }
@@ -156,34 +151,30 @@ public class PlayManager : MonoBehaviour
         HandleLongNoteUp(key);
     }
 
-    private void RemoveOneFromQ(int index)
-    {
-        NoteSystem target = noteSystemQs[index].Dequeue();
-        Destroy(target.gameObject);
-    }
+    private void DequeueNote(int index) => Destroy(noteQueues[index].Dequeue().gameObject);
 
     private void HandleNote(int key, float gap)
     {
         GameManager.Instance.HandleJudge(key, GetJudgeFormGap(gap), gap);
-        RemoveOneFromQ(key);
+        DequeueNote(key);
     }
 
     private void HandleLongNoteDown(int key, float gap)
     {
-        longNoteProcesses[key].judge = GetJudgeFormGap(gap);
-        GameManager.Instance.HandleFirstTickJudge(key, longNoteProcesses[key].judge, gap);
+        noteStates[key].judge = GetJudgeFormGap(gap);
+        GameManager.Instance.HandleFirstTickJudge(key, noteStates[key].judge, gap);
     }
 
     private void HandleLongNoteTick(int key)
     {
-        LongNoteProcess process = longNoteProcesses[key];
+        NoteState process = noteStates[key];
         process.target.isIn = true;
 
         if (process.target.endTime + CONST.JUDGESTD[(int)JUDGES.NICE] <= GameManager.CurrentTime)
         {
             GameManager.Instance.HandleJudge(key, JUDGES.NICE, CONST.JUDGESTD[(int)JUDGES.NICE]);
             process.Reset();
-            RemoveOneFromQ(key);
+            DequeueNote(key);
             return;
         }
 
@@ -201,14 +192,14 @@ public class PlayManager : MonoBehaviour
 
     private void HandleLongNoteUp(int key)
     {
-        LongNoteProcess process = longNoteProcesses[key];
+        NoteState process = noteStates[key];
 
         float gap = GameManager.CurrentTime - process.target.endTime;
         JUDGES j = GetJudgeFormGap(gap);
         j = j != JUDGES.BAD ? process.judge : JUDGES.BAD;
         GameManager.Instance.HandleJudge(key, j, gap);
         process.Reset();
-        RemoveOneFromQ(key);
+        DequeueNote(key);
     }
 
     private JUDGES GetJudgeFormGap(float gap)
@@ -236,14 +227,14 @@ public class PlayManager : MonoBehaviour
 }
 
 [Serializable]
-public class LongNoteProcess
+public class NoteState
 {
     public bool isIn;
     public double startBeat;
     public JUDGES judge;
     public LongNoteSystem target;
 
-    public LongNoteProcess()
+    public NoteState()
     {
         Reset();
     }

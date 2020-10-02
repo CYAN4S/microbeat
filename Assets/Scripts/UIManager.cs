@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject LIPrefab;
     public Transform UL;
+    public RectTransform ScrollViewportContent;
 
     public Text[] judgeCountTexts;
     public Text resultText;
@@ -33,8 +34,10 @@ public class UIManager : MonoBehaviour
             {
                 SerializableSheet sheet = music.sheets[i];
 
-                GameObject gameObject = Instantiate(LIPrefab, UL);
+                //GameObject gameObject = Instantiate(LIPrefab, UL);
+                GameObject gameObject = Instantiate(LIPrefab, ScrollViewportContent);
                 gameObject.transform.Translate(0, -250 * count++ * yMultiply, 0);
+                ScrollViewportContent.sizeDelta = new Vector2(0, 250 * count);
 
                 gameObject.GetComponent<Button>().onClick.AddListener(() =>
                 {

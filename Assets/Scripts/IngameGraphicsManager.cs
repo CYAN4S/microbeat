@@ -52,32 +52,13 @@ public class IngameGraphicsManager : MonoBehaviour
         bpmText.text = GameManager.CurrentBpm.ToString("F1") + " BPM";
     }
 
-    public void VisualizeJudge(int line, JUDGES judge, float gap)
+    public void VisualizeJudge(JUDGES judge)
     {
         TriggerJudgeAnimation(judge);
-
-        if (judge == JUDGES.BREAK)
-        {
-            EraseGap();
-        }
-        else if (judge == JUDGES.BAD)
-        {
-            ShowGap(gap);
-            EraseGap();
-        }
-        else
-        {
-            ShowGap(gap);
-            ShowScore(GameManager.Score);
-            ShowCombo(GameManager.Combo);
-            noteEffects[line].SetTrigger("Effect");
-        }
     }
 
-    public void VisualizeTickJudge(int line, JUDGES judge)
+    public void VisualizeNoteEffect(int line)
     {
-        TriggerJudgeAnimation(judge);
-        ShowCombo(GameManager.Combo);
         noteEffects[line].SetTrigger("Effect");
     }
 

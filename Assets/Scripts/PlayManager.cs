@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Schema;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -97,7 +98,7 @@ public class PlayManager : MonoBehaviour
             float gap = GameManager.CurrentTime - noteQueues[i].Peek().time;
             if (gap > CONST.JUDGESTD[(int)JUDGES.BAD])
             {
-                GameManager.Instance.HandleJudge(i, JUDGES.BREAK, gap);
+                GameManager.Instance.ApplyBreak(i);
                 DequeueNote(i);
             }
         }
@@ -155,50 +156,50 @@ public class PlayManager : MonoBehaviour
 
     private void HandleNote(int key, float gap)
     {
-        GameManager.Instance.HandleJudge(key, GetJudgeFormGap(gap), gap);
+        GameManager.Instance.ApplyNote(key, GetJudgeFormGap(gap), gap);
         DequeueNote(key);
     }
 
     private void HandleLongNoteDown(int key, float gap)
     {
-        noteStates[key].judge = GetJudgeFormGap(gap);
-        GameManager.Instance.HandleFirstTickJudge(key, noteStates[key].judge, gap);
+        var temp = GetJudgeFormGap(gap);
+        GameManager.Instance.ApplyLongNoteStart(key, temp, gap);
+        noteStates[key].judge = temp == JUDGES.BAD ? JUDGES.NICE : temp;
     }
 
     private void HandleLongNoteTick(int key)
     {
-        NoteState process = noteStates[key];
-        process.target.isIn = true;
+        NoteState state = noteStates[key];
+        state.target.isIn = true;
 
-        if (process.target.endTime + CONST.JUDGESTD[(int)JUDGES.NICE] <= GameManager.CurrentTime)
+        if (state.target.endTime + CONST.JUDGESTD[(int)JUDGES.NICE] <= GameManager.CurrentTime)
         {
-            GameManager.Instance.HandleJudge(key, JUDGES.NICE, CONST.JUDGESTD[(int)JUDGES.NICE]);
-            process.Reset();
+            GameManager.Instance.ApplyNote(key, JUDGES.NICE, CONST.JUDGESTD[(int)JUDGES.NICE]);
+            state.Reset();
             DequeueNote(key);
             return;
         }
 
-        if (process.target.ticks.Count == 0)
+        if (state.target.ticks.Count == 0)
         {
             return;
         }
 
-        if (process.target.ticks.Peek() + process.startBeat <= GameManager.CurrentBeat)
+        if (state.target.ticks.Peek() + state.startBeat <= GameManager.CurrentBeat)
         {
-            GameManager.Instance.HandleTickJudge(key, process.judge);
-            process.target.ticks.Dequeue();
+            GameManager.Instance.ApplyLongNoteTick(key, state.judge);
+            state.target.ticks.Dequeue();
         }
     }
 
     private void HandleLongNoteUp(int key)
     {
-        NoteState process = noteStates[key];
+        NoteState state = noteStates[key];
 
-        float gap = GameManager.CurrentTime - process.target.endTime;
-        JUDGES j = GetJudgeFormGap(gap);
-        j = j != JUDGES.BAD ? process.judge : JUDGES.BAD;
-        GameManager.Instance.HandleJudge(key, j, gap);
-        process.Reset();
+        float gap = GameManager.CurrentTime - state.target.endTime;
+        JUDGES j = GetJudgeFormGap(gap) != JUDGES.BAD ? state.judge : JUDGES.BAD;
+        GameManager.Instance.ApplyLongNoteEnd(key, j, gap);
+        state.Reset();
         DequeueNote(key);
     }
 

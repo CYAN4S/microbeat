@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Runtime.Serialization;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -29,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     public BpmMeta Meta { get; private set; }
 
-    private int dataScore;
+    private int rawScore;
     private int noteCount;
 
     private void Awake()
@@ -122,7 +121,7 @@ public class GameManager : MonoBehaviour
         CurrentBeat = 0;
         CurrentBpm = 0;
         currentMetaIndex = 0;
-        dataScore = 0;
+        rawScore = 0;
     }
 
     private void PrepareSongList()
@@ -190,33 +189,69 @@ public class GameManager : MonoBehaviour
         OnScrollSpeedChange?.Invoke();
     }
 
-    public void HandleJudge(int line, JUDGES judge, float gap)
+    public void ApplyNote(int line, JUDGES judge, float gap)
     {
         JudgeCounts[(int)judge]++;
 
-        if (judge == JUDGES.BREAK)
+        rawScore += CONST.JUDGESCORE[(int)judge];
+        Score = (double)rawScore / (CONST.JUDGESCORE[0] * noteCount) * 300000d;
+
+        if (judge != JUDGES.BAD)
+        {
+            Combo++;
+            igm.ShowCombo(Combo);
+            igm.VisualizeNoteEffect(line);
+        }
+        else
+        {
+            Combo = 0;
+        }
+
+        igm.ShowGap(gap);
+        igm.ShowScore(Score);
+        igm.VisualizeJudge(judge);
+    }
+
+    public void ApplyBreak(int line)
+    {
+        JudgeCounts[(int)JUDGES.BREAK]++;
+        Combo = 0;
+
+        igm.EraseGap();
+        igm.VisualizeJudge(JUDGES.BREAK);
+    }
+
+    public void ApplyLongNoteStart(int line, JUDGES judge, float gap)
+    {
+        if (judge == JUDGES.BAD)
         {
             Combo = 0;
         }
         else
         {
-            dataScore += CONST.JUDGESCORE[(int)judge];
-            Score = (double)dataScore / (CONST.JUDGESCORE[0] * noteCount) * 300000d;
-            Combo = (judge != JUDGES.BAD) ? (Combo + 1) : 0;
+            Combo++;
+            igm.ShowCombo(Combo);
+            igm.VisualizeNoteEffect(line);
         }
 
-        igm.VisualizeJudge(line, judge, gap);
+        igm.ShowGap(gap);
+        igm.VisualizeJudge(judge);
     }
 
-    public void HandleFirstTickJudge(int line, JUDGES judge, float gap)
+    public void ApplyLongNoteTick(int line, JUDGES judge)
     {
         Combo++;
-        igm.VisualizeJudge(line, judge, gap);
+        igm.ShowCombo(Combo);
+        igm.VisualizeJudge(judge);
+        igm.VisualizeNoteEffect(line);
     }
 
-    public void HandleTickJudge(int line, JUDGES judge)
+    public void ApplyLongNoteEnd(int line, JUDGES judge, float gap)
     {
-        Combo++;
-        igm.VisualizeTickJudge(line, judge);
+        ApplyNote(line, judge, gap);
     }
+
+
+
+
 }

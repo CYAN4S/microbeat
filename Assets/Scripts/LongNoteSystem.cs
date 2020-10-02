@@ -17,10 +17,7 @@ public class LongNoteSystem : NoteSystem
         rt = GetComponent<RectTransform>();
         ticks = new Queue<double>();
 
-        //GetPoses();
-        //ChangeLength();
-        GameManager.Instance.OnScrollSpeedChange += ChangeLength;
-        // notecode = NOTECODE.LONGNOTE;
+        //GameManager.Instance.OnScrollSpeedChange += ChangeLength;
     }
 
     private void LateUpdate()

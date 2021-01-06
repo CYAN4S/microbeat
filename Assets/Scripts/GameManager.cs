@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    [SerializeField] private InputReader _inputReader;
 
     private AudioSource audioSource;
     private InputManager im;
@@ -92,7 +93,6 @@ public class GameManager : MonoBehaviour
                     StartCoroutine(PlayAudio(0));
                 }
 
-                pm.SetPlayKey();
                 StartGame();
             })
         );
@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
     private void StartGame()
     {
         IsWorking = true;
-        im.OnSpeedKeyDown += ChangeSpeed;
+        _inputReader.speedEvent += ChangeSpeed;
     }
 
     private void EndGame()
@@ -250,8 +250,4 @@ public class GameManager : MonoBehaviour
     {
         ApplyNote(line, judge, gap);
     }
-
-
-
-
 }

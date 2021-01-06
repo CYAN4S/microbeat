@@ -4,7 +4,7 @@ using UnityEngine;
 public class LongNoteSystem : NoteSystem
 {
     public float endTime;
-    public readonly static float noteHeight = 50f;
+    public const float noteHeight = 50f;
     public double length;
     public Queue<double> ticks;
     public bool isIn = false;

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class IngameGraphicsManager : MonoBehaviour
 {
+    [SerializeField] private InputReader _inputReader;
+    
     public GameObject[] pressEffectObjects;
     public GameObject[] pressButtonObjects;
 
@@ -13,6 +16,7 @@ public class IngameGraphicsManager : MonoBehaviour
     public Text timeText, beatText, bpmText;
     public Text detailText;
     public Text ComboText;
+    public TextMeshProUGUI ComboTMP;
 
     public Animator judgeAnimator;
     public Animator grooveLight;
@@ -23,19 +27,29 @@ public class IngameGraphicsManager : MonoBehaviour
     public static readonly Color[] detailColor = { new Color(0, 222f / 256f, 1), new Color(1, 171f / 256f, 0) };
     public static readonly string[] judgeTriggers = { "Precise", "Great", "Nice", "Bad", "Break" };
 
-    private void Start()
-    {
-        InputManager.Instance.OnPlayKeyDown += n =>
-        {
-            pressEffectObjects[n].SetActive(true);
-            pressButtonObjects[n].SetActive(true);
-        };
 
-        InputManager.Instance.OnPlayKeyUp += n =>
-        {
-            pressEffectObjects[n].SetActive(false);
-            pressButtonObjects[n].SetActive(false);
-        };
+    private void OnEnable()
+    {
+        _inputReader.playKeyDownEvent += OnPlayKeyDown;
+        _inputReader.playKeyUpEvent += OnPlayKeyUp;
+    }
+
+    private void OnDisable()
+    {
+        _inputReader.playKeyDownEvent -= OnPlayKeyDown;
+        _inputReader.playKeyUpEvent -= OnPlayKeyUp;
+    }
+
+    private void OnPlayKeyDown(int n)
+    {
+        pressEffectObjects[n].SetActive(true);
+        pressButtonObjects[n].SetActive(true);
+    }
+
+    private void OnPlayKeyUp(int n)
+    {
+        pressEffectObjects[n].SetActive(false);
+        pressButtonObjects[n].SetActive(false);
     }
 
     private void LateUpdate()
@@ -95,7 +109,8 @@ public class IngameGraphicsManager : MonoBehaviour
 
     public void ShowCombo(int combo)
     {
-        ComboText.text = combo.ToString();
+        //ComboText.text = combo.ToString();
+        ComboTMP.text = combo.ToString();
         comboAnimator.SetTrigger("Combo");
         comboHeadingAnimator.SetTrigger("ComboHeading");
     }

@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class PlayManager : MonoBehaviour
 {
     #region INSPECTOR
+
+    [SerializeField] private InputReader _inputReader;
     public Transform notesParent;
 
     public GameObject notePrefab;
@@ -24,11 +26,18 @@ public class PlayManager : MonoBehaviour
         noteStates = new List<NoteState>();
     }
 
-    public void SetPlayKey()
+    private void OnEnable()
     {
-        InputManager.Instance.OnPlayKeyDown += JudgePlayKeyDown;
-        InputManager.Instance.OnPlayKey += JudgePlayKey;
-        InputManager.Instance.OnPlayKeyUp += JudgePlayKeyUp;
+        _inputReader.playKeyEvent += JudgePlayKey;
+        _inputReader.playKeyDownEvent += JudgePlayKeyDown;
+        _inputReader.playKeyUpEvent += JudgePlayKeyUp;
+    }
+
+    private void OnDisable()
+    {
+        _inputReader.playKeyEvent -= JudgePlayKey;
+        _inputReader.playKeyDownEvent -= JudgePlayKeyDown;
+        _inputReader.playKeyUpEvent -= JudgePlayKeyUp;
     }
 
     public void PrepareNotes(SerializableDesc desc, SerializableSheet sheet)

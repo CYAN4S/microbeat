@@ -80,22 +80,20 @@ public class FileExplorer : MonoBehaviour
         musicpacks.Add(new Musicpack(directory, desc, sheets));
     }
 
-    public IEnumerator GetAudioClip(string path, Action callback = null)
+    public IEnumerator GetAudioClip(string audioPath, Action callback = null)
     {
-        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(path, AudioType.WAV))
-        {
-            UnityWebRequestAsyncOperation x = www.SendWebRequest();
-            x.completed += _ => callback?.Invoke();
-            yield return x;
+        using UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(audioPath, AudioType.WAV);
+        UnityWebRequestAsyncOperation x = www.SendWebRequest();
+        x.completed += _ => callback?.Invoke();
+        yield return x;
 
-            if (www.isNetworkError)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                streamAudio = DownloadHandlerAudioClip.GetContent(www);
-            }
+        if (www.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            streamAudio = DownloadHandlerAudioClip.GetContent(www);
         }
     }
 }

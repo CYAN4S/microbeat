@@ -3,51 +3,39 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    public static InputManager Instance { get; private set; }
+    [SerializeField] private InputReader _inputReader;
 
-    public Action<int> OnPlayKey, OnPlayKeyDown, OnPlayKeyUp;
-    public Action<int> OnSpeedKeyDown;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-    }
-
+    public KeyCode[] SpeedKeys;
+    public KeyCode[] PlayKeys;
+    public KeyCode FeverKey;
+    
     private void Update()
     {
-        for (int i = 0; i < CONST.PLAYKEYCODES.Length; i++)
+        for (int i = 0; i < PlayKeys.Length; i++)
         {
-            KeyCode key = CONST.PLAYKEYCODES[i];
-
+            var key = PlayKeys[i];
             if (Input.GetKey(key))
             {
-                OnPlayKey?.Invoke(i);
+                _inputReader.OnPlayKey(i);
             }
 
             if (Input.GetKeyDown(key))
             {
-                OnPlayKeyDown?.Invoke(i);
+                _inputReader.OnPlayKeyDown(i);
             }
 
             if (Input.GetKeyUp(key))
             {
-                OnPlayKeyUp?.Invoke(i);
+                _inputReader.OnPlayKeyUp(i);
             }
         }
 
-        for (int i = 0; i < CONST.SPEEDKEYCODES.Length; i++)
+        for (int i = 0; i < SpeedKeys.Length; i++)
         {
-            KeyCode key = CONST.SPEEDKEYCODES[i];
+            var key = SpeedKeys[i];
             if (Input.GetKeyDown(key))
             {
-                OnSpeedKeyDown?.Invoke(i);
+                _inputReader.OnSpeed(i);
             }
         }
     }

@@ -11,9 +11,6 @@ public static class CONST
     public static readonly float[] JUDGESTD = { 0.05f, 0.1f, 0.2f, 0.3f };
     public static readonly int[] JUDGESCORE = { 5, 3, 2, 1 };
 
-    public static readonly KeyCode[] PLAYKEYCODES = { KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K };
-    public static readonly KeyCode[] SPEEDKEYCODES = { KeyCode.E, KeyCode.R, KeyCode.U, KeyCode.I };
-
     public static readonly float[] LINEXPOS = { -300, -100, 100, 300 };
 
     public static readonly string[] PATTERN = { "NM", "HD", "MX", "SC" };

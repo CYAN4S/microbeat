@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
 public enum JUDGES { PRECISE, GREAT, NICE, BAD, BREAK };
-public enum NOTECODE { NOTE, LONGNOTE };
 
 public enum SHEETVER { A1, A3 };
 

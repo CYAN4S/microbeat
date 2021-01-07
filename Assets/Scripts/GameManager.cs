@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private InputReader _inputReader;
 
     private AudioSource audioSource;
-    private InputManager im;
     private FileExplorer fe;
     private UIManager ui;
     private PlayManager pm;
@@ -24,7 +23,7 @@ public class GameManager : MonoBehaviour
     public static double CurrentBpm { get; private set; }
     public int[] JudgeCounts { get; private set; } = { 0, 0, 0, 0, 0 };
 
-    public Action<SheetData> OnSheetSelect;
+    public Action<ChartData> OnSheetSelect;
     public Action OnScrollSpeedChange;
 
     public BpmMeta Meta { get; private set; }
@@ -32,6 +31,8 @@ public class GameManager : MonoBehaviour
     private int rawScore;
     private int noteCount;
 
+    [SerializeField] private VoidEventChannelSO startExploreEventChannel;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -44,13 +45,12 @@ public class GameManager : MonoBehaviour
         }
 
         audioSource = GetComponent<AudioSource>();
-        im = GetComponent<InputManager>();
         fe = GetComponent<FileExplorer>();
         ui = GetComponent<UIManager>();
         pm = GetComponent<PlayManager>();
         igm = GetComponent<IngameGraphicsManager>();
 
-        OnSheetSelect += _ => PrepareGame(_);
+        OnSheetSelect += PrepareGame;
     }
 
 
@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
     {
         InitVariables();
         PrepareSongList();
+        
+        startExploreEventChannel.RaiseEvent();
     }
 
 
@@ -71,12 +73,12 @@ public class GameManager : MonoBehaviour
         RefreshTime();
     }
 
-    private void PrepareGame(SheetData sheetData)
+    private void PrepareGame(ChartData chartData)
     {
         ui.selection.SetActive(false);
 
-        SerializableDesc desc = sheetData.desc;
-        SerializableSheet sheet = sheetData.sheet;
+        SerializableDesc desc = chartData.desc;
+        SerializableSheet sheet = chartData.sheet;
 
         noteCount = sheet.notes.Count + sheet.longNotes.Count;
         Meta = desc.bpms?.Count is int c && c != 0 ? new BpmMeta(desc.bpms, desc.bpm) : new BpmMeta(desc.bpm);
@@ -85,7 +87,7 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine
         (
-            fe.GetAudioClip(sheetData.audioPath, () =>
+            fe.GetAudioClip(chartData.audioPath, () =>
             {
                 audioSource.clip = fe.streamAudio;
                 if (audioSource.clip != null)
@@ -126,7 +128,8 @@ public class GameManager : MonoBehaviour
 
     private void PrepareSongList()
     {
-        StartCoroutine(fe.ExploreAsync(GetComponent<UIManager>().DisplayMusics));
+        // GetComponent<UIManager>().DisplayMusics
+        // StartCoroutine(fe.ExploreAsync());
     }
 
     private void RefreshTime()

@@ -19,15 +19,23 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="CONST.cs" t="Include" />
-          <e p="FileExplorer.cs" t="Include" />
+          <e p="Events" t="Include">
+            <e p="VoidEventChannelSO.cs" t="Include" />
+            <e p="VoidEventListener.cs" t="Include" />
+          </e>
+          <e p="FileIO" t="Include">
+            <e p="FileExplorer.cs" t="Include" />
+            <e p="FileIOChannelSO.cs" t="Include" />
+          </e>
           <e p="GameManager.cs" t="Include" />
           <e p="IngameGraphicsManager.cs" t="Include" />
           <e p="Input" t="Include">
+            <e p="InputManager.cs" t="Include" />
             <e p="InputReader.cs" t="Include" />
           </e>
-          <e p="InputManager.cs" t="Include" />
           <e p="LISystem.cs" t="Include" />
           <e p="LongNoteSystem.cs" t="Include" />
+          <e p="MusicListController.cs" t="Include" />
           <e p="NoteSystem.cs" t="Include" />
           <e p="PlayManager.cs" t="Include" />
           <e p="SceneReloader.cs" t="Include" />

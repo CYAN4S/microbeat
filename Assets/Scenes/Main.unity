@@ -1880,6 +1880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da9d94b44916944889963eea39740d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noteStates: []
   _inputReader: {fileID: 11400000, guid: 902d6a28265bb4443923e54e313f1623, type: 2}
   notesParent: {fileID: 1725833717}
   notePrefab: {fileID: 3140704049987846472, guid: 9f7faad7eb79664499b3edf458341e50,
@@ -1889,7 +1890,6 @@ MonoBehaviour:
   noteSprites:
   - {fileID: 4766255273591357535, guid: edb28abf32997dd4090e088c9bc296ca, type: 3}
   - {fileID: 2101506007736477410, guid: edb28abf32997dd4090e088c9bc296ca, type: 3}
-  noteStates: []
 --- !u!114 &522699032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1902,9 +1902,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8efa98fa58c26d4f894e8372cbabf9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: 902d6a28265bb4443923e54e313f1623, type: 2}
-  startExploreEventChannel: {fileID: 11400000, guid: 6a55a3dd9e33dda4a9510c573c8a841a,
-    type: 2}
+  inputReader: {fileID: 11400000, guid: 902d6a28265bb4443923e54e313f1623, type: 2}
+  startExploreI: {fileID: 11400000, guid: 6a55a3dd9e33dda4a9510c573c8a841a, type: 2}
+  chartSelectF: {fileID: 11400000, guid: 767c300112299c24586e90527a8d8ca9, type: 2}
 --- !u!114 &522699033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2089,9 +2089,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   streamAudio: {fileID: 0}
-  channel: {fileID: 11400000, guid: 0d404915179473b49b5aa007cc46da6a, type: 2}
-  startExploreEventChannel: {fileID: 11400000, guid: 6a55a3dd9e33dda4a9510c573c8a841a,
-    type: 2}
+  chartPathLoadedI: {fileID: 11400000, guid: 6ae75a593ca6ad44b969cfa0aa125724, type: 2}
+  startExploreF: {fileID: 11400000, guid: 6a55a3dd9e33dda4a9510c573c8a841a, type: 2}
 --- !u!1 &577940575
 GameObject:
   m_ObjectHideFlags: 0
@@ -2307,9 +2306,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: -17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &655116951
 MonoBehaviour:
@@ -3278,7 +3277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &981386496
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3352,7 +3351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ddefe54d93902b48b531448d9269e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  channel: {fileID: 11400000, guid: 0d404915179473b49b5aa007cc46da6a, type: 2}
+  chartPathLoadedF: {fileID: 11400000, guid: 6ae75a593ca6ad44b969cfa0aa125724, type: 2}
+  chartSelectI: {fileID: 11400000, guid: 767c300112299c24586e90527a8d8ca9, type: 2}
   canvas: {fileID: 577940579}
   LIPrefab: {fileID: 7587274292379777231, guid: 6bfb53b83183f4244b4f2cf23d5dad96,
     type: 3}
@@ -4099,7 +4099,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4361,9 +4361,9 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_SizeDelta: {x: -17, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1344391200
 MonoBehaviour:
@@ -5279,9 +5279,9 @@ RectTransform:
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_SizeDelta: {x: 20, y: -17}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1763124063
 MonoBehaviour:
@@ -5561,7 +5561,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}

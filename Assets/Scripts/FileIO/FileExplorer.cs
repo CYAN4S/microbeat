@@ -1,44 +1,32 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
+using Events;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Networking;
 
 public class FileExplorer : MonoBehaviour
 {
-    public static FileExplorer Instance { get; private set; }
     public static string path;
 
-    public List<Musicpack> musicpacks;
     public AudioClip streamAudio;
 
-    [SerializeField] private FileIOChannelSO channel;
-    [SerializeField] private VoidEventChannelSO startExploreEventChannel;
+    [SerializeField] private ChartPathEventChannelSO chartPathLoadedI;
+    [SerializeField] private VoidEventChannelSO startExploreF;
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-
         path = Application.persistentDataPath;
     }
 
     private void OnEnable()
     {
-        startExploreEventChannel.onEventRaised += StartExplore;
+        startExploreF.onEventRaised += StartExplore;
     }
 
     private void OnDisable()
     {
-        startExploreEventChannel.onEventRaised -= StartExplore;
+        startExploreF.onEventRaised -= StartExplore;
     }
 
     private void StartExplore()
@@ -48,8 +36,8 @@ public class FileExplorer : MonoBehaviour
 
     public IEnumerator ExploreAsync(Action callback = null)
     {
-        musicpacks = new List<Musicpack>();
-        DirectoryInfo musicDirectory = new DirectoryInfo(Path.Combine(path, "Musics"));
+        // musicpacks = new List<Musicpack>();
+        var musicDirectory = new DirectoryInfo(Path.Combine(path, "Musics"));
 
         if (!musicDirectory.Exists)
         {
@@ -57,8 +45,8 @@ public class FileExplorer : MonoBehaviour
             yield break;
         }
 
-        IEnumerable<DirectoryInfo> directories = musicDirectory.EnumerateDirectories();
-        foreach (DirectoryInfo directory in directories)
+        var directories = musicDirectory.EnumerateDirectories();
+        foreach (var directory in directories)
         {
             SeekDirectory(directory);
             yield return null;
@@ -69,39 +57,43 @@ public class FileExplorer : MonoBehaviour
 
     private void SeekDirectory(DirectoryInfo directory)
     {
-        FileInfo descFile = directory.GetFiles("info.mudesc")?[0];
-        if (descFile == null)
-        {
-            return;
-        }
+        var descFile = directory.GetFiles("info.mudesc")?[0];
+        if (descFile == null) return;
 
-        FileInfo[] sheetFiles = directory.GetFiles("*.musheet");
-        if (sheetFiles.Length == 0)
-        {
-            return;
-        }
+        var patternFiles = directory.GetFiles("*.musheet");
+        if (patternFiles.Length == 0) return;
 
-        SerializableDesc desc;
-        using (StreamReader sr = descFile.OpenText())
-        {
-            desc = JsonUtility.FromJson<SerializableDesc>(sr.ReadToEnd());
-        }
+        var desc = FromFile<SerializableDesc>(descFile);
 
-        List<SerializableSheet> sheets = new List<SerializableSheet>();
-        foreach (FileInfo item in sheetFiles)
+        foreach (var patternFile in patternFiles)
         {
-            using (StreamReader sr = item.OpenText())
-            {
-                sheets.Add(JsonUtility.FromJson<SerializableSheet>(sr.ReadToEnd()));
-            }
-        }
+            var pattern = FromFile<SerializablePattern>(patternFile);
+            var chartPath = new ChartPath(
+                Path.Combine(directory.FullName, desc.musicPath),
+                descFile.FullName,
+                patternFile.FullName,
+                desc.name,
+                desc.artist,
+                desc.genre,
+                pattern.line,
+                pattern.level,
+                pattern.diff
+            );
 
-        var newMusic = new Musicpack(directory, desc, sheets);
-        foreach (var sheet in newMusic.sheets)
-        {
-            channel.OnChartLoaded(newMusic, sheet);
+            chartPathLoadedI.RaiseEvent(chartPath);
         }
-        musicpacks.Add(newMusic);
+    }
+
+    public static T FromFile<T>(FileInfo file)
+    {
+        using var sr = file.OpenText();
+        return JsonUtility.FromJson<T>(sr.ReadToEnd());
+    }
+
+    public static T FromFile<T>(string filePath)
+    {
+        using var sr = File.OpenText(filePath);
+        return JsonUtility.FromJson<T>(sr.ReadToEnd());
     }
 
     public IEnumerator GetAudioClip(string audioPath, Action callback = null)
@@ -112,27 +104,48 @@ public class FileExplorer : MonoBehaviour
         yield return x;
 
         if (www.result == UnityWebRequest.Result.ConnectionError)
-        {
             Debug.Log(www.error);
-        }
         else
-        {
             streamAudio = DownloadHandlerAudioClip.GetContent(www);
-        }
+    }
+
+    public static IEnumerator GetAudioClip(string audioPath, AudioClipEventChannelSO channel)
+    {
+        using var www = UnityWebRequestMultimedia.GetAudioClip(audioPath, AudioType.WAV);
+        yield return www.SendWebRequest();
+
+        if (www.result == UnityWebRequest.Result.ConnectionError)
+            Debug.Log(www.error);
+        else
+            channel.RaiseEvent(DownloadHandlerAudioClip.GetContent(www));
     }
 }
 
-public struct Musicpack
+public class ChartPath
 {
-    public DirectoryInfo directory;
-    public SerializableDesc desc;
-    public List<SerializableSheet> sheets;
+    public string artist;
+    public string audioPath;
+    public string descPath;
+    public int diff;
+    public string genre;
+    public int level;
+    public int line;
 
-    public Musicpack(DirectoryInfo item1, SerializableDesc item2, List<SerializableSheet> item3)
+    public string name;
+    public string patternPath;
+
+    public ChartPath(string audioPath, string descPath, string patternPath, string name, string artist, string genre,
+        int line, int level, int diff)
     {
-        directory = item1;
-        desc = item2;
-        sheets = item3;
+        this.audioPath = audioPath;
+        this.descPath = descPath;
+        this.patternPath = patternPath;
+        this.name = name;
+        this.artist = artist;
+        this.genre = genre;
+        this.line = line;
+        this.level = level;
+        this.diff = diff;
     }
 }
 
@@ -140,5 +153,5 @@ public struct ChartData
 {
     public string audioPath;
     public SerializableDesc desc;
-    public SerializableSheet sheet;
+    public SerializablePattern pattern;
 }

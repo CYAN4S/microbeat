@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -37,7 +35,7 @@ public class InputReader : ScriptableObject
             Debug.LogWarning("No events in InputReader.playKeyDownEvent");
         }
     }
-    
+
     public void OnPlayKey(int key)
     {
         if (playKeyEvent != null)
@@ -49,7 +47,7 @@ public class InputReader : ScriptableObject
             Debug.LogWarning("No events in InputReader.playKeyEvent");
         }
     }
-    
+
     public void OnPlayKeyUp(int key)
     {
         if (playKeyUpEvent != null)
@@ -85,5 +83,4 @@ public class InputReader : ScriptableObject
             Debug.LogWarning("No events in InputReader.pauseEvent");
         }
     }
-
 }

@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class LongNoteSystem : NoteSystem
 {
-    public float endTime;
     public const float noteHeight = 50f;
+    public float endTime;
     public double length;
     public Queue<double> ticks;
-    public bool isIn = false;
+    public bool isIn;
+    private float endPos;
 
     private float startPos;
-    private float endPos;
 
     private void Awake()
     {
@@ -22,10 +22,7 @@ public class LongNoteSystem : NoteSystem
 
     private void LateUpdate()
     {
-        if (!GameManager.IsWorking)
-        {
-            return;
-        }
+        if (!GameManager.IsWorking) return;
 
         GetPoses();
         Move();
@@ -37,15 +34,12 @@ public class LongNoteSystem : NoteSystem
         Line = data.line;
         Beat = data.beat;
         length = data.length;
-        for (double i = 0.25; i < length; i += 0.25)
-        {
-            ticks.Enqueue(i);
-        }
+        for (var i = 0.25; i < length; i += 0.25) ticks.Enqueue(i);
     }
 
     private void ChangeLength()
     {
-        float l = isIn ? endPos : endPos - startPos;
+        var l = isIn ? endPos : endPos - startPos;
         l += noteHeight;
         rt.sizeDelta = new Vector2(rt.sizeDelta.x, l);
     }
@@ -57,7 +51,8 @@ public class LongNoteSystem : NoteSystem
 
     private float GetCurrentEndYPos()
     {
-        return (float)((Beat + length - GameManager.CurrentBeat) * (float)GameManager.ScrollSpeed * 36000f / GameManager.Instance.Meta.std);
+        return (float) ((Beat + length - GameManager.CurrentBeat) * (float) GameManager.ScrollSpeed * 36000f /
+                        GameManager.Instance.Meta.std);
     }
 
     private void GetPoses()

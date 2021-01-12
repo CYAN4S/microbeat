@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class VoidEventListener : MonoBehaviour
 {
-    [SerializeField] private VoidEventChannelSO channel = default;
+    [SerializeField] private VoidEventChannelSO channel;
 
     public UnityEvent onEventRaised;
 

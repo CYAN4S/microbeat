@@ -18,12 +18,18 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="BpmMeta.cs" t="Include" />
+          <e p="Chart.cs" t="Include" />
           <e p="CONST.cs" t="Include" />
           <e p="Events" t="Include">
+            <e p="ChartPathEventChannelSO.cs" t="Include" />
+            <e p="EventChannelSO.cs" t="Include" />
             <e p="VoidEventChannelSO.cs" t="Include" />
             <e p="VoidEventListener.cs" t="Include" />
           </e>
           <e p="FileIO" t="Include">
+            <e p="AudioClipEventChannelSO.cs" t="Include" />
+            <e p="AudioClipEventListener.cs" t="Include" />
             <e p="FileExplorer.cs" t="Include" />
             <e p="FileIOChannelSO.cs" t="Include" />
           </e>
@@ -39,7 +45,7 @@
           <e p="NoteSystem.cs" t="Include" />
           <e p="PlayManager.cs" t="Include" />
           <e p="SceneReloader.cs" t="Include" />
-          <e p="Sheet.cs" t="Include" />
+          <e p="Serializable.cs" t="Include" />
           <e p="UIManager.cs" t="Include" />
         </e>
         <e p="Skins" t="Include">

@@ -20,34 +20,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/FileIO_Channel.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/FileIO_Channel.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/StartExploreEvent_Channel.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/StartExploreEvent_Channel.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events/VoidEventChannelSO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events/VoidEventChannelSO.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events/VoidEventListener.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events/VoidEventListener.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileIOChannelSO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileIOChannelSO.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MusicListController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MusicListController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/AudioClipEvent_Channel.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/AudioClipEvent_Channel.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/ChartPathLoadedEvent_Channel.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/ChartPathLoadedEvent_Channel.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/Void.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/Void/StartExploreEvent_Channel.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/Void/StartExploreEvent_Channel.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BpmMeta.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BpmMeta.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Chart.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events/ChartPathEventChannelSO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events/ChartPathEventChannelSO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events/EventChannelSO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Events/EventChannelSO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/AudioClipEventChannelSO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/AudioClipEventListener.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Serializable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GitHub/Editor/UnityAPIWrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/GitHub/Editor/UnityAPIWrapper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/StartExploreEvent_Channel.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/StartExploreEvent_Channel.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CONST.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CONST.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileExplorer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileExplorer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Events/VoidEventChannelSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Events/VoidEventChannelSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Events/VoidEventListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Events/VoidEventListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileIOChannelSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileIOChannelSO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InputManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InputManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/IngameGraphicsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/IngameGraphicsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputReader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LISystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LISystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LongNoteSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LongNoteSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MusicListController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MusicListController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NoteSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NoteSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneReloader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneReloader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sheet.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sheet.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skins/Skin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skins/Skin.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +79,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FileIO/FileIOChannelSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FileIO/AudioClipEventListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Skins/Skin.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Chart.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FileIO/AudioClipEventChannelSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Serializable.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -70,18 +94,29 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/IngameGraphicsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/InputManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CONST.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Events/VoidEventListener.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Events/VoidEventChannelSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FileExplorer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/FileEventChannelSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Input/InputReader.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/FileIOChannelSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/MusicListController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CONST.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/AudioClipChannelSO.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/AudioClipEventChannelSO.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/AudioClipEventListener.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/NoteSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Events/VoidEventListener.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Chart.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SMB.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BpmMeta.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Sheet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/FileIOChannelSO.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Events/EventChannelSO.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Events/ChartPathEventChannelSO.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MusicListController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       </list>
     </option>
   </component>
@@ -95,9 +130,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.43290043" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.29978356" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.40425533" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -117,10 +155,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="7036">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="7036" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -141,7 +179,10 @@
       <workItem from="1609750820035" duration="1390000" />
       <workItem from="1609831836799" duration="1559000" />
       <workItem from="1609917743816" duration="11440000" />
-      <workItem from="1610005443939" duration="10542000" />
+      <workItem from="1610005443939" duration="10885000" />
+      <workItem from="1610368638530" duration="2671000" />
+      <workItem from="1610377523117" duration="16418000" />
+      <workItem from="1610460791386" duration="736000" />
     </task>
     <servers />
   </component>
@@ -171,13 +212,125 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="680" y="325" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1605483632223" />
-    <state x="716" y="249" key="RiderGenerateDialog" timestamp="1609941930327">
+    <state x="705" y="372" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1610403305925">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="716" y="249" key="RiderGenerateDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1609941930327" />
+    <state x="705" y="372" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1920.1050@0.0.1920.1050" timestamp="1610403305925" />
+    <state width="883" height="464" key="DebuggerActiveHint" timestamp="1610460926504">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="883" height="464" key="DebuggerActiveHint/0.0.1920.1050@0.0.1920.1050" timestamp="1610460926504" />
+    <state width="1879" height="84" key="GridCell.Tab.0.bottom" timestamp="1610460867447">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1879" height="84" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1610460867447" />
+    <state width="1879" height="84" key="GridCell.Tab.0.center" timestamp="1610460867447">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1879" height="84" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1610460867447" />
+    <state width="1879" height="84" key="GridCell.Tab.0.left" timestamp="1610460867447">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1879" height="84" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1610460867447" />
+    <state width="1879" height="84" key="GridCell.Tab.0.right" timestamp="1610460867447">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1879" height="84" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1610460867447" />
+    <state width="1879" height="84" key="GridCell.Tab.1.bottom" timestamp="1610460872664">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1879" height="84" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1610460872664" />
+    <state width="1879" height="84" key="GridCell.Tab.1.center" timestamp="1610460872664">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1879" height="84" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1610460872664" />
+    <state width="1879" height="84" key="GridCell.Tab.1.left" timestamp="1610460872664">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1879" height="84" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1610460872664" />
+    <state width="1879" height="84" key="GridCell.Tab.1.right" timestamp="1610460872664">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1879" height="84" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1610460872664" />
+    <state width="1879" height="84" key="GridCell.Tab.2.bottom" timestamp="1610412523992">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1879" height="84" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1610412523992" />
+    <state width="1879" height="84" key="GridCell.Tab.2.center" timestamp="1610412523992">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1879" height="84" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1610412523992" />
+    <state width="1879" height="84" key="GridCell.Tab.2.left" timestamp="1610412523991">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1879" height="84" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1610412523991" />
+    <state width="1879" height="84" key="GridCell.Tab.2.right" timestamp="1610412523992">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1879" height="84" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1610412523992" />
+    <state width="1879" height="84" key="GridCell.Tab.3.bottom" timestamp="1610412523993">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1879" height="84" key="GridCell.Tab.3.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1610412523993" />
+    <state width="1879" height="84" key="GridCell.Tab.3.center" timestamp="1610412523992">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1879" height="84" key="GridCell.Tab.3.center/0.0.1920.1050@0.0.1920.1050" timestamp="1610412523992" />
+    <state width="1879" height="84" key="GridCell.Tab.3.left" timestamp="1610412523992">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1879" height="84" key="GridCell.Tab.3.left/0.0.1920.1050@0.0.1920.1050" timestamp="1610412523992" />
+    <state width="1879" height="84" key="GridCell.Tab.3.right" timestamp="1610412523992">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1879" height="84" key="GridCell.Tab.3.right/0.0.1920.1050@0.0.1920.1050" timestamp="1610412523992" />
+    <state x="716" y="249" key="RiderGenerateDialog" timestamp="1610403137040">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="716" y="249" key="RiderGenerateDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1610403137040" />
     <state x="841" y="143" width="983" height="708" key="SettingsEditor" timestamp="1609942169489">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="841" y="143" width="983" height="708" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1609942169489" />
+    <state x="92" y="92" width="1736" height="866" key="VCS.FileHistoryDialog" timestamp="1610392884216">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="92" y="92" width="1736" height="866" key="VCS.FileHistoryDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1610392884216" />
+    <state x="232" y="134" width="1602" height="1039" key="dock-window-1" timestamp="1610392884216">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="232" y="134" width="1602" height="1039" key="dock-window-1/0.0.1920.1050@0.0.1920.1050" timestamp="1610392884216" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/PlayManager.cs</url>
+          <line>37</line>
+          <properties documentPath="C:\Users\sih52\source\repos\microbeat\Assets\Scripts\PlayManager.cs" initialLine="37">
+            <startOffsets>
+              <option value="925" />
+            </startOffsets>
+            <endOffsets>
+              <option value="926" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/MusicListController.cs</url>
+          <line>31</line>
+          <properties documentPath="C:\Users\sih52\source\repos\microbeat\Assets\Scripts\MusicListController.cs" initialLine="31">
+            <startOffsets>
+              <option value="757" />
+            </startOffsets>
+            <endOffsets>
+              <option value="758" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

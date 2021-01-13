@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PlayManager : MonoBehaviour
 {
     public List<NoteState> noteStates;
-
     private List<Queue<NoteSystem>> noteQueues;
 
     private void Awake()
@@ -98,6 +97,7 @@ public class PlayManager : MonoBehaviour
 
     private void JudgePlayKeyDown(int key)
     {
+        if (!GameManager.IsWorking) return;
         if (noteQueues[key].Count == 0) return;
 
         var peek = noteQueues[key].Peek();
@@ -121,6 +121,9 @@ public class PlayManager : MonoBehaviour
 
     private void JudgePlayKey(int key)
     {
+        // if (gameplayState.data == null) return;
+        // if (!gameplayState.data.isWorking) return;
+        if (!GameManager.IsWorking) return;
         if (!noteStates[key].isIn) return;
 
         HandleLongNoteTick(key);
@@ -128,6 +131,7 @@ public class PlayManager : MonoBehaviour
 
     private void JudgePlayKeyUp(int key)
     {
+        if (!GameManager.IsWorking) return;
         if (!noteStates[key].isIn) return;
 
         HandleLongNoteUp(key);

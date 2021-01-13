@@ -3,10 +3,12 @@ using UnityEngine.Events;
 
 public abstract class EventChannelSO<T> : ScriptableObject
 {
+    public T value;
     public event UnityAction<T> onEventRaised;
 
-    public void RaiseEvent(T value)
+    public void RaiseEvent(T data)
     {
-        onEventRaised?.Invoke(value);
+        value = data;
+        onEventRaised?.Invoke(data);
     }
 }

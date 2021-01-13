@@ -7,6 +7,8 @@
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="ChartLoad.cs" t="Include" />
+        <e p="MusicSelect.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="GitHub" t="Include">
             <e p="Editor" t="Include">
@@ -18,34 +20,45 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
-          <e p="BpmMeta.cs" t="Include" />
-          <e p="Chart.cs" t="Include" />
-          <e p="CONST.cs" t="Include" />
+          <e p="Core" t="Include">
+            <e p="BpmMeta.cs" t="Include" />
+            <e p="Chart.cs" t="Include" />
+            <e p="CONST.cs" t="Include" />
+          </e>
           <e p="Events" t="Include">
+            <e p="AudioClipEventChannelSO.cs" t="Include" />
+            <e p="AudioClipEventListener.cs" t="Include" />
+            <e p="ChartEventChannelSO.cs" t="Include" />
             <e p="ChartPathEventChannelSO.cs" t="Include" />
             <e p="EventChannelSO.cs" t="Include" />
             <e p="VoidEventChannelSO.cs" t="Include" />
             <e p="VoidEventListener.cs" t="Include" />
           </e>
           <e p="FileIO" t="Include">
-            <e p="AudioClipEventChannelSO.cs" t="Include" />
-            <e p="AudioClipEventListener.cs" t="Include" />
             <e p="FileExplorer.cs" t="Include" />
-            <e p="FileIOChannelSO.cs" t="Include" />
+            <e p="Serializable.cs" t="Include" />
           </e>
           <e p="GameManager.cs" t="Include" />
+          <e p="Gameplay" t="Include">
+            <e p="LongNoteSystem.cs" t="Include" />
+            <e p="NoteSystem.cs" t="Include" />
+          </e>
           <e p="IngameGraphicsManager.cs" t="Include" />
           <e p="Input" t="Include">
             <e p="InputManager.cs" t="Include" />
             <e p="InputReader.cs" t="Include" />
           </e>
-          <e p="LISystem.cs" t="Include" />
-          <e p="LongNoteSystem.cs" t="Include" />
           <e p="MusicListController.cs" t="Include" />
-          <e p="NoteSystem.cs" t="Include" />
           <e p="PlayManager.cs" t="Include" />
           <e p="SceneReloader.cs" t="Include" />
-          <e p="Serializable.cs" t="Include" />
+          <e p="Temp" t="Include">
+            <e p="LoadScene.cs" t="Include" />
+          </e>
+          <e p="UI" t="Include">
+            <e p="JudgeEffect.cs" t="Include" />
+            <e p="LISystem.cs" t="Include" />
+            <e p="PressEffect.cs" t="Include" />
+          </e>
           <e p="UIManager.cs" t="Include" />
         </e>
         <e p="Skins" t="Include">

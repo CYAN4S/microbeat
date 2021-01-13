@@ -9,7 +9,6 @@ public class IngameGraphicsManager : MonoBehaviour
     public static readonly string[] judgeTriggers = {"Precise", "Great", "Nice", "Bad", "Break"};
     [SerializeField] private InputReader _inputReader;
 
-    public GameObject[] pressEffectObjects;
     public GameObject[] pressButtonObjects;
 
     public Text speedText, scoreText;
@@ -50,13 +49,11 @@ public class IngameGraphicsManager : MonoBehaviour
 
     private void OnPlayKeyDown(int n)
     {
-        pressEffectObjects[n].SetActive(true);
         pressButtonObjects[n].SetActive(true);
     }
 
     private void OnPlayKeyUp(int n)
     {
-        pressEffectObjects[n].SetActive(false);
         pressButtonObjects[n].SetActive(false);
     }
 

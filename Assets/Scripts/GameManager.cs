@@ -7,8 +7,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private InputReader inputReader;
 
-    [SerializeField] private VoidEventChannelSO startExploreI;
-    [SerializeField] private ChartPathEventChannelSO chartSelectF;
+    // [SerializeField] private VoidEventChannelSO startExploreI;
+    // [SerializeField] private ChartPathEventChannelSO chartSelectF;
+    [SerializeField] private ChartEventChannelSO chartChannel;
 
     private AudioSource audioSource;
 
@@ -17,7 +18,6 @@ public class GameManager : MonoBehaviour
     private IngameGraphicsManager igm;
     private int noteCount;
 
-    public Action<ChartData> OnSheetSelect;
     private PlayManager pm;
 
     private int rawScore;
@@ -38,16 +38,6 @@ public class GameManager : MonoBehaviour
 
     public BpmMeta Meta { get; private set; }
 
-    private void OnEnable()
-    {
-        chartSelectF.onEventRaised += PrepareGame;
-    }
-
-    private void OnDisable()
-    {
-        chartSelectF.onEventRaised -= PrepareGame;
-    }
-
     private void Awake()
     {
         if (Instance == null)
@@ -65,7 +55,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         InitVariables();
-        startExploreI.RaiseEvent();
+        // startExploreI.RaiseEvent();
+        PrepareGame(chartChannel.value);
     }
 
 
@@ -73,6 +64,16 @@ public class GameManager : MonoBehaviour
     {
         if (!IsWorking) return;
         RefreshTime();
+    }
+
+    private void OnEnable()
+    {
+        //chartSelectF.onEventRaised += PrepareGame;
+    }
+
+    private void OnDisable()
+    {
+        //chartSelectF.onEventRaised -= PrepareGame;
     }
 
     private void InitVariables()
@@ -89,28 +90,22 @@ public class GameManager : MonoBehaviour
         rawScore = 0;
     }
 
-    private void PrepareGame(ChartPath chartPath)
+    private void PrepareGame(Chart chart)
     {
-        ui.selection.SetActive(false);
+        // ui.selection.SetActive(false);
 
-        var desc = FileExplorer.FromFile<SerializableDesc>(chartPath.descPath);
-        var pattern = FileExplorer.FromFile<SerializablePattern>(chartPath.patternPath);
+        var desc = chart.desc;
+        var pattern = chart.pattern;
 
         noteCount = pattern.notes.Count + pattern.longNotes.Count;
         Meta = desc.bpms?.Count is int c && c != 0 ? new BpmMeta(desc.bpms, desc.bpm) : new BpmMeta(desc.bpm);
 
         pm.PrepareNotes(desc, pattern);
-
-        StartCoroutine
-        (
-            fe.GetAudioClip(chartPath.audioPath, () =>
-            {
-                audioSource.clip = fe.streamAudio;
-                if (audioSource.clip != null) StartCoroutine(PlayAudio(0));
-
-                StartGame();
-            })
-        );
+        
+        audioSource.clip = chart.audioClip;
+        Debug.Log(audioSource.clip.length);
+        if (audioSource.clip != null) StartCoroutine(PlayAudio(0));
+        StartGame();
     }
 
     private void StartGame()

@@ -12,21 +12,26 @@ public class FileExplorer : MonoBehaviour
     public AudioClip streamAudio;
 
     [SerializeField] private ChartPathEventChannelSO chartPathLoadedI;
-    [SerializeField] private VoidEventChannelSO startExploreF;
+    // [SerializeField] private VoidEventChannelSO startExploreF;
 
     private void Awake()
     {
         path = Application.persistentDataPath;
     }
 
+    private void Start()
+    {
+        StartExplore();
+    }
+
     private void OnEnable()
     {
-        startExploreF.onEventRaised += StartExplore;
+        //startExploreF.onEventRaised += StartExplore;
     }
 
     private void OnDisable()
     {
-        startExploreF.onEventRaised -= StartExplore;
+        //startExploreF.onEventRaised -= StartExplore;
     }
 
     private void StartExplore()
@@ -102,7 +107,7 @@ public class FileExplorer : MonoBehaviour
         var x = www.SendWebRequest();
         x.completed += _ => callback?.Invoke();
         yield return x;
-
+    
         if (www.result == UnityWebRequest.Result.ConnectionError)
             Debug.Log(www.error);
         else
@@ -113,6 +118,7 @@ public class FileExplorer : MonoBehaviour
     {
         using var www = UnityWebRequestMultimedia.GetAudioClip(audioPath, AudioType.WAV);
         yield return www.SendWebRequest();
+        Debug.Log(audioPath);
 
         if (www.result == UnityWebRequest.Result.ConnectionError)
             Debug.Log(www.error);

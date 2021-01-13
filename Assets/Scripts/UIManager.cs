@@ -6,16 +6,11 @@ public class UIManager : MonoBehaviour
     public static readonly Color[] DETAIL_COLOR = {new Color(0, 222f / 256f, 1), new Color(1, 171f / 256f, 0)};
     public static readonly string[] JUDGE_TRIGGERS = {"Precise", "Great", "Nice", "Bad", "Break"};
     public RectTransform canvas;
-    public GameObject selection, pause, result;
+    public GameObject pause, result;
 
     public Text[] judgeCountTexts;
     public Text resultText;
 
-
-    private void Start()
-    {
-        selection.SetActive(true);
-    }
 
     public void DisplayResult()
     {

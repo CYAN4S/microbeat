@@ -1,7 +1,7 @@
-using System.IO;
 using Events;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MusicListController : MonoBehaviour
 {
@@ -33,8 +33,12 @@ public class MusicListController : MonoBehaviour
         var obj = Instantiate(LIPrefab, ScrollViewportContent);
         obj.transform.Translate(0, -250 * count++ * yMultiply, 0);
         ScrollViewportContent.sizeDelta = new Vector2(0, 250 * count);
-        
-        obj.GetComponent<Button>().onClick.AddListener(() => chartSelectI.RaiseEvent(chartPath));
+
+        obj.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            chartSelectI.RaiseEvent(chartPath);
+            SceneManager.LoadScene(2);
+        });
 
         var liSystem = obj.GetComponent<LISystem>();
         liSystem.title.text = chartPath.name;

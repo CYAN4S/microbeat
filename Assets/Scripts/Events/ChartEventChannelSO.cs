@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "EventChannel", menuName = "Events/Chart Event Channel", order = 0)]
+[CreateAssetMenu(menuName = "Events/Chart Event Channel")]
 public class ChartEventChannelSO : EventChannelSO<Chart>
 {
 }

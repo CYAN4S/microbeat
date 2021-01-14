@@ -2,7 +2,7 @@
 
 namespace Events
 {
-    [CreateAssetMenu(fileName = "Event_Channel", menuName = "Events/ChartPath Event Channel", order = 0)]
+    [CreateAssetMenu(menuName = "Events/ChartPath Event Channel")]
     public class ChartPathEventChannelSO : EventChannelSO<ChartPath>
     {
     }

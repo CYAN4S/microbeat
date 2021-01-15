@@ -49,7 +49,7 @@ public class ChartLoad : MonoBehaviour
         Debug.Log(audioClip.length);
         chart.audioClip = audioClip;
         loadFinishedI.RaiseEvent(chart);
-        SceneManager.LoadScene(3);
+        //SceneManager.LoadScene(2);
     }
     
     public IEnumerator GetAudioClip(string audioPath, UnityAction callback = null)

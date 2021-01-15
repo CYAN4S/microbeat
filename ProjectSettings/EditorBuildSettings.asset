@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MusicSelect.unity
     guid: 9a54aaf1e21a47541adb3d5b001a6aad
   - enabled: 1
-    path: Assets/Scenes/ChartLoad.unity
-    guid: 2a5ad9aa7f294d94e91e3c35bb0b08f4
-  - enabled: 1
-    path: Assets/Scenes/Main.unity
+    path: Assets/Scenes/Gameplay.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

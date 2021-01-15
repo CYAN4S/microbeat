@@ -1,21 +1,20 @@
 ﻿using System;
+using Events;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IngameGraphicsManager : MonoBehaviour
+public class GameplayUIManager : MonoBehaviour
 {
     public static readonly Color[] detailColor = {new Color(0, 222f / 256f, 1), new Color(1, 171f / 256f, 0)};
     public static readonly string[] judgeTriggers = {"Precise", "Great", "Nice", "Bad", "Break"};
     [SerializeField] private InputReader _inputReader;
-
-    public GameObject[] pressButtonObjects;
+    [SerializeField] private PlayerSO player;
 
     public Text speedText, scoreText;
     public Text timeText, beatText, bpmText;
     public Text detailText;
-    public Text ComboText;
-    public TextMeshProUGUI ComboTMP;
+    public TextMeshProUGUI comboTMP;
 
     public Animator judgeAnimator;
     public Animator grooveLight;
@@ -23,39 +22,35 @@ public class IngameGraphicsManager : MonoBehaviour
     public Animator comboHeadingAnimator;
     public Animator[] noteEffects;
 
-    private void LateUpdate()
-    {
-        if (!GameManager.IsWorking) return;
-
-        grooveLight.SetFloat("BPM", (float) GameManager.CurrentBpm / 60f);
-        speedText.text = "X" + GameManager.ScrollSpeed.ToString("F1");
-        timeText.text = GameManager.CurrentTime.ToString("F3");
-        beatText.text = GameManager.CurrentBeat.ToString("F0");
-        bpmText.text = GameManager.CurrentBpm.ToString("F1") + " BPM";
-    }
-
-
     private void OnEnable()
     {
-        _inputReader.playKeyDownEvent += OnPlayKeyDown;
-        _inputReader.playKeyUpEvent += OnPlayKeyUp;
+        player.BpmChangeEvent += ChangeBpmText;
+        player.ScrollSpeedChangeEvent += ChangeSpeedText;
     }
 
     private void OnDisable()
     {
-        _inputReader.playKeyDownEvent -= OnPlayKeyDown;
-        _inputReader.playKeyUpEvent -= OnPlayKeyUp;
+        player.BpmChangeEvent -= ChangeBpmText;
+        player.ScrollSpeedChangeEvent -= ChangeSpeedText;
     }
 
-    private void OnPlayKeyDown(int n)
+    private void Start()
     {
-        pressButtonObjects[n].SetActive(true);
+        ChangeBpmText();
+        ChangeSpeedText();
     }
 
-    private void OnPlayKeyUp(int n)
+    private void LateUpdate()
     {
-        pressButtonObjects[n].SetActive(false);
+        if (!player.IsWorking) return;
+
+        grooveLight.SetFloat("BPM", (float)player.CurrentBpm / 60f);
+        timeText.text = player.CurrentTime.ToString("F3");
+        beatText.text = player.CurrentBeat.ToString("F0");
     }
+    
+    private void ChangeBpmText() =>  bpmText.text = player.CurrentBpm.ToString("F1") + " BPM";
+    private void ChangeSpeedText() => speedText.text = "X" + player.ScrollSpeed.ToString("F1");
 
     public void VisualizeJudge(JUDGES judge)
     {
@@ -100,8 +95,7 @@ public class IngameGraphicsManager : MonoBehaviour
 
     public void ShowCombo(int combo)
     {
-        //ComboText.text = combo.ToString();
-        ComboTMP.text = combo.ToString();
+        comboTMP.text = combo.ToString();
         comboAnimator.SetTrigger("Combo");
         comboHeadingAnimator.SetTrigger("ComboHeading");
     }

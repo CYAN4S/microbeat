@@ -22,7 +22,7 @@ public class LongNoteSystem : NoteSystem
 
     private void LateUpdate()
     {
-        if (!GameManager.IsWorking) return;
+        if (!player.IsWorking) return;
 
         GetPoses();
         Move();
@@ -46,13 +46,13 @@ public class LongNoteSystem : NoteSystem
 
     private void Move()
     {
-        transform.localPosition = new Vector3(CONST.LINEXPOS[Line], (startPos + endPos) / 2f);
+        transform.localPosition = new Vector3(CONST.LINE_X_POS[Line], (startPos + endPos) / 2f);
     }
 
     private float GetCurrentEndYPos()
     {
-        return (float) ((Beat + length - GameManager.CurrentBeat) * (float) GameManager.ScrollSpeed * 36000f /
-                        GameManager.Instance.Meta.std);
+        return (float) ((Beat + length - player.CurrentBeat) * (float) player.ScrollSpeed * 36000f /
+                        player.StdBpm);
     }
 
     private void GetPoses()

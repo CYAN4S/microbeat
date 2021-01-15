@@ -8,7 +8,6 @@ public class BpmMeta
     public List<double> beats;
     public List<double> bpms;
     public List<double> lengths;
-    public List<double> startTime;
     public List<double> endTimes;
     public double std;
 
@@ -54,7 +53,8 @@ public class BpmMeta
         endTimes.Add(double.MaxValue); // PLZ Don't rely on this value too.
     }
 
-    // Don't use it too often.
+    // This function works slowly. Don't use it too often.
+    // Use GetTimesFromList function for better performance.
     public float GetTime(double beat)
     {
         int index;
@@ -66,4 +66,33 @@ public class BpmMeta
 
         return (float) (endTimes[index - 1] + (beat - beats[index]) * 60.0 / bpms[index]);
     }
+
+    // beats List MUST BE SORTED.
+    // public Dictionary<double, float> GetTimesFromList(List<double> beatList)
+    // {
+    //     var result = new Dictionary<double, float>();
+    //
+    //     int index, bt = 0;
+    //     for (index = 0; index < beats.Count - 1; index++)
+    //     {
+    //         if (bt <= beatList.Count)
+    //         {
+    //             break;
+    //         }
+    //
+    //         for (int i = bt; i < beatList.Count; i++, bt++)
+    //         {
+    //             if (beats[index + 1] >= beatList[i])
+    //                 break;
+    //
+    //             var t = index == 0
+    //                 ? (float) ((beatList[i] - beats[index]) * 60.0 / bpms[index])
+    //                 : (float) (endTimes[index - 1] + (beatList[i] - beats[index]) * 60.0 / bpms[index]);
+    //
+    //             result.Add(beatList[i], t);
+    //         }
+    //     }
+    //
+    //     return result;
+    // }
 }

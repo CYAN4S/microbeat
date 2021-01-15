@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Events;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -11,21 +12,23 @@ public class UIManager : MonoBehaviour
     public Text[] judgeCountTexts;
     public Text resultText;
 
+    [SerializeField] private PlayerSO player;
+
 
     public void DisplayResult()
     {
-        for (var i = 0; i < GameManager.Instance.JudgeCounts.Length; i++)
-            judgeCountTexts[i].text = GameManager.Instance.JudgeCounts[i].ToString();
+        for (var i = 0; i < player.JudgeCounts.Length; i++)
+            judgeCountTexts[i].text = player.JudgeCounts[i].ToString();
 
-        var rank = CONST.RANKNAME[CONST.RANKNAME.Length - 1];
+        var rank = CONST.RANK_NAME[CONST.RANK_NAME.Length - 1];
         for (var i = 0; i < CONST.RANK.Length; i++)
-            if (GameManager.Score >= CONST.RANK[i])
+            if (player.Score >= CONST.RANK[i])
             {
-                rank = CONST.RANKNAME[i];
+                rank = CONST.RANK_NAME[i];
                 break;
             }
 
-        resultText.text = GameManager.Score.ToString("F0") + " / RANK " + rank;
+        resultText.text = player.Score.ToString("F0") + " / RANK " + rank;
 
         result.SetActive(true);
     }

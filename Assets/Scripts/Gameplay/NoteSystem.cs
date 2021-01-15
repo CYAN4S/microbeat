@@ -1,4 +1,5 @@
 ﻿using System;
+using Events;
 using UnityEngine;
 
 public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
@@ -9,6 +10,8 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
     public int Line { get; protected set; }
     public double Beat { get; protected set; }
 
+    [SerializeField] protected PlayerSO player;
+
     private void Awake()
     {
         rt = GetComponent<RectTransform>();
@@ -16,7 +19,7 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
 
     private void LateUpdate()
     {
-        if (!GameManager.IsWorking) return;
+        if (!player.IsWorking) return;
 
         Move();
     }
@@ -34,12 +37,12 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
 
     private void Move()
     {
-        transform.localPosition = new Vector3(CONST.LINEXPOS[Line], GetCurrentYPos());
+        transform.localPosition = new Vector3(CONST.LINE_X_POS[Line], GetCurrentYPos());
     }
 
     protected float GetCurrentYPos()
     {
-        return (float) ((Beat - GameManager.CurrentBeat) * (float) GameManager.ScrollSpeed * 36000f /
-                        GameManager.Instance.Meta.std);
+        return (float) ((Beat - player.CurrentBeat) * (float) player.ScrollSpeed * 36000f /
+                        player.StdBpm);
     }
 }

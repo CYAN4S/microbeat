@@ -24,14 +24,6 @@
             <e p="Chart.cs" t="Include" />
             <e p="CONST.cs" t="Include" />
           </e>
-          <e p="Events" t="Include">
-            <e p="AudioClipEventChannelSO.cs" t="Include" />
-            <e p="ChartEventChannelSO.cs" t="Include" />
-            <e p="ChartPathEventChannelSO.cs" t="Include" />
-            <e p="EventChannelSO.cs" t="Include" />
-            <e p="VoidEventChannelSO.cs" t="Include" />
-            <e p="VoidEventListener.cs" t="Include" />
-          </e>
           <e p="FileIO" t="Include">
             <e p="FileExplorer.cs" t="Include" />
             <e p="Serializable.cs" t="Include" />
@@ -40,23 +32,36 @@
           <e p="Gameplay" t="Include">
             <e p="LongNoteSystem.cs" t="Include" />
             <e p="NoteSystem.cs" t="Include" />
+            <e p="PlayManager.cs" t="Include" />
           </e>
-          <e p="IngameGraphicsManager.cs" t="Include" />
+          <e p="GameplayUIManager.cs" t="Include" />
           <e p="Input" t="Include">
             <e p="InputManager.cs" t="Include" />
             <e p="InputReader.cs" t="Include" />
           </e>
           <e p="MusicListController.cs" t="Include" />
           <e p="MusicSelect.cs" t="Include" />
-          <e p="PlayManager.cs" t="Include" />
           <e p="SceneReloader.cs" t="Include" />
+          <e p="SO" t="Include">
+            <e p="AudioClipEventChannelSO.cs" t="Include" />
+            <e p="ChartEventChannelSO.cs" t="Include" />
+            <e p="ChartPathEventChannelSO.cs" t="Include" />
+            <e p="EventChannelSO.cs" t="Include" />
+            <e p="FloatEventChannelSO.cs" t="Include" />
+            <e p="IntEventChannelSO.cs" t="Include" />
+            <e p="PlayerSO.cs" t="Include" />
+            <e p="StringEventChannelSO.cs" t="Include" />
+            <e p="VoidEventChannelSO.cs" t="Include" />
+          </e>
           <e p="Temp" t="Include">
             <e p="LoadScene.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
             <e p="JudgeEffect.cs" t="Include" />
             <e p="LISystem.cs" t="Include" />
+            <e p="LoadingBar.cs" t="Include" />
             <e p="PressEffect.cs" t="Include" />
+            <e p="ScrollSpeedText.cs" t="Include" />
           </e>
           <e p="UIManager.cs" t="Include" />
         </e>

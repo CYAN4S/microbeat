@@ -6,9 +6,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private InputReader inputReader;
-
-    // [SerializeField] private VoidEventChannelSO startExploreI;
-    // [SerializeField] private ChartPathEventChannelSO chartSelectF;
     [SerializeField] private ChartEventChannelSO chartChannel;
     [SerializeField] private PlayerSO player;
 
@@ -23,9 +20,6 @@ public class GameManager : MonoBehaviour
     private int rawScore;
     private UIManager ui;
     public static GameManager Instance { get; private set; }
-
-    // public int[] JudgeCounts { get; } = {0, 0, 0, 0, 0};
-    // public Action OnScrollSpeedChange;
 
     public BpmMeta Meta { get; private set; }
 
@@ -112,7 +106,6 @@ public class GameManager : MonoBehaviour
     private void EndGame()
     {
         player.OnGameEnd();
-        igm.StopGroove();
         ui.DisplayResult();
     }
 
@@ -150,7 +143,7 @@ public class GameManager : MonoBehaviour
     {
         while (time > player.CurrentTime) yield return null;
         audioSource.Play();
-        igm.StartGroove();
+        player.OnZero();
     }
 
     private void ChangeSpeed(int input)
@@ -162,8 +155,6 @@ public class GameManager : MonoBehaviour
         else if (value > 9.5) value = 9.5;
 
         player.ChangeScrollSpeed(value);
-        // player.scrollSpeed = value;
-        // OnScrollSpeedChange?.Invoke();
     }
 
     public void ApplyNote(int line, JUDGES judge, float gap)
@@ -176,8 +167,7 @@ public class GameManager : MonoBehaviour
         if (judge != JUDGES.BAD)
         {
             player.IncreaseCombo(1);
-            igm.ShowCombo(player.Combo);
-            igm.VisualizeNoteEffect(line);
+            player.OnNoteEffect(line);
         }
         else
         {
@@ -186,7 +176,7 @@ public class GameManager : MonoBehaviour
 
         igm.ShowGap(gap);
         igm.ShowScore(player.Score);
-        igm.VisualizeJudge(judge);
+        player.OnJudge(judge);
     }
 
     public void ApplyBreak(int line)
@@ -195,7 +185,7 @@ public class GameManager : MonoBehaviour
         player.BreakCombo();
 
         igm.EraseGap();
-        igm.VisualizeJudge(JUDGES.BREAK);
+        player.OnJudge(JUDGES.BREAK);
     }
 
     public void ApplyLongNoteStart(int line, JUDGES judge, float gap)
@@ -207,20 +197,18 @@ public class GameManager : MonoBehaviour
         else
         {
             player.IncreaseCombo(1);
-            igm.ShowCombo(player.Combo);
-            igm.VisualizeNoteEffect(line);
+            player.OnNoteEffect(line);
         }
 
         igm.ShowGap(gap);
-        igm.VisualizeJudge(judge);
+        player.OnJudge(judge);
     }
 
     public void ApplyLongNoteTick(int line, JUDGES judge)
     {
         player.IncreaseCombo(1);
-        igm.ShowCombo(player.Combo);
-        igm.VisualizeJudge(judge);
-        igm.VisualizeNoteEffect(line);
+        player.OnJudge(judge);
+        player.OnNoteEffect(line);
     }
 
     public void ApplyLongNoteEnd(int line, JUDGES judge, float gap)

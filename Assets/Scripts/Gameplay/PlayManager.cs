@@ -130,8 +130,6 @@ public class PlayManager : MonoBehaviour
 
     private void JudgePlayKey(int key)
     {
-        // if (gameplayState.data == null) return;
-        // if (!gameplayState.data.isWorking) return;
         if (!player.IsWorking) return;
         if (!noteStates[key].isIn) return;
 

@@ -46,6 +46,10 @@ namespace Events
         public event UnityAction GameEndEvent;
         public event UnityAction ComboIncreaseEvent;
         public event UnityAction ComboBreakEvent;
+        
+        public event UnityAction<JUDGES> JudgeEvent;
+        public event UnityAction<int> NoteEffectEvent;
+        public event UnityAction ZeroEvent;
 
         public void ChangeBpm(double value)
         {
@@ -87,6 +91,21 @@ namespace Events
         {
             Combo = 0;
             ComboBreakEvent?.Invoke();
+        }
+
+        public void OnJudge(JUDGES value)
+        {
+            JudgeEvent?.Invoke(value);
+        }
+
+        public void OnNoteEffect(int line)
+        {
+            NoteEffectEvent?.Invoke(line);
+        }
+
+        public void OnZero()
+        {
+            ZeroEvent?.Invoke();
         }
     }
 }

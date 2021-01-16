@@ -7,6 +7,8 @@
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="GrooveLight.cs" t="Include" />
+        <e p="NoteEffect.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="GitHub" t="Include">
             <e p="Editor" t="Include">
@@ -33,8 +35,12 @@
             <e p="LongNoteSystem.cs" t="Include" />
             <e p="NoteSystem.cs" t="Include" />
             <e p="PlayManager.cs" t="Include" />
+            <e p="Visual" t="Include">
+              <e p="Combo.cs" t="Include" />
+              <e p="GameplayUIManager.cs" t="Include" />
+              <e p="Judge.cs" t="Include" />
+            </e>
           </e>
-          <e p="GameplayUIManager.cs" t="Include" />
           <e p="Input" t="Include">
             <e p="InputManager.cs" t="Include" />
             <e p="InputReader.cs" t="Include" />
@@ -57,7 +63,6 @@
             <e p="LoadScene.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
-            <e p="JudgeEffect.cs" t="Include" />
             <e p="LISystem.cs" t="Include" />
             <e p="LoadingBar.cs" t="Include" />
             <e p="PressEffect.cs" t="Include" />

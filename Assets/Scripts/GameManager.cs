@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Events;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,16 +12,12 @@ public class GameManager : MonoBehaviour
     private AudioSource audioSource;
 
     private int currentMetaIndex;
-    private GameplayUIManager igm;
     private int noteCount;
 
     private PlayManager pm;
 
     private int rawScore;
-    private UIManager ui;
     public static GameManager Instance { get; private set; }
-
-    public BpmMeta Meta { get; private set; }
 
     private void Awake()
     {
@@ -31,15 +27,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         audioSource = GetComponent<AudioSource>();
-        ui = GetComponent<UIManager>();
         pm = GetComponent<PlayManager>();
-        igm = GetComponent<GameplayUIManager>();
     }
-    
+
     private void Start()
     {
-        // InitVariables();
-        // PrepareGame(chartChannel.value);
         player.Reset();
         currentMetaIndex = 0;
         rawScore = 0;
@@ -48,9 +40,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //if (!IsWorking) return;
         if (!player.IsWorking) return;
-        
+
         RefreshTime();
     }
 
@@ -64,35 +55,19 @@ public class GameManager : MonoBehaviour
         chartChannel.onEventRaised -= PrepareGame;
     }
 
-    // private void InitVariables()
-    // {
-    //     IsWorking = false;
-    //     CurrentTime = -3;
-    //     ScrollSpeed = 2.5;
-    //     EndTime = 1000f;
-    //     Combo = 0;
-    //     Score = 0;
-    //     CurrentBeat = 0;
-    //     CurrentBpm = 0;
-    //     currentMetaIndex = 0;
-    //     rawScore = 0;
-    // }
-
     private void PrepareGame(Chart chart)
     {
-        // ui.selection.SetActive(false);
-
         var desc = chart.desc;
         var pattern = chart.pattern;
 
         noteCount = pattern.notes.Count + pattern.longNotes.Count;
-        Meta = desc.bpms?.Count is int c && c != 0 ? new BpmMeta(desc.bpms, desc.bpm) : new BpmMeta(desc.bpm);
-        player.StdBpm = Meta.std;
+        var meta = desc.bpms?.Count is int c && c != 0 ? new BpmMeta(desc.bpms, desc.bpm) : new BpmMeta(desc.bpm);
+        player.StdBpm = meta.std;
+        player.Meta = meta;
 
         pm.PrepareNotes(desc, pattern);
-        
+
         audioSource.clip = chart.audioClip;
-        Debug.Log(audioSource.clip.length);
         if (audioSource.clip != null) StartCoroutine(PlayAudio(0));
         StartGame();
     }
@@ -106,7 +81,7 @@ public class GameManager : MonoBehaviour
     private void EndGame()
     {
         player.OnGameEnd();
-        ui.DisplayResult();
+        SceneManager.LoadScene(3);
     }
 
 
@@ -125,18 +100,19 @@ public class GameManager : MonoBehaviour
 
     private void RefreshBeatAndBpm()
     {
-        if (Meta.endTimes[currentMetaIndex] <= player.CurrentTime) currentMetaIndex++;
+        if (player.Meta.endTimes[currentMetaIndex] <= player.CurrentTime) currentMetaIndex++;
 
         if (currentMetaIndex == 0)
         {
-            player.CurrentBeat = player.CurrentTime * Meta.bpms[0] / 60.0;
-            player.ChangeBpm(Meta.bpms[0]);
+            player.CurrentBeat = player.CurrentTime * player.Meta.bpms[0] / 60.0;
+            player.ChangeBpm(player.Meta.bpms[0]);
             return;
         }
 
-        player.CurrentBeat = Meta.beats[currentMetaIndex] +
-                             (player.CurrentTime - Meta.endTimes[currentMetaIndex - 1]) * Meta.bpms[currentMetaIndex] / 60.0;
-        player.ChangeBpm(Meta.bpms[currentMetaIndex]);
+        player.CurrentBeat = player.Meta.beats[currentMetaIndex] +
+                             (player.CurrentTime - player.Meta.endTimes[currentMetaIndex - 1]) *
+                             player.Meta.bpms[currentMetaIndex] / 60.0;
+        player.ChangeBpm(player.Meta.bpms[currentMetaIndex]);
     }
 
     public IEnumerator PlayAudio(float time)
@@ -174,17 +150,14 @@ public class GameManager : MonoBehaviour
             player.BreakCombo();
         }
 
-        igm.ShowGap(gap);
-        igm.ShowScore(player.Score);
         player.OnJudge(judge);
+        player.OnGap(gap);
     }
 
     public void ApplyBreak(int line)
     {
         player.JudgeCounts[(int) JUDGES.BREAK]++;
         player.BreakCombo();
-
-        igm.EraseGap();
         player.OnJudge(JUDGES.BREAK);
     }
 
@@ -200,7 +173,7 @@ public class GameManager : MonoBehaviour
             player.OnNoteEffect(line);
         }
 
-        igm.ShowGap(gap);
+        player.OnGap(gap);
         player.OnJudge(judge);
     }
 

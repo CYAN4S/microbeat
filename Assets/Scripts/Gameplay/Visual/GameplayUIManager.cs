@@ -1,6 +1,5 @@
 ﻿using System;
 using Events;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,18 +11,6 @@ public class GameplayUIManager : MonoBehaviour
     public Text speedText, scoreText;
     public Text timeText, beatText, bpmText;
     public Text detailText;
-
-    private void OnEnable()
-    {
-        player.BpmChangeEvent += ChangeBpmText;
-        player.ScrollSpeedChangeEvent += ChangeSpeedText;
-    }
-
-    private void OnDisable()
-    {
-        player.BpmChangeEvent -= ChangeBpmText;
-        player.ScrollSpeedChangeEvent -= ChangeSpeedText;
-    }
 
     private void Start()
     {
@@ -38,23 +25,48 @@ public class GameplayUIManager : MonoBehaviour
         timeText.text = player.CurrentTime.ToString("F3");
         beatText.text = player.CurrentBeat.ToString("F0");
     }
-    
-    private void ChangeBpmText() =>  bpmText.text = player.CurrentBpm.ToString("F1") + " BPM";
-    private void ChangeSpeedText() => speedText.text = "X" + player.ScrollSpeed.ToString("F1");
 
-    public void ShowGap(float gap)
+    private void OnEnable()
+    {
+        player.BpmChangeEvent += ChangeBpmText;
+        player.ScrollSpeedChangeEvent += ChangeSpeedText;
+        player.ScoreChangeEvent += ChangeScoreText;
+        player.GapEvent += ChangeGapText;
+        player.ComboBreakEvent += EraseGapText;
+    }
+
+    private void OnDisable()
+    {
+        player.BpmChangeEvent -= ChangeBpmText;
+        player.ScrollSpeedChangeEvent -= ChangeSpeedText;
+        player.ScoreChangeEvent -= ChangeScoreText;
+        player.GapEvent -= ChangeGapText;
+        player.ComboBreakEvent -= EraseGapText;
+    }
+
+    private void ChangeBpmText()
+    {
+        bpmText.text = player.CurrentBpm.ToString("F1") + " BPM";
+    }
+
+    private void ChangeSpeedText()
+    {
+        speedText.text = "X" + player.ScrollSpeed.ToString("F1");
+    }
+
+    private void ChangeScoreText()
+    {
+        scoreText.text = player.Score.ToString("F0");
+    }
+
+    private void ChangeGapText(float gap)
     {
         detailText.color = detailColor[gap > 0 ? 1 : 0];
         detailText.text = (gap > 0 ? "EARLY " : "LATE ") + (Math.Abs(gap) * 100).ToString("F0");
     }
 
-    public void EraseGap()
+    private void EraseGapText()
     {
         detailText.text = "";
-    }
-
-    public void ShowScore(double score)
-    {
-        scoreText.text = score.ToString("F0");
     }
 }

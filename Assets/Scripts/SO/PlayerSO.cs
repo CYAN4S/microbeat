@@ -9,17 +9,18 @@ namespace Events
         // Update
         public float CurrentTime { get; set; }
         public double CurrentBeat { get; set; }
-        
+
         public float EndTime { get; set; }
         public double StdBpm { get; set; }
-        
+        public BpmMeta Meta { get; set; }
+
         public double CurrentBpm { get; private set; }
         public bool IsWorking { get; private set; }
         public double ScrollSpeed { get; private set; }
 
         public int Combo { get; private set; }
         public double Score { get; private set; }
-        
+
         public float GrooveMeter { get; private set; }
         public int[] JudgeCounts { get; private set; }
 
@@ -46,10 +47,11 @@ namespace Events
         public event UnityAction GameEndEvent;
         public event UnityAction ComboIncreaseEvent;
         public event UnityAction ComboBreakEvent;
-        
+
         public event UnityAction<JUDGES> JudgeEvent;
         public event UnityAction<int> NoteEffectEvent;
         public event UnityAction ZeroEvent;
+        public event UnityAction<float> GapEvent;
 
         public void ChangeBpm(double value)
         {
@@ -106,6 +108,11 @@ namespace Events
         public void OnZero()
         {
             ZeroEvent?.Invoke();
+        }
+
+        public void OnGap(float value)
+        {
+            GapEvent?.Invoke(value);
         }
     }
 }

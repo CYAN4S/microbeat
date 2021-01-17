@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Events;
 using TMPro;
 using UnityEngine;
@@ -24,9 +21,6 @@ public class Combo : MonoBehaviour
     private void Animate()
     {
         comboText.text = player.Combo.ToString();
-        foreach (var animator in animators)
-        {
-            animator.SetTrigger("Combo");
-        }
+        foreach (var animator in animators) animator.SetTrigger("Combo");
     }
 }

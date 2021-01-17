@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Events;
 using UnityEngine;
 
@@ -27,7 +24,7 @@ public class GrooveLight : MonoBehaviour
     {
         animator.SetTrigger("Begin");
     }
-    
+
     public void StopGroove()
     {
         animator.SetTrigger("End");
@@ -35,6 +32,6 @@ public class GrooveLight : MonoBehaviour
 
     public void Change()
     {
-        animator.SetFloat("BPM", (float)player.CurrentBpm / 60f);
+        animator.SetFloat("BPM", (float) player.CurrentBpm / 60f);
     }
 }

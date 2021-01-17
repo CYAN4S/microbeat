@@ -107,7 +107,7 @@ public class FileExplorer : MonoBehaviour
         var x = www.SendWebRequest();
         x.completed += _ => callback?.Invoke();
         yield return x;
-    
+
         if (www.result == UnityWebRequest.Result.ConnectionError)
             Debug.Log(www.error);
         else

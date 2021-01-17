@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneReloader : MonoBehaviour
 {
-    public void ReloadScene()
+    public void ReloadScene(int code)
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(code);
     }
 }

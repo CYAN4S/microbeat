@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AnalysisUIOptions">
-    <option name="SCOPE_TYPE" value="3" />
-  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -23,27 +20,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/GrooveLight.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/NoteEffect.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Combo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Combo.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Judge.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Judge.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Combo Heading.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Combo Heading.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Note Effect.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Note Effect.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GrooveLight.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GrooveLight.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoteEffect.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoteEffect.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Result.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Result.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChartLoad.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChartLoad.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/CONST.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/CONST.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Chart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Chart.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameplayUIManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameplayUIManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Combo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Combo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Judge.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Judge.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MusicListController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MusicListController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MusicSelect.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MusicSelect.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/AudioClipEventChannelSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/AudioClipEventChannelSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/FloatEventChannelSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/FloatEventChannelSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/IntEventChannelSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/IntEventChannelSO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/JudgeEffect.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/JudgeEffect.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/StringEventChannelSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/StringEventChannelSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneReloader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneReloader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/LISystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/LISystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/LoadingBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/LoadingBar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PressEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/PressEffect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PressEffect.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/PressEffect.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/ScrollSpeedText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/ScrollSpeedText.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,17 +66,12 @@
     <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/GrooveLight.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Temp/LoadScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Skins/Skin.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/NoteEffect.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/FileEventChannelSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Input/InputReader.cs" />
-        <option value="$PROJECT_DIR$/Assets/MusicListController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CONST.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/AudioClipChannelSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/AudioClipEventChannelSO.cs" />
@@ -88,8 +93,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Events/EventChannelSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Events/AudioClipEventChannelSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/Chart.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MusicListController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" />
         <option value="$PROJECT_DIR$/Assets/ChartLoad.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Events/ChartEventChannelSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Events/ChartPathEventChannelSO.cs" />
@@ -97,23 +100,28 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Events/IntEventChannelSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Events/FloatEventChannelSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/BpmMeta.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ChartLoad.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SO/StringEventChannelSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SO/PlayerEventChannelSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/IngameGraphicsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/LongNoteSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/CONST.cs" />
         <option value="$PROJECT_DIR$/Assets/ComboController.cs" />
         <option value="$PROJECT_DIR$/Assets/Combo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameplayUIManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Judge.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" />
         <option value="$PROJECT_DIR$/Assets/GrooveLight.cs" />
         <option value="$PROJECT_DIR$/Assets/NoteEffect.cs" />
+        <option value="$PROJECT_DIR$/Assets/Result.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SceneReloader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/LISystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MusicListController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ChartLoad.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       </list>
     </option>
@@ -193,6 +201,8 @@
       <workItem from="1610691597540" duration="7361000" />
       <workItem from="1610786150219" duration="1040000" />
       <workItem from="1610787962193" duration="3797000" />
+      <workItem from="1610852400011" duration="3872000" />
+      <workItem from="1610860474262" duration="3351000" />
     </task>
     <servers />
   </component>
@@ -226,10 +236,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="829" y="441" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.ChooseSilentCodeCleanupProfileDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1610512443140" />
-    <state x="705" y="372" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1610696371991">
+    <state x="705" y="372" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1610863883654">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="705" y="372" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1920.1050@0.0.1920.1050" timestamp="1610696371991" />
+    <state x="705" y="372" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1920.1050@0.0.1920.1050" timestamp="1610863883654" />
     <state width="883" height="464" key="DebuggerActiveHint" timestamp="1610460926504">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -298,10 +308,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1879" height="66" key="GridCell.Tab.3.right/0.0.1920.1050@0.0.1920.1050" timestamp="1610462019829" />
-    <state x="716" y="249" key="RiderGenerateDialog" timestamp="1610519435522">
+    <state x="716" y="249" key="RiderGenerateDialog" timestamp="1610862136215">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="716" y="249" key="RiderGenerateDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1610519435522" />
+    <state x="716" y="249" key="RiderGenerateDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1610862136215" />
     <state x="841" y="143" width="983" height="708" key="SettingsEditor" timestamp="1609942169489">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -314,9 +324,9 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="92" y="92" width="1736" height="866" key="VCS.FileHistoryDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1610392884216" />
-    <state x="232" y="134" width="1602" height="1039" key="dock-window-1" timestamp="1610392884216">
+    <state x="605" y="152" width="1515" height="1039" key="dock-window-1" timestamp="1610862076120">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="232" y="134" width="1602" height="1039" key="dock-window-1/0.0.1920.1050@0.0.1920.1050" timestamp="1610392884216" />
+    <state x="605" y="152" width="1515" height="1039" key="dock-window-1/0.0.1920.1050@0.0.1920.1050" timestamp="1610862076120" />
   </component>
 </project>

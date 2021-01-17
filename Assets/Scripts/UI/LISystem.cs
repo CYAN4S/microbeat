@@ -8,11 +8,7 @@ public class LISystem : MonoBehaviour
     public SerializableDesc desc;
     public SerializablePattern pattern;
 
-    #region INSPECTOR
-
     public Text title;
     public Text info;
     public Text level;
-
-    #endregion
 }

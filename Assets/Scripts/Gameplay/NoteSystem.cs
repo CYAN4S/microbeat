@@ -6,11 +6,11 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
 {
     public float time;
 
+    [SerializeField] protected PlayerSO player;
+
     protected RectTransform rt;
     public int Line { get; protected set; }
     public double Beat { get; protected set; }
-
-    [SerializeField] protected PlayerSO player;
 
     private void Awake()
     {

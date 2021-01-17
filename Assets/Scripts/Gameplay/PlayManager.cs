@@ -7,9 +7,18 @@ using UnityEngine.UI;
 public class PlayManager : MonoBehaviour
 {
     public List<NoteState> noteStates;
-    private List<Queue<NoteSystem>> noteQueues;
 
     [SerializeField] private PlayerSO player;
+
+
+    [SerializeField] private InputReader inputReader;
+    public Transform notesParent;
+
+    public GameObject notePrefab;
+    public GameObject longNotePrefab;
+
+    public Sprite[] noteSprites;
+    private List<Queue<NoteSystem>> noteQueues;
 
     private void Awake()
     {
@@ -24,16 +33,16 @@ public class PlayManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _inputReader.playKeyEvent += JudgePlayKey;
-        _inputReader.playKeyDownEvent += JudgePlayKeyDown;
-        _inputReader.playKeyUpEvent += JudgePlayKeyUp;
+        inputReader.playKeyEvent += JudgePlayKey;
+        inputReader.playKeyDownEvent += JudgePlayKeyDown;
+        inputReader.playKeyUpEvent += JudgePlayKeyUp;
     }
 
     private void OnDisable()
     {
-        _inputReader.playKeyEvent -= JudgePlayKey;
-        _inputReader.playKeyDownEvent -= JudgePlayKeyDown;
-        _inputReader.playKeyUpEvent -= JudgePlayKeyUp;
+        inputReader.playKeyEvent -= JudgePlayKey;
+        inputReader.playKeyDownEvent -= JudgePlayKeyDown;
+        inputReader.playKeyUpEvent -= JudgePlayKeyUp;
     }
 
     public void PrepareNotes(SerializableDesc desc, SerializablePattern pattern)
@@ -58,8 +67,8 @@ public class PlayManager : MonoBehaviour
             var longNoteSystem = Instantiate(longNotePrefab, notesParent).GetComponent<LongNoteSystem>();
 
             longNoteSystem.SetFromData(item);
-            longNoteSystem.time = GameManager.Instance.Meta.GetTime(item.beat);
-            longNoteSystem.endTime = GameManager.Instance.Meta.GetTime(item.beat + item.length);
+            longNoteSystem.time = player.Meta.GetTime(item.beat);
+            longNoteSystem.endTime = player.Meta.GetTime(item.beat + item.length);
 
             longNoteSystem.GetComponent<Image>().sprite = noteSprites[item.line == 1 || item.line == 2 ? 1 : 0];
 
@@ -81,9 +90,9 @@ public class PlayManager : MonoBehaviour
         var noteSystem = Instantiate(notePrefab, notesParent).GetComponent<NoteSystem>();
 
         noteSystem.SetFromData(item);
-        noteSystem.time = GameManager.Instance.Meta.GetTime(item.beat);
+        noteSystem.time = player.Meta.GetTime(item.beat);
         noteSystem.GetComponent<Image>().sprite = noteSprites[item.line == 1 || item.line == 2 ? 1 : 0];
-        
+
         return noteSystem;
     }
 
@@ -206,16 +215,6 @@ public class PlayManager : MonoBehaviour
             return JUDGES.GREAT;
         return JUDGES.PRECISE;
     }
-
-
-    [SerializeField] private InputReader _inputReader;
-    public Transform notesParent;
-
-    public GameObject notePrefab;
-    public GameObject longNotePrefab;
-
-    public Sprite[] noteSprites;
-
 }
 
 [Serializable]

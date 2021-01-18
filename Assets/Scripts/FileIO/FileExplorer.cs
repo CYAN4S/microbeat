@@ -24,16 +24,6 @@ public class FileExplorer : MonoBehaviour
         StartExplore();
     }
 
-    private void OnEnable()
-    {
-        //startExploreF.onEventRaised += StartExplore;
-    }
-
-    private void OnDisable()
-    {
-        //startExploreF.onEventRaised -= StartExplore;
-    }
-
     private void StartExplore()
     {
         StartCoroutine(ExploreAsync());
@@ -41,7 +31,6 @@ public class FileExplorer : MonoBehaviour
 
     public IEnumerator ExploreAsync(Action callback = null)
     {
-        // musicpacks = new List<Musicpack>();
         var musicDirectory = new DirectoryInfo(Path.Combine(path, "Musics"));
 
         if (!musicDirectory.Exists)

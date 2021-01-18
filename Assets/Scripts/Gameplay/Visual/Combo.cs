@@ -1,3 +1,4 @@
+using System.Linq;
 using Events;
 using TMPro;
 using UnityEngine;
@@ -20,7 +21,7 @@ public class Combo : MonoBehaviour
 
     private void Animate()
     {
-        comboText.text = player.Combo.ToString();
+        comboText.text = player.Combo.ToString().Aggregate("", (current, c) => current + $"<sprite={c}>");
         foreach (var animator in animators) animator.SetTrigger("Combo");
     }
 }

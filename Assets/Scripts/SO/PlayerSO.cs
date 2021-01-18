@@ -10,10 +10,12 @@ namespace Events
         public float CurrentTime { get; set; }
         public double CurrentBeat { get; set; }
 
+        // Const
         public float EndTime { get; set; }
         public double StdBpm { get; set; }
         public BpmMeta Meta { get; set; }
 
+        //
         public double CurrentBpm { get; private set; }
         public bool IsWorking { get; private set; }
         public double ScrollSpeed { get; private set; }

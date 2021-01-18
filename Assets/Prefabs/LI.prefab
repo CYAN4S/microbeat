@@ -66,9 +66,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 369145e1c36f77645811f9d5450b99e2, type: 3}
+    m_Font: {fileID: 12800000, guid: 997d8c1d92766d648a6fd7dd5b8a597f, type: 3}
     m_FontSize: 80
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 8
     m_MaxSize: 130
@@ -147,7 +147,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8c55be76386fa0e4a9be24769b2956ef, type: 3}
+    m_Font: {fileID: 12800000, guid: 997d8c1d92766d648a6fd7dd5b8a597f, type: 3}
     m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 0
@@ -254,6 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -295,9 +296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b81fbc3f5a4181246914ec5add58147e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: {fileID: 7587274292215187187}
-  info: {fileID: 7587274293862911515}
-  level: {fileID: 5149117867058971678}
   desc:
     name: 
     artist: 
@@ -305,12 +303,15 @@ MonoBehaviour:
     bpm: 0
     bpms: []
     musicPath: 
-  sheet:
+  pattern:
     line: 0
     level: 0
-    pattern: 0
+    diff: 0
     notes: []
     longNotes: []
+  title: {fileID: 7587274292215187187}
+  info: {fileID: 7587274293862911515}
+  level: {fileID: 5149117867058971678}
 --- !u!1 &7587274293862911513
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,9 +378,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7d694e0057a361843b8ce4e009a9f381, type: 3}
+    m_Font: {fileID: 12800000, guid: 997d8c1d92766d648a6fd7dd5b8a597f, type: 3}
     m_FontSize: 55
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 81

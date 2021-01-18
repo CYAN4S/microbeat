@@ -9,9 +9,8 @@ public class PlayManager : MonoBehaviour
     public List<NoteState> noteStates;
 
     [SerializeField] private PlayerSO player;
-
-
     [SerializeField] private InputReader inputReader;
+    
     public Transform notesParent;
 
     public GameObject notePrefab;
@@ -20,10 +19,13 @@ public class PlayManager : MonoBehaviour
     public Sprite[] noteSprites;
     private List<Queue<NoteSystem>> noteQueues;
 
+    private GameManager gm;
+
     private void Awake()
     {
         noteQueues = new List<Queue<NoteSystem>>();
         noteStates = new List<NoteState>();
+        gm = GetComponent<GameManager>();
     }
 
     private void LateUpdate()
@@ -107,7 +109,7 @@ public class PlayManager : MonoBehaviour
             var gap = player.CurrentTime - noteQueues[i].Peek().time;
             if (gap > CONST.JUDGE_STD[(int) JUDGES.BAD])
             {
-                GameManager.Instance.ApplyBreak(i);
+                gm.ApplyBreak(i);
                 DequeueNote(i);
             }
         }
@@ -160,14 +162,14 @@ public class PlayManager : MonoBehaviour
 
     private void HandleNote(int key, float gap)
     {
-        GameManager.Instance.ApplyNote(key, GetJudgeFormGap(gap), gap);
+        gm.ApplyNote(key, GetJudgeFormGap(gap), gap);
         DequeueNote(key);
     }
 
     private void HandleLongNoteDown(int key, float gap)
     {
         var temp = GetJudgeFormGap(gap);
-        GameManager.Instance.ApplyLongNoteStart(key, temp, gap);
+        gm.ApplyLongNoteStart(key, temp, gap);
         noteStates[key].judge = temp == JUDGES.BAD ? JUDGES.NICE : temp;
     }
 
@@ -178,7 +180,7 @@ public class PlayManager : MonoBehaviour
 
         if (state.target.endTime + CONST.JUDGE_STD[(int) JUDGES.NICE] <= player.CurrentTime)
         {
-            GameManager.Instance.ApplyNote(key, JUDGES.NICE, CONST.JUDGE_STD[(int) JUDGES.NICE]);
+            gm.ApplyNote(key, JUDGES.NICE, CONST.JUDGE_STD[(int) JUDGES.NICE]);
             state.Reset();
             DequeueNote(key);
             return;
@@ -188,7 +190,7 @@ public class PlayManager : MonoBehaviour
 
         if (state.target.ticks.Peek() + state.startBeat <= player.CurrentBeat)
         {
-            GameManager.Instance.ApplyLongNoteTick(key, state.judge);
+            gm.ApplyLongNoteTick(key, state.judge);
             state.target.ticks.Dequeue();
         }
     }
@@ -199,7 +201,7 @@ public class PlayManager : MonoBehaviour
 
         var gap = player.CurrentTime - state.target.endTime;
         var j = GetJudgeFormGap(gap) != JUDGES.BAD ? state.judge : JUDGES.BAD;
-        GameManager.Instance.ApplyLongNoteEnd(key, j, gap);
+        gm.ApplyLongNoteEnd(key, j, gap);
         state.Reset();
         DequeueNote(key);
     }

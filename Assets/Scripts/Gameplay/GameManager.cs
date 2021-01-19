@@ -32,18 +32,20 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (player.IsWorking)
+        if (player.IsWorking && !player.IsPaused)
             RefreshTime();
     }
 
     private void OnEnable()
     {
         chartChannel.onEventRaised += PrepareGame;
+        inputReader.pauseKeyEvent += PauseOrResume;
     }
 
     private void OnDisable()
     {
         chartChannel.onEventRaised -= PrepareGame;
+        inputReader.pauseKeyEvent -= PauseOrResume;
     }
 
     private void PrepareGame(Chart chart)
@@ -122,6 +124,30 @@ public class GameManager : MonoBehaviour
         else if (value > 9.5) value = 9.5;
 
         player.ChangeScrollSpeed(value);
+    }
+
+    private void PauseOrResume()
+    {
+        if (player.IsPaused)
+        {
+            Resume();
+        }
+        else
+        {
+            Pause();
+        }
+    }
+
+    private void Pause()
+    {
+        player.OnGamePause();
+        audioSource.Pause();
+    }
+
+    private void Resume()
+    {
+        player.OnGameResume();
+        audioSource.UnPause();
     }
 
     public void ApplyNote(int line, JUDGES judge, float gap)

@@ -18,6 +18,7 @@ namespace Events
         //
         public double CurrentBpm { get; private set; }
         public bool IsWorking { get; private set; }
+        public bool IsPaused { get; private set; }
         public double ScrollSpeed { get; private set; }
 
         public int Combo { get; private set; }
@@ -30,6 +31,7 @@ namespace Events
         public void Reset()
         {
             IsWorking = false;
+            IsPaused = false;
             CurrentTime = -3;
             ScrollSpeed = 2.5;
             EndTime = 1000f;
@@ -49,6 +51,8 @@ namespace Events
         public event UnityAction GameEndEvent;
         public event UnityAction ComboIncreaseEvent;
         public event UnityAction ComboBreakEvent;
+        public event UnityAction GamePauseEvent;
+        public event UnityAction GameResumeEvent;
 
         public event UnityAction<JUDGES> JudgeEvent;
         public event UnityAction<int> NoteEffectEvent;
@@ -83,6 +87,18 @@ namespace Events
         {
             IsWorking = false;
             GameEndEvent?.Invoke();
+        }
+
+        public void OnGamePause()
+        {
+            IsPaused = true;
+            GamePauseEvent?.Invoke();
+        }
+
+        public void OnGameResume()
+        {
+            IsPaused = false;
+            GameResumeEvent?.Invoke();
         }
 
         public void IncreaseCombo(int delta)

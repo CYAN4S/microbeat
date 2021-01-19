@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
     public KeyCode[] speedKeys;
     public KeyCode[] playKeys4B;
     public KeyCode feverKey;
+    public KeyCode pauseKey;
 
     private void Update()
     {
@@ -24,6 +25,11 @@ public class InputManager : MonoBehaviour
         {
             var key = speedKeys[i];
             if (Input.GetKeyDown(key)) inputReader.OnSpeed(i);
+        }
+
+        if (Input.GetKeyDown(pauseKey))
+        {
+            inputReader.OnPause();
         }
     }
 }

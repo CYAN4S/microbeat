@@ -117,7 +117,7 @@ public class PlayManager : MonoBehaviour
 
     private void JudgePlayKeyDown(int key)
     {
-        if (!player.IsWorking) return;
+        if (!player.IsWorking || player.IsPaused) return;
         if (noteQueues[key].Count == 0) return;
 
         var peek = noteQueues[key].Peek();
@@ -141,7 +141,7 @@ public class PlayManager : MonoBehaviour
 
     private void JudgePlayKey(int key)
     {
-        if (!player.IsWorking) return;
+        if (!player.IsWorking || player.IsPaused) return;
         if (!noteStates[key].isIn) return;
 
         HandleLongNoteTick(key);
@@ -149,7 +149,7 @@ public class PlayManager : MonoBehaviour
 
     private void JudgePlayKeyUp(int key)
     {
-        if (!player.IsWorking) return;
+        if (!player.IsWorking || player.IsPaused) return;
         if (!noteStates[key].isIn) return;
 
         HandleLongNoteUp(key);

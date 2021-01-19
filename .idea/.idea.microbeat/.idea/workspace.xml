@@ -20,53 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Fonts/Spoqa Han Sans Neo Bold.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Pause.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/ANTON-REGULAR.TTF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/ANTON-REGULAR.TTF.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/SpoqaHanSans.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/SpoqaHanSans/Spoqa Han Sans Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/SpoqaHanSans/Spoqa Han Sans Bold.ttf.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/SpoqaHanSans/Spoqa Han Sans Light.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/SpoqaHanSans/Spoqa Han Sans Light.ttf.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/SpoqaHanSans/Spoqa Han Sans Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/SpoqaHanSans/Spoqa Han Sans Regular.ttf.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/SpoqaHanSans/Spoqa Han Sans Thin.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/SpoqaHanSans/Spoqa Han Sans Thin.ttf.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/LI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/LI.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Result.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Result.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Title.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Title.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChartLoad.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/ChartLoad.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChartLoad.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/ChartLoad.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Combo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Combo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MusicListController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MusicListController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MusicListController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MusicListController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputReader.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneReloader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneReloader.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skins/Enchant/Enchant.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skins/Enchant/Enchant.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skins/Enchant/comboNumbers.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skins/Enchant/comboNumbers.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skins/Skin.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skins/Skin.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans.ttf.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,14 +41,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Temp/LoadScene.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Pause.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/AudioClipEventChannelSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/AudioClipEventListener.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/NoteSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Events/VoidEventListener.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Chart.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SMB.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BpmMeta.cs" />
@@ -128,12 +87,16 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/MusicListController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ChartLoad.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Combo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Input/InputReader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" />
+        <option value="$PROJECT_DIR$/Assets/Pause.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" />
       </list>
     </option>
   </component>
@@ -215,6 +178,7 @@
       <workItem from="1610852400011" duration="3872000" />
       <workItem from="1610860474262" duration="3351000" />
       <workItem from="1610932136665" duration="3631000" />
+      <workItem from="1611024855618" duration="4106000" />
     </task>
     <servers />
   </component>

@@ -9,8 +9,8 @@ public class InputReader : ScriptableObject
     public event UnityAction<int> playKeyDownEvent;
     public event UnityAction<int> playKeyEvent;
     public event UnityAction<int> playKeyUpEvent;
-    public event UnityAction feverEvent;
-    public event UnityAction pauseEvent;
+    public event UnityAction feverKeyEvent;
+    public event UnityAction pauseKeyEvent;
 
     public void OnSpeed(int key)
     {
@@ -46,17 +46,17 @@ public class InputReader : ScriptableObject
 
     public void OnFever()
     {
-        if (feverEvent != null)
-            feverEvent.Invoke();
+        if (feverKeyEvent != null)
+            feverKeyEvent.Invoke();
         else
-            Debug.LogWarning("No events in InputReader.feverEvent");
+            Debug.LogWarning("No events in InputReader.feverKeyEvent");
     }
 
     public void OnPause()
     {
-        if (pauseEvent != null)
-            pauseEvent.Invoke();
+        if (pauseKeyEvent != null)
+            pauseKeyEvent.Invoke();
         else
-            Debug.LogWarning("No events in InputReader.pauseEvent");
+            Debug.LogWarning("No events in InputReader.pauseKeyEvent");
     }
 }

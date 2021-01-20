@@ -38,6 +38,8 @@ public class PlayManager : MonoBehaviour
         inputReader.playKeyEvent += JudgePlayKey;
         inputReader.playKeyDownEvent += JudgePlayKeyDown;
         inputReader.playKeyUpEvent += JudgePlayKeyUp;
+        player.GamePauseEvent += OnPause;
+        player.GameResumeEvent += OnResume;
     }
 
     private void OnDisable()
@@ -45,6 +47,8 @@ public class PlayManager : MonoBehaviour
         inputReader.playKeyEvent -= JudgePlayKey;
         inputReader.playKeyDownEvent -= JudgePlayKeyDown;
         inputReader.playKeyUpEvent -= JudgePlayKeyUp;
+        player.GamePauseEvent -= OnPause;
+        player.GameResumeEvent -= OnResume;
     }
 
     public void PrepareNotes(SerializableDesc desc, SerializablePattern pattern)
@@ -216,6 +220,16 @@ public class PlayManager : MonoBehaviour
         if (absGap > CONST.JUDGE_STD[(int) JUDGES.PRECISE])
             return JUDGES.GREAT;
         return JUDGES.PRECISE;
+    }
+
+    private void OnPause()
+    {
+        
+    }
+
+    private void OnResume()
+    {
+        
     }
 }
 

@@ -142,6 +142,7 @@ public class GameManager : MonoBehaviour
     {
         player.OnGamePause();
         audioSource.Pause();
+        audioSource.time = player.CurrentTime;
     }
 
     private void Resume()

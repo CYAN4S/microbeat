@@ -20,14 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Pause.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputReader.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,10 +88,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Combo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Input/InputReader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Pause.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" />
       </list>
     </option>
   </component>
@@ -179,6 +174,7 @@
       <workItem from="1610860474262" duration="3351000" />
       <workItem from="1610932136665" duration="3631000" />
       <workItem from="1611024855618" duration="4106000" />
+      <workItem from="1611144208917" duration="2611000" />
     </task>
     <servers />
   </component>

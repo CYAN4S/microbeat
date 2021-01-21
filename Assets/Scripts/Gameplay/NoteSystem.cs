@@ -42,7 +42,12 @@ public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
 
     protected float GetCurrentYPos()
     {
-        return (float) ((Beat - player.CurrentBeat) * (float) player.ScrollSpeed * 36000f /
+        return GetYPos(Beat);
+    }
+
+    protected float GetYPos(double beat)
+    {
+        return (float) ((beat - player.CurrentBeat) * (float) player.ScrollSpeed * 36000f /
                         player.StdBpm);
     }
 }

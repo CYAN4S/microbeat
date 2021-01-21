@@ -8,8 +8,11 @@ public class LongNoteSystem : NoteSystem
     public double length;
     public Queue<double> ticks;
     public bool isIn;
+    public bool pausedWhileIsIn = false;
+    public double pausedTime;
+    
+    
     private float endPos;
-
     private float startPos;
 
     private void Awake()
@@ -51,13 +54,19 @@ public class LongNoteSystem : NoteSystem
 
     private float GetCurrentEndYPos()
     {
-        return (float) ((Beat + length - player.CurrentBeat) * (float) player.ScrollSpeed * 36000f /
-                        player.StdBpm);
+        return GetYPos(Beat + length);
+        // return (float) ((Beat + length - player.CurrentBeat) * (float) player.ScrollSpeed * 36000f / player.StdBpm);
     }
 
     private void GetPoses()
     {
-        startPos = isIn ? 0 : GetCurrentYPos();
+        if (pausedWhileIsIn)
+            startPos = Mathf.Max(GetYPos(pausedTime), 0);
+        else if (isIn)
+            startPos = 0;
+        else
+            startPos = GetCurrentYPos();
+        
         endPos = GetCurrentEndYPos();
     }
 }

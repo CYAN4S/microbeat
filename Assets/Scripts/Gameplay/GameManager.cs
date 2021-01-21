@@ -195,6 +195,12 @@ public class GameManager : MonoBehaviour
         player.OnJudge(judge);
     }
 
+    public void ApplyLongNoteStartPausedWhileIsIn(int line, JUDGES judge)
+    {
+        player.OnNoteEffect(line);
+        player.OnJudge(judge);
+    }
+
     public void ApplyLongNoteTick(int line, JUDGES judge)
     {
         player.IncreaseCombo(1);

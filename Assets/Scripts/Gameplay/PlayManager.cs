@@ -132,9 +132,19 @@ public class PlayManager : MonoBehaviour
 
         if (peek.CompareTag("LongNote"))
         {
+            if (noteStates[key].pausedWhileIsIn)
+            {
+                noteStates[key].pausedWhileIsIn = false;
+                noteStates[key].isIn = true;
+
+                noteStates[key].target.isIn = true;
+                noteStates[key].target.pausedWhileIsIn = false;
+                HandleLongNoteDownPausedWhileIsIn(key, gap);
+            }
             noteStates[key].isIn = true;
             noteStates[key].startBeat = player.CurrentBeat;
             noteStates[key].target = peek as LongNoteSystem;
+            noteStates[key].target.isIn = true;
             HandleLongNoteDown(key, gap);
         }
         else
@@ -177,10 +187,14 @@ public class PlayManager : MonoBehaviour
         noteStates[key].judge = temp == JUDGES.BAD ? JUDGES.NICE : temp;
     }
 
+    private void HandleLongNoteDownPausedWhileIsIn(int key, float gap)
+    {
+        gm.ApplyLongNoteStartPausedWhileIsIn(key, noteStates[key].judge);
+    }
+
     private void HandleLongNoteTick(int key)
     {
         var state = noteStates[key];
-        state.target.isIn = true;
 
         if (state.target.endTime + CONST.JUDGE_STD[(int) JUDGES.NICE] <= player.CurrentTime)
         {
@@ -224,7 +238,18 @@ public class PlayManager : MonoBehaviour
 
     private void OnPause()
     {
-        
+        foreach (var state in noteStates)
+        {
+            if (state.isIn)
+            {
+                state.pausedWhileIsIn = true;
+                state.originTime = state.startBeat;
+                state.isIn = false;
+
+                state.target.isIn = false;
+                state.target.pausedWhileIsIn = true;
+            }
+        }
     }
 
     private void OnResume()
@@ -240,6 +265,8 @@ public class NoteState
     public double startBeat;
     public JUDGES judge;
     public LongNoteSystem target;
+    public bool pausedWhileIsIn;
+    public double originTime;
 
     public NoteState()
     {
@@ -252,5 +279,7 @@ public class NoteState
         startBeat = 0;
         judge = JUDGES.BREAK;
         target = null;
+        pausedWhileIsIn = false;
+        originTime = 0;
     }
 }

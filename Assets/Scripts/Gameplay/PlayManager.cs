@@ -70,14 +70,7 @@ public class PlayManager : MonoBehaviour
 
         foreach (var item in pattern.longNotes)
         {
-            var longNoteSystem = Instantiate(longNotePrefab, notesParent).GetComponent<LongNoteSystem>();
-
-            longNoteSystem.SetFromData(item);
-            longNoteSystem.time = player.Meta.GetTime(item.beat);
-            longNoteSystem.endTime = player.Meta.GetTime(item.beat + item.length);
-
-            longNoteSystem.GetComponent<Image>().sprite = noteSprites[item.line == 1 || item.line == 2 ? 1 : 0];
-
+            var longNoteSystem = CreateLongNote(item);
             player.EndTime = Math.Max(player.EndTime, longNoteSystem.endTime);
             sortReady[item.line].Add(longNoteSystem);
         }
@@ -100,6 +93,18 @@ public class PlayManager : MonoBehaviour
         noteSystem.GetComponent<Image>().sprite = noteSprites[item.line == 1 || item.line == 2 ? 1 : 0];
 
         return noteSystem;
+    }
+
+    private LongNoteSystem CreateLongNote(SerializableLongNote item)
+    {
+        var longNoteSystem = Instantiate(longNotePrefab, notesParent).GetComponent<LongNoteSystem>();
+        
+        longNoteSystem.SetFromData(item);
+        longNoteSystem.time = player.Meta.GetTime(item.beat);
+        longNoteSystem.endTime = player.Meta.GetTime(item.beat + item.length);
+        longNoteSystem.GetComponent<Image>().sprite = noteSprites[item.line == 1 || item.line == 2 ? 1 : 0];
+
+        return longNoteSystem;
     }
 
     private void RemoveBreakNotes()
@@ -132,7 +137,15 @@ public class PlayManager : MonoBehaviour
 
         if (peek.CompareTag("LongNote"))
         {
-            if (noteStates[key].pausedWhileIsIn)
+            if (!noteStates[key].pausedWhileIsIn)
+            {
+                noteStates[key].isIn = true;
+                noteStates[key].startBeat = player.CurrentBeat;
+                noteStates[key].target = peek as LongNoteSystem;
+                noteStates[key].target.isIn = true;
+                HandleLongNoteDown(key, gap);
+            }
+            else
             {
                 noteStates[key].pausedWhileIsIn = false;
                 noteStates[key].isIn = true;
@@ -141,11 +154,6 @@ public class PlayManager : MonoBehaviour
                 noteStates[key].target.pausedWhileIsIn = false;
                 HandleLongNoteDownPausedWhileIsIn(key, gap);
             }
-            noteStates[key].isIn = true;
-            noteStates[key].startBeat = player.CurrentBeat;
-            noteStates[key].target = peek as LongNoteSystem;
-            noteStates[key].target.isIn = true;
-            HandleLongNoteDown(key, gap);
         }
         else
         {

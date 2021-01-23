@@ -81,7 +81,7 @@ public class PlayManager : MonoBehaviour
             noteQueues.Add(new Queue<NoteSystem>(item));
         }
 
-        player.EndTime += 2f;
+        player.EndTime += 5f;
     }
 
     private NoteSystem CreateNote(SerializableNote item)
@@ -111,13 +111,19 @@ public class PlayManager : MonoBehaviour
     {
         for (var i = 0; i < noteQueues.Count; i++)
         {
-            if (noteStates[i].isIn) continue;
+            if (noteStates[i].isInLongNote) continue;
 
             if (noteQueues[i].Count == 0) continue;
 
-            var gap = player.CurrentTime - noteQueues[i].Peek().time;
+            float gap;
+            gap = noteStates[i].pausedWhileIsIn
+                ? player.CurrentTime - noteStates[i].target.pausedTime
+                : player.CurrentTime - noteQueues[i].Peek().time;
+
+
             if (gap > CONST.JUDGE_STD[(int) JUDGES.BAD])
             {
+                Debug.Log(noteStates[i].pausedWhileIsIn + " " + gap);
                 gm.ApplyBreak(i);
                 DequeueNote(i);
             }
@@ -139,7 +145,7 @@ public class PlayManager : MonoBehaviour
         {
             if (!noteStates[key].pausedWhileIsIn)
             {
-                noteStates[key].isIn = true;
+                noteStates[key].isInLongNote = true;
                 noteStates[key].startBeat = player.CurrentBeat;
                 noteStates[key].target = peek as LongNoteSystem;
                 noteStates[key].target.isIn = true;
@@ -148,7 +154,7 @@ public class PlayManager : MonoBehaviour
             else
             {
                 noteStates[key].pausedWhileIsIn = false;
-                noteStates[key].isIn = true;
+                noteStates[key].isInLongNote = true;
 
                 noteStates[key].target.isIn = true;
                 noteStates[key].target.pausedWhileIsIn = false;
@@ -164,7 +170,7 @@ public class PlayManager : MonoBehaviour
     private void JudgePlayKey(int key)
     {
         if (!player.IsWorking || player.IsPaused) return;
-        if (!noteStates[key].isIn) return;
+        if (!noteStates[key].isInLongNote) return;
 
         HandleLongNoteTick(key);
     }
@@ -172,7 +178,7 @@ public class PlayManager : MonoBehaviour
     private void JudgePlayKeyUp(int key)
     {
         if (!player.IsWorking || player.IsPaused) return;
-        if (!noteStates[key].isIn) return;
+        if (!noteStates[key].isInLongNote) return;
 
         HandleLongNoteUp(key);
     }
@@ -246,16 +252,18 @@ public class PlayManager : MonoBehaviour
 
     private void OnPause()
     {
+        Debug.Log(player.CurrentTime);
         foreach (var state in noteStates)
         {
-            if (state.isIn)
+            if (state.isInLongNote)
             {
                 state.pausedWhileIsIn = true;
-                state.originTime = state.startBeat;
-                state.isIn = false;
+                state.isInLongNote = false;
 
                 state.target.isIn = false;
                 state.target.pausedWhileIsIn = true;
+                state.target.pausedBeat = player.CurrentBeat;
+                state.target.pausedTime = player.CurrentTime;
             }
         }
     }
@@ -269,12 +277,12 @@ public class PlayManager : MonoBehaviour
 [Serializable]
 public class NoteState
 {
-    public bool isIn;
+    public bool isInLongNote;
     public double startBeat;
     public JUDGES judge;
-    public LongNoteSystem target;
     public bool pausedWhileIsIn;
-    public double originTime;
+    
+    public LongNoteSystem target;
 
     public NoteState()
     {
@@ -283,11 +291,10 @@ public class NoteState
 
     public void Reset()
     {
-        isIn = false;
+        isInLongNote = false;
         startBeat = 0;
         judge = JUDGES.BREAK;
         target = null;
         pausedWhileIsIn = false;
-        originTime = 0;
     }
 }

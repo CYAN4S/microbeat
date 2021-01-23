@@ -92,7 +92,7 @@ namespace Events
         public void OnGamePause()
         {
             IsPaused = true;
-            CurrentTime = Mathf.Max(0f, CurrentTime - 3);
+            CurrentTime = Mathf.Max(-5f, CurrentTime - 3);
             GamePauseEvent?.Invoke();
         }
 

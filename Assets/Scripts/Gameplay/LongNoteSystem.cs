@@ -8,8 +8,10 @@ public class LongNoteSystem : NoteSystem
     public double length;
     public Queue<double> ticks;
     public bool isIn;
+    
     public bool pausedWhileIsIn = false;
-    public double pausedTime;
+    public double pausedBeat;
+    public float pausedTime;
     
     
     private float endPos;
@@ -61,7 +63,7 @@ public class LongNoteSystem : NoteSystem
     private void GetPoses()
     {
         if (pausedWhileIsIn)
-            startPos = Mathf.Max(GetYPos(pausedTime), 0);
+            startPos = Mathf.Max(GetYPos(pausedBeat), 0);
         else if (isIn)
             startPos = 0;
         else

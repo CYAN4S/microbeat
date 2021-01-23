@@ -142,13 +142,22 @@ public class GameManager : MonoBehaviour
     {
         player.OnGamePause();
         audioSource.Pause();
-        audioSource.time = player.CurrentTime;
     }
 
     private void Resume()
     {
         player.OnGameResume();
-        audioSource.UnPause();
+        if (player.CurrentTime < 0)
+        {
+            audioSource.time = 0;
+            StartCoroutine(PlayAudio(0));
+        }
+        else
+        {
+            audioSource.time = player.CurrentTime;
+            audioSource.UnPause();
+        }
+
     }
 
     public void ApplyNote(int line, JUDGES judge, float gap)

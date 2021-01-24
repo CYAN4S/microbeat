@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO;
 using Events;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Networking;
 
 public class FileExplorer : MonoBehaviour
@@ -90,29 +91,17 @@ public class FileExplorer : MonoBehaviour
         return JsonUtility.FromJson<T>(sr.ReadToEnd());
     }
 
-    public IEnumerator GetAudioClip(string audioPath, Action callback = null)
+    public static IEnumerator GetAudioClip(string audioPath, UnityAction<AudioClip> callback)
     {
         using var www = UnityWebRequestMultimedia.GetAudioClip(audioPath, AudioType.WAV);
         var x = www.SendWebRequest();
-        x.completed += _ => callback?.Invoke();
         yield return x;
 
         if (www.result == UnityWebRequest.Result.ConnectionError)
             Debug.Log(www.error);
         else
-            streamAudio = DownloadHandlerAudioClip.GetContent(www);
-    }
-
-    public static IEnumerator GetAudioClip(string audioPath, AudioClipEventChannelSO channel)
-    {
-        using var www = UnityWebRequestMultimedia.GetAudioClip(audioPath, AudioType.WAV);
-        yield return www.SendWebRequest();
-        Debug.Log(audioPath);
-
-        if (www.result == UnityWebRequest.Result.ConnectionError)
-            Debug.Log(www.error);
-        else
-            channel.RaiseEvent(DownloadHandlerAudioClip.GetContent(www));
+            //streamAudio = DownloadHandlerAudioClip.GetContent(www);
+            callback.Invoke(DownloadHandlerAudioClip.GetContent(www));
     }
 }
 

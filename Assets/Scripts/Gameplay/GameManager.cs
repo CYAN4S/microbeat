@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private ChartPathEventChannelSO onChartSelected;
     [SerializeField] private InputReader inputReader;
-    [SerializeField] private ChartEventChannelSO chartChannel;
     [SerializeField] private PlayerSO player;
 
     private int currentMetaIndex;
@@ -21,31 +21,46 @@ public class GameManager : MonoBehaviour
         pm = GetComponent<PlayManager>();
         audioSource = GetComponent<AudioSource>();
     }
+    
+    private void OnEnable()
+    {
+        // onChartLoaded.onEventRaised += PrepareGame;
+        inputReader.pauseKeyEvent += PauseOrResume;
+    }
+
+    private void OnDisable()
+    {
+        // onChartLoaded.onEventRaised -= PrepareGame;
+        inputReader.pauseKeyEvent -= PauseOrResume;
+    }
 
     private void Start()
     {
         player.Reset();
         currentMetaIndex = 0;
         rawScore = 0;
+        
+        var chartPath = onChartSelected.value;
+        Chart chart = new Chart();
+        
+        if (chartPath == null)
+        {
+            Debug.LogError("No ChartPath in channel.");
+            return;
+        }
+
+        chart.desc = FileExplorer.FromFile<SerializableDesc>(chartPath.descPath);
+        chart.pattern = FileExplorer.FromFile<SerializablePattern>(chartPath.patternPath);
+        var x = StartCoroutine(FileExplorer.GetAudioClip(chartPath.audioPath, value =>
+        {
+            chart.audioClip = value;
+            PrepareGame(chart);
+        }));
     }
-
-
     private void Update()
     {
         if (player.IsWorking && !player.IsPaused)
             RefreshTime();
-    }
-
-    private void OnEnable()
-    {
-        chartChannel.onEventRaised += PrepareGame;
-        inputReader.pauseKeyEvent += PauseOrResume;
-    }
-
-    private void OnDisable()
-    {
-        chartChannel.onEventRaised -= PrepareGame;
-        inputReader.pauseKeyEvent -= PauseOrResume;
     }
 
     private void PrepareGame(Chart chart)

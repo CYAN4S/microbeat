@@ -1027,7 +1027,6 @@ GameObject:
   - component: {fileID: 522699029}
   - component: {fileID: 522699031}
   - component: {fileID: 522699034}
-  - component: {fileID: 522699037}
   - component: {fileID: 522699036}
   m_Layer: 0
   m_Name: MANAGERS
@@ -1102,8 +1101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8efa98fa58c26d4f894e8372cbabf9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onChartSelected: {fileID: 11400000, guid: 767c300112299c24586e90527a8d8ca9, type: 2}
   inputReader: {fileID: 11400000, guid: 902d6a28265bb4443923e54e313f1623, type: 2}
-  chartChannel: {fileID: 11400000, guid: 11e789cf54bbb324e96e8a73ec5b2043, type: 2}
   player: {fileID: 11400000, guid: 10088d471648e9d4c8a693bf6f9a75cb, type: 2}
 --- !u!114 &522699034
 MonoBehaviour:
@@ -1220,20 +1219,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &522699037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522699028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f012ef6fe605c5248aa6f524254ec61c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chartSelectF: {fileID: 11400000, guid: 767c300112299c24586e90527a8d8ca9, type: 2}
-  loadFinishedI: {fileID: 11400000, guid: 11e789cf54bbb324e96e8a73ec5b2043, type: 2}
 --- !u!1 &637344447
 GameObject:
   m_ObjectHideFlags: 0

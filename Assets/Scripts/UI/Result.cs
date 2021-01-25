@@ -1,32 +1,36 @@
-using Events;
+using Core;
+using SO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Result : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private PlayerSO player;
-
-    [SerializeField] private Text[] judgeCountTexts;
-    [SerializeField] private Text resultText;
-
-    private void Start()
+    public class Result : MonoBehaviour
     {
-        DisplayResult();
-    }
+        [SerializeField] private PlayerSO player;
 
-    public void DisplayResult()
-    {
-        for (var i = 0; i < player.JudgeCounts.Length; i++)
-            judgeCountTexts[i].text = player.JudgeCounts[i].ToString();
+        [SerializeField] private Text[] judgeCountTexts;
+        [SerializeField] private Text resultText;
 
-        var rank = CONST.RANK_NAME[CONST.RANK_NAME.Length - 1];
-        for (var i = 0; i < CONST.RANK.Length; i++)
-            if (player.Score >= CONST.RANK[i])
-            {
-                rank = CONST.RANK_NAME[i];
-                break;
-            }
+        private void Start()
+        {
+            DisplayResult();
+        }
 
-        resultText.text = player.Score.ToString("F0") + " / RANK " + rank;
+        public void DisplayResult()
+        {
+            for (var i = 0; i < player.JudgeCounts.Length; i++)
+                judgeCountTexts[i].text = player.JudgeCounts[i].ToString();
+
+            var rank = Const.RANK_NAME[Const.RANK_NAME.Length - 1];
+            for (var i = 0; i < Const.RANK.Length; i++)
+                if (player.Score >= Const.RANK[i])
+                {
+                    rank = Const.RANK_NAME[i];
+                    break;
+                }
+
+            resultText.text = player.Score.ToString("F0") + " / RANK " + rank;
+        }
     }
 }

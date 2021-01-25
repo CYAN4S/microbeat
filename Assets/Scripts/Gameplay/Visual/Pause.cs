@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Events;
+using SO;
 using UnityEngine;
 
 public class Pause : MonoBehaviour
@@ -14,7 +11,7 @@ public class Pause : MonoBehaviour
         player.GamePauseEvent += OnPause;
         player.GameResumeEvent += OnResume;
     }
-    
+
     private void OnDisable()
     {
         player.GamePauseEvent -= OnPause;

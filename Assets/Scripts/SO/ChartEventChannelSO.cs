@@ -1,6 +1,10 @@
-﻿using UnityEngine;
+﻿using Core;
+using UnityEngine;
 
-[CreateAssetMenu(menuName = "Events/Chart Event Channel")]
-public class ChartEventChannelSO : EventChannelSO<Chart>
+namespace SO
 {
+    [CreateAssetMenu(menuName = "Events/Chart Event Channel")]
+    public class ChartEventChannelSO : EventChannelSO<Chart>
+    {
+    }
 }

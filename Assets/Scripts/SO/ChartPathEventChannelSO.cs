@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using FileIO;
+using UnityEngine;
 
-namespace Events
+namespace SO
 {
     [CreateAssetMenu(menuName = "Events/ChartPath Event Channel")]
     public class ChartPathEventChannelSO : EventChannelSO<ChartPath>

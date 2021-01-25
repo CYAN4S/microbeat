@@ -1,53 +1,58 @@
 ﻿using System;
-using Events;
+using Core;
+using FileIO;
+using SO;
 using UnityEngine;
 
-public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
+namespace Gameplay
 {
-    public float time;
-
-    [SerializeField] protected PlayerSO player;
-
-    protected RectTransform rt;
-    public int Line { get; protected set; }
-    public double Beat { get; protected set; }
-
-    private void Awake()
+    public class NoteSystem : MonoBehaviour, IComparable<NoteSystem>
     {
-        rt = GetComponent<RectTransform>();
-    }
+        public float time;
 
-    private void LateUpdate()
-    {
-        if (!player.IsWorking) return;
+        [SerializeField] protected PlayerSO player;
 
-        Move();
-    }
+        protected RectTransform rt;
+        public int Line { get; protected set; }
+        public double Beat { get; protected set; }
 
-    public int CompareTo(NoteSystem other)
-    {
-        return Beat.CompareTo(other.Beat);
-    }
+        private void Awake()
+        {
+            rt = GetComponent<RectTransform>();
+        }
 
-    public void SetFromData(SerializableNote data)
-    {
-        Line = data.line;
-        Beat = data.beat;
-    }
+        private void LateUpdate()
+        {
+            if (!player.IsWorking) return;
 
-    private void Move()
-    {
-        transform.localPosition = new Vector3(CONST.LINE_X_POS[Line], GetCurrentYPos());
-    }
+            Move();
+        }
 
-    protected float GetCurrentYPos()
-    {
-        return GetYPos(Beat);
-    }
+        public int CompareTo(NoteSystem other)
+        {
+            return Beat.CompareTo(other.Beat);
+        }
 
-    protected float GetYPos(double beat)
-    {
-        return (float) ((beat - player.CurrentBeat) * (float) player.ScrollSpeed * 36000f /
-                        player.StdBpm);
+        public void SetFromData(SerializableNote data)
+        {
+            Line = data.line;
+            Beat = data.beat;
+        }
+
+        private void Move()
+        {
+            transform.localPosition = new Vector3(Const.LINE_X_POS[Line], GetCurrentYPos());
+        }
+
+        protected float GetCurrentYPos()
+        {
+            return GetYPos(Beat);
+        }
+
+        protected float GetYPos(double beat)
+        {
+            return (float) ((beat - player.CurrentBeat) * (float) player.ScrollSpeed * 36000f /
+                            player.Meta.std);
+        }
     }
 }

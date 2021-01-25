@@ -1,4 +1,5 @@
-using Events;
+using Core;
+using SO;
 using UnityEngine;
 
 public class Judge : MonoBehaviour
@@ -16,8 +17,8 @@ public class Judge : MonoBehaviour
         player.JudgeEvent -= AnimateJudge;
     }
 
-    private void AnimateJudge(JUDGES value)
+    private void AnimateJudge(Judges value)
     {
-        animator.SetTrigger(CONST.JUDGE_NAME[(int) value]);
+        animator.SetTrigger(Const.JUDGE_NAME[(int) value]);
     }
 }

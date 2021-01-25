@@ -1,52 +1,57 @@
-using Events;
+using Core;
+using FileIO;
+using SO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MusicListController : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private ChartPathEventChannelSO chartPathLoadedF;
-    [SerializeField] private ChartPathEventChannelSO chartSelectI;
-    public RectTransform canvas;
-    public GameObject LIPrefab;
-    public RectTransform ScrollViewportContent;
-    private int count;
-    private float yMultiply;
-
-    private void Start()
+    public class MusicListController : MonoBehaviour
     {
-        yMultiply = canvas.localScale.y;
-    }
+        [SerializeField] private ChartPathEventChannelSO chartPathLoadedF;
+        [SerializeField] private ChartPathEventChannelSO chartSelectI;
+        public RectTransform canvas;
+        public GameObject LIPrefab;
+        public RectTransform ScrollViewportContent;
+        private int count;
+        private float yMultiply;
 
-    private void OnEnable()
-    {
-        chartPathLoadedF.onEventRaised += AddChartPath;
-    }
-
-    private void OnDisable()
-    {
-        chartPathLoadedF.onEventRaised -= AddChartPath;
-    }
-
-    private void AddChartPath(ChartPath chartPath)
-    {
-        var obj = Instantiate(LIPrefab, ScrollViewportContent);
-        obj.transform.Translate(0, -250 * count++ * yMultiply, 0);
-        ScrollViewportContent.sizeDelta = new Vector2(0, 250 * count);
-
-        obj.GetComponent<Button>().onClick.AddListener(() =>
+        private void Start()
         {
-            chartSelectI.RaiseEvent(chartPath);
-            SceneManager.LoadScene(2);
-        });
+            yMultiply = canvas.localScale.y;
+        }
 
-        var liSystem = obj.GetComponent<LISystem>();
-        liSystem.title.text = chartPath.name;
-        liSystem.info.text = chartPath.artist + " / " + chartPath.genre;
-        liSystem.level.text = CONST.PATTERN[chartPath.diff] + "\n" + chartPath.level;
-    }
+        private void OnEnable()
+        {
+            chartPathLoadedF.OnEventRaised += AddChartPath;
+        }
 
-    private void OnChartSelect()
-    {
+        private void OnDisable()
+        {
+            chartPathLoadedF.OnEventRaised -= AddChartPath;
+        }
+
+        private void AddChartPath(ChartPath chartPath)
+        {
+            var obj = Instantiate(LIPrefab, ScrollViewportContent);
+            obj.transform.Translate(0, -250 * count++ * yMultiply, 0);
+            ScrollViewportContent.sizeDelta = new Vector2(0, 250 * count);
+
+            obj.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                chartSelectI.RaiseEvent(chartPath);
+                SceneManager.LoadScene(2);
+            });
+
+            var liSystem = obj.GetComponent<LISystem>();
+            liSystem.title.text = chartPath.name;
+            liSystem.info.text = chartPath.artist + " / " + chartPath.genre;
+            liSystem.level.text = Const.PATTERN[chartPath.diff] + "\n" + chartPath.level;
+        }
+
+        private void OnChartSelect()
+        {
+        }
     }
 }

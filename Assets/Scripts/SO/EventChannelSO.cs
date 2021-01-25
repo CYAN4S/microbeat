@@ -1,14 +1,17 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class EventChannelSO<T> : ScriptableObject
+namespace SO
 {
-    public T value;
-    public event UnityAction<T> onEventRaised;
-
-    public void RaiseEvent(T data)
+    public abstract class EventChannelSO<T> : ScriptableObject
     {
-        value = data;
-        onEventRaised?.Invoke(data);
+        public T value;
+        public event UnityAction<T> OnEventRaised;
+
+        public void RaiseEvent(T data)
+        {
+            value = data;
+            OnEventRaised?.Invoke(data);
+        }
     }
 }

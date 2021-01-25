@@ -1,8 +1,12 @@
-﻿using UnityEngine;
+﻿using FileIO;
+using UnityEngine;
 
-public class Chart
+namespace Core
 {
-    public AudioClip audioClip;
-    public SerializableDesc desc;
-    public SerializablePattern pattern;
+    public class Chart
+    {
+        public AudioClip audioClip;
+        public SerializableDesc desc;
+        public SerializablePattern pattern;
+    }
 }

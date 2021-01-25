@@ -1,35 +1,35 @@
 ﻿using UnityEngine;
 
-public class InputManager : MonoBehaviour
+namespace Input
 {
-    [SerializeField] private InputReader inputReader;
-
-    public KeyCode[] speedKeys;
-    public KeyCode[] playKeys4B;
-    public KeyCode feverKey;
-    public KeyCode pauseKey;
-
-    private void Update()
+    public class InputManager : MonoBehaviour
     {
-        for (var i = 0; i < playKeys4B.Length; i++)
+        [SerializeField] private InputReader inputReader;
+
+        public KeyCode[] speedKeys;
+        public KeyCode[] playKeys4B;
+        public KeyCode feverKey;
+        public KeyCode pauseKey;
+
+        private void Update()
         {
-            var key = playKeys4B[i];
-            if (Input.GetKey(key)) inputReader.OnPlayKey(i);
+            for (var i = 0; i < playKeys4B.Length; i++)
+            {
+                var key = playKeys4B[i];
+                if (UnityEngine.Input.GetKey(key)) inputReader.OnPlayKey(i);
 
-            if (Input.GetKeyDown(key)) inputReader.OnPlayKeyDown(i);
+                if (UnityEngine.Input.GetKeyDown(key)) inputReader.OnPlayKeyDown(i);
 
-            if (Input.GetKeyUp(key)) inputReader.OnPlayKeyUp(i);
-        }
+                if (UnityEngine.Input.GetKeyUp(key)) inputReader.OnPlayKeyUp(i);
+            }
 
-        for (var i = 0; i < speedKeys.Length; i++)
-        {
-            var key = speedKeys[i];
-            if (Input.GetKeyDown(key)) inputReader.OnSpeed(i);
-        }
+            for (var i = 0; i < speedKeys.Length; i++)
+            {
+                var key = speedKeys[i];
+                if (UnityEngine.Input.GetKeyDown(key)) inputReader.OnSpeed(i);
+            }
 
-        if (Input.GetKeyDown(pauseKey))
-        {
-            inputReader.OnPause();
+            if (UnityEngine.Input.GetKeyDown(pauseKey)) inputReader.OnPause();
         }
     }
 }

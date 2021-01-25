@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Core;
+using UnityEngine;
 using UnityEngine.Events;
 
-namespace Events
+namespace SO
 {
     [CreateAssetMenu(menuName = "Player")]
     public class PlayerSO : ScriptableObject
@@ -10,17 +11,18 @@ namespace Events
         public float CurrentTime { get; set; }
         public double CurrentBeat { get; set; }
 
-        // Const
+        // Constant of chart
         public float EndTime { get; set; }
-        public double StdBpm { get; set; }
+        // public double StdBpm { get; set; }
         public BpmMeta Meta { get; set; }
 
-        //
-        public double CurrentBpm { get; private set; }
+        // Status
         public bool IsWorking { get; private set; }
         public bool IsPaused { get; private set; }
+        
+        
         public double ScrollSpeed { get; private set; }
-
+        public double CurrentBpm { get; private set; }
         public int Combo { get; private set; }
         public double Score { get; private set; }
 
@@ -54,7 +56,7 @@ namespace Events
         public event UnityAction GamePauseEvent;
         public event UnityAction GameResumeEvent;
 
-        public event UnityAction<JUDGES> JudgeEvent;
+        public event UnityAction<Judges> JudgeEvent;
         public event UnityAction<int> NoteEffectEvent;
         public event UnityAction ZeroEvent;
         public event UnityAction<float> GapEvent;
@@ -92,7 +94,7 @@ namespace Events
         public void OnGamePause()
         {
             IsPaused = true;
-            CurrentTime = Mathf.Max(-5f, CurrentTime - 3);
+            CurrentTime = Mathf.Max(-3f, CurrentTime - 3);
             GamePauseEvent?.Invoke();
         }
 
@@ -114,7 +116,7 @@ namespace Events
             ComboBreakEvent?.Invoke();
         }
 
-        public void OnJudge(JUDGES value)
+        public void OnJudge(Judges value)
         {
             JudgeEvent?.Invoke(value);
         }

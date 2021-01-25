@@ -1,4 +1,4 @@
-using Events;
+using SO;
 using UnityEngine;
 
 public class NoteEffect : MonoBehaviour

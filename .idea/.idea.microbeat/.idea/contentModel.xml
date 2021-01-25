@@ -7,7 +7,6 @@
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Pause.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="GitHub" t="Include">
             <e p="Editor" t="Include">
@@ -29,7 +28,6 @@
             <e p="Serializable.cs" t="Include" />
           </e>
           <e p="Gameplay" t="Include">
-            <e p="ChartLoad.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
             <e p="LongNoteSystem.cs" t="Include" />
             <e p="NoteSystem.cs" t="Include" />
@@ -40,6 +38,7 @@
               <e p="GrooveLight.cs" t="Include" />
               <e p="Judge.cs" t="Include" />
               <e p="NoteEffect.cs" t="Include" />
+              <e p="Pause.cs" t="Include" />
               <e p="PressEffect.cs" t="Include" />
             </e>
           </e>
@@ -59,15 +58,11 @@
             <e p="StringEventChannelSO.cs" t="Include" />
             <e p="VoidEventChannelSO.cs" t="Include" />
           </e>
-          <e p="Temp" t="Include">
-            <e p="LoadScene.cs" t="Include" />
-          </e>
           <e p="UI" t="Include">
             <e p="LISystem.cs" t="Include" />
             <e p="LoadingBar.cs" t="Include" />
             <e p="MusicListController.cs" t="Include" />
             <e p="Result.cs" t="Include" />
-            <e p="ScrollSpeedText.cs" t="Include" />
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">

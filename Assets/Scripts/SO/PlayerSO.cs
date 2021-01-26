@@ -2,6 +2,11 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum PlayState
+{
+    Loading, Playable, Paused, ResumeCount
+}
+
 namespace SO
 {
     [CreateAssetMenu(menuName = "Player")]
@@ -18,8 +23,9 @@ namespace SO
 
         // Status
         public bool IsWorking { get; private set; }
-        public bool IsPaused { get; private set; }
+        // public bool IsPaused { get; private set; }
         
+        public PlayState State { get; private set; }
         
         public double ScrollSpeed { get; private set; }
         public double CurrentBpm { get; private set; }
@@ -33,7 +39,8 @@ namespace SO
         public void Reset()
         {
             IsWorking = false;
-            IsPaused = false;
+            // IsPaused = false;
+            State = PlayState.Loading;
             CurrentTime = -3;
             ScrollSpeed = 2.5;
             EndTime = 1000f;
@@ -42,10 +49,8 @@ namespace SO
             CurrentBeat = 0;
             CurrentBpm = 0;
             JudgeCounts = new int[5];
-            ResetEvent?.Invoke();
         }
 
-        public event UnityAction ResetEvent;
         public event UnityAction BpmChangeEvent;
         public event UnityAction ScrollSpeedChangeEvent;
         public event UnityAction ScoreChangeEvent;
@@ -82,6 +87,7 @@ namespace SO
         public void OnGameStart()
         {
             IsWorking = true;
+            State = PlayState.Playable;
             GameStartEvent?.Invoke();
         }
 
@@ -93,14 +99,14 @@ namespace SO
 
         public void OnGamePause()
         {
-            IsPaused = true;
-            CurrentTime = Mathf.Max(-3f, CurrentTime - 3);
+            State = PlayState.Paused;
             GamePauseEvent?.Invoke();
         }
 
         public void OnGameResume()
         {
-            IsPaused = false;
+            State = PlayState.ResumeCount;
+            CurrentTime = Mathf.Max(-3f, CurrentTime - 3);
             GameResumeEvent?.Invoke();
         }
 
@@ -134,6 +140,11 @@ namespace SO
         public void OnGap(float value)
         {
             GapEvent?.Invoke(value);
+        }
+
+        public void SetStatePlayable()
+        {
+            State = PlayState.Playable;
         }
     }
 }

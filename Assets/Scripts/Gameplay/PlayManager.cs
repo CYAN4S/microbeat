@@ -128,7 +128,6 @@ namespace Gameplay
 
                 if (gap > Const.JUDGE_STD[(int) Judges.Bad])
                 {
-                    Debug.Log(noteStates[i].pausedWhileIsIn + " " + gap);
                     gm.ApplyBreak(i);
                     DequeueNote(i);
                 }
@@ -137,7 +136,7 @@ namespace Gameplay
 
         private void JudgePlayKeyDown(int key)
         {
-            if (!player.IsWorking || player.IsPaused) return;
+            if (player.State != PlayState.Playable) return;
             if (noteQueues[key].Count == 0) return;
 
             var peek = noteQueues[key].Peek();
@@ -174,7 +173,7 @@ namespace Gameplay
 
         private void JudgePlayKey(int key)
         {
-            if (!player.IsWorking || player.IsPaused) return;
+            if (player.State != PlayState.Playable) return;
             if (!noteStates[key].isInLongNote) return;
 
             HandleLongNoteTick(key);
@@ -182,7 +181,7 @@ namespace Gameplay
 
         private void JudgePlayKeyUp(int key)
         {
-            if (!player.IsWorking || player.IsPaused) return;
+            if (player.State != PlayState.Playable) return;
             if (!noteStates[key].isInLongNote) return;
 
             HandleLongNoteUp(key);

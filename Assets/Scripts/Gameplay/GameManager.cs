@@ -53,7 +53,7 @@ namespace Gameplay
 
         private void Update()
         {
-            if (player.IsWorking && !player.IsPaused)
+            if (player.IsWorking && (player.State == PlayState.Playable || player.State == PlayState.ResumeCount))
                 RefreshTime();
         }
 
@@ -74,7 +74,6 @@ namespace Gameplay
 
             noteCount = pattern.notes.Count + pattern.longNotes.Count;
             var meta = desc.bpms?.Count is int c && c != 0 ? new BpmMeta(desc.bpms, desc.bpm) : new BpmMeta(desc.bpm);
-            // player.StdBpm = meta.std;
             player.Meta = meta;
 
             pm.PrepareNotes(desc, pattern);
@@ -95,7 +94,6 @@ namespace Gameplay
             player.OnGameEnd();
             SceneManager.LoadScene(3);
         }
-
 
         private void RefreshTime()
         {
@@ -147,10 +145,15 @@ namespace Gameplay
 
         private void PauseOrResume()
         {
-            if (player.IsPaused)
-                Resume();
-            else
-                Pause();
+            switch (player.State)
+            {
+                case PlayState.Paused:
+                    Resume();
+                    break;
+                case PlayState.Playable:
+                    Pause();
+                    break;
+            }
         }
 
         private void Pause()
@@ -162,6 +165,7 @@ namespace Gameplay
         private void Resume()
         {
             player.OnGameResume();
+            StartCoroutine(SetStatePlayable());
             if (player.CurrentTime < 0)
             {
                 audioSource.time = 0;
@@ -172,6 +176,12 @@ namespace Gameplay
                 audioSource.time = player.CurrentTime;
                 audioSource.UnPause();
             }
+        }
+
+        private IEnumerator SetStatePlayable()
+        {
+            yield return new WaitForSeconds(3f);
+            player.SetStatePlayable();
         }
 
         public void ApplyNote(int line, Judges judge, float gap)

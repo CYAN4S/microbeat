@@ -1,4 +1,6 @@
-﻿namespace Core
+﻿using System;
+
+namespace Core
 {
     public enum Judges
     {
@@ -25,7 +27,12 @@
         public static readonly string[] RANK_NAME = {"S", "A", "B", "C", "D", "F"};
     }
 
+    [Serializable]
     public enum GameState
     {
+        Title = 0,
+        MusicSelect = 1,
+        Gameplay = 2,
+        Result = 3
     }
 }

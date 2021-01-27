@@ -21,9 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/CONST.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/CONST.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,13 +61,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/ChartLoad.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Combo.cs" />
         <option value="$PROJECT_DIR$/Assets/Pause.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Temp/LoadScene.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/BpmMeta.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/Chart.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Core/CONST.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/Serializable.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/LongNoteSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" />
@@ -86,8 +85,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/SO/ChartPathEventChannelSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Core/CONST.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" />
       </list>
     </option>
   </component>
@@ -177,6 +178,8 @@
       <workItem from="1611480094049" duration="7708000" />
       <workItem from="1611579000431" duration="1421000" />
       <workItem from="1611642177405" duration="3726000" />
+      <workItem from="1611747942916" duration="1081000" />
+      <workItem from="1611749071391" duration="118000" />
     </task>
     <servers />
   </component>
@@ -303,24 +306,5 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="605" y="152" width="1515" height="1039" key="dock-window-1/0.0.1920.1050@0.0.1920.1050" timestamp="1610862076120" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs</url>
-          <line>147</line>
-          <properties documentPath="C:\Users\sih52\source\repos\microbeat\Assets\Scripts\Gameplay\GameManager.cs" initialLine="149">
-            <startOffsets>
-              <option value="4226" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4247" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -143,7 +143,7 @@ namespace Gameplay
             player.ChangeScrollSpeed(value);
         }
 
-        private void PauseOrResume()
+        public void PauseOrResume()
         {
             switch (player.State)
             {

@@ -1,10 +1,37 @@
-﻿using Core;
+﻿using System;
+using Core;
 using UnityEngine;
 using UnityEngine.Events;
 
 public enum PlayState
 {
-    Loading, Playable, Paused, ResumeCount
+    Loading, Playable, Paused, ResumeCount, LongNoteCatchable
+}
+
+[Serializable]
+public class GameplayState
+{
+    public PlayState value = PlayState.Loading;
+    
+    public bool IsLoading => (value == PlayState.Loading);
+    
+    // It determines if notes need to change position, regardless of whether it is playable.
+    public bool IsWorking => (value != PlayState.Loading);
+    
+    public bool IsPlayable => (value == PlayState.Playable);
+    
+    // Long note cut off by pausing is playable shortly before the count is over.
+    public bool IsCatchable => (value == PlayState.Playable || value == PlayState.LongNoteCatchable);
+
+    // Time passes only this is true.
+    public bool IsTimePassing => (value == PlayState.Playable || value == PlayState.ResumeCount ||
+                                  value == PlayState.LongNoteCatchable);
+    
+    public bool IsPaused => (value == PlayState.Paused);
+    public bool IsCountingToResume => (value == PlayState.ResumeCount || value == PlayState.LongNoteCatchable);
+    
+    // You can only pause when the count completely is over.
+    public bool IsPausable => (value == PlayState.Playable);
 }
 
 namespace SO
@@ -25,7 +52,8 @@ namespace SO
         public bool IsWorking { get; private set; }
         // public bool IsPaused { get; private set; }
         
-        public PlayState State { get; private set; }
+        // public PlayState State { get; private set; }
+        public GameplayState State { get; private set; }
         
         public double ScrollSpeed { get; private set; }
         public double CurrentBpm { get; private set; }
@@ -40,7 +68,8 @@ namespace SO
         {
             IsWorking = false;
             // IsPaused = false;
-            State = PlayState.Loading;
+            // State = PlayState.Loading;
+            State = new GameplayState();
             CurrentTime = -3;
             ScrollSpeed = 2.5;
             EndTime = 1000f;
@@ -87,7 +116,7 @@ namespace SO
         public void OnGameStart()
         {
             IsWorking = true;
-            State = PlayState.Playable;
+            State.value = PlayState.Playable;
             GameStartEvent?.Invoke();
         }
 
@@ -99,13 +128,13 @@ namespace SO
 
         public void OnGamePause()
         {
-            State = PlayState.Paused;
+            State.value = PlayState.Paused;
             GamePauseEvent?.Invoke();
         }
 
         public void OnGameResume()
         {
-            State = PlayState.ResumeCount;
+            State.value = PlayState.ResumeCount;
             CurrentTime = Mathf.Max(-3f, CurrentTime - 3);
             GameResumeEvent?.Invoke();
         }
@@ -142,9 +171,14 @@ namespace SO
             GapEvent?.Invoke(value);
         }
 
+        public void SetStateCatchable()
+        {
+            State.value = PlayState.LongNoteCatchable;
+        }
+
         public void SetStatePlayable()
         {
-            State = PlayState.Playable;
+            State.value = PlayState.Playable;
         }
     }
 }

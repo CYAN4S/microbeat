@@ -9,11 +9,17 @@ namespace UI
 {
     public class MusicListController : MonoBehaviour
     {
-        [SerializeField] private ChartPathEventChannelSO chartPathLoadedF;
-        [SerializeField] private ChartPathEventChannelSO chartSelectI;
-        public RectTransform canvas;
-        public GameObject LIPrefab;
-        public RectTransform ScrollViewportContent;
+        [Header("Channel to follow")]
+        [SerializeField] private ChartPathEventChannelSO onLoadFinish;
+        
+        [Header("Channel to invoke")]
+        [SerializeField] private ChartPathEventChannelSO onMusicSelect;
+        
+        [Header("Requirement")]
+        [SerializeField] private RectTransform canvas;
+        [SerializeField] private GameObject listContentPrefab;
+        [SerializeField] private RectTransform listContainer;
+        
         private int count;
         private float yMultiply;
 
@@ -24,23 +30,23 @@ namespace UI
 
         private void OnEnable()
         {
-            chartPathLoadedF.OnEventRaised += AddChartPath;
+            onLoadFinish.OnEventRaised += AddChartPath;
         }
 
         private void OnDisable()
         {
-            chartPathLoadedF.OnEventRaised -= AddChartPath;
+            onLoadFinish.OnEventRaised -= AddChartPath;
         }
 
         private void AddChartPath(ChartPath chartPath)
         {
-            var obj = Instantiate(LIPrefab, ScrollViewportContent);
+            var obj = Instantiate(listContentPrefab, listContainer);
             obj.transform.Translate(0, -250 * count++ * yMultiply, 0);
-            ScrollViewportContent.sizeDelta = new Vector2(0, 250 * count);
+            listContainer.sizeDelta = new Vector2(0, 250 * count);
 
             obj.GetComponent<Button>().onClick.AddListener(() =>
             {
-                chartSelectI.RaiseEvent(chartPath);
+                onMusicSelect.RaiseEvent(chartPath);
                 SceneManager.LoadScene(2);
             });
 

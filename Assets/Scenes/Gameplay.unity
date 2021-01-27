@@ -1157,9 +1157,9 @@ GameObject:
   m_Component:
   - component: {fileID: 522699030}
   - component: {fileID: 522699032}
-  - component: {fileID: 522699029}
   - component: {fileID: 522699031}
   - component: {fileID: 522699034}
+  - component: {fileID: 522699029}
   - component: {fileID: 522699036}
   m_Layer: 0
   m_Name: MANAGERS
@@ -1211,14 +1211,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da9d94b44916944889963eea39740d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteStates: []
   player: {fileID: 11400000, guid: 10088d471648e9d4c8a693bf6f9a75cb, type: 2}
   inputReader: {fileID: 11400000, guid: 902d6a28265bb4443923e54e313f1623, type: 2}
-  notesParent: {fileID: 1725833717}
   notePrefab: {fileID: 3140704049987846472, guid: 9f7faad7eb79664499b3edf458341e50,
     type: 3}
   longNotePrefab: {fileID: 3140704049987846472, guid: 5165f488cbd553542806fa7f112a2d1b,
     type: 3}
+  noteContainer: {fileID: 1725833717}
   noteSprites:
   - {fileID: 4766255273591357535, guid: edb28abf32997dd4090e088c9bc296ca, type: 3}
   - {fileID: 2101506007736477410, guid: edb28abf32997dd4090e088c9bc296ca, type: 3}
@@ -1234,9 +1233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8efa98fa58c26d4f894e8372cbabf9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onChartSelected: {fileID: 11400000, guid: 767c300112299c24586e90527a8d8ca9, type: 2}
-  inputReader: {fileID: 11400000, guid: 902d6a28265bb4443923e54e313f1623, type: 2}
   player: {fileID: 11400000, guid: 10088d471648e9d4c8a693bf6f9a75cb, type: 2}
+  inputReader: {fileID: 11400000, guid: 902d6a28265bb4443923e54e313f1623, type: 2}
+  onChartSelect: {fileID: 11400000, guid: 767c300112299c24586e90527a8d8ca9, type: 2}
 --- !u!114 &522699034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4231,7 +4230,7 @@ GameObject:
   - component: {fileID: 1725833717}
   - component: {fileID: 1725833718}
   m_Layer: 5
-  m_Name: Notes
+  m_Name: Note Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5066,10 +5065,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 902d6a28265bb4443923e54e313f1623, type: 2}
-        m_TargetAssemblyTypeName: Input.InputReader, Assembly-CSharp
-        m_MethodName: OnPause
-        m_Mode: 1
+      - m_Target: {fileID: 2027024733}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

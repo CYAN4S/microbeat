@@ -11,21 +11,19 @@ namespace Gameplay
 {
     public class PlayManager : MonoBehaviour
     {
-        public List<NoteState> noteStates;
-
+        [Header("Requirement")]
         [SerializeField] private PlayerSO player;
         [SerializeField] private InputReader inputReader;
-
-        public Transform notesParent;
-
-        public GameObject notePrefab;
-        public GameObject longNotePrefab;
-
-        public Sprite[] noteSprites;
+        
+        [Header("Note Settings")]
+        [SerializeField] private GameObject notePrefab;
+        [SerializeField] private GameObject longNotePrefab;
+        [SerializeField] private Transform noteContainer;
+        [SerializeField] private Sprite[] noteSprites;
 
         private GameManager gm;
         private List<Queue<NoteSystem>> noteQueues;
-
+        private List<NoteState> noteStates;
         private void Awake()
         {
             noteQueues = new List<Queue<NoteSystem>>();
@@ -91,7 +89,7 @@ namespace Gameplay
 
         private NoteSystem CreateNote(SerializableNote item)
         {
-            var noteSystem = Instantiate(notePrefab, notesParent).GetComponent<NoteSystem>();
+            var noteSystem = Instantiate(notePrefab, noteContainer).GetComponent<NoteSystem>();
 
             noteSystem.SetFromData(item);
             noteSystem.time = player.Meta.GetTime(item.beat);
@@ -102,7 +100,7 @@ namespace Gameplay
 
         private LongNoteSystem CreateLongNote(SerializableLongNote item)
         {
-            var longNoteSystem = Instantiate(longNotePrefab, notesParent).GetComponent<LongNoteSystem>();
+            var longNoteSystem = Instantiate(longNotePrefab, noteContainer).GetComponent<LongNoteSystem>();
 
             longNoteSystem.SetFromData(item);
             longNoteSystem.time = player.Meta.GetTime(item.beat);
@@ -136,7 +134,7 @@ namespace Gameplay
 
         private void JudgePlayKeyDown(int key)
         {
-            if (player.State != PlayState.Playable) return;
+            if (!player.State.IsCatchable) return;
             if (noteQueues[key].Count == 0) return;
 
             var peek = noteQueues[key].Peek();
@@ -149,6 +147,8 @@ namespace Gameplay
             {
                 if (!noteStates[key].pausedWhileIsIn)
                 {
+                    if (!player.State.IsPlayable) return;
+                    
                     noteStates[key].isInLongNote = true;
                     noteStates[key].startBeat = player.CurrentBeat;
                     noteStates[key].target = peek as LongNoteSystem;
@@ -162,18 +162,19 @@ namespace Gameplay
 
                     noteStates[key].target.isIn = true;
                     noteStates[key].target.pausedWhileIsIn = false;
-                    HandleLongNoteDownPausedWhileIsIn(key, gap);
+                    HandleCutOffLongNoteDown(key, gap);
                 }
             }
             else
             {
+                if (!player.State.IsPlayable) return;
                 HandleNote(key, gap);
             }
         }
 
         private void JudgePlayKey(int key)
         {
-            if (player.State != PlayState.Playable) return;
+            if (!player.State.IsPlayable) return;
             if (!noteStates[key].isInLongNote) return;
 
             HandleLongNoteTick(key);
@@ -181,7 +182,7 @@ namespace Gameplay
 
         private void JudgePlayKeyUp(int key)
         {
-            if (player.State != PlayState.Playable) return;
+            if (!player.State.IsPlayable) return;
             if (!noteStates[key].isInLongNote) return;
 
             HandleLongNoteUp(key);
@@ -205,9 +206,9 @@ namespace Gameplay
             noteStates[key].judge = temp == Judges.Bad ? Judges.Nice : temp;
         }
 
-        private void HandleLongNoteDownPausedWhileIsIn(int key, float gap)
+        private void HandleCutOffLongNoteDown(int key, float gap)
         {
-            gm.ApplyLongNoteStartPausedWhileIsIn(key, noteStates[key].judge);
+            gm.ApplyCutOffLongNoteStart(key, noteStates[key].judge);
         }
 
         private void HandleLongNoteTick(int key)

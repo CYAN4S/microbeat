@@ -10,9 +10,13 @@ namespace Gameplay
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private ChartPathEventChannelSO onChartSelected;
-        [SerializeField] private InputReader inputReader;
+        [Header("Requirement")]
         [SerializeField] private PlayerSO player;
+        [SerializeField] private InputReader inputReader;
+        
+        [Header("Channel to get values from previous scene")]
+        [SerializeField] private ChartPathEventChannelSO onChartSelect;
+        
         private AudioSource audioSource;
 
         private int currentMetaIndex;
@@ -33,7 +37,7 @@ namespace Gameplay
             currentMetaIndex = 0;
             rawScore = 0;
 
-            var chartPath = onChartSelected.value;
+            var chartPath = onChartSelect.value;
             var chart = new Chart();
 
             if (chartPath == null)
@@ -44,7 +48,7 @@ namespace Gameplay
 
             chart.desc = FileExplorer.FromFile<SerializableDesc>(chartPath.descPath);
             chart.pattern = FileExplorer.FromFile<SerializablePattern>(chartPath.patternPath);
-            var x = StartCoroutine(FileExplorer.GetAudioClip(chartPath.audioPath, value =>
+            StartCoroutine(FileExplorer.GetAudioClip(chartPath.audioPath, value =>
             {
                 chart.audioClip = value;
                 PrepareGame(chart);
@@ -53,8 +57,8 @@ namespace Gameplay
 
         private void Update()
         {
-            if (player.IsWorking && (player.State == PlayState.Playable || player.State == PlayState.ResumeCount))
-                RefreshTime();
+            if (player.State.IsTimePassing)
+                AdjustTime();
         }
 
         private void OnEnable()
@@ -95,7 +99,7 @@ namespace Gameplay
             SceneManager.LoadScene(3);
         }
 
-        private void RefreshTime()
+        private void AdjustTime()
         {
             if (player.CurrentTime >= player.EndTime)
             {
@@ -145,14 +149,13 @@ namespace Gameplay
 
         public void PauseOrResume()
         {
-            switch (player.State)
+            if (player.State.IsPausable)
             {
-                case PlayState.Paused:
-                    Resume();
-                    break;
-                case PlayState.Playable:
-                    Pause();
-                    break;
+                Pause();
+            }
+            else if (player.State.IsPaused)
+            {
+                Resume();
             }
         }
 
@@ -165,6 +168,7 @@ namespace Gameplay
         private void Resume()
         {
             player.OnGameResume();
+            StartCoroutine(SetStateCatchable());
             StartCoroutine(SetStatePlayable());
             if (player.CurrentTime < 0)
             {
@@ -176,6 +180,12 @@ namespace Gameplay
                 audioSource.time = player.CurrentTime;
                 audioSource.UnPause();
             }
+        }
+        
+        private IEnumerator SetStateCatchable()
+        {
+            yield return new WaitForSeconds(3f - Const.JUDGE_STD[Const.JUDGE_STD.Length - 1]);
+            player.SetStateCatchable();
         }
 
         private IEnumerator SetStatePlayable()
@@ -228,7 +238,7 @@ namespace Gameplay
             player.OnJudge(judge);
         }
 
-        public void ApplyLongNoteStartPausedWhileIsIn(int line, Judges judge)
+        public void ApplyCutOffLongNoteStart(int line, Judges judge)
         {
             player.OnNoteEffect(line);
             player.OnJudge(judge);

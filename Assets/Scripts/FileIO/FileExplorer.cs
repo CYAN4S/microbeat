@@ -2,6 +2,7 @@
 using System.Collections;
 using System.IO;
 using SO;
+using SO.NormalChannel;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;

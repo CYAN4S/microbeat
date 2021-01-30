@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using Core;
 using FileIO;
+using UnityEditor;
 using UnityEngine;
 
 namespace Gameplay
 {
     public class LongNoteSystem : NoteSystem
     {
-        public const float noteHeight = 50f;
+        // public const float noteHeight = 50f;
         public float endTime;
         public double length;
         public Queue<double> ticks;
@@ -21,15 +22,16 @@ namespace Gameplay
         private float endPos;
         private float startPos;
 
-        private void Awake()
+        protected new void Awake()
         {
-            rt = GetComponent<RectTransform>();
+            base.Awake();
+            // rt = GetComponent<RectTransform>();
             ticks = new Queue<double>();
 
             //GameManager.Instance.OnScrollSpeedChange += ChangeLength;
         }
 
-        private void LateUpdate()
+        protected new void LateUpdate()
         {
             if (!player.IsWorking) return;
 
@@ -44,27 +46,29 @@ namespace Gameplay
             Beat = data.beat;
             length = data.length;
             for (var i = 0.25; i < length; i += 0.25) ticks.Enqueue(i);
+            
+            image.sprite = Line == 1 || Line == 2 ? skin.noteSkin.whiteNote : skin.noteSkin.blueNote;
         }
 
         private void ChangeLength()
         {
             var l = isIn ? endPos : endPos - startPos;
-            l += noteHeight;
+            l += skin.noteSkin.noteHeight;
             rt.sizeDelta = new Vector2(rt.sizeDelta.x, l);
         }
 
-        private void Move()
+        protected new void Move()
         {
             transform.localPosition = new Vector3(Const.LINE_X_POS[Line], (startPos + endPos) / 2f);
         }
 
-        private float GetCurrentEndYPos()
+        protected float GetCurrentEndYPos()
         {
             return GetYPos(Beat + length);
             // return (float) ((Beat + length - player.CurrentBeat) * (float) player.ScrollSpeed * 36000f / player.StdBpm);
         }
 
-        private void GetPoses()
+        protected void GetPoses()
         {
             if (pausedWhileIsIn)
                 startPos = Mathf.Max(GetYPos(pausedBeat), 0);

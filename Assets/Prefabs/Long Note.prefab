@@ -91,6 +91,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 0
   player: {fileID: 11400000, guid: 10088d471648e9d4c8a693bf6f9a75cb, type: 2}
+  skin: {fileID: 11400000, guid: 66f3a6e77d3347c4eb5b735b975b8440, type: 2}
   endTime: 0
   length: 0
   isIn: 0
+  pausedWhileIsIn: 0
+  pausedBeat: 0
+  pausedTime: 0

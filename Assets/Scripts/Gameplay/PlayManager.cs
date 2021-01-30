@@ -90,10 +90,10 @@ namespace Gameplay
         private NoteSystem CreateNote(SerializableNote item)
         {
             var noteSystem = Instantiate(notePrefab, noteContainer).GetComponent<NoteSystem>();
-
             noteSystem.SetFromData(item);
+            
             noteSystem.time = player.Meta.GetTime(item.beat);
-            noteSystem.GetComponent<Image>().sprite = noteSprites[item.line == 1 || item.line == 2 ? 1 : 0];
+            // noteSystem.GetComponent<Image>().sprite = noteSprites[item.line == 1 || item.line == 2 ? 1 : 0];
 
             return noteSystem;
         }
@@ -101,11 +101,11 @@ namespace Gameplay
         private LongNoteSystem CreateLongNote(SerializableLongNote item)
         {
             var longNoteSystem = Instantiate(longNotePrefab, noteContainer).GetComponent<LongNoteSystem>();
-
             longNoteSystem.SetFromData(item);
+            
             longNoteSystem.time = player.Meta.GetTime(item.beat);
             longNoteSystem.endTime = player.Meta.GetTime(item.beat + item.length);
-            longNoteSystem.GetComponent<Image>().sprite = noteSprites[item.line == 1 || item.line == 2 ? 1 : 0];
+            // longNoteSystem.GetComponent<Image>().sprite = noteSprites[item.line == 1 || item.line == 2 ? 1 : 0];
 
             return longNoteSystem;
         }

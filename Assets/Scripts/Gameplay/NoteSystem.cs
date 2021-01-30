@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using Core;
 using FileIO;
 using SO;
+using SO.ParticularChannel;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Gameplay
 {
@@ -11,17 +14,21 @@ namespace Gameplay
         public float time;
 
         [SerializeField] protected PlayerSO player;
+        [SerializeField] protected SkinSelectionSO skin;
 
         protected RectTransform rt;
+        protected Image image;
+        
         public int Line { get; protected set; }
         public double Beat { get; protected set; }
 
-        private void Awake()
+        protected void Awake()
         {
             rt = GetComponent<RectTransform>();
+            image = GetComponent<Image>();
         }
 
-        private void LateUpdate()
+        protected void LateUpdate()
         {
             if (!player.IsWorking) return;
 
@@ -37,9 +44,11 @@ namespace Gameplay
         {
             Line = data.line;
             Beat = data.beat;
+            
+            image.sprite = Line == 1 || Line == 2 ? skin.noteSkin.whiteNote : skin.noteSkin.blueNote;
         }
 
-        private void Move()
+        protected void Move()
         {
             transform.localPosition = new Vector3(Const.LINE_X_POS[Line], GetCurrentYPos());
         }

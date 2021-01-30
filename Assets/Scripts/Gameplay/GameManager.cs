@@ -3,6 +3,7 @@ using Core;
 using FileIO;
 using Input;
 using SO;
+using SO.NormalChannel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

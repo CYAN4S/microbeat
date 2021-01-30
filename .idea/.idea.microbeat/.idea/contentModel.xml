@@ -48,15 +48,23 @@
           </e>
           <e p="SceneLoader.cs" t="Include" />
           <e p="SO" t="Include">
-            <e p="AudioClipEventChannelSO.cs" t="Include" />
-            <e p="ChartEventChannelSO.cs" t="Include" />
-            <e p="ChartPathEventChannelSO.cs" t="Include" />
-            <e p="EventChannelSO.cs" t="Include" />
-            <e p="FloatEventChannelSO.cs" t="Include" />
-            <e p="IntEventChannelSO.cs" t="Include" />
-            <e p="PlayerSO.cs" t="Include" />
-            <e p="StringEventChannelSO.cs" t="Include" />
-            <e p="VoidEventChannelSO.cs" t="Include" />
+            <e p="DataContainer" t="Include">
+              <e p="NoteSkin.cs" t="Include" />
+            </e>
+            <e p="NormalChannel" t="Include">
+              <e p="AudioClipEventChannelSO.cs" t="Include" />
+              <e p="ChartEventChannelSO.cs" t="Include" />
+              <e p="ChartPathEventChannelSO.cs" t="Include" />
+              <e p="EventChannelSO.cs" t="Include" />
+              <e p="FloatEventChannelSO.cs" t="Include" />
+              <e p="IntEventChannelSO.cs" t="Include" />
+              <e p="StringEventChannelSO.cs" t="Include" />
+              <e p="VoidEventChannelSO.cs" t="Include" />
+            </e>
+            <e p="ParticularChannel" t="Include">
+              <e p="PlayerSO.cs" t="Include" />
+              <e p="SkinSelectionSO.cs" t="Include" />
+            </e>
           </e>
           <e p="UI" t="Include">
             <e p="LISystem.cs" t="Include" />

@@ -1,6 +1,7 @@
 using Core;
 using FileIO;
 using SO;
+using SO.NormalChannel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -41,8 +42,8 @@ namespace UI
         private void AddChartPath(ChartPath chartPath)
         {
             var obj = Instantiate(listContentPrefab, listContainer);
-            obj.transform.Translate(0, -250 * count++ * yMultiply, 0);
-            listContainer.sizeDelta = new Vector2(0, 250 * count);
+            obj.transform.Translate(0, -120 * count++ * yMultiply, 0);
+            listContainer.sizeDelta = new Vector2(0, 120 * count);
 
             obj.GetComponent<Button>().onClick.AddListener(() =>
             {
@@ -53,7 +54,7 @@ namespace UI
             var liSystem = obj.GetComponent<LISystem>();
             liSystem.title.text = chartPath.name;
             liSystem.info.text = chartPath.artist + " / " + chartPath.genre;
-            liSystem.level.text = Const.PATTERN[chartPath.diff] + "\n" + chartPath.level;
+            liSystem.level.text = Const.PATTERN[chartPath.diff] + " " + chartPath.level;
         }
 
         private void OnChartSelect()

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace SO
+namespace SO.NormalChannel
 {
     public abstract class EventChannelSO<T> : ScriptableObject
     {

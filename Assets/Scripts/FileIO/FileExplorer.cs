@@ -51,10 +51,11 @@ namespace FileIO
 
         private void SeekDirectory(DirectoryInfo directory)
         {
-            var descFile = directory.GetFiles("info.mudesc")?[0];
-            if (descFile == null) return;
+            var descs = directory.GetFiles(".mcbdesc");
+            if (descs.Length == 0) return;
+            var descFile = descs[0];
 
-            var patternFiles = directory.GetFiles("*.musheet");
+            var patternFiles = directory.GetFiles("*.mcbchart");
             if (patternFiles.Length == 0) return;
 
             var desc = FromFile<SerializableDesc>(descFile);

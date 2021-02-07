@@ -58,6 +58,7 @@
               <e p="EventChannelSO.cs" t="Include" />
               <e p="FloatEventChannelSO.cs" t="Include" />
               <e p="IntEventChannelSO.cs" t="Include" />
+              <e p="MusicDataEventChannelSO.cs" t="Include" />
               <e p="StringEventChannelSO.cs" t="Include" />
               <e p="VoidEventChannelSO.cs" t="Include" />
             </e>

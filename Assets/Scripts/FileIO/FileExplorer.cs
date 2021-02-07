@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using SO;
 using SO.NormalChannel;
@@ -12,7 +13,10 @@ namespace FileIO
     public class FileExplorer : MonoBehaviour
     {
         public static string path;
-        [SerializeField] private ChartPathEventChannelSO chartPathLoadedI;
+        [SerializeField] private ChartPathEventChannelSO chartPathLoadedI; // REMOVE THIS
+        
+        [Header("Channel to invoke")]
+        [SerializeField] private MusicDataEventChannelSO onMusicDataLoad;
 
         private void Awake()
         {
@@ -59,6 +63,7 @@ namespace FileIO
             if (patternFiles.Length == 0) return;
 
             var desc = FromFile<SerializableDesc>(descFile);
+            var md = new MusicData(desc);
 
             foreach (var patternFile in patternFiles)
             {
@@ -75,8 +80,11 @@ namespace FileIO
                     pattern.diff
                 );
 
-                chartPathLoadedI.RaiseEvent(chartPath);
+                chartPathLoadedI.RaiseEvent(chartPath); // REMOVE THIS
+                md.AddTuple(patternFile.FullName, pattern.line, pattern.level, pattern.diff);
             }
+
+            onMusicDataLoad.RaiseEvent(md);
         }
 
         public static T FromFile<T>(FileInfo file)
@@ -102,6 +110,24 @@ namespace FileIO
             else
                 //streamAudio = DownloadHandlerAudioClip.GetContent(www);
                 callback.Invoke(DownloadHandlerAudioClip.GetContent(www));
+        }
+    }
+
+    public class MusicData
+    {
+        public SerializableDesc desc;
+        // audio path, line, level, diff
+        public List<Tuple<string, int, int, int>> chartpaths;
+
+        public MusicData(SerializableDesc desc = null)
+        {
+            this.desc = desc;
+            this.chartpaths = new List<Tuple<string, int, int, int>>();
+        }
+
+        public void AddTuple(string path, int line, int level, int diff)
+        {
+            chartpaths.Add(new Tuple<string, int, int, int>(path, line, level, diff));
         }
     }
 

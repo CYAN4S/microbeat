@@ -14,6 +14,10 @@ namespace FileIO
         public List<SerializableBpm> bpms; // NEW VERSION
 
         public string musicPath;
+        public string previewImgPath;
+        public string smallImgPath;
+        public string imgPath;
+        public string mvPath;
     }
 
     [Serializable]

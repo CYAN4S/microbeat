@@ -21,7 +21,7 @@ namespace Core
 
         public static readonly float[] LINE_X_POS = {-300, -100, 100, 300};
 
-        public static readonly string[] PATTERN = {"NM", "HD", "MX", "SC"};
+        public static readonly string[] PATTERN = {"SNT", "ORG", "ADV", "HYP", "EXC"};
 
         public static readonly int[] RANK = {295000, 290000, 275000, 250000, 200000};
         public static readonly string[] RANK_NAME = {"S", "A", "B", "C", "D", "F"};

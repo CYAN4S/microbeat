@@ -12,6 +12,7 @@ namespace UI
     {
         [Header("Channel to follow")]
         [SerializeField] private ChartPathEventChannelSO onLoadFinish;
+        [SerializeField] private MusicDataEventChannelSO onMusicDataLoad;
         
         [Header("Channel to invoke")]
         [SerializeField] private ChartPathEventChannelSO onMusicSelect;
@@ -55,6 +56,11 @@ namespace UI
             liSystem.title.text = chartPath.name;
             liSystem.info.text = chartPath.artist + " / " + chartPath.genre;
             liSystem.level.text = Const.PATTERN[chartPath.diff] + " " + chartPath.level;
+        }
+
+        private void AddMusicData(MusicData musicData)
+        {
+            
         }
 
         private void OnChartSelect()

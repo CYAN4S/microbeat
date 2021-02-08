@@ -13,7 +13,6 @@ namespace FileIO
     public class FileExplorer : MonoBehaviour
     {
         public static string path;
-        [SerializeField] private ChartPathEventChannelSO chartPathLoadedI; // REMOVE THIS
         
         [Header("Channel to invoke")]
         [SerializeField] private MusicDataEventChannelSO onMusicDataLoad;
@@ -63,24 +62,11 @@ namespace FileIO
             if (patternFiles.Length == 0) return;
 
             var desc = FromFile<SerializableDesc>(descFile);
-            var md = new MusicData(desc);
+            var md = new MusicData(desc, directory.FullName);
 
             foreach (var patternFile in patternFiles)
             {
                 var pattern = FromFile<SerializablePattern>(patternFile);
-                var chartPath = new ChartPath(
-                    Path.Combine(directory.FullName, desc.musicPath),
-                    descFile.FullName,
-                    patternFile.FullName,
-                    desc.name,
-                    desc.artist,
-                    desc.genre,
-                    pattern.line,
-                    pattern.level,
-                    pattern.diff
-                );
-
-                chartPathLoadedI.RaiseEvent(chartPath); // REMOVE THIS
                 md.AddTuple(patternFile.FullName, pattern.line, pattern.level, pattern.diff);
             }
 
@@ -106,56 +92,31 @@ namespace FileIO
             yield return x;
 
             if (www.result == UnityWebRequest.Result.ConnectionError)
-                Debug.Log(www.error);
+                Debug.Log(www.error + " " + audioPath);
             else
-                //streamAudio = DownloadHandlerAudioClip.GetContent(www);
                 callback.Invoke(DownloadHandlerAudioClip.GetContent(www));
+            
         }
     }
 
     public class MusicData
     {
+        public string path;
         public SerializableDesc desc;
         // audio path, line, level, diff
-        public List<Tuple<string, int, int, int>> chartpaths;
+        public List<Tuple<string, int, int, int>> patternData;
 
-        public MusicData(SerializableDesc desc = null)
+        public MusicData(SerializableDesc desc, string path)
         {
             this.desc = desc;
-            this.chartpaths = new List<Tuple<string, int, int, int>>();
+            this.path = path;
+            this.patternData = new List<Tuple<string, int, int, int>>();
         }
 
         public void AddTuple(string path, int line, int level, int diff)
         {
-            chartpaths.Add(new Tuple<string, int, int, int>(path, line, level, diff));
+            patternData.Add(new Tuple<string, int, int, int>(path, line, level, diff));
         }
     }
 
-    public class ChartPath
-    {
-        public string artist;
-        public string audioPath;
-        public string descPath;
-        public int diff;
-        public string genre;
-        public int level;
-        public int line;
-
-        public string name;
-        public string patternPath;
-
-        public ChartPath(string audioPath, string descPath, string patternPath, string name, string artist, string genre,
-            int line, int level, int diff)
-        {
-            this.audioPath = audioPath;
-            this.descPath = descPath;
-            this.patternPath = patternPath;
-            this.name = name;
-            this.artist = artist;
-            this.genre = genre;
-            this.line = line;
-            this.level = level;
-            this.diff = diff;
-        }
-    }
 }

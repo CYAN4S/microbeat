@@ -16,7 +16,7 @@ namespace Gameplay
         [SerializeField] private InputReader inputReader;
         
         [Header("Channel to get values from previous scene")]
-        [SerializeField] private ChartPathEventChannelSO onChartSelect;
+        [SerializeField] private ChartEventChannelSO onChartSelect;
         
         private AudioSource audioSource;
 
@@ -38,22 +38,15 @@ namespace Gameplay
             currentMetaIndex = 0;
             rawScore = 0;
 
-            var chartPath = onChartSelect.value;
-            var chart = new Chart();
+            var chart = onChartSelect.value;
 
-            if (chartPath == null)
+            if (chart == null)
             {
                 Debug.LogError("No ChartPath in channel.");
                 return;
             }
 
-            chart.desc = FileExplorer.FromFile<SerializableDesc>(chartPath.descPath);
-            chart.pattern = FileExplorer.FromFile<SerializablePattern>(chartPath.patternPath);
-            StartCoroutine(FileExplorer.GetAudioClip(chartPath.audioPath, value =>
-            {
-                chart.audioClip = value;
-                PrepareGame(chart);
-            }));
+            PrepareGame(chart);
         }
 
         private void Update()

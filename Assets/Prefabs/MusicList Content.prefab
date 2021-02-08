@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &307863011289009972
 RectTransform:
   m_ObjectHideFlags: 0
@@ -170,9 +170,9 @@ GameObject:
   - component: {fileID: 7587274292379777219}
   - component: {fileID: 7587274292379777218}
   - component: {fileID: 7587274292379777217}
-  - component: {fileID: 7587274292379777220}
+  - component: {fileID: 606675036955650716}
   m_Layer: 5
-  m_Name: List Content
+  m_Name: MusicList Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7587274292379777220
+--- !u!114 &606675036955650716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -291,25 +291,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7587274292379777231}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81fbc3f5a4181246914ec5add58147e, type: 3}
+  m_Script: {fileID: 11500000, guid: d2ec153fd9fe39447b7a63fc0af1d5bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desc:
-    name: 
-    artist: 
-    genre: 
-    bpm: 0
-    bpms: []
-    musicPath: 
-  pattern:
-    line: 0
-    level: 0
-    diff: 0
-    notes: []
-    longNotes: []
   title: {fileID: 7587274292215187187}
   info: {fileID: 7587274293862911515}
-  level: {fileID: 5149117867058971678}
 --- !u!1 &7587274293862911513
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,11 +328,11 @@ RectTransform:
   m_Father: {fileID: 7587274292379777216}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1838.9496, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -34, y: 0}
+  m_SizeDelta: {x: 1838.9497, y: 0}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &7587274293862911516
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -382,7 +368,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 81
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

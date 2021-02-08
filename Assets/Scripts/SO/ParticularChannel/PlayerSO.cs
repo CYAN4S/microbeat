@@ -135,7 +135,7 @@ namespace SO
         public void OnGameResume()
         {
             State.value = PlayState.ResumeCount;
-            CurrentTime = Mathf.Max(-3f, CurrentTime - 3);
+            CurrentTime -= 3;
             GameResumeEvent?.Invoke();
         }
 

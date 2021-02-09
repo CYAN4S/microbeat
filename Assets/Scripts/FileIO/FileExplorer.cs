@@ -92,10 +92,28 @@ namespace FileIO
             yield return x;
 
             if (www.result == UnityWebRequest.Result.ConnectionError)
-                Debug.Log(www.error + " " + audioPath);
+            {
+                Debug.Log(www.error + " / " + audioPath);
+            }
             else
+            {
                 callback.Invoke(DownloadHandlerAudioClip.GetContent(www));
-            
+            }
+        }
+
+        public static IEnumerator GetTexture(string imgPath, UnityAction<Texture2D> callback)
+        {
+            using var uwr = UnityWebRequestTexture.GetTexture(imgPath);
+            yield return uwr.SendWebRequest();
+
+            if (uwr.result == UnityWebRequest.Result.ConnectionError || uwr.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.Log(uwr.error + " / " + imgPath);
+            }
+            else
+            {
+                callback.Invoke(DownloadHandlerTexture.GetContent(uwr));
+            }
         }
     }
 

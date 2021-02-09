@@ -45,14 +45,10 @@ namespace SO
 
         // Constant of chart
         public float EndTime { get; set; }
-        // public double StdBpm { get; set; }
         public BpmMeta Meta { get; set; }
 
         // Status
         public bool IsWorking { get; private set; }
-        // public bool IsPaused { get; private set; }
-        
-        // public PlayState State { get; private set; }
         public GameplayState State { get; private set; }
         
         public double ScrollSpeed { get; private set; }
@@ -67,8 +63,6 @@ namespace SO
         public void Reset()
         {
             IsWorking = false;
-            // IsPaused = false;
-            // State = PlayState.Loading;
             State = new GameplayState();
             CurrentTime = -3;
             ScrollSpeed = 2.5;
@@ -89,6 +83,7 @@ namespace SO
         public event UnityAction ComboBreakEvent;
         public event UnityAction GamePauseEvent;
         public event UnityAction GameResumeEvent;
+        public event UnityAction GamePlayableEvent;
 
         public event UnityAction<Judges> JudgeEvent;
         public event UnityAction<int> NoteEffectEvent;
@@ -179,6 +174,7 @@ namespace SO
         public void SetStatePlayable()
         {
             State.value = PlayState.Playable;
+            GamePlayableEvent?.Invoke();
         }
     }
 }

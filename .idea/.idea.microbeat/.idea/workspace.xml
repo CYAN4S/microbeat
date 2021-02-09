@@ -23,39 +23,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/MusicListContent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/PatternList.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/PatternListContent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/MusicList Content.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/MusicList Content.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/PatternList Content.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/PatternList Content.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/MusicData.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/MusicData/MusicDataLoadEvent_Channel.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/MusicData/MusicDataLoadEvent_Channel.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/MusicData/MusicDataSelectEvent_Channel.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/MusicData/MusicDataSelectEvent_Channel.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MusicListContent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MusicListContent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternListContent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternListContent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PreviewImage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PreviewImage.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/List Content.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/List Content.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MusicListContent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MusicListContent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PatternList.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PatternList.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PatternListContent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PatternListContent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Scene/Main Camera.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Scene/Main Camera.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/ChartPath.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/ChartPath/ChartPathLoadFinishEvent_Channel.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/ChartPath/ChartPathLoadFinishEvent_Channel.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/ChartPath/ChartPathSelectEvent_Channel.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/ChartPath/ChartPathSelectEvent_Channel.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Chart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Chart.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/ChartPathEventChannelSO.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/ChartPathEventChannelSO.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/LISystem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/LISystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PatternList.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/MusicListController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MusicListController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,15 +56,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/MusicListContent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/PatternListContent.cs" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/MusicListController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ChartLoad.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Combo.cs" />
@@ -120,10 +104,12 @@
         <option value="$PROJECT_DIR$/Assets/MusicListContent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MusicListController.cs" />
         <option value="$PROJECT_DIR$/Assets/PatternListContent.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" />
         <option value="$PROJECT_DIR$/Assets/PatternList.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/Chart.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" />
+        <option value="$PROJECT_DIR$/Assets/PreviewImage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" />
       </list>
     </option>
   </component>
@@ -221,6 +207,7 @@
       <workItem from="1612622587079" duration="193000" />
       <workItem from="1612703012153" duration="3664000" />
       <workItem from="1612771273885" duration="10826000" />
+      <workItem from="1612868733955" duration="6720000" />
     </task>
     <servers />
   </component>
@@ -250,15 +237,15 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="680" y="325" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1605483632223" />
-    <state x="829" y="441" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.ChooseSilentCodeCleanupProfileDialog" timestamp="1610512443140">
+    <state x="829" y="441" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.ChooseSilentCodeCleanupProfileDialog" timestamp="1612873144002">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="829" y="441" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.ChooseSilentCodeCleanupProfileDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1610512443140" />
-    <state x="705" y="372" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1612792258098">
+    <state x="829" y="441" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.ChooseSilentCodeCleanupProfileDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1612873144002" />
+    <state x="705" y="372" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1612873155954">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="-1215" y="374" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1920.1050/-1920.2.1920.1050@-1920.2.1920.1050" timestamp="1611579355699" />
-    <state x="705" y="372" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1920.1050@0.0.1920.1050" timestamp="1612792258098" />
+    <state x="705" y="372" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1920.1050@0.0.1920.1050" timestamp="1612873155954" />
     <state width="883" height="464" key="DebuggerActiveHint" timestamp="1612000328036">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

@@ -7,9 +7,6 @@
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="MusicListContent.cs" t="Include" />
-        <e p="PatternList.cs" t="Include" />
-        <e p="PatternListContent.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="GitHub" t="Include">
             <e p="Editor" t="Include">
@@ -40,6 +37,7 @@
               <e p="GameplayUIManager.cs" t="Include" />
               <e p="GrooveLight.cs" t="Include" />
               <e p="Judge.cs" t="Include" />
+              <e p="MusicVideoPlayer.cs" t="Include" />
               <e p="NoteEffect.cs" t="Include" />
               <e p="Pause.cs" t="Include" />
               <e p="PressEffect.cs" t="Include" />
@@ -71,7 +69,11 @@
           </e>
           <e p="UI" t="Include">
             <e p="LoadingBar.cs" t="Include" />
+            <e p="MusicListContent.cs" t="Include" />
             <e p="MusicListController.cs" t="Include" />
+            <e p="PatternList.cs" t="Include" />
+            <e p="PatternListContent.cs" t="Include" />
+            <e p="PreviewImage.cs" t="Include" />
             <e p="Result.cs" t="Include" />
           </e>
         </e>

@@ -50,6 +50,7 @@
           <e p="SceneLoader.cs" t="Include" />
           <e p="SO" t="Include">
             <e p="DataContainer" t="Include">
+              <e p="GearSkin.cs" t="Include" />
               <e p="NoteSkin.cs" t="Include" />
             </e>
             <e p="NormalChannel" t="Include">

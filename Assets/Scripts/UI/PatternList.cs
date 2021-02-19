@@ -55,7 +55,6 @@ public class PatternList : MonoBehaviour
 
             obj.GetComponent<Button>().onClick.AddListener(() =>
             {
-                Debug.Log("VAR");
                 var chart = new Chart(musicData.desc, tuple.Item1, musicData.path);
                 StartCoroutine(chart.SetAudioClip(() =>
                 {

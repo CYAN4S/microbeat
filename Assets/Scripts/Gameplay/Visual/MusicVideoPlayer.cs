@@ -20,7 +20,10 @@ namespace Gameplay.Visual
         private void Awake()
         {
             videoPlayer = GetComponent<VideoPlayer>();
-            videoPlayer.url = Path.Combine(onChartSelect.value.path, onChartSelect.value.desc.mvPath);
+            if (onChartSelect.value.desc.mvPath != null)
+            {
+                videoPlayer.url = Path.Combine(onChartSelect.value.path, onChartSelect.value.desc.mvPath);
+            }
         }
 
         private void OnEnable()

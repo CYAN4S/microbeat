@@ -23,29 +23,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MusicListContent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MusicListContent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternListContent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternListContent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PreviewImage.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PreviewImage.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SO/DataContainer/GearSkin.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SO/DataContainer/GearSkin.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skins/Cyan/Sprites/cyanskin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skins/Cyan/Sprites/cyanskin.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MusicListContent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MusicListContent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PatternList.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PatternList.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PatternListContent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PatternListContent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Scene/Main Camera.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Scene/Main Camera.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,8 +46,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Combo.cs" />
         <option value="$PROJECT_DIR$/Assets/Pause.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Temp/LoadScene.cs" />
@@ -110,6 +95,8 @@
         <option value="$PROJECT_DIR$/Assets/PreviewImage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SO/DataContainer/GearSkin.cs" />
       </list>
     </option>
   </component>
@@ -208,6 +195,8 @@
       <workItem from="1612703012153" duration="3664000" />
       <workItem from="1612771273885" duration="10826000" />
       <workItem from="1612868733955" duration="6720000" />
+      <workItem from="1613347384252" duration="1276000" />
+      <workItem from="1613729171259" duration="3227000" />
     </task>
     <servers />
   </component>

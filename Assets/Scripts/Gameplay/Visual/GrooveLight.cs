@@ -5,6 +5,9 @@ public class GrooveLight : MonoBehaviour
 {
     [SerializeField] private PlayerSO player;
     [SerializeField] private Animator animator;
+    private static readonly int Begin = Animator.StringToHash("Begin");
+    private static readonly int End = Animator.StringToHash("End");
+    private static readonly int Bpm = Animator.StringToHash("BPM");
 
     private void OnEnable()
     {
@@ -22,16 +25,16 @@ public class GrooveLight : MonoBehaviour
 
     private void StartGroove()
     {
-        animator.SetTrigger("Begin");
+        animator.SetTrigger(Begin);
     }
 
-    public void StopGroove()
+    private void StopGroove()
     {
-        animator.SetTrigger("End");
+        animator.SetTrigger(End);
     }
 
-    public void Change()
+    private void Change()
     {
-        animator.SetFloat("BPM", (float) player.CurrentBpm / 60f);
+        animator.SetFloat(Bpm, (float) player.CurrentBpm / 60f);
     }
 }

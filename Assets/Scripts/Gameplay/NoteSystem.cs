@@ -50,7 +50,7 @@ namespace Gameplay
 
         protected void Move()
         {
-            transform.localPosition = new Vector3(Const.LINE_X_POS[Line], GetCurrentYPos());
+            transform.localPosition = new Vector3(transform.localPosition.x, GetCurrentYPos());
         }
 
         protected float GetCurrentYPos()

@@ -18,17 +18,25 @@ namespace Gameplay
         [Header("Note Settings")]
         [SerializeField] private GameObject notePrefab;
         [SerializeField] private GameObject longNotePrefab;
-        [SerializeField] private Transform noteContainer;
-        [SerializeField] private Sprite[] noteSprites;
+        
+        [Header("Debugging")]
+        [SerializeField] private SkinSystem skinPrefab;
+        [SerializeField] private Transform playZone;
 
         private GameManager gm;
         private List<Queue<NoteSystem>> noteQueues;
         private List<NoteState> noteStates;
+        private SkinSystem skin;
+        private Transform noteContainer;
+        
         private void Awake()
         {
             noteQueues = new List<Queue<NoteSystem>>();
             noteStates = new List<NoteState>();
             gm = GetComponent<GameManager>();
+
+            skin = Instantiate(skinPrefab.gameObject, playZone).GetComponent<SkinSystem>();
+            noteContainer = skin.noteContainer;
         }
 
         private void LateUpdate()
@@ -92,8 +100,8 @@ namespace Gameplay
             var noteSystem = Instantiate(notePrefab, noteContainer).GetComponent<NoteSystem>();
             noteSystem.SetFromData(item);
             
+            noteSystem.transform.localPosition = new Vector3(skin.xPositions[item.line], 0);
             noteSystem.time = player.Meta.GetTime(item.beat);
-            // noteSystem.GetComponent<Image>().sprite = noteSprites[item.line == 1 || item.line == 2 ? 1 : 0];
 
             return noteSystem;
         }
@@ -105,7 +113,7 @@ namespace Gameplay
             
             longNoteSystem.time = player.Meta.GetTime(item.beat);
             longNoteSystem.endTime = player.Meta.GetTime(item.beat + item.length);
-            // longNoteSystem.GetComponent<Image>().sprite = noteSprites[item.line == 1 || item.line == 2 ? 1 : 0];
+            longNoteSystem.transform.localPosition = new Vector3(skin.xPositions[item.line], 0);
 
             return longNoteSystem;
         }
@@ -257,7 +265,6 @@ namespace Gameplay
 
         private void OnPause()
         {
-            Debug.Log(player.CurrentTime);
             foreach (var state in noteStates)
                 if (state.isInLongNote)
                 {

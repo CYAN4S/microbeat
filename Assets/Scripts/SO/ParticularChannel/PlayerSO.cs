@@ -57,6 +57,7 @@ namespace SO
         public double Score { get; private set; }
 
         public float GrooveMeter { get; private set; }
+        public float FeverMeter { get; private set; }
         public int[] JudgeCounts { get; private set; }
 
 

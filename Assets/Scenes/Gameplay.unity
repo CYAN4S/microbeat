@@ -400,8 +400,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: 902d6a28265bb4443923e54e313f1623, type: 2}
+  onChartSelect: {fileID: 11400000, guid: 11e789cf54bbb324e96e8a73ec5b2043, type: 2}
   speedKeys: 74000000670000006800000079000000
   playKeys4B: 64000000660000006a0000006b000000
+  playKeys5B: 
+  playKeys6B: 7300000064000000660000006a0000006b0000006c000000
+  playKeys8B: 
   feverKey: 32
   pauseKey: 27
 --- !u!4 &522699030
@@ -432,11 +436,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: 10088d471648e9d4c8a693bf6f9a75cb, type: 2}
   inputReader: {fileID: 11400000, guid: 902d6a28265bb4443923e54e313f1623, type: 2}
-  notePrefab: {fileID: 3140704049987846472, guid: 9f7faad7eb79664499b3edf458341e50,
+  notePrefab: {fileID: 1010890819699572729, guid: 9f7faad7eb79664499b3edf458341e50,
     type: 3}
-  longNotePrefab: {fileID: 3140704049987846472, guid: 5165f488cbd553542806fa7f112a2d1b,
+  longNotePrefab: {fileID: 1462977543257870842, guid: 5165f488cbd553542806fa7f112a2d1b,
     type: 3}
   skinPrefab: {fileID: 4242061108881892501, guid: c8cfb6b2cd540a749800a75e65d8a77c,
+    type: 3}
+  skinPrefab6K: {fileID: 8955167216895476622, guid: 1c4036fd1c4763a479f390904e805f7e,
     type: 3}
   playZone: {fileID: 233677786}
 --- !u!114 &522699032

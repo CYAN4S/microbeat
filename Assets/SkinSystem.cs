@@ -12,5 +12,6 @@ public class SkinSystem : MonoBehaviour
     public int lineCount;
 
     [SerializeField] public float[] xPositions;
+    [SerializeField] public float scale;
 
 }

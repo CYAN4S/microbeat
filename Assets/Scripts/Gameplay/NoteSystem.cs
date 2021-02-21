@@ -45,7 +45,8 @@ namespace Gameplay
             Line = data.line;
             Beat = data.beat;
             
-            image.sprite = Line == 1 || Line == 2 ? skin.noteSkin.whiteNote : skin.noteSkin.blueNote;
+            //image.sprite = Line == 1 || Line == 2 ? skin.noteSkin.whiteNote : skin.noteSkin.blueNote;
+            
         }
 
         protected void Move()

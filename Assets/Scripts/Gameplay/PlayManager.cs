@@ -16,11 +16,12 @@ namespace Gameplay
         [SerializeField] private InputReader inputReader;
         
         [Header("Note Settings")]
-        [SerializeField] private GameObject notePrefab;
-        [SerializeField] private GameObject longNotePrefab;
+        [SerializeField] private NoteSystem notePrefab;
+        [SerializeField] private LongNoteSystem longNotePrefab;
         
         [Header("Debugging")]
         [SerializeField] private SkinSystem skinPrefab;
+        [SerializeField] private SkinSystem skinPrefab6K;
         [SerializeField] private Transform playZone;
 
         private GameManager gm;
@@ -34,9 +35,6 @@ namespace Gameplay
             noteQueues = new List<Queue<NoteSystem>>();
             noteStates = new List<NoteState>();
             gm = GetComponent<GameManager>();
-
-            skin = Instantiate(skinPrefab.gameObject, playZone).GetComponent<SkinSystem>();
-            noteContainer = skin.noteContainer;
         }
 
         private void LateUpdate()
@@ -64,9 +62,13 @@ namespace Gameplay
 
         public void PrepareNotes(SerializableDesc desc, SerializablePattern pattern)
         {
+            skin = pattern.line == 4 ? skinPrefab : skinPrefab6K;
+            skin = Instantiate(skin, playZone);
+            noteContainer = skin.noteContainer;
+            
             player.EndTime = 3f;
             var sortReady = new List<List<NoteSystem>>();
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < pattern.line; i++)
             {
                 sortReady.Add(new List<NoteSystem>());
                 noteStates.Add(new NoteState());
@@ -97,23 +99,25 @@ namespace Gameplay
 
         private NoteSystem CreateNote(SerializableNote item)
         {
-            var noteSystem = Instantiate(notePrefab, noteContainer).GetComponent<NoteSystem>();
+            var noteSystem = Instantiate(notePrefab, noteContainer);
             noteSystem.SetFromData(item);
             
             noteSystem.transform.localPosition = new Vector3(skin.xPositions[item.line], 0);
             noteSystem.time = player.Meta.GetTime(item.beat);
+            noteSystem.transform.localScale = new Vector3(skin.scale, skin.scale, 1);
 
             return noteSystem;
         }
 
         private LongNoteSystem CreateLongNote(SerializableLongNote item)
         {
-            var longNoteSystem = Instantiate(longNotePrefab, noteContainer).GetComponent<LongNoteSystem>();
+            var longNoteSystem = Instantiate(longNotePrefab, noteContainer);
             longNoteSystem.SetFromData(item);
             
             longNoteSystem.time = player.Meta.GetTime(item.beat);
             longNoteSystem.endTime = player.Meta.GetTime(item.beat + item.length);
             longNoteSystem.transform.localPosition = new Vector3(skin.xPositions[item.line], 0);
+            longNoteSystem.transform.localScale = new Vector3(skin.scale, skin.scale, 1);
 
             return longNoteSystem;
         }

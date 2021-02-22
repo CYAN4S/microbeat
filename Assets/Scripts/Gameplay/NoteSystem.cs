@@ -14,7 +14,7 @@ namespace Gameplay
         public float time;
 
         [SerializeField] protected PlayerSO player;
-        [SerializeField] protected SkinSelectionSO skin;
+        // [SerializeField] protected SkinSelectionSO skin;
 
         protected RectTransform rt;
         protected Image image;

@@ -47,13 +47,13 @@ namespace Gameplay
             length = data.length;
             for (var i = 0.25; i < length; i += 0.25) ticks.Enqueue(i);
             
-            image.sprite = Line == 1 || Line == 2 ? skin.noteSkin.whiteNote : skin.noteSkin.blueNote;
+            // image.sprite = Line == 1 || Line == 2 ? skin.noteSkin.whiteNote : skin.noteSkin.blueNote;
         }
 
         private void ChangeLength()
         {
             var l = isIn ? endPos : endPos - startPos;
-            l += skin.noteSkin.noteHeight;
+            // l += skin.noteSkin.noteHeight;
             rt.sizeDelta = new Vector2(rt.sizeDelta.x, l);
         }
 

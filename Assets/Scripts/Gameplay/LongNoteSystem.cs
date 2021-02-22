@@ -18,6 +18,8 @@ namespace Gameplay
         public double pausedBeat;
         public float pausedTime;
 
+        [SerializeField] private Transform topPart;
+        [SerializeField] private Transform bottomPart;
 
         private float endPos;
         private float startPos;
@@ -78,6 +80,13 @@ namespace Gameplay
                 startPos = GetCurrentYPos();
 
             endPos = GetCurrentEndYPos();
+        }
+
+        public void SetScale(float value)
+        {
+            transform.localScale = new Vector3(value, 1, 1);
+            topPart.localScale = new Vector3(1, value, 1);
+            bottomPart.localScale = new Vector3(1, value, 1);
         }
     }
 }

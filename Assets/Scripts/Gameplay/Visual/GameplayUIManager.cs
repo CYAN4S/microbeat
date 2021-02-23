@@ -23,7 +23,7 @@ public class GameplayUIManager : MonoBehaviour
         if (!player.IsWorking) return;
 
         timeText.text = player.CurrentTime.ToString("F3");
-        beatText.text = player.CurrentBeat.ToString("F0");
+        beatText.text = ((int)player.CurrentBeat).ToString("F3");
     }
 
     private void OnEnable()

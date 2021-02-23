@@ -46,7 +46,19 @@ namespace Gameplay
                 return;
             }
 
-            PrepareGame(chart);
+            var desc = chart.desc;
+            var pattern = chart.pattern;
+
+            noteCount = pattern.notes.Count + pattern.longNotes.Count;
+            var meta = desc.bpms?.Count is int c && c != 0 ? new BpmMeta(desc.bpms, desc.bpm) : new BpmMeta(desc.bpm);
+            player.Meta = meta;
+            AdjustTime();
+
+            pm.PrepareNotes(desc, pattern);
+
+            audioSource.clip = chart.audioClip;
+            if (audioSource.clip != null) StartCoroutine(PlayAudio(0));
+            StartGame();
         }
 
         private void Update()
@@ -63,22 +75,6 @@ namespace Gameplay
         private void OnDisable()
         {
             inputReader.pauseKeyEvent -= PauseOrResume;
-        }
-
-        private void PrepareGame(Chart chart)
-        {
-            var desc = chart.desc;
-            var pattern = chart.pattern;
-
-            noteCount = pattern.notes.Count + pattern.longNotes.Count;
-            var meta = desc.bpms?.Count is int c && c != 0 ? new BpmMeta(desc.bpms, desc.bpm) : new BpmMeta(desc.bpm);
-            player.Meta = meta;
-
-            pm.PrepareNotes(desc, pattern);
-
-            audioSource.clip = chart.audioClip;
-            if (audioSource.clip != null) StartCoroutine(PlayAudio(0));
-            StartGame();
         }
 
         private void StartGame()

@@ -2,23 +2,26 @@ using Core;
 using SO;
 using UnityEngine;
 
-public class Judge : MonoBehaviour
+namespace Gameplay.Visual
 {
-    [SerializeField] private PlayerSO player;
-    [SerializeField] private Animator animator;
-
-    private void OnEnable()
+    public class Judge : MonoBehaviour
     {
-        player.JudgeEvent += AnimateJudge;
-    }
+        [SerializeField] private PlayerSO player;
+        [SerializeField] private Animator animator;
 
-    private void OnDisable()
-    {
-        player.JudgeEvent -= AnimateJudge;
-    }
+        private void OnEnable()
+        {
+            player.JudgeEvent += AnimateJudge;
+        }
 
-    private void AnimateJudge(Judges value)
-    {
-        animator.SetTrigger(Const.JUDGE_NAME[(int) value]);
+        private void OnDisable()
+        {
+            player.JudgeEvent -= AnimateJudge;
+        }
+
+        private void AnimateJudge(Judges value)
+        {
+            animator.SetTrigger(Const.JUDGE_NAME[(int) value]);
+        }
     }
 }

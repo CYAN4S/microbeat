@@ -18,7 +18,7 @@ namespace Gameplay
 
         protected RectTransform rt;
         protected Image image;
-        
+
         public int Line { get; protected set; }
         public double Beat { get; protected set; }
 
@@ -44,9 +44,8 @@ namespace Gameplay
         {
             Line = data.line;
             Beat = data.beat;
-            
+
             //image.sprite = Line == 1 || Line == 2 ? skin.noteSkin.whiteNote : skin.noteSkin.blueNote;
-            
         }
 
         protected void Move()

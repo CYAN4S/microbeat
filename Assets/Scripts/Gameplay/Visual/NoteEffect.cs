@@ -1,24 +1,27 @@
 using SO;
 using UnityEngine;
 
-public class NoteEffect : MonoBehaviour
+namespace Gameplay.Visual
 {
-    [SerializeField] private PlayerSO player;
-    [SerializeField] private Animator animator;
-    [SerializeField] private int line;
-
-    private void OnEnable()
+    public class NoteEffect : MonoBehaviour
     {
-        player.NoteEffectEvent += Animate;
-    }
+        [SerializeField] private PlayerSO player;
+        [SerializeField] private Animator animator;
+        [SerializeField] private int line;
 
-    private void OnDisable()
-    {
-        player.NoteEffectEvent -= Animate;
-    }
+        private void OnEnable()
+        {
+            player.NoteEffectEvent += Animate;
+        }
 
-    private void Animate(int value)
-    {
-        if (value == line) animator.SetTrigger("Effect");
+        private void OnDisable()
+        {
+            player.NoteEffectEvent -= Animate;
+        }
+
+        private void Animate(int value)
+        {
+            if (value == line) animator.SetTrigger("Effect");
+        }
     }
 }

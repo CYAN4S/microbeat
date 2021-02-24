@@ -1,30 +1,33 @@
 using SO;
 using UnityEngine;
 
-public class Pause : MonoBehaviour
+namespace Gameplay.Visual
 {
-    [SerializeField] private PlayerSO player;
-    [SerializeField] private GameObject dialogue;
-
-    private void OnEnable()
+    public class Pause : MonoBehaviour
     {
-        player.GamePauseEvent += OnPause;
-        player.GameResumeEvent += OnResume;
-    }
+        [SerializeField] private PlayerSO player;
+        [SerializeField] private GameObject dialogue;
 
-    private void OnDisable()
-    {
-        player.GamePauseEvent -= OnPause;
-        player.GameResumeEvent -= OnResume;
-    }
+        private void OnEnable()
+        {
+            player.GamePauseEvent += OnPause;
+            player.GameResumeEvent += OnResume;
+        }
 
-    private void OnPause()
-    {
-        dialogue.SetActive(true);
-    }
+        private void OnDisable()
+        {
+            player.GamePauseEvent -= OnPause;
+            player.GameResumeEvent -= OnResume;
+        }
 
-    private void OnResume()
-    {
-        dialogue.SetActive(false);
+        private void OnPause()
+        {
+            dialogue.SetActive(true);
+        }
+
+        private void OnResume()
+        {
+            dialogue.SetActive(false);
+        }
     }
 }

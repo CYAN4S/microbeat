@@ -1,35 +1,42 @@
 using Input;
 using UnityEngine;
 
-public class PressEffect : MonoBehaviour
+namespace Gameplay.Visual
 {
-    [SerializeField] private InputReader inputReader;
-    [SerializeField] private int playKeyNumber;
-    [SerializeField] private Animator[] animators;
-
-    private void OnEnable()
+    public class PressEffect : MonoBehaviour
     {
-        inputReader.playKeyDownEvent += AnimateActivation;
-        inputReader.playKeyUpEvent += AnimateDeactivation;
-    }
+        [SerializeField] private InputReader inputReader;
+        [SerializeField] private int playKeyNumber;
+        [SerializeField] private Animator[] animators;
 
-    private void OnDisable()
-    {
-        inputReader.playKeyDownEvent -= AnimateActivation;
-        inputReader.playKeyUpEvent -= AnimateDeactivation;
-    }
+        private void OnEnable()
+        {
+            inputReader.PlayKeyDownEvent += AnimateActivation;
+            inputReader.PlayKeyUpEvent += AnimateDeactivation;
+        }
 
-    private void AnimateActivation(int key)
-    {
-        if (playKeyNumber != key) return;
+        private void OnDisable()
+        {
+            inputReader.PlayKeyDownEvent -= AnimateActivation;
+            inputReader.PlayKeyUpEvent -= AnimateDeactivation;
+        }
 
-        foreach (var animator in animators) animator.SetTrigger("Activate");
-    }
+        private void AnimateActivation(int key)
+        {
+            if (playKeyNumber != key) return;
+            foreach (var animator in animators)
+            {
+                animator.Play("Activate", 0, 0);
+            }
+        }
 
-    private void AnimateDeactivation(int key)
-    {
-        if (playKeyNumber != key) return;
-
-        foreach (var animator in animators) animator.SetTrigger("Deactivate");
+        private void AnimateDeactivation(int key)
+        {
+            if (playKeyNumber != key) return;
+            foreach (var animator in animators)
+            {
+                animator.Play("Deactivate", 0, 0);
+            }
+        }
     }
 }

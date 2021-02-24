@@ -9,11 +9,11 @@ namespace Gameplay.Visual
 {
     public class MusicVideoPlayer : MonoBehaviour
     {
-        [Header("Requirement")]
-        [SerializeField] private PlayerSO player;
-        
-        [Header("Channel to get values from previous scene")]
-        [SerializeField] private ChartEventChannelSO onChartSelect;
+        [Header("Requirement")] [SerializeField]
+        private PlayerSO player;
+
+        [Header("Channel to get values from previous scene")] [SerializeField]
+        private ChartEventChannelSO onChartSelect;
 
         private VideoPlayer videoPlayer;
 

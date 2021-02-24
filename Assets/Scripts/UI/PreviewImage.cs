@@ -1,39 +1,40 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using FileIO;
 using SO.NormalChannel;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PreviewImage : MonoBehaviour
+namespace UI
 {
-    [Header("Requirement")] [SerializeField]
-    private RawImage rawImage;
-
-    [Header("Channel to follow")] [SerializeField]
-    private MusicDataEventChannelSO onMusicDataSelect;
-
-    private void OnEnable()
+    public class PreviewImage : MonoBehaviour
     {
-        onMusicDataSelect.OnEventRaised += ChangeImage;
-    }
+        [Header("Requirement")] [SerializeField]
+        private RawImage rawImage;
 
-    private void OnDisable()
-    {
-        onMusicDataSelect.OnEventRaised -= ChangeImage;
-    }
+        [Header("Channel to follow")] [SerializeField]
+        private MusicDataEventChannelSO onMusicDataSelect;
 
-    private void ChangeImage(MusicData musicData)
-    {
-        if (musicData.desc.previewImgPath == null)
+        private void OnEnable()
         {
-            rawImage.texture = null;
-            return;
+            onMusicDataSelect.OnEventRaised += ChangeImage;
         }
-        var path = Path.Combine(musicData.path, musicData.desc.previewImgPath);
-        StartCoroutine(FileExplorer.GetTexture(path,
-            (value) => { rawImage.texture = value; }));
+
+        private void OnDisable()
+        {
+            onMusicDataSelect.OnEventRaised -= ChangeImage;
+        }
+
+        private void ChangeImage(MusicData musicData)
+        {
+            if (musicData.desc.previewImgPath == null)
+            {
+                rawImage.texture = null;
+                return;
+            }
+
+            var path = Path.Combine(musicData.path, musicData.desc.previewImgPath);
+            StartCoroutine(FileExplorer.GetTexture(path,
+                (value) => { rawImage.texture = value; }));
+        }
     }
 }

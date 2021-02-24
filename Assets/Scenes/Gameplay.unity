@@ -403,9 +403,10 @@ MonoBehaviour:
   onChartSelect: {fileID: 11400000, guid: 11e789cf54bbb324e96e8a73ec5b2043, type: 2}
   speedKeys: 74000000670000006800000079000000
   playKeys4B: 64000000660000006a0000006b000000
-  playKeys5B: 
+  playKeys5B: 7300000064000000660000006a0000006b0000006c000000
   playKeys6B: 7300000064000000660000006a0000006b0000006c000000
-  playKeys8B: 
+  playKeys7B: 
+  playKeys8B: 73000000640000006600000005010000060100000e0100002000000000010000
   feverKey: 32
   pauseKey: 27
 --- !u!4 &522699030
@@ -438,11 +439,22 @@ MonoBehaviour:
   inputReader: {fileID: 11400000, guid: 902d6a28265bb4443923e54e313f1623, type: 2}
   notePrefab: {fileID: 1010890819699572729, guid: 9f7faad7eb79664499b3edf458341e50,
     type: 3}
+  notePrefabA: {fileID: 7739666229201311616, guid: cedc6119efdceef41a86399976c26bdb,
+    type: 3}
   longNotePrefab: {fileID: 1462977543257870842, guid: 5165f488cbd553542806fa7f112a2d1b,
     type: 3}
+  longNotePrefabA: {fileID: 720691596013261222, guid: ce86150bd65052946bdffa30dfc3efb3,
+    type: 3}
+  bumperNotePrefab: {fileID: 4691480159299468233, guid: c3baec5e38547c04cbef42fae29c0931,
+    type: 3}
+  bumperNotePrefabA: {fileID: 0}
   skinPrefab: {fileID: 4242061108881892501, guid: c8cfb6b2cd540a749800a75e65d8a77c,
     type: 3}
+  skinPrefab5K: {fileID: 7315047921976812247, guid: 5a62afaad753b0d4a87ce1b6efbaa1ba,
+    type: 3}
   skinPrefab6K: {fileID: 8955167216895476622, guid: 1c4036fd1c4763a479f390904e805f7e,
+    type: 3}
+  skinPrefab8K: {fileID: 37354173730416142, guid: 5673aa2f2515f6b40942d15be9e0b0ca,
     type: 3}
   playZone: {fileID: 233677786}
 --- !u!114 &522699032

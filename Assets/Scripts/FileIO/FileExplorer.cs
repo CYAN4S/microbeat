@@ -13,9 +13,9 @@ namespace FileIO
     public class FileExplorer : MonoBehaviour
     {
         public static string path;
-        
-        [Header("Channel to invoke")]
-        [SerializeField] private MusicDataEventChannelSO onMusicDataLoad;
+
+        [Header("Channel to invoke")] [SerializeField]
+        private MusicDataEventChannelSO onMusicDataLoad;
 
         private void Awake()
         {
@@ -106,7 +106,8 @@ namespace FileIO
             using var uwr = UnityWebRequestTexture.GetTexture(imgPath);
             yield return uwr.SendWebRequest();
 
-            if (uwr.result == UnityWebRequest.Result.ConnectionError || uwr.result == UnityWebRequest.Result.ProtocolError)
+            if (uwr.result == UnityWebRequest.Result.ConnectionError ||
+                uwr.result == UnityWebRequest.Result.ProtocolError)
             {
                 Debug.Log(uwr.error + " / " + imgPath);
             }
@@ -120,7 +121,9 @@ namespace FileIO
     public class MusicData
     {
         public string path;
+
         public SerializableDesc desc;
+
         // audio path, line, level, diff
         public List<Tuple<string, int, int, int>> patternData;
 
@@ -136,5 +139,4 @@ namespace FileIO
             patternData.Add(new Tuple<string, int, int, int>(path, line, level, diff));
         }
     }
-
 }

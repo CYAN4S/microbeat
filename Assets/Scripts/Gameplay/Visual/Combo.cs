@@ -3,25 +3,28 @@ using SO;
 using TMPro;
 using UnityEngine;
 
-public class Combo : MonoBehaviour
+namespace Gameplay.Visual
 {
-    [SerializeField] private PlayerSO player;
-    [SerializeField] private TextMeshProUGUI comboText;
-    [SerializeField] private Animator[] animators;
-
-    private void OnEnable()
+    public class Combo : MonoBehaviour
     {
-        player.ComboIncreaseEvent += Animate;
-    }
+        [SerializeField] private PlayerSO player;
+        [SerializeField] private TextMeshProUGUI comboText;
+        [SerializeField] private Animator[] animators;
 
-    private void OnDisable()
-    {
-        player.ComboIncreaseEvent -= Animate;
-    }
+        private void OnEnable()
+        {
+            player.ComboIncreaseEvent += Animate;
+        }
 
-    private void Animate()
-    {
-        comboText.text = player.Combo.ToString().Aggregate("", (current, c) => current + $"<sprite={c}>");
-        foreach (var animator in animators) animator.SetTrigger("Combo");
+        private void OnDisable()
+        {
+            player.ComboIncreaseEvent -= Animate;
+        }
+
+        private void Animate()
+        {
+            comboText.text = player.Combo.ToString().Aggregate("", (current, c) => current + $"<sprite={c}>");
+            foreach (var animator in animators) animator.Play("Combo", 0, 0);
+        }
     }
 }

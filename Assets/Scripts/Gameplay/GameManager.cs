@@ -11,13 +11,14 @@ namespace Gameplay
 {
     public class GameManager : MonoBehaviour
     {
-        [Header("Requirement")]
-        [SerializeField] private PlayerSO player;
+        [Header("Requirement")] [SerializeField]
+        private PlayerSO player;
+
         [SerializeField] private InputReader inputReader;
-        
-        [Header("Channel to get values from previous scene")]
-        [SerializeField] private ChartEventChannelSO onChartSelect;
-        
+
+        [Header("Channel to get values from previous scene")] [SerializeField]
+        private ChartEventChannelSO onChartSelect;
+
         private AudioSource audioSource;
 
         private int currentMetaIndex;
@@ -69,18 +70,18 @@ namespace Gameplay
 
         private void OnEnable()
         {
-            inputReader.pauseKeyEvent += PauseOrResume;
+            inputReader.PauseKeyEvent += PauseOrResume;
         }
 
         private void OnDisable()
         {
-            inputReader.pauseKeyEvent -= PauseOrResume;
+            inputReader.PauseKeyEvent -= PauseOrResume;
         }
 
         private void StartGame()
         {
             player.OnGameStart();
-            inputReader.speedEvent += ChangeSpeed;
+            inputReader.SpeedEvent += ChangeSpeed;
         }
 
         private void EndGame()
@@ -171,7 +172,7 @@ namespace Gameplay
                 audioSource.UnPause();
             }
         }
-        
+
         private IEnumerator SetStateCatchable()
         {
             yield return new WaitForSeconds(3f - Const.JUDGE_STD[Const.JUDGE_STD.Length - 1]);

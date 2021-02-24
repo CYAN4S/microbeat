@@ -7,59 +7,41 @@ namespace Input
     public class InputReader : ScriptableObject
     {
         // Gameplay
-        public event UnityAction<int> speedEvent;
-        public event UnityAction<int> playKeyDownEvent;
-        public event UnityAction<int> playKeyEvent;
-        public event UnityAction<int> playKeyUpEvent;
-        public event UnityAction feverKeyEvent;
-        public event UnityAction pauseKeyEvent;
+        public event UnityAction<int> SpeedEvent;
+        public event UnityAction<int> PlayKeyDownEvent;
+        public event UnityAction<int> PlayKeyEvent;
+        public event UnityAction<int> PlayKeyUpEvent;
+        public event UnityAction<int> PlayKeyInterruptEvent;
+        public event UnityAction PauseKeyEvent;
 
         public void OnSpeed(int key)
         {
-            if (speedEvent != null)
-                speedEvent.Invoke(key);
-            else
-                Debug.LogWarning("No events in InputReader.speedEvent");
+            SpeedEvent?.Invoke(key);
         }
 
         public void OnPlayKeyDown(int key)
         {
-            if (playKeyDownEvent != null)
-                playKeyDownEvent.Invoke(key);
-            else
-                Debug.LogWarning("No events in InputReader.playKeyDownEvent");
+            PlayKeyDownEvent?.Invoke(key);
         }
 
         public void OnPlayKey(int key)
         {
-            if (playKeyEvent != null)
-                playKeyEvent.Invoke(key);
-            else
-                Debug.LogWarning("No events in InputReader.playKeyEvent");
+            PlayKeyEvent?.Invoke(key);
         }
 
         public void OnPlayKeyUp(int key)
         {
-            if (playKeyUpEvent != null)
-                playKeyUpEvent.Invoke(key);
-            else
-                Debug.LogWarning("No events in InputReader.playKeyUpEvent");
+            PlayKeyUpEvent?.Invoke(key);
         }
 
-        public void OnFever()
+        public void OnPlayKeyInterrupt(int key)
         {
-            if (feverKeyEvent != null)
-                feverKeyEvent.Invoke();
-            else
-                Debug.LogWarning("No events in InputReader.feverKeyEvent");
+            PlayKeyInterruptEvent?.Invoke(key);
         }
 
         public void OnPause()
         {
-            if (pauseKeyEvent != null)
-                pauseKeyEvent.Invoke();
-            else
-                Debug.LogWarning("No events in InputReader.pauseKeyEvent");
+            PauseKeyEvent?.Invoke();
         }
     }
 }

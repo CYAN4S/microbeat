@@ -1,15 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using Core;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PatternListContent : MonoBehaviour
+namespace UI
 {
-    public Text text;
-    
-    public void SetValue(int line, int level, int diff)
+    public class PatternListContent : MonoBehaviour
     {
-        text.text = $"{line}K\n{Const.PATTERN[diff]}\n{level}";
+        public Text text;
+
+        public void SetValue(int line, int level, int diff)
+        {
+            text.text = $"{line}K\n{Const.PATTERN[diff]}\n{level}";
+        }
     }
 }

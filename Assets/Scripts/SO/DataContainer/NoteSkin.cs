@@ -5,8 +5,7 @@ namespace SO.DataContainer
     [CreateAssetMenu(menuName = "Data Container/NoteSkin")]
     public class NoteSkin : ScriptableObject
     {
-        [Header("Note")]
-        public Sprite blueNote;
+        [Header("Note")] public Sprite blueNote;
         public Sprite whiteNote;
 
         public Sprite blueLong;

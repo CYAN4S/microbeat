@@ -10,14 +10,15 @@ namespace UI
 {
     public class MusicListController : MonoBehaviour
     {
-        [Header("Channel to follow")]
-        [SerializeField] private MusicDataEventChannelSO onMusicDataLoad;
+        [Header("Channel to follow")] [SerializeField]
+        private MusicDataEventChannelSO onMusicDataLoad;
 
-        [Header("Channel to invoke")]
-        [SerializeField] private MusicDataEventChannelSO onMusicDataSelect;
+        [Header("Channel to invoke")] [SerializeField]
+        private MusicDataEventChannelSO onMusicDataSelect;
 
-        [Header("Requirement")]
-        [SerializeField] private RectTransform canvas;
+        [Header("Requirement")] [SerializeField]
+        private RectTransform canvas;
+
         [SerializeField] private GameObject listContentPrefab;
         [SerializeField] private RectTransform listContainer;
 
@@ -45,10 +46,7 @@ namespace UI
             obj.transform.Translate(0, -120 * count++ * yMultiply, 0);
             listContainer.sizeDelta = new Vector2(0, 120 * count);
 
-            obj.GetComponent<Button>().onClick.AddListener(() =>
-            {
-                onMusicDataSelect.RaiseEvent(musicData);
-            });
+            obj.GetComponent<Button>().onClick.AddListener(() => { onMusicDataSelect.RaiseEvent(musicData); });
             obj.GetComponent<MusicListContent>().SetValue(musicData);
         }
     }

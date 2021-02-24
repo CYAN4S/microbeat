@@ -5,31 +5,35 @@ using UnityEngine.Events;
 
 public enum PlayState
 {
-    Loading, Playable, Paused, ResumeCount, LongNoteCatchable
+    Loading,
+    Playable,
+    Paused,
+    ResumeCount,
+    LongNoteCatchable
 }
 
 [Serializable]
 public class GameplayState
 {
     public PlayState value = PlayState.Loading;
-    
+
     public bool IsLoading => (value == PlayState.Loading);
-    
+
     // It determines if notes need to change position, regardless of whether it is playable.
     public bool IsWorking => (value != PlayState.Loading);
-    
+
     public bool IsPlayable => (value == PlayState.Playable);
-    
+
     // Long note cut off by pausing is playable shortly before the count is over.
     public bool IsCatchable => (value == PlayState.Playable || value == PlayState.LongNoteCatchable);
 
     // Time passes only this is true.
     public bool IsTimePassing => (value == PlayState.Playable || value == PlayState.ResumeCount ||
                                   value == PlayState.LongNoteCatchable);
-    
+
     public bool IsPaused => (value == PlayState.Paused);
     public bool IsCountingToResume => (value == PlayState.ResumeCount || value == PlayState.LongNoteCatchable);
-    
+
     // You can only pause when the count completely is over.
     public bool IsPausable => (value == PlayState.Playable);
 }
@@ -50,7 +54,7 @@ namespace SO
         // Status
         public bool IsWorking { get; private set; }
         public GameplayState State { get; private set; }
-        
+
         public double ScrollSpeed { get; private set; }
         public double CurrentBpm { get; private set; }
         public int Combo { get; private set; }

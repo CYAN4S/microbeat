@@ -6,6 +6,5 @@ namespace SO.DataContainer
     public class GearSkin : ScriptableObject
     {
         public Sprite main4K;
-        
     }
 }

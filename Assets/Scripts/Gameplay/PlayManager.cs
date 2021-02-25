@@ -168,8 +168,7 @@ namespace Gameplay
 
                 if (noteQueues[i].Count == 0) continue;
 
-                float gap;
-                gap = noteStates[i].pausedWhileIsIn
+                var gap = noteStates[i].pausedWhileIsIn
                     ? player.CurrentTime - noteStates[i].target.pausedTime
                     : player.CurrentTime - noteQueues[i].Peek().time;
 

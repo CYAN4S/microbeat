@@ -20,54 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Bumper Note.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Bumper Note.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Long Note Variant.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Long Note Variant.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Note Variant.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Note Variant.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Combo Heading.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Combo Heading.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Combo.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Combo.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/ComboHeading.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/ComboHeading.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/ComboNum.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/ComboNum.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GrooveMeter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GrooveMeter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GrooveMeter.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GrooveMeter.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Beat Divider.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Beat Divider.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Skin/Cyan 5K.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Skin/Cyan 5K.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Skin/Cyan 8K.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Skin/Cyan 8K.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/CONST.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/CONST.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/LongNoteSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/LongNoteSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Result.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Result.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Title.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Title.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Combo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Combo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GrooveLight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GrooveLight.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Judge.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Judge.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/NoteEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/NoteEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Pause.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Pause.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/PressEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/PressEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputReader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/DataContainer/GearSkin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/DataContainer/GearSkin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/DataContainer/NoteSkin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/DataContainer/NoteSkin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/MusicDataEventChannelSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/MusicDataEventChannelSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/MusicListContent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MusicListContent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/MusicListController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MusicListController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PatternListContent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternListContent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PreviewImage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PreviewImage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SkinSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/SkinSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SkinSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/SkinSystem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skins/Cyan/Animations/PressButton.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skins/Cyan/Animations/PressButton.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skins/Cyan/Animations/PressEffect0.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skins/Cyan/Animations/PressEffect0.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skins/Cyan/Animations/PressEffect1.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skins/Cyan/Animations/PressEffect1.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Result.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Result.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +42,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/ChartPathEventChannelSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/Skin.cs" />
@@ -135,6 +92,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MusicListContent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Result.cs" />
       </list>
     </option>
   </component>
@@ -164,10 +122,10 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="11716">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="11716" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -243,6 +201,7 @@
       <workItem from="1614018747746" duration="3350000" />
       <workItem from="1614076052546" duration="5790000" />
       <workItem from="1614152438189" duration="14630000" />
+      <workItem from="1614251042798" duration="4240000" />
     </task>
     <servers />
   </component>

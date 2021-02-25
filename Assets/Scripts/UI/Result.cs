@@ -1,5 +1,6 @@
 using Core;
 using SO;
+using SO.NormalChannel;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,9 +9,11 @@ namespace UI
     public class Result : MonoBehaviour
     {
         [SerializeField] private PlayerSO player;
+        [SerializeField] private ChartEventChannelSO onChartSelect;
 
         [SerializeField] private Text[] judgeCountTexts;
         [SerializeField] private Text resultText;
+        [SerializeField] private Text musicText;
 
         private void Start()
         {
@@ -31,6 +34,7 @@ namespace UI
                 }
 
             resultText.text = player.Score.ToString("F0") + " / RANK " + rank;
+            musicText.text = onChartSelect.value.desc.name + " / " + onChartSelect.value.desc.artist;
         }
     }
 }

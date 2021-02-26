@@ -125,8 +125,8 @@ namespace Gameplay
             {
                 4 => item.line == 0 || item.line == 3 ? notePrefab : notePrefabA,
                 5 => item.line == 1 || item.line == 3 ? notePrefabA : notePrefab,
-                6 => item.line == 2 || item.line == 4 ? notePrefabA : notePrefab,
-                8 => item.line == 2 || item.line == 4 ? notePrefabA : notePrefab,
+                6 => item.line == 1 || item.line == 4 ? notePrefabA : notePrefab,
+                8 => item.line == 1 || item.line == 4 ? notePrefabA : notePrefab,
                 _ => null
             };
             var noteSystem = Instantiate(target, noteContainer);

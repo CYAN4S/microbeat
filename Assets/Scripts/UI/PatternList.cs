@@ -53,7 +53,7 @@ namespace UI
             foreach (var tuple in musicData.patternData)
             {
                 var obj = Instantiate(listContentPrefab, listContainer);
-                obj.transform.Translate(150 * count++ * yMultiply, 0, 0);
+                obj.transform.Translate(190 * count++ * yMultiply, 0, 0);
 
                 obj.GetComponent<Button>().onClick.AddListener(() =>
                 {

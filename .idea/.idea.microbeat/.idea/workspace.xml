@@ -20,11 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Images/default.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/default.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Result.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Result.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PatternList Content.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PatternList Content.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Title.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Title.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Result.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Result.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PatternListContent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternListContent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PreviewImage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PreviewImage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UIElementsSchema/UIElements.xsd" beforeDir="false" afterPath="$PROJECT_DIR$/UIElementsSchema/UIElements.xsd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UIElementsSchema/UnityEditor.PackageManager.UI.xsd" beforeDir="false" afterPath="$PROJECT_DIR$/UIElementsSchema/UnityEditor.PackageManager.UI.xsd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UIElementsSchema/UnityEditor.UIElements.Debugger.xsd" beforeDir="false" afterPath="$PROJECT_DIR$/UIElementsSchema/UnityEditor.UIElements.Debugger.xsd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UIElementsSchema/UnityEditor.UIElements.xsd" beforeDir="false" afterPath="$PROJECT_DIR$/UIElementsSchema/UnityEditor.UIElements.xsd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UIElementsSchema/UnityEngine.UIElements.xsd" beforeDir="false" afterPath="$PROJECT_DIR$/UIElementsSchema/UnityEngine.UIElements.xsd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,12 +98,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/PressEffect.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/CONST.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Input/InputReader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MusicListContent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Result.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/PreviewImage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/PatternListContent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MusicListContent.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Result.cs" />
       </list>
     </option>
   </component>
@@ -202,6 +213,7 @@
       <workItem from="1614076052546" duration="5790000" />
       <workItem from="1614152438189" duration="14630000" />
       <workItem from="1614251042798" duration="4240000" />
+      <workItem from="1614329978315" duration="2870000" />
     </task>
     <servers />
   </component>

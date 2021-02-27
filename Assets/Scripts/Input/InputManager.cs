@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using FileIO;
 using SO.NormalChannel;
 using UnityEngine;
 
@@ -25,12 +26,15 @@ namespace Input
 
         private void Awake()
         {
+            KeyBinding tmp = FileExplorer.FromFile<KeyBinding>(KeyBinding.PATH) ?? KeyBinding.Default();
+            speedKeys = tmp.speedKeys;
+
             playKeys = onChartSelect.value.pattern.line switch
             {
-                4 => playKeys4B,
-                5 => playKeys5B,
-                6 => playKeys6B,
-                8 => playKeys8B,
+                4 => tmp.playKeys4B,
+                5 => tmp.playKeys5B,
+                6 => tmp.playKeys6B,
+                8 => tmp.playKeys8B,
                 _ => playKeys
             };
 

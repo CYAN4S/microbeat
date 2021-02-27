@@ -25,6 +25,7 @@
           </e>
           <e p="FileIO" t="Include">
             <e p="FileExplorer.cs" t="Include" />
+            <e p="KeyBinding.cs" t="Include" />
             <e p="Serializable.cs" t="Include" />
           </e>
           <e p="Gameplay" t="Include">

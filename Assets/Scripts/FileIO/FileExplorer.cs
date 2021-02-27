@@ -73,16 +73,38 @@ namespace FileIO
             onMusicDataLoad.RaiseEvent(md);
         }
 
-        public static T FromFile<T>(FileInfo file)
+        public static T FromFile<T>(FileInfo file) where T : class
         {
-            using var sr = file.OpenText();
-            return JsonUtility.FromJson<T>(sr.ReadToEnd());
+            try
+            {
+                using var sr = file.OpenText();
+                return JsonUtility.FromJson<T>(sr.ReadToEnd());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
         }
 
-        public static T FromFile<T>(string filePath)
+        public static T FromFile<T>(string filePath) where T : class
         {
-            using var sr = File.OpenText(filePath);
-            return JsonUtility.FromJson<T>(sr.ReadToEnd());
+            try
+            {
+                using var sr = File.OpenText(filePath);
+                return JsonUtility.FromJson<T>(sr.ReadToEnd());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public static void ToFile<T>(T target, string filePath)
+        {
+            using var stream = new StreamWriter(filePath);
+            stream.Write(JsonUtility.ToJson(target));
         }
 
         public static IEnumerator GetAudioClip(string audioPath, UnityAction<AudioClip> callback)

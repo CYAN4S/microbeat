@@ -9,7 +9,7 @@ public enum PlayState
     Playable,
     Paused,
     ResumeCount,
-    LongNoteCatchable
+    LongNoteCatchable // PLANNING TO REMOVE
 }
 
 [Serializable]

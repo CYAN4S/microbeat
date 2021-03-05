@@ -10,12 +10,12 @@ using UnityEngine.UI;
 
 namespace Gameplay
 {
+    [RequireComponent(typeof(NoteFactory), typeof(GameManager))]
     public class PlayManager : MonoBehaviour
     {
         [Header("Requirement")] 
         
         [SerializeField] private PlayerSO player;
-
         [SerializeField] private InputReader inputReader;
 
         [Header("Note Settings")] 
@@ -36,6 +36,7 @@ namespace Gameplay
         [SerializeField] private Transform playZone;
 
         private GameManager gm;
+        private NoteFactory factory;
         private List<Queue<NoteSystem>> noteQueues;
         private List<NoteState> noteStates;
         private SkinSystem skin;
@@ -47,6 +48,7 @@ namespace Gameplay
             noteQueues = new List<Queue<NoteSystem>>();
             noteStates = new List<NoteState>();
             gm = GetComponent<GameManager>();
+            factory = GetComponent<NoteFactory>();
         }
 
         private void LateUpdate()

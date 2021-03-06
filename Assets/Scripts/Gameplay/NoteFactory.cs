@@ -11,13 +11,12 @@ namespace Gameplay
 {
     public class NoteFactory : MonoBehaviour
     {
-        [Header("Requirement")]
+        [Header("Requirement")] [SerializeField]
+        private PlayerSO player;
 
-        [SerializeField] private PlayerSO player;
+        [Header("Note Settings")] [SerializeField]
+        private NoteSystem notePrefab;
 
-        [Header("Note Settings")]
-
-        [SerializeField] private NoteSystem notePrefab;
         [SerializeField] private NoteSystem notePrefabA;
         [SerializeField] private LongNoteSystem longNotePrefab;
         [SerializeField] private LongNoteSystem longNotePrefabA;
@@ -32,13 +31,13 @@ namespace Gameplay
         {
             var noteQueues = new List<Queue<NoteSystem>>();
             var sortReady = new List<List<NoteSystem>>();
-            
+
             line = pattern.line;
             skinSystem = skin;
             noteContainer = skin.noteContainer;
 
             player.EndTime = 3f;
-            
+
             for (var i = 0; i < pattern.line; i++)
             {
                 sortReady.Add(new List<NoteSystem>());
@@ -73,18 +72,14 @@ namespace Gameplay
         {
             var target = line switch
             {
-                4 => item.line == 0 || item.line == 3 ? notePrefab : notePrefabA,
-                5 => item.line == 1 || item.line == 3 ? notePrefabA : notePrefab,
-                6 => item.line == 1 || item.line == 4 ? notePrefabA : notePrefab,
-                8 => item.line == 1 || item.line == 4 ? notePrefabA : notePrefab,
+                4 => item.line == 1 || item.line == 2 ? notePrefab : notePrefabA,
+                5 => item.line == 1 || item.line == 3 ? notePrefab : notePrefabA,
+                6 => item.line == 1 || item.line == 4 ? notePrefab : notePrefabA,
+                8 => item.line == 1 || item.line == 4 ? notePrefab : notePrefabA,
                 _ => null
             };
             var noteSystem = Instantiate(target, noteContainer);
-            noteSystem.SetFromData(item);
-
-            noteSystem.transform.localPosition = new Vector3(skinSystem.xPositions[item.line], 0);
-            noteSystem.time = player.Meta.GetTime(item.beat);
-            noteSystem.transform.localScale = new Vector3(skinSystem.scale, skinSystem.scale, 1);
+            noteSystem.OnGenerate(item, skinSystem.xPositions[item.line], skinSystem.scale);
 
             return noteSystem;
         }
@@ -93,19 +88,14 @@ namespace Gameplay
         {
             var target = line switch
             {
-                4 => ((item.line == 0 || item.line == 3) ? longNotePrefab : longNotePrefabA),
-                5 => ((item.line == 1 || item.line == 3) ? longNotePrefabA : longNotePrefab),
-                6 => ((item.line == 1 || item.line == 4) ? longNotePrefabA : longNotePrefab),
-                8 => ((item.line == 1 || item.line == 4) ? longNotePrefabA : longNotePrefab),
+                4 => ((item.line == 1 || item.line == 2) ? longNotePrefab : longNotePrefabA),
+                5 => ((item.line == 1 || item.line == 3) ? longNotePrefab : longNotePrefabA),
+                6 => ((item.line == 1 || item.line == 4) ? longNotePrefab : longNotePrefabA),
+                8 => ((item.line == 1 || item.line == 4) ? longNotePrefab : longNotePrefabA),
                 _ => null
             };
             var longNoteSystem = Instantiate(target, noteContainer);
-            longNoteSystem.SetFromData(item);
-
-            longNoteSystem.time = player.Meta.GetTime(item.beat);
-            longNoteSystem.endTime = player.Meta.GetTime(item.beat + item.length);
-            longNoteSystem.transform.localPosition = new Vector3(skinSystem.xPositions[item.line], 0);
-            longNoteSystem.SetScale(skinSystem.scale);
+            longNoteSystem.OnGenerate(item, skinSystem.xPositions[item.line], skinSystem.scale);
 
             return longNoteSystem;
         }

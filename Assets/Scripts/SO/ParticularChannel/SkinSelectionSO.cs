@@ -10,5 +10,4 @@ namespace SO.ParticularChannel
     {
         public GearSet gearSet;
     }
-
 }

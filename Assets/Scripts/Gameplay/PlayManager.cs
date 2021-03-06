@@ -15,16 +15,15 @@ namespace Gameplay
     [RequireComponent(typeof(NoteFactory), typeof(GameManager))]
     public class PlayManager : MonoBehaviour
     {
-        [Header("Requirement")] 
-        
-        [SerializeField] private PlayerSO player;
+        [Header("Requirement")] [SerializeField]
+        private PlayerSO player;
+
         [SerializeField] private InputReader inputReader;
         [SerializeField] private Transform playZone;
         [SerializeField] private SkinCollection skins;
 
-        [Header("Channel to get values from previous scene")] 
-        
-        [SerializeField] private IntEventChannelSO gear;
+        [Header("Channel to get values from previous scene")] [SerializeField]
+        private IntEventChannelSO gear;
 
         private GameManager gm;
         private NoteFactory factory;
@@ -131,7 +130,7 @@ namespace Gameplay
                     {
                         noteStates[key].target.isIn = true;
                     }
-                    
+
                     HandleLongNoteDown(key, gap);
                 }
                 else

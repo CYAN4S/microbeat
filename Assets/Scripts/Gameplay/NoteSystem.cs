@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
-using Core;
 using FileIO;
 using SO;
-using SO.ParticularChannel;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Gameplay
 {
@@ -14,18 +10,14 @@ namespace Gameplay
         public float time;
 
         [SerializeField] protected PlayerSO player;
-        // [SerializeField] protected SkinSelectionSO skin;
 
         protected RectTransform rt;
-        protected Image image;
-
-        public int Line { get; protected set; }
-        public double Beat { get; protected set; }
+        protected int line;
+        protected double beat;
 
         protected void Awake()
         {
             rt = GetComponent<RectTransform>();
-            image = GetComponent<Image>();
         }
 
         protected void LateUpdate()
@@ -37,15 +29,16 @@ namespace Gameplay
 
         public int CompareTo(NoteSystem other)
         {
-            return Beat.CompareTo(other.Beat);
+            return beat.CompareTo(other.beat);
         }
 
-        public void SetFromData(SerializableNote data)
+        public void OnGenerate(SerializableNote data, float xPos, float scale)
         {
-            Line = data.line;
-            Beat = data.beat;
-
-            //image.sprite = Line == 1 || Line == 2 ? skin.noteSkin.whiteNote : skin.noteSkin.blueNote;
+            line = data.line;
+            beat = data.beat;
+            time = player.Meta.GetTime(beat);
+            transform.localPosition = new Vector3(xPos, 0);
+            transform.localScale = new Vector3(scale, scale, 1);
         }
 
         protected void Move()
@@ -55,7 +48,7 @@ namespace Gameplay
 
         protected float GetCurrentYPos()
         {
-            return GetYPos(Beat);
+            return GetYPos(beat);
         }
 
         protected float GetYPos(double beat)

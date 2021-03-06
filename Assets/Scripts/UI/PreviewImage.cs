@@ -8,14 +8,13 @@ namespace UI
 {
     public class PreviewImage : MonoBehaviour
     {
-        [Header("Requirement")] 
-        
-        [SerializeField] private RawImage rawImage;
+        [Header("Requirement")] [SerializeField]
+        private RawImage rawImage;
+
         [SerializeField] private Texture2D defaultImage;
 
-        [Header("Channel to follow")]
-        
-        [SerializeField] private MusicDataEventChannelSO onMusicDataSelect;
+        [Header("Channel to follow")] [SerializeField]
+        private MusicDataEventChannelSO onMusicDataSelect;
 
         private void OnEnable()
         {

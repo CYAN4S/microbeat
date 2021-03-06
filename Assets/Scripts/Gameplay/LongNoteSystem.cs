@@ -8,7 +8,6 @@ namespace Gameplay
 {
     public class LongNoteSystem : NoteSystem
     {
-        // public const float noteHeight = 50f;
         public float endTime;
         public double length;
         public Queue<double> ticks;
@@ -27,7 +26,6 @@ namespace Gameplay
         protected new void Awake()
         {
             base.Awake();
-            // rt = GetComponent<RectTransform>();
             ticks = new Queue<double>();
 
             //GameManager.Instance.OnScrollSpeedChange += ChangeLength;
@@ -42,20 +40,23 @@ namespace Gameplay
             ChangeLength();
         }
 
-        public void SetFromData(SerializableLongNote data)
+        public void OnGenerate(SerializableLongNote data, float xPos, float scale)
         {
-            Line = data.line;
-            Beat = data.beat;
+            line = data.line;
+            beat = data.beat;
             length = data.length;
             for (var i = 0.25; i < length; i += 0.25) ticks.Enqueue(i);
 
-            // image.sprite = Line == 1 || Line == 2 ? skin.noteSkin.whiteNote : skin.noteSkin.blueNote;
+            time = player.Meta.GetTime(beat);
+            endTime = player.Meta.GetTime(beat + length);
+
+            transform.localPosition = new Vector3(xPos, 0);
+            SetScale(scale);
         }
 
         private void ChangeLength()
         {
             var l = isIn ? endPos : endPos - startPos;
-            // l += skin.noteSkin.noteHeight;
             rt.sizeDelta = new Vector2(rt.sizeDelta.x, l);
         }
 
@@ -66,8 +67,7 @@ namespace Gameplay
 
         protected float GetCurrentEndYPos()
         {
-            return GetYPos(Beat + length);
-            // return (float) ((Beat + length - player.CurrentBeat) * (float) player.ScrollSpeed * 36000f / player.StdBpm);
+            return GetYPos(beat + length);
         }
 
         protected void GetPoses()
@@ -82,7 +82,7 @@ namespace Gameplay
             endPos = GetCurrentEndYPos();
         }
 
-        public void SetScale(float value)
+        private void SetScale(float value)
         {
             transform.localScale = new Vector3(value, 1, 1);
             topPart.localScale = new Vector3(1, value, 1);

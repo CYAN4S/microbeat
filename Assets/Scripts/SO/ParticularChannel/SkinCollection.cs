@@ -10,8 +10,8 @@ namespace SO.ParticularChannel
         public GearSet[] gearSet;
         public NoteSet[] noteSet;
     }
-    
-    
+
+
     [Serializable]
     public class GearSet
     {
@@ -25,6 +25,5 @@ namespace SO.ParticularChannel
     [Serializable]
     public class NoteSet
     {
-        
     }
 }

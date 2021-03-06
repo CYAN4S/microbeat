@@ -1,4 +1,6 @@
-﻿using SO.DataContainer;
+﻿using System;
+using Gameplay.Visual;
+using SO.DataContainer;
 using UnityEngine;
 
 namespace SO.ParticularChannel
@@ -6,6 +8,7 @@ namespace SO.ParticularChannel
     [CreateAssetMenu(menuName = "Skin Selection")]
     public class SkinSelectionSO : ScriptableObject
     {
-        public NoteSkin noteSkin;
+        public GearSet gearSet;
     }
+
 }

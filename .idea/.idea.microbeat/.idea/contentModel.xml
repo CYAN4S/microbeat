@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\sih52\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\sih52\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_microbeat.-1744330890.00" t="ExcludeRecursive" />
+    <e p="C:\Users\sih52\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\sih52\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_microbeat.-1744330890.00" t="ExcludeRecursive" />
     <e p="C:\Users\sih52\source\repos\microbeat" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -31,6 +31,7 @@
           <e p="Gameplay" t="Include">
             <e p="GameManager.cs" t="Include" />
             <e p="LongNoteSystem.cs" t="Include" />
+            <e p="NoteFactory.cs" t="Include" />
             <e p="NoteSystem.cs" t="Include" />
             <e p="PlayManager.cs" t="Include" />
             <e p="Visual" t="Include">
@@ -68,6 +69,7 @@
             </e>
             <e p="ParticularChannel" t="Include">
               <e p="PlayerSO.cs" t="Include" />
+              <e p="SkinCollection.cs" t="Include" />
               <e p="SkinSelectionSO.cs" t="Include" />
             </e>
           </e>

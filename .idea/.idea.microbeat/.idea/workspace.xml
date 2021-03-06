@@ -23,16 +23,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/MusicSelect/Dialogue.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/MusicSelect/Dialogue.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/KeyBinding.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/KeyBinding.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/riderModule.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/GearSelection_Channel.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/GearSelection_Channel.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/Skin Collection.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/Skin Collection.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteFactory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteFactory.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/SkinCollection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/SkinCollection.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoteFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoteFactory.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/Skin Selection.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/Skin Selection.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/Skin/Note.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/Skin/Note/Cyan.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/Skin/Note/Cyan.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/SkinSelectionSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/SkinSelectionSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,61 +61,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GrooveMeter.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/PlayerSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Core/Skin.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Core/NoteSkin.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/SkinSet.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/SkinSelectionSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/AudioClipEventChannelSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/ChartEventChannelSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/ChartPathEventChannelSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/EventChannelSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/FloatEventChannelSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/IntEventChannelSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/StringEventChannelSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/VoidEventChannelSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/SkinSelectionSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/DataContainer/NoteSkin.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/MusicDataEventChannelSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/Serializable.cs" />
-        <option value="$PROJECT_DIR$/Assets/MusicListContent.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MusicListController.cs" />
-        <option value="$PROJECT_DIR$/Assets/PatternListContent.cs" />
-        <option value="$PROJECT_DIR$/Assets/PatternList.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Core/Chart.cs" />
-        <option value="$PROJECT_DIR$/Assets/PreviewImage.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/DataContainer/GearSkin.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/GrooveMeter.cs" />
-        <option value="$PROJECT_DIR$/Assets/SkinSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/LongNoteSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/SkinSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Combo.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GrooveLight.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GrooveMeter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Judge.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/NoteEffect.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/Pause.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/PressEffect.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Core/CONST.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Input/InputReader.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MusicListContent.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Result.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/PreviewImage.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/PatternListContent.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/KeyBinding.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" />
-      </list>
-    </option>
+    <changedPaths>
+      <option value="$PROJECT_DIR$/Assets/NoteFactory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/SkinSelectionSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/SkinCollection.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" />
+    </changedPaths>
   </component>
   <component name="ProjectId" id="1kLcyHkQANlMI3G8eCjaGQQ55zp" />
   <component name="ProjectLevelVcsManager">
@@ -113,10 +79,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.43290043" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.29978356" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="XThreadsFramesViewSplitterKey" value="0.40425533" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -134,7 +102,7 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="selectedOptions">
-        <set />
+        <list />
       </option>
       <method v="2" />
     </configuration>
@@ -143,7 +111,7 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="selectedOptions">
-        <set />
+        <list />
       </option>
       <method v="2" />
     </configuration>
@@ -211,6 +179,8 @@
       <workItem from="1614251042798" duration="4240000" />
       <workItem from="1614329978315" duration="2870000" />
       <workItem from="1614431188337" duration="3391000" />
+      <workItem from="1615013957741" duration="4495000" />
+      <workItem from="1615030737006" duration="1947000" />
     </task>
     <servers />
   </component>

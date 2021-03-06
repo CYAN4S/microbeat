@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91be7f1277114a68b0f4d425d12e6742, type: 3}
-  m_Name: Skin Selection
+  m_Script: {fileID: 11500000, guid: ae167dcecede42489a725a2d3419ff39, type: 3}
+  m_Name: GearSelection_Channel
   m_EditorClassIdentifier: 
-  noteSkin: {fileID: 11400000, guid: 7b239a47562fbfb48b15429a127d7ea2, type: 2}
+  value: 0

@@ -438,17 +438,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: 10088d471648e9d4c8a693bf6f9a75cb, type: 2}
   inputReader: {fileID: 11400000, guid: 902d6a28265bb4443923e54e313f1623, type: 2}
-  notePrefab: {fileID: 1010890819699572729, guid: 9f7faad7eb79664499b3edf458341e50,
-    type: 3}
-  notePrefabA: {fileID: 7739666229201311616, guid: cedc6119efdceef41a86399976c26bdb,
-    type: 3}
-  longNotePrefab: {fileID: 1462977543257870842, guid: 5165f488cbd553542806fa7f112a2d1b,
-    type: 3}
-  longNotePrefabA: {fileID: 720691596013261222, guid: ce86150bd65052946bdffa30dfc3efb3,
-    type: 3}
-  bumperNotePrefab: {fileID: 4691480159299468233, guid: c3baec5e38547c04cbef42fae29c0931,
-    type: 3}
-  bumperNotePrefabA: {fileID: 0}
+  playZone: {fileID: 233677786}
+  skins: {fileID: 11400000, guid: 738ef673032d9224c804ac403ea99425, type: 2}
+  gear: {fileID: 11400000, guid: 7742aa3cad0290f4e8aadcd67b63a065, type: 2}
   skinPrefab: {fileID: 4242061108881892501, guid: c8cfb6b2cd540a749800a75e65d8a77c,
     type: 3}
   skinPrefab5K: {fileID: 7315047921976812247, guid: 5a62afaad753b0d4a87ce1b6efbaa1ba,
@@ -457,7 +449,6 @@ MonoBehaviour:
     type: 3}
   skinPrefab8K: {fileID: 37354173730416142, guid: 5673aa2f2515f6b40942d15be9e0b0ca,
     type: 3}
-  playZone: {fileID: 233677786}
 --- !u!114 &522699032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,8 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9a5bbe8f4d2bb64e99544b3d3e8328a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  inputReader: {fileID: 0}
+  player: {fileID: 11400000, guid: 10088d471648e9d4c8a693bf6f9a75cb, type: 2}
   notePrefab: {fileID: 1010890819699572729, guid: 9f7faad7eb79664499b3edf458341e50,
     type: 3}
   notePrefabA: {fileID: 7739666229201311616, guid: cedc6119efdceef41a86399976c26bdb,
@@ -498,11 +488,6 @@ MonoBehaviour:
   bumperNotePrefab: {fileID: 4691480159299468233, guid: c3baec5e38547c04cbef42fae29c0931,
     type: 3}
   bumperNotePrefabA: {fileID: 0}
-  skinPrefab: {fileID: 0}
-  skinPrefab5K: {fileID: 0}
-  skinPrefab6K: {fileID: 0}
-  skinPrefab8K: {fileID: 0}
-  playZone: {fileID: 0}
 --- !u!82 &522699036
 AudioSource:
   m_ObjectHideFlags: 0

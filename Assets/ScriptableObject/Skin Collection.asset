@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb28240a5b64bcbbc6430ad8a993c87, type: 3}
+  m_Name: Skin Collection
+  m_EditorClassIdentifier: 
+  gearSet:
+  - name: Cyan
+    gear4K: {fileID: 4242061108881892501, guid: c8cfb6b2cd540a749800a75e65d8a77c,
+      type: 3}
+    gear5K: {fileID: 7315047921976812247, guid: 5a62afaad753b0d4a87ce1b6efbaa1ba,
+      type: 3}
+    gear6K: {fileID: 8955167216895476622, guid: 1c4036fd1c4763a479f390904e805f7e,
+      type: 3}
+    gear8K: {fileID: 37354173730416142, guid: 5673aa2f2515f6b40942d15be9e0b0ca, type: 3}
+  noteSet: []

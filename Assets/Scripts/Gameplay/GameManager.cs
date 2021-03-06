@@ -55,7 +55,8 @@ namespace Gameplay
             player.Meta = meta;
             AdjustTime();
 
-            pm.PrepareNotes(desc, pattern);
+            // pm.PrepareNotes(desc, pattern);
+            pm.Prepare(desc, pattern);
 
             audioSource.clip = chart.audioClip;
             if (audioSource.clip != null) StartCoroutine(PlayAudio(0));

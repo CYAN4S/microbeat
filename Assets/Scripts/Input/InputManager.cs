@@ -26,7 +26,7 @@ namespace Input
 
         private void Awake()
         {
-            KeyBinding tmp = FileExplorer.FromFile<KeyBinding>(KeyBinding.PATH) ?? KeyBinding.Default();
+            var tmp = FileExplorer.FromFile<KeyBinding>(KeyBinding.PATH) ?? KeyBinding.Default();
             speedKeys = tmp.speedKeys;
 
             playKeys = onChartSelect.value.pattern.line switch

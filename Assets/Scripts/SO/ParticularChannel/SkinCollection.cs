@@ -1,4 +1,5 @@
 ﻿using System;
+using Gameplay;
 using Gameplay.Visual;
 using UnityEngine;
 
@@ -25,5 +26,12 @@ namespace SO.ParticularChannel
     [Serializable]
     public class NoteSet
     {
+        public string name;
+        public NoteSystem notePrefab;
+        public NoteSystem notePrefabA;
+        public LongNoteSystem longNotePrefab;
+        public LongNoteSystem longNotePrefabA;
+        public NoteSystem bumperNotePrefab;
+        public LongNoteSystem bumperLongNotePrefab;
     }
 }

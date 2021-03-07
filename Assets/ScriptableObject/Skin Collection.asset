@@ -21,4 +21,17 @@ MonoBehaviour:
     gear6K: {fileID: 8955167216895476622, guid: 1c4036fd1c4763a479f390904e805f7e,
       type: 3}
     gear8K: {fileID: 37354173730416142, guid: 5673aa2f2515f6b40942d15be9e0b0ca, type: 3}
-  noteSet: []
+  noteSet:
+  - name: Cyan
+    notePrefab: {fileID: 1010890819699572729, guid: 9f7faad7eb79664499b3edf458341e50,
+      type: 3}
+    notePrefabA: {fileID: 7739666229201311616, guid: cedc6119efdceef41a86399976c26bdb,
+      type: 3}
+    longNotePrefab: {fileID: 1462977543257870842, guid: 5165f488cbd553542806fa7f112a2d1b,
+      type: 3}
+    longNotePrefabA: {fileID: 720691596013261222, guid: ce86150bd65052946bdffa30dfc3efb3,
+      type: 3}
+    bumperNotePrefab: {fileID: 4691480159299468233, guid: c3baec5e38547c04cbef42fae29c0931,
+      type: 3}
+    bumperLongNotePrefab: {fileID: 4691480159299468233, guid: c3baec5e38547c04cbef42fae29c0931,
+      type: 3}

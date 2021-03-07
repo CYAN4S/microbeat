@@ -8,13 +8,15 @@ namespace UI
 {
     public class PreviewImage : MonoBehaviour
     {
-        [Header("Requirement")] [SerializeField]
-        private RawImage rawImage;
-
+        [Header("Requirement")] 
+        [SerializeField] private RawImage rawImage;
         [SerializeField] private Texture2D defaultImage;
 
-        [Header("Channel to follow")] [SerializeField]
-        private MusicDataEventChannelSO onMusicDataSelect;
+        [Header("Channel to follow")] 
+        [SerializeField] private MusicDataEventChannelSO onMusicDataSelect;
+
+        [Header("Extra")] 
+        [SerializeField] private Text title;
 
         private void OnEnable()
         {
@@ -28,6 +30,12 @@ namespace UI
 
         private void ChangeImage(MusicData musicData)
         {
+            //TEMP//
+            if (title)
+            {
+                title.text = musicData.desc.name;
+            }
+            
             if (musicData.desc.previewImgPath == null)
             {
                 rawImage.texture = defaultImage;

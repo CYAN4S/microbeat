@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -123,7 +123,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8065282308910760055}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2804620224985999811}
+        m_TargetAssemblyTypeName: KeyField, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2804620224985999811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c867c4040dec60a428e66740b178eda9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 319954314266657113}
+  panel: {fileID: 4583835167682708669}
 --- !u!1 &2477209332976846751
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +162,7 @@ GameObject:
   - component: {fileID: 4952817572061421459}
   - component: {fileID: 4583835167682708669}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -7,7 +7,12 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class KeyField : MonoBehaviour
 {
+    [SerializeField] private Text text;
+    [SerializeField] private Image panel; 
     private Button button;
+    private KeyCode value;
+    
+    public static readonly Array Keycodes = Enum.GetValues(typeof(KeyCode));
     public static KeyField target = null;
 
     private void Awake()
@@ -15,7 +20,7 @@ public class KeyField : MonoBehaviour
         button = GetComponent<Button>();
     }
 
-    private void OnClick()
+    public void OnClick()
     {
         target = this;
     }
@@ -26,7 +31,18 @@ public class KeyField : MonoBehaviour
         {
             return;
         }
-        
-        
+
+        if (UnityEngine.Input.anyKeyDown)
+        {
+            foreach (KeyCode keycode in Keycodes)
+            {
+                if (UnityEngine.Input.GetKeyDown(keycode))
+                {
+                    value = keycode;
+                    text.text = keycode.ToString();
+                    target = null;
+                }
+            }
+        }
     }
 }

@@ -45,4 +45,10 @@ public class KeyField : MonoBehaviour
             }
         }
     }
+
+    public void ChangeValue(KeyCode key)
+    {
+        value = key;
+        text.text = key.ToString();
+    }
 }

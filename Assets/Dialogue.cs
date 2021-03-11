@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Dialogue : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool askBeforeClose;
+    
+    [Header("Events")]
+    [SerializeField] private UnityEvent onOpen;
+    [SerializeField] private UnityEvent onClose;
+    
+    public void Open()
     {
-        
+        gameObject.SetActive(true);
+        onOpen?.Invoke();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Close()
     {
-        
+        gameObject.SetActive(false);
+        onClose?.Invoke();
     }
 }

@@ -23,13 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Dialogue.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Dialogue.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/KeyBindingController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/KeyBindingController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KeyField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KeyField.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Dialogue/Dialogue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Dialogue/Dialogue.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +56,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/PreviewImage.cs" />
       <option value="$PROJECT_DIR$/Assets/KeyBindingController.cs" />
       <option value="$PROJECT_DIR$/Assets/KeyField.cs" />
+      <option value="$PROJECT_DIR$/Assets/Dialogue.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1kLcyHkQANlMI3G8eCjaGQQ55zp" />
@@ -177,6 +175,7 @@
       <workItem from="1615108041266" duration="6551000" />
       <workItem from="1615181206624" duration="1450000" />
       <workItem from="1615299649360" duration="1586000" />
+      <workItem from="1615471169920" duration="1816000" />
     </task>
     <servers />
   </component>

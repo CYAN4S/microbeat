@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -708,10 +708,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d987dac33a83ab34891291727af74edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnOpen:
+  askBeforeClose: 0
+  onOpen:
     m_PersistentCalls:
       m_Calls: []
-  OnClose:
+  onClose:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &4013477651090474405

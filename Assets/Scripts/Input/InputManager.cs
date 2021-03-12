@@ -10,12 +10,10 @@ namespace Input
     {
         [SerializeField] private InputReader inputReader;
 
-        [Header("Channel to get values from previous scene")] [SerializeField]
-        private ChartEventChannelSO onChartSelect;
+        [Header("Channel to get values from previous scene")]
+        [SerializeField] private ChartEventChannelSO onChartSelect;
 
         public KeyCode[] speedKeys;
-        public KeyCode[] playKeys4B, playKeys5B, playKeys6B, playKeys7B, playKeys8B;
-        public KeyCode feverKey;
         public KeyCode pauseKey;
 
         private readonly (int, int)[] mul = {(2, 3), (3, 2)};
@@ -26,17 +24,13 @@ namespace Input
 
         private void Awake()
         {
-            var tmp = FileExplorer.FromFile<KeyBinding>(KeyBinding.PATH) ?? KeyBinding.Default();
-            speedKeys = tmp.speedKeys;
-
-            playKeys = onChartSelect.value.pattern.line switch
-            {
-                4 => tmp.playKeys4B,
-                5 => tmp.playKeys5B,
-                6 => tmp.playKeys6B,
-                8 => tmp.playKeys8B,
-                _ => playKeys
-            };
+            var line = onChartSelect.value.pattern.line;
+            
+            var tmp = FileExplorer.FromFile<KeyBinding>(KeyBinding.Path) ?? KeyBinding.Default();
+            var x = tmp[line];
+            
+            speedKeys = x.speedKeys;
+            playKeys = x.playKeys;
 
             read = onChartSelect.value.pattern.line switch
             {

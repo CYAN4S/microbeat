@@ -53,5 +53,9 @@ public class KeyBindingController : MonoBehaviour
         {
             playKeys[i].SetValue(currentPair.playKeys[i]);
         }
+        for (var i = currentPair.playKeys.Length; i < 8; i++)
+        {
+            playKeys[i].RemoveValue();
+        }
     }
 }

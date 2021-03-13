@@ -59,4 +59,9 @@ public class KeyField : MonoBehaviour
         value = key;
         text.text = key.ToString();
     }
+
+    public void RemoveValue()
+    {
+        text.text = "-";
+    }
 }

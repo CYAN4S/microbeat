@@ -26,11 +26,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/KeyBindingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KeyBindingController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/KeyField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KeyField.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Dialogue/Dialogue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Dialogue/Dialogue.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MusicSelect/Button.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MusicSelect/Button.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/KeyBinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/KeyBinding.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,6 +179,7 @@
       <workItem from="1615471169920" duration="1816000" />
       <workItem from="1615481588525" duration="2328000" />
       <workItem from="1615549506590" duration="8582000" />
+      <workItem from="1615645970794" duration="329000" />
     </task>
     <servers />
   </component>

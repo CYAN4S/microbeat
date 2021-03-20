@@ -23,10 +23,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Alert.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Alert.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/AlertManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Alert.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Alert.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Eyecatch.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Eyecatch.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Mask.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Mask.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Eyecatch.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Alert.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Alert.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/Alert_Channel.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/Alert_Channel.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KeyBindingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KeyBindingController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KeyField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KeyField.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Dialogue/Dialogue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Dialogue/Dialogue.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,9 +58,9 @@
     <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/AlertManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GrooveMeter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Unity/Hub/Editor/2020.2.5f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Unity/Hub/Editor/2020.2.5f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Eyecatch.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -58,6 +78,12 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" />
       <option value="$PROJECT_DIR$/Assets/KeyField.cs" />
       <option value="$PROJECT_DIR$/Assets/KeyBindingController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Alert.cs" />
+      <option value="$PROJECT_DIR$/Assets/TextMesh Pro/TempObj.cs" />
+      <option value="$PROJECT_DIR$/Assets/TempObj.cs" />
+      <option value="$PROJECT_DIR$/Assets/AlertManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" />
+      <option value="$PROJECT_DIR$/Assets/Eyecatch.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1kLcyHkQANlMI3G8eCjaGQQ55zp" />
@@ -180,6 +206,8 @@
       <workItem from="1615481588525" duration="2328000" />
       <workItem from="1615549506590" duration="8582000" />
       <workItem from="1615645970794" duration="329000" />
+      <workItem from="1616170599588" duration="3261000" />
+      <workItem from="1616232167757" duration="6764000" />
     </task>
     <servers />
   </component>

@@ -23,6 +23,8 @@ namespace Core
 
         public static readonly int[] RANK = {295000, 290000, 275000, 250000, 200000};
         public static readonly string[] RANK_NAME = {"S", "A", "B", "C", "D", "F"};
+
+        public static readonly float WAIT_TIME = 5f;
     }
 
     [Serializable]

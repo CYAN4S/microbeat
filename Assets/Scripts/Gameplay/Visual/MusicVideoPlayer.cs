@@ -1,5 +1,8 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using Core;
 using SO;
 using SO.NormalChannel;
 using UnityEngine;
@@ -30,14 +33,14 @@ namespace Gameplay.Visual
         {
             player.ZeroEvent += PlayVideo;
             player.GamePauseEvent += PauseVideo;
-            // player.GamePlayableEvent += PlayVideo;
+            player.GameResumeEvent += PlayVideo;
         }
 
         private void OnDisable()
         {
             player.ZeroEvent -= PlayVideo;
             player.GamePauseEvent -= PauseVideo;
-            // player.GamePlayableEvent -= PlayVideo;
+            player.GameResumeEvent -= PlayVideo;
         }
 
         private void PlayVideo()

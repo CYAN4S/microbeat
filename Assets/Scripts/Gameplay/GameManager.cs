@@ -160,10 +160,8 @@ namespace Gameplay
 
         private void Resume()
         {
-            const float backTime = 3f;
-            
-            var act = player.OnGameResume(backTime);
-            StartCoroutine(WaitAndStart(act, backTime));
+            var act = player.OnGameResume(Const.WAIT_TIME);
+            StartCoroutine(WaitAndStart(act, Const.WAIT_TIME));
             
             if (player.CurrentTime < 0)
             {

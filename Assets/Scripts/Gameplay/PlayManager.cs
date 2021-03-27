@@ -31,6 +31,8 @@ namespace Gameplay
         private SkinSystem skin;
         private int line;
 
+        private float stdPausedTime = -100f;
+
         private void Awake()
         {
             noteStates = new List<NoteState>();
@@ -65,7 +67,7 @@ namespace Gameplay
 
         public void Prepare(SerializableDesc desc, SerializablePattern pattern)
         {
-            skin = pattern.line switch
+            var skinPrefab = pattern.line switch
             {
                 4 => skins.gearSet[gear.value].gear4K,
                 5 => skins.gearSet[gear.value].gear5K,
@@ -74,7 +76,7 @@ namespace Gameplay
                 _ => null
             };
             line = pattern.line;
-            skin = Instantiate(skin, playZone);
+            skin = Instantiate(skinPrefab, playZone);
 
             noteQueues = factory.PrepareNotes(pattern, skin);
             for (var i = 0; i < pattern.line; i++)
@@ -104,30 +106,42 @@ namespace Gameplay
             }
         }
 
+        private void RemoveLongNoteLater(float time)
+        {
+            
+        }
+
         private void JudgePlayKeyDown(int key)
         {
             if (!player.State.IsPlayable) return;
+            
             if (noteQueues[key].Count == 0) return;
-
             var peek = noteQueues[key].Peek();
-            var gap = peek.time - player.CurrentTime;
+            
+            var gap = peek.time - player.CurrentTime; // HOW FAST
+            if (noteStates[key].pausedWhileIsIn)
+                gap = peek.time - noteStates[key].target.pausedTime;
 
             if (gap > Const.JUDGE_STD[(int) Judges.Bad]) // DONT CARE
                 return;
+
+            if (player.State.IsCountingToResume)
+                gap = Math.Abs(gap) > Math.Abs(peek.time - stdPausedTime) ? gap : peek.time - stdPausedTime;
+            
+            if (peek.CompareTag("Note"))
+            {
+                HandleNote(key, gap);
+                return;
+            }
 
             if (peek.CompareTag("LongNote"))
             {
                 if (!noteStates[key].pausedWhileIsIn)
                 {
-                    if (!player.State.IsPlayable) return;
-
                     noteStates[key].isInLongNote = true;
                     noteStates[key].startBeat = player.CurrentBeat;
                     noteStates[key].target = peek as LongNoteSystem;
-                    if (noteStates[key].target)
-                    {
-                        noteStates[key].target.isIn = true;
-                    }
+                    noteStates[key].target.isIn = true;
 
                     HandleLongNoteDown(key, gap);
                 }
@@ -140,12 +154,10 @@ namespace Gameplay
                     noteStates[key].target.pausedWhileIsIn = false;
                     HandleCutOffLongNoteDown(key, gap);
                 }
+                return;
             }
-            else
-            {
-                if (!player.State.IsPlayable) return;
-                HandleNote(key, gap);
-            }
+
+            Debug.LogError("Unknown Tag: " + peek.tag);
         }
 
         private void JudgePlayKey(int key)
@@ -233,6 +245,8 @@ namespace Gameplay
 
         private void OnPause()
         {
+            stdPausedTime = Math.Max(player.CurrentTime, stdPausedTime);
+            
             foreach (var state in noteStates)
                 if (state.isInLongNote)
                 {

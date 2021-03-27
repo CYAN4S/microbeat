@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Core;
 using FileIO;
 using Input;
@@ -159,9 +160,11 @@ namespace Gameplay
 
         private void Resume()
         {
-            player.OnGameResume();
-            StartCoroutine(SetStateCatchable());
-            StartCoroutine(SetStatePlayable());
+            const float backTime = 3f;
+            
+            var act = player.OnGameResume(backTime);
+            StartCoroutine(WaitAndStart(act, backTime));
+            
             if (player.CurrentTime < 0)
             {
                 audioSource.time = 0;
@@ -173,17 +176,11 @@ namespace Gameplay
                 audioSource.UnPause();
             }
         }
-
-        private IEnumerator SetStateCatchable()
+        
+        private IEnumerator WaitAndStart(Action action, float time)
         {
-            yield return new WaitForSeconds(3f - Const.JUDGE_STD[Const.JUDGE_STD.Length - 1]);
-            player.SetStateCatchable();
-        }
-
-        private IEnumerator SetStatePlayable()
-        {
-            yield return new WaitForSeconds(3f);
-            player.SetStatePlayable();
+            yield return new WaitForSeconds(time);
+            action();
         }
 
         public void ApplyNote(int line, Judges judge, float gap)

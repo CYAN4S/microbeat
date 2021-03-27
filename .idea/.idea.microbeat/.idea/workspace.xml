@@ -23,29 +23,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Alert.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Alert.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/AlertManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Alert.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Alert.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Eyecatch.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Eyecatch.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Mask.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Mask.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Eyecatch.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Alert.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Alert.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/Alert_Channel.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObject/Alert_Channel.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/indexLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/resume.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/resume.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Dialogue/Dialogue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Dialogue/Dialogue.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KeyBindingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KeyBindingController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,25 +53,27 @@
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/NoteFactory.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/SkinSelectionSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/LongNoteSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/SkinCollection.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteFactory.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/PreviewImage.cs" />
       <option value="$PROJECT_DIR$/Assets/Dialogue.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/KeyBinding.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" />
       <option value="$PROJECT_DIR$/Assets/KeyField.cs" />
-      <option value="$PROJECT_DIR$/Assets/KeyBindingController.cs" />
       <option value="$PROJECT_DIR$/Assets/Alert.cs" />
       <option value="$PROJECT_DIR$/Assets/TextMesh Pro/TempObj.cs" />
       <option value="$PROJECT_DIR$/Assets/TempObj.cs" />
       <option value="$PROJECT_DIR$/Assets/AlertManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" />
       <option value="$PROJECT_DIR$/Assets/Eyecatch.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/KeyBindingController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1kLcyHkQANlMI3G8eCjaGQQ55zp" />
@@ -208,6 +198,9 @@
       <workItem from="1615645970794" duration="329000" />
       <workItem from="1616170599588" duration="3261000" />
       <workItem from="1616232167757" duration="6764000" />
+      <workItem from="1616602583236" duration="698000" />
+      <workItem from="1616773838282" duration="3633000" />
+      <workItem from="1616843409617" duration="4006000" />
     </task>
     <servers />
   </component>

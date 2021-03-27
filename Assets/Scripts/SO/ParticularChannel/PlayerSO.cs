@@ -6,10 +6,10 @@ using UnityEngine.Events;
 public enum PlayState
 {
     Loading,
-    Playable,
+    Playing,
     Paused,
     ResumeCount,
-    LongNoteCatchable // PLANNING TO REMOVE
+    // LongNoteCatchable, // PLANNING TO REMOVE
 }
 
 [Serializable]
@@ -19,23 +19,15 @@ public class GameplayState
 
     public bool IsLoading => (value == PlayState.Loading);
 
-    // It determines if notes need to change position, regardless of whether it is playable.
-    public bool IsWorking => (value != PlayState.Loading);
-
-    public bool IsPlayable => (value == PlayState.Playable);
-
-    // Long note cut off by pausing is playable shortly before the count is over.
-    public bool IsCatchable => (value == PlayState.Playable || value == PlayState.LongNoteCatchable);
+    public bool IsPlayable => value == PlayState.Playing || value == PlayState.ResumeCount;
 
     // Time passes only this is true.
-    public bool IsTimePassing => (value == PlayState.Playable || value == PlayState.ResumeCount ||
-                                  value == PlayState.LongNoteCatchable);
+    public bool IsTimePassing => IsPlayable;
 
-    public bool IsPaused => (value == PlayState.Paused);
-    public bool IsCountingToResume => (value == PlayState.ResumeCount || value == PlayState.LongNoteCatchable);
+    public bool IsPaused => value == PlayState.Paused;
+    public bool IsCountingToResume => value == PlayState.ResumeCount;
 
-    // You can only pause when the count completely is over.
-    public bool IsPausable => (value == PlayState.Playable);
+    public bool IsPausable => value == PlayState.Playing;
 }
 
 namespace SO
@@ -88,7 +80,6 @@ namespace SO
         public event UnityAction ComboBreakEvent;
         public event UnityAction GamePauseEvent;
         public event UnityAction GameResumeEvent;
-        public event UnityAction GamePlayableEvent;
 
         public event UnityAction<Judges> JudgeEvent;
         public event UnityAction<int> NoteEffectEvent;
@@ -116,7 +107,7 @@ namespace SO
         public void OnGameStart()
         {
             IsWorking = true;
-            State.value = PlayState.Playable;
+            State.value = PlayState.Playing;
             GameStartEvent?.Invoke();
         }
 
@@ -132,11 +123,12 @@ namespace SO
             GamePauseEvent?.Invoke();
         }
 
-        public void OnGameResume()
+        public Action OnGameResume(float backTime)
         {
             State.value = PlayState.ResumeCount;
-            CurrentTime -= 3;
+            CurrentTime -= backTime;
             GameResumeEvent?.Invoke();
+            return () => { State.value = PlayState.Playing; };
         }
 
         public void IncreaseCombo(int delta)
@@ -169,17 +161,6 @@ namespace SO
         public void OnGap(float value)
         {
             GapEvent?.Invoke(value);
-        }
-
-        public void SetStateCatchable()
-        {
-            State.value = PlayState.LongNoteCatchable;
-        }
-
-        public void SetStatePlayable()
-        {
-            State.value = PlayState.Playable;
-            GamePlayableEvent?.Invoke();
         }
     }
 }

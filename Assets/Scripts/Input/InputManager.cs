@@ -13,8 +13,8 @@ namespace Input
         [Header("Channel to get values from previous scene")]
         [SerializeField] private ChartEventChannelSO onChartSelect;
 
-        public KeyCode[] speedKeys;
-        public KeyCode pauseKey;
+        private KeyCode[] speedKeys;
+        private const KeyCode PauseKey = KeyCode.Escape;
 
         private readonly (int, int)[] mul = {(2, 3), (3, 2)};
         private int current = -1;
@@ -58,7 +58,7 @@ namespace Input
                 if (UnityEngine.Input.GetKeyDown(key)) inputReader.OnSpeed(i);
             }
 
-            if (UnityEngine.Input.GetKeyDown(pauseKey)) inputReader.OnPause();
+            if (UnityEngine.Input.GetKeyDown(PauseKey)) inputReader.OnPause();
         }
 
         private void ReadOneByOne()

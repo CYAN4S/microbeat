@@ -106,7 +106,7 @@ namespace Gameplay
 
         private void JudgePlayKeyDown(int key)
         {
-            if (!player.State.IsCatchable) return;
+            if (!player.State.IsPlayable) return;
             if (noteQueues[key].Count == 0) return;
 
             var peek = noteQueues[key].Peek();

@@ -120,7 +120,7 @@ namespace Gameplay
             
             var gap = peek.time - player.CurrentTime; // HOW FAST
             if (noteStates[key].pausedWhileIsIn)
-                gap = peek.time - noteStates[key].target.pausedTime;
+                gap = noteStates[key].target.pausedTime - player.CurrentTime;
 
             if (gap > Const.JUDGE_STD[(int) Judges.Bad]) // DONT CARE
                 return;

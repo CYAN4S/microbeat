@@ -160,8 +160,10 @@ namespace Gameplay
 
         private void Resume()
         {
+            var currentTime = player.CurrentTime;
             var act = player.OnGameResume(Const.WAIT_TIME);
-            StartCoroutine(WaitAndStart(act, Const.WAIT_TIME));
+            StartCoroutine(InvokeAt(act, currentTime));
+            // StartCoroutine(WaitAndStart(act, Const.WAIT_TIME));
             
             if (player.CurrentTime < 0)
             {
@@ -179,6 +181,15 @@ namespace Gameplay
         {
             yield return new WaitForSeconds(time);
             action();
+        }
+
+        private IEnumerator InvokeAt(Action action, float time)
+        {
+            while (time > player.CurrentTime)
+            {
+                yield return null;
+            }
+            action?.Invoke();
         }
 
         public void ApplyNote(int line, Judges judge, float gap)

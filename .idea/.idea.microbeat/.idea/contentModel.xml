@@ -23,6 +23,7 @@
             </e>
           </e>
         </e>
+        <e p="ResumeAnimation.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Core" t="Include">
             <e p="BpmMeta.cs" t="Include" />

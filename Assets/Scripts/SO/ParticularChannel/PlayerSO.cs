@@ -8,8 +8,7 @@ public enum PlayState
     Loading,
     Playing,
     Paused,
-    ResumeCount,
-    // LongNoteCatchable, // PLANNING TO REMOVE
+    ResumeCount // Playable, non-pausable
 }
 
 [Serializable]
@@ -61,14 +60,14 @@ namespace SO
         {
             IsWorking = false;
             State = new GameplayState();
-            CurrentTime = -3;
+            CurrentTime = -5;
             ScrollSpeed = 2.5;
             EndTime = 1000f;
             Combo = 0;
             Score = 0;
             CurrentBeat = 0;
             CurrentBpm = 0;
-            JudgeCounts = new int[5];
+            JudgeCounts = new int[Const.JUDGE_NAME.Length];
         }
 
         public event UnityAction BpmChangeEvent;
@@ -80,6 +79,7 @@ namespace SO
         public event UnityAction ComboBreakEvent;
         public event UnityAction GamePauseEvent;
         public event UnityAction GameResumeEvent;
+        public event UnityAction CountOverEvent;
 
         public event UnityAction<Judges> JudgeEvent;
         public event UnityAction<int> NoteEffectEvent;
@@ -128,7 +128,13 @@ namespace SO
             State.value = PlayState.ResumeCount;
             CurrentTime -= backTime;
             GameResumeEvent?.Invoke();
-            return () => { State.value = PlayState.Playing; };
+            return OnCountOver;
+        }
+
+        private void OnCountOver()
+        {
+            State.value = PlayState.Playing;
+            CountOverEvent?.Invoke();
         }
 
         public void IncreaseCombo(int delta)

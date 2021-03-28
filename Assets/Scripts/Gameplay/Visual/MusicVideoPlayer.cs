@@ -33,14 +33,14 @@ namespace Gameplay.Visual
         {
             player.ZeroEvent += PlayVideo;
             player.GamePauseEvent += PauseVideo;
-            player.GameResumeEvent += PlayVideo;
+            player.CountOverEvent += PlayVideo;
         }
 
         private void OnDisable()
         {
             player.ZeroEvent -= PlayVideo;
             player.GamePauseEvent -= PauseVideo;
-            player.GameResumeEvent -= PlayVideo;
+            player.CountOverEvent -= PlayVideo;
         }
 
         private void PlayVideo()

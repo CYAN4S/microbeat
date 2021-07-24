@@ -87,6 +87,8 @@ namespace Gameplay
 
         private void RemoveBreakNotes()
         {
+            if (!player.State.IsPlayable) return;
+            
             for (var i = 0; i < noteQueues.Count; i++)
             {
                 if (noteStates[i].isInLongNote) continue;
@@ -96,7 +98,6 @@ namespace Gameplay
                 var gap = noteStates[i].pausedWhileIsIn
                     ? player.CurrentTime - noteStates[i].target.pausedTime
                     : player.CurrentTime - noteQueues[i].Peek().time;
-
 
                 if (gap > Const.JUDGE_STD[(int) Judges.Bad])
                 {

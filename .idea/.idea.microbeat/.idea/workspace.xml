@@ -23,19 +23,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Count.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Count.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Resume Animation.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Resume Animation.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ResumeAnimation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Eyecatch.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Eyecatch.controller.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/riderModule.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/CONST.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/CONST.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Eyecatch.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Eyecatch.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Resume Animation.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Resume Animation.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/resultloop.mov.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Images/resultloop.mov.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/BpmMeta.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/BpmMeta.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microbeat.sln.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/microbeat.sln.DotSettings" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,10 +53,10 @@
     <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/ResumeAnimation.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/AlertManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GrooveMeter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/AlertManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Eyecatch.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ResumeAnimation.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -59,7 +65,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/LongNoteSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/SkinCollection.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteFactory.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/PreviewImage.cs" />
       <option value="$PROJECT_DIR$/Assets/Dialogue.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/KeyBinding.cs" />
@@ -78,6 +83,8 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" />
       <option value="$PROJECT_DIR$/Assets/ResumeAnimation.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteFactory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Core/BpmMeta.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1kLcyHkQANlMI3G8eCjaGQQ55zp" />
@@ -104,14 +111,23 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="ReSpellerSettingsId" />
+    <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/Desktop/microbeat.v0.6-alpha\microbeat.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\sih52\Desktop\microbeat.v0.6-alpha" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
+      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
       </option>
@@ -121,6 +137,7 @@
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
+      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
       </option>
@@ -206,6 +223,13 @@
       <workItem from="1616773838282" duration="3633000" />
       <workItem from="1616843409617" duration="13460000" />
       <workItem from="1616925315626" duration="4833000" />
+      <workItem from="1617476881060" duration="1700000" />
+      <workItem from="1620411231485" duration="782000" />
+      <workItem from="1626142121966" duration="272000" />
+      <workItem from="1626143717633" duration="1322000" />
+      <workItem from="1626606575075" duration="2421000" />
+      <workItem from="1627029309035" duration="594000" />
+      <workItem from="1627122273479" duration="2012000" />
     </task>
     <task id="LOCAL-00001" summary="Change state mechanism when player pauses or resumes">
       <created>1616851547688</created>
@@ -239,5 +263,24 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Change state mechanism when player pauses or resumes" />
     <option name="LAST_COMMIT_MESSAGE" value="Change state mechanism when player pauses or resumes" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs</url>
+          <line>31</line>
+          <properties documentPath="C:\Users\sih52\source\repos\microbeat\Assets\Scripts\Gameplay\Visual\GameplayUIManager.cs" initialLine="31" containingFunctionPresentation="method 'OnEnable'">
+            <startOffsets>
+              <option value="824" />
+            </startOffsets>
+            <endOffsets>
+              <option value="825" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -17,14 +17,6 @@ namespace Gameplay
         [SerializeField] private PlayerSO player;
         [SerializeField] private SkinCollection skins;
 
-        // [Header("Note Settings")]
-        // [SerializeField] private NoteSystem notePrefab;
-        // [SerializeField] private NoteSystem notePrefabA;
-        // [SerializeField] private LongNoteSystem longNotePrefab;
-        // [SerializeField] private LongNoteSystem longNotePrefabA;
-        // [SerializeField] private LongNoteSystem bumperNotePrefab;
-        // [SerializeField] private LongNoteSystem bumperLongNotePrefab;
-        
         [Header("Channel to get values from previous scene")]
         [SerializeField] private IntEventChannelSO note;
 

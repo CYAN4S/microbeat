@@ -22,15 +22,14 @@ namespace Core
 
         public BpmMeta(double stdBpm)
         {
-            var b = new List<SerializableBpm>
+            GetMeta(new List<SerializableBpm>
             {
                 new SerializableBpm
                 {
                     beat = 0,
                     bpm = stdBpm
                 }
-            };
-            GetMeta(b);
+            });
             std = stdBpm;
         }
 

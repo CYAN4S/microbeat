@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace FileIO
-{
+    [Obsolete]
     [Serializable]
     public class SerializableDesc
     {
@@ -20,6 +20,7 @@ namespace FileIO
         public string mvPath;
     }
 
+    [Obsolete]
     [Serializable]
     public class SerializablePattern
     {
@@ -31,7 +32,27 @@ namespace FileIO
         public List<SerializableLongNote> longNotes;
     }
 
+    /// <summary>
+    ///     JSON File with ".mubp" extension.
+    /// </summary>
     [Serializable]
+    public class SerializablePatternData
+    {
+        public int line;
+        public int level;
+        public int diff;
+
+        public List<List<int>> notes;
+        public List<List<int>> longNotes;
+
+        public bool IsValid()
+        {
+            return notes.All(note => note.Count == 2) && longNotes.All(longNote => longNote.Count == 3);
+        }
+    }
+
+    [Serializable]
+    [Obsolete]
     public class SerializableNote
     {
         public int line;
@@ -44,15 +65,16 @@ namespace FileIO
     }
 
     [Serializable]
+    [Obsolete]
     public class SerializableLongNote : SerializableNote
     {
         public double length;
     }
 
     [Serializable]
+    [Obsolete]
     public class SerializableBpm
     {
         public double beat;
         public double bpm;
     }
-}

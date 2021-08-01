@@ -23,25 +23,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Eyecatch.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Eyecatch.controller.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/contentModel.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/riderModule.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tests.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tests/Tests.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tests/Tests.asmdef.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/riderModule.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Eyecatch.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Eyecatch.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Resume Animation.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Resume Animation.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/resultloop.mov.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Images/resultloop.mov.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/BpmMeta.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/BpmMeta.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microbeat.sln.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/microbeat.sln.DotSettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/Serializable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/Serializable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +43,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GrooveMeter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.27/UnityEditor.TestRunner/GUI/Views/EditModeTestListGUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AlertManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Eyecatch.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ResumeAnimation.cs" root0="FORCE_HIGHLIGHTING" />
@@ -79,12 +69,15 @@
       <option value="$PROJECT_DIR$/Assets/KeyBindingController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Core/CONST.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" />
       <option value="$PROJECT_DIR$/Assets/ResumeAnimation.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteFactory.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Core/BpmMeta.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Tests/SerializationTest.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/FileIO/Serializable.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1kLcyHkQANlMI3G8eCjaGQQ55zp" />
@@ -111,7 +104,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
@@ -230,6 +223,9 @@
       <workItem from="1626606575075" duration="2421000" />
       <workItem from="1627029309035" duration="594000" />
       <workItem from="1627122273479" duration="2012000" />
+      <workItem from="1627201690733" duration="2768000" />
+      <workItem from="1627309848951" duration="7367000" />
+      <workItem from="1627830144936" duration="1352000" />
     </task>
     <task id="LOCAL-00001" summary="Change state mechanism when player pauses or resumes">
       <created>1616851547688</created>
@@ -269,13 +265,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GameplayUIManager.cs</url>
-          <line>31</line>
+          <line>32</line>
           <properties documentPath="C:\Users\sih52\source\repos\microbeat\Assets\Scripts\Gameplay\Visual\GameplayUIManager.cs" initialLine="31" containingFunctionPresentation="method 'OnEnable'">
             <startOffsets>
-              <option value="824" />
+              <option value="833" />
             </startOffsets>
             <endOffsets>
-              <option value="825" />
+              <option value="834" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />

@@ -8,6 +8,7 @@ namespace Gameplay.Visual
     public class GameplayUIManager : MonoBehaviour
     {
         public static readonly Color[] detailColor = {new Color(0, 222f / 256f, 1), new Color(1, 171f / 256f, 0)};
+        
         [SerializeField] private PlayerSO player;
 
         public Text speedText, scoreText;

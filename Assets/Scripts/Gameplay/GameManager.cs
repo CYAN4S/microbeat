@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using Core;
-using FileIO;
 using Input;
 using SO;
 using SO.NormalChannel;
@@ -12,13 +11,12 @@ namespace Gameplay
 {
     public class GameManager : MonoBehaviour
     {
-        [Header("Requirement")] [SerializeField]
-        private PlayerSO player;
-
+        [Header("Requirement")]
+        [SerializeField] private PlayerSO player;
         [SerializeField] private InputReader inputReader;
 
-        [Header("Channel to get values from previous scene")] [SerializeField]
-        private ChartEventChannelSO onChartSelect;
+        [Header("Channel to get values from previous scene")] 
+        [SerializeField] private ChartEventChannelSO onChartSelect;
 
         private AudioSource audioSource;
 
@@ -143,13 +141,8 @@ namespace Gameplay
         public void PauseOrResume()
         {
             if (player.State.IsPausable)
-            {
                 Pause();
-            }
-            else if (player.State.IsPaused)
-            {
-                Resume();
-            }
+            else if (player.State.IsPaused) Resume();
         }
 
         private void Pause()
@@ -164,7 +157,7 @@ namespace Gameplay
             var act = player.OnGameResume(Const.WAIT_TIME);
             StartCoroutine(InvokeAt(act, currentTime));
             // StartCoroutine(WaitAndStart(act, Const.WAIT_TIME));
-            
+
             if (player.CurrentTime < 0)
             {
                 audioSource.time = 0;
@@ -176,7 +169,7 @@ namespace Gameplay
                 audioSource.UnPause();
             }
         }
-        
+
         private IEnumerator WaitAndStart(Action action, float time)
         {
             yield return new WaitForSeconds(time);
@@ -185,10 +178,7 @@ namespace Gameplay
 
         private IEnumerator InvokeAt(Action action, float time)
         {
-            while (time > player.CurrentTime)
-            {
-                yield return null;
-            }
+            while (time > player.CurrentTime) yield return null;
             action?.Invoke();
         }
 

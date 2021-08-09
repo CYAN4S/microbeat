@@ -65,7 +65,7 @@ namespace Gameplay
             player.GameResumeEvent -= OnResume;
         }
 
-        public void Prepare(SerializableDesc desc, SerializablePattern pattern)
+        public void Prepare(SerializableDescriptionData desc, SerializablePatternData pattern)
         {
             var skinPrefab = pattern.line switch
             {

@@ -13,6 +13,12 @@ namespace Core
         public List<double> lengths;
         public List<double> endTimes;
         public double std;
+        
+        public BpmMeta(List<List<double>> bpms, double stdBpm)
+        {
+            GetMeta(bpms);
+            std = stdBpm;
+        }
 
         public BpmMeta(List<SerializableBpm> bpms, double stdBpm)
         {
@@ -44,6 +50,28 @@ namespace Core
             // Set beat, bpm
             beats.AddRange(from item in bpmData select item.beat);
             bpms.AddRange(from item in bpmData select item.bpm);
+
+            // Calc length
+            for (var i = 0; i < beats.Count - 1; i++) lengths.Add(60.0 * (beats[i + 1] - beats[i]) / bpms[i]);
+            lengths.Add(double.MaxValue); // PLZ Don't rely on this value.
+
+            // Calc endTime
+            endTimes.Add(lengths[0]);
+            for (var i = 1; i < beats.Count - 1; i++) endTimes.Add(lengths[i] + endTimes[i - 1]);
+            endTimes.Add(double.MaxValue); // PLZ Don't rely on this value too.
+        }
+        
+        public void GetMeta(List<List<double>> bpmData)
+        {
+            // Init
+            beats = new List<double>();
+            bpms = new List<double>();
+            lengths = new List<double>();
+            endTimes = new List<double>();
+
+            // Set beat, bpm
+            beats.AddRange(from item in bpmData select item[0]);
+            bpms.AddRange(from item in bpmData select item[1]);
 
             // Calc length
             for (var i = 0; i < beats.Count - 1; i++) lengths.Add(60.0 * (beats[i + 1] - beats[i]) / bpms[i]);

@@ -32,10 +32,10 @@ namespace Gameplay
             return beat.CompareTo(other.beat);
         }
 
-        public void OnGenerate(SerializableNote data, float xPos, float scale)
+        public void OnGenerate(int line, double beat, float xPos, float scale)
         {
-            line = data.line;
-            beat = data.beat;
+            this.line = line;
+            this.beat = beat;
             time = player.Meta.GetTime(beat);
             transform.localPosition = new Vector3(xPos, 0);
             transform.localScale = new Vector3(scale, scale, 1);

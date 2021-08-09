@@ -40,11 +40,11 @@ namespace Gameplay
             ChangeLength();
         }
 
-        public void OnGenerate(SerializableLongNote data, float xPos, float scale)
+        public void OnGenerate(int line, double beat, double length, float xPos, float scale)
         {
-            line = data.line;
-            beat = data.beat;
-            length = data.length;
+            this.line = line;
+            this.beat = beat;
+            this.length = length;
             for (var i = 0.25; i < length; i += 0.25) ticks.Enqueue(i);
 
             time = player.Meta.GetTime(beat);

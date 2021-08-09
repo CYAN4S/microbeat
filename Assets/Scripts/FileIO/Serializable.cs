@@ -2,79 +2,134 @@
 using System.Collections.Generic;
 using System.Linq;
 
-    [Obsolete]
-    [Serializable]
-    public class SerializableDesc
+[Serializable]
+public class SerializableData
+{
+    public int version;
+}
+
+/// <summary>
+///     JSON File with ".mubd" extension.
+///     bpms: [beat, bpm]
+/// </summary>
+[Serializable]
+public class SerializableDescriptionData : SerializableData
+{
+    public string name;
+    public string artist;
+    public string genre;
+    public double stdBpm;
+    public List<List<double>> bpms;
+    public string musicPath;
+    public string previewImgPath;
+    public string smallImgPath;
+    public string imgPath;
+    public string mvPath;
+
+    public bool IsValid()
     {
-        public string name;
-        public string artist;
-        public string genre;
-
-        public double bpm;
-        public List<SerializableBpm> bpms; // NEW VERSION
-
-        public string musicPath;
-        public string previewImgPath;
-        public string smallImgPath;
-        public string imgPath;
-        public string mvPath;
+        return bpms.All(bpm => bpm.Count == 2) && bpms.Count > 0;
     }
 
-    [Obsolete]
-    [Serializable]
-    public class SerializablePattern
+    public static SerializableDescriptionData UpgradeFrom(SerializableDesc old)
     {
-        public int line;
-        public int level;
-        public int diff;
-
-        public List<SerializableNote> notes;
-        public List<SerializableLongNote> longNotes;
-    }
-
-    /// <summary>
-    ///     JSON File with ".mubp" extension.
-    /// </summary>
-    [Serializable]
-    public class SerializablePatternData
-    {
-        public int line;
-        public int level;
-        public int diff;
-
-        public List<List<int>> notes;
-        public List<List<int>> longNotes;
-
-        public bool IsValid()
+        return new SerializableDescriptionData
         {
-            return notes.All(note => note.Count == 2) && longNotes.All(longNote => longNote.Count == 3);
-        }
+            name = old.name, artist = old.artist, genre = old.genre, musicPath = old.musicPath, stdBpm = old.bpm,
+            previewImgPath = old.previewImgPath, smallImgPath = old.smallImgPath, imgPath = old.imgPath,
+            mvPath = old.mvPath,
+            bpms = old.bpms.Count > 0
+                ? old.bpms.Select(item => new List<double> {item.beat, item.bpm}).ToList()
+                : new List<List<double>>{new List<double>{0, old.bpm}}
+        };
+    }
+}
+
+/// <summary>
+///     JSON File with ".mubp" extension.
+///     notes: [line, beat]
+///     longNotes: [line, beat, length]
+/// </summary>
+[Serializable]
+public class SerializablePatternData : SerializableData
+{
+    public int line;
+    public int level;
+    public int diff;
+
+    public List<List<double>> notes;
+    public List<List<double>> longNotes;
+
+    public bool IsValid()
+    {
+        return notes.All(note => note.Count == 2) && longNotes.All(longNote => longNote.Count == 3);
     }
 
-    [Serializable]
-    [Obsolete]
-    public class SerializableNote
+    public static SerializablePatternData UpgradeFrom(SerializablePattern old)
     {
-        public int line;
-        public double beat;
-
-        public int CompareTo(SerializableNote other)
+        return new SerializablePatternData
         {
-            return beat.CompareTo(other.beat);
-        }
+            line = old.line, level = old.level, diff = old.diff,
+            notes = old.notes.Select(item => new List<double> {item.line, item.beat}).ToList(),
+            longNotes = old.longNotes.Select(item => new List<double> {item.line, item.beat, item.length}).ToList()
+        };
     }
+}
 
-    [Serializable]
-    [Obsolete]
-    public class SerializableLongNote : SerializableNote
-    {
-        public double length;
-    }
+[Obsolete]
+[Serializable]
+public class SerializableDesc
+{
+    public string name;
+    public string artist;
+    public string genre;
 
-    [Serializable]
-    [Obsolete]
-    public class SerializableBpm
+    public double bpm;
+    public List<SerializableBpm> bpms;
+
+    public string musicPath;
+    public string previewImgPath;
+    public string smallImgPath;
+    public string imgPath;
+    public string mvPath;
+}
+
+[Obsolete]
+[Serializable]
+public class SerializablePattern
+{
+    public int line;
+    public int level;
+    public int diff;
+
+    public List<SerializableNote> notes;
+    public List<SerializableLongNote> longNotes;
+}
+
+[Serializable]
+[Obsolete]
+public class SerializableNote
+{
+    public int line;
+    public double beat;
+
+    public int CompareTo(SerializableNote other)
     {
-        public double beat;
-        public double bpm;
+        return beat.CompareTo(other.beat);
     }
+}
+
+[Serializable]
+[Obsolete]
+public class SerializableLongNote : SerializableNote
+{
+    public double length;
+}
+
+[Serializable]
+[Obsolete]
+public class SerializableBpm
+{
+    public double beat;
+    public double bpm;
+}

@@ -46,15 +46,14 @@ namespace Gameplay
                 return;
             }
 
-            var desc = chart.desc;
-            var pattern = chart.pattern;
+            var desc = chart.descriptionData;
+            var pattern = chart.patternData;
 
             noteCount = pattern.notes.Count + pattern.longNotes.Count;
-            var meta = desc.bpms?.Count is int c && c != 0 ? new BpmMeta(desc.bpms, desc.bpm) : new BpmMeta(desc.bpm);
+            var meta = new BpmMeta(desc.bpms, desc.stdBpm);
             player.Meta = meta;
             AdjustTime();
 
-            // pm.PrepareNotes(desc, pattern);
             pm.Prepare(desc, pattern);
 
             audioSource.clip = chart.audioClip;

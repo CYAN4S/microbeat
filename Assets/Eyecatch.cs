@@ -28,7 +28,7 @@ public class Eyecatch : MonoBehaviour
 
     private void Transfer(Chart chart)
     {
-        var path = chart.desc.imgPath;
+        var path = chart.descriptionData.imgPath;
 
         if (path != null)
         {

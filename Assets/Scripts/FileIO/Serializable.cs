@@ -76,7 +76,6 @@ public class SerializablePatternData : SerializableData
     }
 }
 
-[Obsolete]
 [Serializable]
 public class SerializableDesc
 {
@@ -94,7 +93,6 @@ public class SerializableDesc
     public string mvPath;
 }
 
-[Obsolete]
 [Serializable]
 public class SerializablePattern
 {
@@ -107,7 +105,6 @@ public class SerializablePattern
 }
 
 [Serializable]
-[Obsolete]
 public class SerializableNote
 {
     public int line;
@@ -120,14 +117,12 @@ public class SerializableNote
 }
 
 [Serializable]
-[Obsolete]
 public class SerializableLongNote : SerializableNote
 {
     public double length;
 }
 
 [Serializable]
-[Obsolete]
 public class SerializableBpm
 {
     public double beat;

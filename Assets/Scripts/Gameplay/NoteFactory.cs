@@ -81,18 +81,18 @@ namespace Gameplay
             return noteSystem;
         }
 
-        private LongNoteSystem CreateLongNote(int line, double beat, double length)
+        private LongNoteSystem CreateLongNote(int noteline, double beat, double length)
         {
             var target = line switch
             {
-                4 => ((line == 1 || line == 2) ? skins.noteSet[note.value].longNotePrefab : skins.noteSet[note.value].longNotePrefabA),
-                5 => ((line == 1 || line == 3) ? skins.noteSet[note.value].longNotePrefab : skins.noteSet[note.value].longNotePrefabA),
-                6 => ((line == 1 || line == 4) ? skins.noteSet[note.value].longNotePrefab : skins.noteSet[note.value].longNotePrefabA),
-                8 => ((line == 1 || line == 4) ? skins.noteSet[note.value].longNotePrefab : skins.noteSet[note.value].longNotePrefabA),
+                4 => ((noteline == 1 || noteline == 2) ? skins.noteSet[note.value].longNotePrefab : skins.noteSet[note.value].longNotePrefabA),
+                5 => ((noteline == 1 || noteline == 3) ? skins.noteSet[note.value].longNotePrefab : skins.noteSet[note.value].longNotePrefabA),
+                6 => ((noteline == 1 || noteline == 4) ? skins.noteSet[note.value].longNotePrefab : skins.noteSet[note.value].longNotePrefabA),
+                8 => ((noteline == 1 || noteline == 4) ? skins.noteSet[note.value].longNotePrefab : skins.noteSet[note.value].longNotePrefabA),
                 _ => null
             };
             var longNoteSystem = Instantiate(target, noteContainer);
-            longNoteSystem.OnGenerate(line, beat, length, skinSystem.xPositions[line], skinSystem.scale);
+            longNoteSystem.OnGenerate(noteline, beat, length, skinSystem.xPositions[noteline], skinSystem.scale);
 
             return longNoteSystem;
         }

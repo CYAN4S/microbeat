@@ -109,9 +109,19 @@ namespace FileIO
 
         public static IEnumerator GetAudioClip(string audioPath, UnityAction<AudioClip> callback)
         {
-            using var www = UnityWebRequestMultimedia.GetAudioClip(audioPath, AudioType.WAV);
-            var x = www.SendWebRequest();
-            yield return x;
+            var audioType = Path.GetExtension(audioPath) switch
+            {
+                ".wav" => AudioType.WAV,
+                ".aif" => AudioType.AIFF,
+                ".aiff" => AudioType.AIFF,
+                ".mp2" => AudioType.MPEG,
+                ".mp3" => AudioType.MPEG,
+                ".ogg" => AudioType.OGGVORBIS,
+                _ => AudioType.UNKNOWN
+            };
+
+            using var www = UnityWebRequestMultimedia.GetAudioClip(audioPath, audioType);
+            yield return www.SendWebRequest();
 
             if (www.result == UnityWebRequest.Result.ConnectionError)
             {
@@ -119,23 +129,22 @@ namespace FileIO
             }
             else
             {
-                callback.Invoke(DownloadHandlerAudioClip.GetContent(www));
+                callback?.Invoke(DownloadHandlerAudioClip.GetContent(www));
             }
         }
 
         public static IEnumerator GetTexture(string imgPath, UnityAction<Texture2D> callback)
         {
-            using var uwr = UnityWebRequestTexture.GetTexture(imgPath);
-            yield return uwr.SendWebRequest();
+            using var www = UnityWebRequestTexture.GetTexture(imgPath);
+            yield return www.SendWebRequest();
 
-            if (uwr.result == UnityWebRequest.Result.ConnectionError ||
-                uwr.result == UnityWebRequest.Result.ProtocolError)
+            if (www.result == UnityWebRequest.Result.ConnectionError)
             {
-                Debug.Log(uwr.error + " / " + imgPath);
+                Debug.Log(www.error + " / " + imgPath);
             }
             else
             {
-                callback.Invoke(DownloadHandlerTexture.GetContent(uwr));
+                callback.Invoke(DownloadHandlerTexture.GetContent(www));
             }
         }
     }

@@ -28,11 +28,11 @@ public class Eyecatch : MonoBehaviour
 
     private void Transfer(Chart chart)
     {
-        var path = chart.descriptionData.imgPath;
+        var path = chart.desc.imgPath;
 
         if (path != null)
         {
-            path = Path.Combine(chart.path, path);
+            path = Path.Combine(chart.directoryPath, path);
             StartCoroutine(FileExplorer.GetTexture(path, (value) =>
             {
                 image.texture = value;

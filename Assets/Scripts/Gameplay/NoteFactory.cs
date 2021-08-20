@@ -24,7 +24,7 @@ namespace Gameplay
         private Transform noteContainer;
         private int line;
 
-        public List<Queue<NoteSystem>> PrepareNotes(SerializablePatternData pattern, SkinSystem skin)
+        public List<Queue<NoteSystem>> PrepareNotes(SerializablePattern pattern, SkinSystem skin)
         {
             var noteQueues = new List<Queue<NoteSystem>>();
             var sortReady = new List<List<NoteSystem>>();
@@ -42,16 +42,16 @@ namespace Gameplay
 
             foreach (var item in pattern.notes)
             {
-                var noteSystem = CreateNote((int)item[0], item[1]);
+                var noteSystem = CreateNote(item.line, item.beat);
                 player.EndTime = Math.Max(player.EndTime, noteSystem.time);
-                sortReady[(int)item[0]].Add(noteSystem);
+                sortReady[item.line].Add(noteSystem);
             }
 
             foreach (var item in pattern.longNotes)
             {
-                var longNoteSystem = CreateLongNote((int)item[0], item[1], item[2]);
+                var longNoteSystem = CreateLongNote(item.line, item.beat, item.length);
                 player.EndTime = Math.Max(player.EndTime, longNoteSystem.endTime);
-                sortReady[(int)item[0]].Add(longNoteSystem);
+                sortReady[item.line].Add(longNoteSystem);
             }
 
             foreach (var item in sortReady)
@@ -64,7 +64,7 @@ namespace Gameplay
 
             return noteQueues;
         }
-        
+
         private NoteSystem CreateNote(int noteline, double beat)
         {
             var target = line switch

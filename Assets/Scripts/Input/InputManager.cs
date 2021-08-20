@@ -24,7 +24,7 @@ namespace Input
 
         private void Awake()
         {
-            var line = onChartSelect.value.patternData.line;
+            var line = onChartSelect.value.pattern.line;
             
             var tmp = FileExplorer.FromFile<KeyBinding>(KeyBinding.Path) ?? KeyBinding.Default();
             var x = tmp[line];
@@ -32,7 +32,7 @@ namespace Input
             speedKeys = x.speedKeys;
             playKeys = x.playKeys;
 
-            read = onChartSelect.value.patternData.line switch
+            read = onChartSelect.value.pattern.line switch
             {
                 4 => ReadOneByOne,
                 6 => ReadOneByOne,

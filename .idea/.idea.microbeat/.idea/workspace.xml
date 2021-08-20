@@ -24,9 +24,19 @@
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Eyecatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Eyecatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Chart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Chart.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/Serializable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/Serializable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Result.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Result.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,11 +50,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GrooveMeter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.27/UnityEditor.TestRunner/GUI/Views/EditModeTestListGUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AlertManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Eyecatch.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CFC1AD89-0650-411E-946C-FF2E6F276711/d6/768365de/AudioType.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ResumeAnimation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.27/UnityEditor.TestRunner/GUI/Views/EditModeTestListGUI.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Eyecatch.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -232,6 +241,8 @@
       <workItem from="1628519574482" duration="8000" />
       <workItem from="1628682845193" duration="399000" />
       <workItem from="1628833945198" duration="8196000" />
+      <workItem from="1629464310282" duration="1556000" />
+      <workItem from="1629465919448" duration="2816000" />
     </task>
     <task id="LOCAL-00001" summary="Change state mechanism when player pauses or resumes">
       <created>1616851547688</created>
@@ -246,6 +257,7 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="Vcs.Log.Tabs.Properties">

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using FileIO;
 using UnityEngine;
@@ -9,26 +10,27 @@ namespace Core
     public class Chart
     {
         public AudioClip audioClip;
-        // public SerializableDesc desc;
-        public string path;
-        // public SerializablePattern pattern;
+        public SerializableDesc desc;
+        public string directoryPath;
+        public SerializablePattern pattern;
 
-        public SerializableDescriptionData descriptionData;
-        public SerializablePatternData patternData;
+        public string musicName;
+        public string artist;
+        public string genre;
 
-        public Chart(SerializableDesc desc, string patternPath, string path)
+        public double BPMstandard;
+        public BpmMeta BPMMeta;
+        
+        public Chart(SerializableDesc desc, string patternPath, string directoryPath)
         {
-            // this.desc = desc;
-            this.path = path;
-            // pattern = FileExplorer.FromFile<SerializablePattern>(patternPath);
-
-            this.descriptionData = SerializableDescriptionData.UpgradeFrom(desc);
-            this.patternData = SerializablePatternData.UpgradeFrom(FileExplorer.FromFile<SerializablePattern>(patternPath));
+            this.desc = desc;
+            this.directoryPath = directoryPath;
+            pattern = FileExplorer.FromFile<SerializablePattern>(patternPath);
         }
 
         public IEnumerator SetAudioClip(UnityAction callback)
         {
-            return FileExplorer.GetAudioClip(Path.Combine(path, descriptionData.musicPath), value =>
+            return FileExplorer.GetAudioClip(Path.Combine(directoryPath, desc.musicPath), value =>
             {
                 audioClip = value;
                 callback?.Invoke();

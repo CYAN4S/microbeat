@@ -61,7 +61,6 @@ namespace UI
                     StartCoroutine(chart.SetAudioClip(() =>
                     {
                         onChartSelect.RaiseEvent(chart);
-                        // SceneManager.LoadScene(2);
                     }));
                 });
                 obj.GetComponent<PatternListContent>().SetValue(tuple.Item2, tuple.Item3, tuple.Item4);

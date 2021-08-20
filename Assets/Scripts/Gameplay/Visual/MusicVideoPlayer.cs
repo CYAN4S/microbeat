@@ -23,9 +23,9 @@ namespace Gameplay.Visual
         private void Awake()
         {
             videoPlayer = GetComponent<VideoPlayer>();
-            if (onChartSelect.value.descriptionData.mvPath != null)
+            if (onChartSelect.value.desc.mvPath != null)
             {
-                videoPlayer.url = Path.Combine(onChartSelect.value.path, onChartSelect.value.descriptionData.mvPath);
+                videoPlayer.url = Path.Combine(onChartSelect.value.directoryPath, onChartSelect.value.desc.mvPath);
             }
         }
 

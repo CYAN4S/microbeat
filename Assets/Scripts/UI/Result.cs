@@ -34,7 +34,7 @@ namespace UI
                 }
 
             resultText.text = player.Score.ToString("F0") + " / RANK " + rank;
-            musicText.text = onChartSelect.value.descriptionData.name + " / " + onChartSelect.value.descriptionData.artist;
+            musicText.text = onChartSelect.value.desc.name + " / " + onChartSelect.value.desc.artist;
         }
     }
 }

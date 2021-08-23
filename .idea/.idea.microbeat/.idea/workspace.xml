@@ -24,19 +24,33 @@
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Eyecatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Eyecatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Chart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Chart.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/Serializable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/Serializable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Result.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Result.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AlertManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AlertManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Eyecatch.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Eyecatch.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/MONTSERRAT-BOLD SDF.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/MONTSERRAT-BOLD SDF.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/MONTSERRAT-BOLD.TTF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/MONTSERRAT-BOLD.TTF.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/MONTSERRAT-REGULAR SDF.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/MONTSERRAT-REGULAR SDF.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/MONTSERRAT-REGULAR.TTF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/MONTSERRAT-REGULAR.TTF.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KeyBindingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KeyBindingController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KeyField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KeyField.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Dialogue/Dialogue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Dialogue/Dialogue.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Dialogue/Heading 1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Dialogue/Heading 1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Dialogue/Heading 2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Dialogue/Heading 2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Dialogue/Key Field.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Dialogue/Key Field.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MusicSelect/Button.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MusicSelect/Button.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MusicSelect/MusicList Content.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MusicSelect/MusicList Content.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MusicSelect/PatternList Content.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MusicSelect/PatternList Content.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MusicSelect/Title.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MusicSelect/Title.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Result.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Result.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Title.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Title.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/KeyBinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/KeyBinding.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,6 +65,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GrooveMeter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AlertManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Mask.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ResumeAnimation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.27/UnityEditor.TestRunner/GUI/Views/EditModeTestListGUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Eyecatch.cs" root0="FORCE_HIGHLIGHTING" />
@@ -243,6 +258,8 @@
       <workItem from="1628833945198" duration="8196000" />
       <workItem from="1629464310282" duration="1556000" />
       <workItem from="1629465919448" duration="2816000" />
+      <workItem from="1629625163941" duration="3325000" />
+      <workItem from="1629713046158" duration="8091000" />
     </task>
     <task id="LOCAL-00001" summary="Change state mechanism when player pauses or resumes">
       <created>1616851547688</created>

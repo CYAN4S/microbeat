@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6f48c039cc543ad4ba8b736d91a6b417
+guid: b004895e14f0a3041b4d64cd9f41f520
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,8 +9,9 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Montserrat
-  fallbackFontReferences: []
+  - Titillium Web
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: eedd4da6554b48946b5869985680111a, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

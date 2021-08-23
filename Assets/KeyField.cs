@@ -10,11 +10,25 @@ public class KeyField : MonoBehaviour
 {
     [SerializeField] private Text text;
     [SerializeField] private Image panel;
-    
+
     public event UnityAction<KeyCode> OnValueChangeByInput;
-    
+
     private Button button;
     private KeyCode value;
+
+    public KeyField[] targetArray;
+    public int targetIndex;
+
+    public KeyCode Value
+    {
+        get => value;
+        set
+        {
+            this.value = value;
+            text.text = value.ToString();
+        }
+    }
+
 
     public static readonly Array Keycodes = Enum.GetValues(typeof(KeyCode));
     public static KeyField target = null;
@@ -42,11 +56,9 @@ public class KeyField : MonoBehaviour
             {
                 if (keycode == KeyCode.Escape) continue;
                 if (keycode >= KeyCode.Mouse0) break;
-                
+
                 if (UnityEngine.Input.GetKeyDown(keycode))
                 {
-                    value = keycode;
-                    text.text = keycode.ToString();
                     OnValueChangeByInput?.Invoke(keycode);
                     target = null;
                 }
@@ -56,12 +68,17 @@ public class KeyField : MonoBehaviour
 
     public void SetValue(KeyCode key)
     {
-        value = key;
+        Value = key;
         text.text = key.ToString();
     }
 
     public void RemoveValue()
     {
         text.text = "-";
+    }
+
+    public void SetInteractable(bool value)
+    {
+        button.interactable = value;
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8065282308910760055}
   - component: {fileID: 8130926883741362237}
   - component: {fileID: 2804620224985999811}
+  - component: {fileID: 8232915740846684991}
   m_Layer: 5
   m_Name: Key Field
   m_TagString: Untagged
@@ -105,7 +106,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.14901961, g: 0.7490196, b: 0.7019608, a: 0.59607846}
     m_PressedColor: {r: 0.14901961, g: 0.7490196, b: 0.7019608, a: 0.34117648}
     m_SelectedColor: {r: 1, g: 0.514151, b: 0.595126, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.14901961, g: 0.7490196, b: 0.7019608, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -150,6 +151,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 319954314266657113}
   panel: {fileID: 4583835167682708669}
+--- !u!114 &8232915740846684991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822731836007092443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &2477209332976846751
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +306,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 6d9064e404435d542821ab5ca608e42c, type: 3}
+    m_Font: {fileID: 12800000, guid: b004895e14f0a3041b4d64cd9f41f520, type: 3}
     m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0

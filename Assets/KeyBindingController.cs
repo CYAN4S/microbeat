@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using FileIO;
 using UnityEngine;
 
@@ -16,13 +17,40 @@ public class KeyBindingController : MonoBehaviour
 
     private void Awake()
     {
-        keyBinding = FileExplorer.FromFile<KeyBinding>(KeyBinding.Path) ?? KeyBinding.Default();
+        for (var index = 0; index < speedKeys.Length; index++)
+        {
+            var keyField = speedKeys[index];
+            keyField.targetArray = speedKeys;
+            keyField.targetIndex = index;
+            keyField.OnValueChangeByInput += keyCode => { OnKeyFieldValueChanged(keyCode, keyField); };
+        }
 
-        ResetValue(4);
+        for (var index = 0; index < playKeys.Length; index++)
+        {
+            var keyField = playKeys[index];
+            keyField.targetArray = playKeys;
+            keyField.targetIndex = index;
+            keyField.OnValueChangeByInput += keyCode => { OnKeyFieldValueChanged(keyCode, keyField); };
+        }
+    }
+
+    public void OnKeyFieldValueChanged(KeyCode keyCode, KeyField target)
+    {
+        if (target.targetArray == speedKeys)
+        {
+            keyBinding[currentKey].speedKeys[target.targetIndex] = keyCode;
+        }
+        else if (target.targetArray == playKeys)
+        {
+            keyBinding[currentKey].playKeys[target.targetIndex] = keyCode;
+        }
+        target.SetValue(keyCode);
     }
 
     public void OnDialogOpen()
     {
+        keyBinding = FileExplorer.FromFile<KeyBinding>(KeyBinding.Path) ?? KeyBinding.Default();
+        ResetValue(4);
     }
 
     public void OnDialogClose()
@@ -51,11 +79,13 @@ public class KeyBindingController : MonoBehaviour
         for (var i = 0; i < currentPair.playKeys.Length; i++)
         {
             playKeys[i].SetValue(currentPair.playKeys[i]);
+            playKeys[i].SetInteractable(true);
         }
 
         for (var i = currentPair.playKeys.Length; i < 8; i++)
         {
             playKeys[i].RemoveValue();
+            playKeys[i].SetInteractable(false);
         }
     }
 }

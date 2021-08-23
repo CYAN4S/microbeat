@@ -23,5 +23,13 @@ public class AlertManager : MonoBehaviour
     {
         var alert = Instantiate(prefab, canvas.transform);
         alert.SetMessage(message);
+        StartCoroutine(DestroyAlert(alert));
     }
+
+    public IEnumerator DestroyAlert(Alert obj)
+    {
+        yield return new WaitForSecondsRealtime(3f);
+        Destroy(obj.gameObject);
+    }
+    
 }

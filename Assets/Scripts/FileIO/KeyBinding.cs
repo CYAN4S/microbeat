@@ -7,8 +7,10 @@ namespace FileIO
     public class KeyBinding
     {
         public static string Path => System.IO.Path.Combine(Application.persistentDataPath, "keybinding.mcbcore");
+        
         public KeyCode[] speedKeys4K, speedKeys5K, speedKeys6K, speedKeys8K;
         public KeyCode[] playKeys4K, playKeys5K, playKeys6K, playKeys8K;
+        
         public class KeyPair
         {
             public KeyCode[] playKeys;

@@ -23,9 +23,13 @@ namespace Gameplay.Visual
         private void Awake()
         {
             videoPlayer = GetComponent<VideoPlayer>();
-            if (onChartSelect.value.desc.mvPath != null)
+            if (onChartSelect.value?.desc?.mvPath != null)
             {
                 videoPlayer.url = Path.Combine(onChartSelect.value.directoryPath, onChartSelect.value.desc.mvPath);
+            }
+            else
+            {
+                Debug.Log("No ChartPath in channel.");
             }
         }
 

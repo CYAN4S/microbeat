@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using FileIO;
 using SO.NormalChannel;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Input
 {
@@ -13,26 +13,37 @@ namespace Input
         [Header("Channel to get values from previous scene")]
         [SerializeField] private ChartEventChannelSO onChartSelect;
 
-        private KeyCode[] speedKeys;
-        private const KeyCode PauseKey = KeyCode.Escape;
+        private const Key PauseKey = Key.Escape;
 
-        private readonly (int, int)[] mul = {(2, 3), (3, 2)};
         private int current = -1;
 
-        private KeyCode[] playKeys;
         private Action read;
+
+        private PlayerInput playerInput;
+
+        private Binding _binding;
+
+        private Key[] speedKeys;
+        private Key[] playKeys;
 
         private void Awake()
         {
-            var line = onChartSelect.value.pattern.line;
+            var linex = onChartSelect.value?.pattern?.line;
+            if (linex == null)
+            {
+                Debug.LogError("Playing Gameplay scene directly is not supported yet.");
+                return;
+            }
+            var line = (int)linex;
             
-            var tmp = FileExplorer.FromFile<KeyBinding>(KeyBinding.Path) ?? KeyBinding.Default();
-            var x = tmp[line];
+            // var tmp = FileExplorer.FromFile<KeyBinding>(KeyBinding.Path) ?? KeyBinding.Default();
+            _binding = Binding.Default();
+            Debug.Log(JsonUtility.ToJson(_binding));
             
-            speedKeys = x.speedKeys;
-            playKeys = x.playKeys;
+            speedKeys = _binding.Dict[line].Speed;
+            playKeys = _binding.Dict[line].Play;
 
-            read = onChartSelect.value.pattern.line switch
+            read = line switch
             {
                 4 => ReadOneByOne,
                 6 => ReadOneByOne,
@@ -51,14 +62,14 @@ namespace Input
         private void Update()
         {
             read();
-
+            
             for (var i = 0; i < speedKeys.Length; i++)
             {
                 var key = speedKeys[i];
-                if (UnityEngine.Input.GetKeyDown(key)) inputReader.OnSpeed(i);
+                if (Keyboard.current[key].wasPressedThisFrame) inputReader.OnSpeed(i);
             }
-
-            if (UnityEngine.Input.GetKeyDown(PauseKey)) inputReader.OnPause();
+            
+            if (Keyboard.current[PauseKey].wasPressedThisFrame) inputReader.OnPause();
         }
 
         private void ReadOneByOne()
@@ -66,11 +77,11 @@ namespace Input
             for (var i = 0; i < playKeys.Length; i++)
             {
                 var key = playKeys[i];
-                if (UnityEngine.Input.GetKey(key)) inputReader.OnPlayKey(i);
+                if (Keyboard.current[key].isPressed) inputReader.OnPlayKey(i);
 
-                if (UnityEngine.Input.GetKeyDown(key)) inputReader.OnPlayKeyDown(i);
+                if (Keyboard.current[key].wasPressedThisFrame) inputReader.OnPlayKeyDown(i);
 
-                if (UnityEngine.Input.GetKeyUp(key)) inputReader.OnPlayKeyUp(i);
+                if (Keyboard.current[key].wasReleasedThisFrame) inputReader.OnPlayKeyUp(i);
             }
         }
 
@@ -79,17 +90,17 @@ namespace Input
             for (var i = 0; i < 2; i++)
             {
                 var key = playKeys[i];
-                if (UnityEngine.Input.GetKey(key)) inputReader.OnPlayKey(i);
+                if (Keyboard.current[key].isPressed) inputReader.OnPlayKey(i);
 
-                if (UnityEngine.Input.GetKeyDown(key)) inputReader.OnPlayKeyDown(i);
+                if (Keyboard.current[key].wasPressedThisFrame) inputReader.OnPlayKeyDown(i);
 
-                if (UnityEngine.Input.GetKeyUp(key)) inputReader.OnPlayKeyUp(i);
+                if (Keyboard.current[key].wasReleasedThisFrame) inputReader.OnPlayKeyUp(i);
             }
 
             for (var i = 2; i < 4; i++)
             {
                 var target = playKeys[i];
-                if (UnityEngine.Input.GetKeyDown(target))
+                if (Keyboard.current[target].wasPressedThisFrame)
                 {
                     if (current != -1)
                     {
@@ -100,7 +111,7 @@ namespace Input
                     inputReader.OnPlayKeyDown(2);
                 }
 
-                if (UnityEngine.Input.GetKey(target))
+                if (Keyboard.current[target].isPressed)
                 {
                     if (current == i)
                     {
@@ -108,7 +119,7 @@ namespace Input
                     }
                 }
 
-                if (UnityEngine.Input.GetKeyUp(target))
+                if (Keyboard.current[target].wasReleasedThisFrame)
                 {
                     if (current == i)
                     {
@@ -121,11 +132,11 @@ namespace Input
             for (var i = 4; i < playKeys.Length; i++)
             {
                 var key = playKeys[i];
-                if (UnityEngine.Input.GetKey(key)) inputReader.OnPlayKey(i - 1);
+                if (Keyboard.current[key].isPressed) inputReader.OnPlayKey(i - 1);
 
-                if (UnityEngine.Input.GetKeyDown(key)) inputReader.OnPlayKeyDown(i - 1);
+                if (Keyboard.current[key].wasPressedThisFrame) inputReader.OnPlayKeyDown(i - 1);
 
-                if (UnityEngine.Input.GetKeyUp(key)) inputReader.OnPlayKeyUp(i - 1);
+                if (Keyboard.current[key].wasReleasedThisFrame) inputReader.OnPlayKeyUp(i - 1);
             }
         }
     }

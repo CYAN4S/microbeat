@@ -36,8 +36,7 @@ namespace Input
             }
             var line = (int)linex;
             
-            // var tmp = FileExplorer.FromFile<KeyBinding>(KeyBinding.Path) ?? KeyBinding.Default();
-            _binding = Binding.Default();
+            _binding = FileExplorer.FromFile<Binding>(Binding.Path) ?? Binding.Default();
             Debug.Log(JsonUtility.ToJson(_binding));
             
             speedKeys = _binding.Dict[line].Speed;

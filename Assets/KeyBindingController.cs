@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using FileIO;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class KeyBindingController : MonoBehaviour
 {
     [SerializeField] private KeyField[] speedKeys;
     [SerializeField] private KeyField[] playKeys;
 
-    private KeyBinding keyBinding;
+    // private KeyBinding keyBinding;
+    private Binding binding;
 
     private int currentKey;
-    private KeyBinding.KeyPair currentPair;
+    private Binding.BindingByMode currentPair;
 
     private void Awake()
     {
@@ -22,7 +24,7 @@ public class KeyBindingController : MonoBehaviour
             var keyField = speedKeys[index];
             keyField.targetArray = speedKeys;
             keyField.targetIndex = index;
-            keyField.OnValueChangeByInput += keyCode => { OnKeyFieldValueChanged(keyCode, keyField); };
+            keyField.OnValueChangeByInput += key => { OnKeyFieldValueChanged(key, keyField); };
         }
 
         for (var index = 0; index < playKeys.Length; index++)
@@ -30,32 +32,34 @@ public class KeyBindingController : MonoBehaviour
             var keyField = playKeys[index];
             keyField.targetArray = playKeys;
             keyField.targetIndex = index;
-            keyField.OnValueChangeByInput += keyCode => { OnKeyFieldValueChanged(keyCode, keyField); };
+            keyField.OnValueChangeByInput += key => { OnKeyFieldValueChanged(key, keyField); };
         }
     }
 
-    public void OnKeyFieldValueChanged(KeyCode keyCode, KeyField target)
+    public void OnKeyFieldValueChanged(Key key, KeyField target)
     {
         if (target.targetArray == speedKeys)
         {
-            keyBinding[currentKey].speedKeys[target.targetIndex] = keyCode;
+            // keyBinding[currentKey].speedKeys[target.targetIndex] = key;
+            binding.Dict[currentKey].Speed[target.targetIndex] = key;
         }
         else if (target.targetArray == playKeys)
         {
-            keyBinding[currentKey].playKeys[target.targetIndex] = keyCode;
+            // keyBinding[currentKey].playKeys[target.targetIndex] = key;
+            binding.Dict[currentKey].Play[target.targetIndex] = key;
         }
-        target.SetValue(keyCode);
+        target.SetValue(key);
     }
 
     public void OnDialogOpen()
     {
-        keyBinding = FileExplorer.FromFile<KeyBinding>(KeyBinding.Path) ?? KeyBinding.Default();
+        binding = FileExplorer.FromFile<Binding>(Binding.Path) ?? Binding.Default();
         ResetValue(4);
     }
 
     public void OnDialogClose()
     {
-        FileExplorer.ToFile(keyBinding, KeyBinding.Path);
+        FileExplorer.ToFile(binding, Binding.Path);
     }
 
     public void OnDropdownValueChange(int value)
@@ -69,20 +73,20 @@ public class KeyBindingController : MonoBehaviour
     private void ResetValue(int key)
     {
         currentKey = key;
-        currentPair = keyBinding[currentKey];
+        currentPair = binding.Dict[currentKey];
 
         for (var i = 0; i < 4; i++)
         {
-            speedKeys[i].SetValue(currentPair.speedKeys[i]);
+            speedKeys[i].SetValue(currentPair.Speed[i]);
         }
 
-        for (var i = 0; i < currentPair.playKeys.Length; i++)
+        for (var i = 0; i < currentPair.Play.Length; i++)
         {
-            playKeys[i].SetValue(currentPair.playKeys[i]);
+            playKeys[i].SetValue(currentPair.Play[i]);
             playKeys[i].SetInteractable(true);
         }
 
-        for (var i = currentPair.playKeys.Length; i < 8; i++)
+        for (var i = currentPair.Play.Length; i < 8; i++)
         {
             playKeys[i].RemoveValue();
             playKeys[i].SetInteractable(false);

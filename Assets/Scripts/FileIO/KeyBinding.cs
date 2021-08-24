@@ -17,7 +17,7 @@ namespace FileIO
             public Key[] Play;
         }
 
-        public Dictionary<int, BindingByMode> Dict;
+        public Dictionary<int, BindingByMode> Dict = new Dictionary<int, BindingByMode>();
 
         [SerializeField] private List<int> keys = new List<int>();
         [SerializeField] private List<BindingByMode> values = new List<BindingByMode>();

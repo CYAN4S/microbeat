@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using FileIO;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -18,7 +19,7 @@ public class KeyField : MonoBehaviour
     private Button button;
     private Key value;
 
-    public KeyField[] targetArray;
+    public BindingEnum targetEnum;
     public int targetIndex;
 
     public Key Value
@@ -31,7 +32,7 @@ public class KeyField : MonoBehaviour
         }
     }
 
-    public static readonly List<Key> Keys = Enum.GetValues(typeof(Key)).Cast<Key>().ToList();
+    public static readonly IEnumerable<Key> Keys = Enum.GetValues(typeof(Key)).Cast<Key>();
     public static KeyField target = null;
 
     private void Awake()

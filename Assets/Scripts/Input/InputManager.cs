@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FileIO;
 using SO.NormalChannel;
 using UnityEngine;
@@ -23,8 +24,8 @@ namespace Input
 
         private Binding _binding;
 
-        private Key[] speedKeys;
-        private Key[] playKeys;
+        private List<Key> speedKeys;
+        private List<Key> playKeys;
 
         private void Awake()
         {
@@ -39,8 +40,8 @@ namespace Input
             _binding = FileExplorer.FromFile<Binding>(Binding.Path) ?? Binding.Default();
             Debug.Log(JsonUtility.ToJson(_binding));
             
-            speedKeys = _binding.Dict[line].Speed;
-            playKeys = _binding.Dict[line].Play;
+            speedKeys = _binding[line].Speed;
+            playKeys = _binding[line].Play;
 
             read = line switch
             {
@@ -62,7 +63,7 @@ namespace Input
         {
             read();
             
-            for (var i = 0; i < speedKeys.Length; i++)
+            for (var i = 0; i < speedKeys.Count; i++)
             {
                 var key = speedKeys[i];
                 if (Keyboard.current[key].wasPressedThisFrame) inputReader.OnSpeed(i);
@@ -73,7 +74,7 @@ namespace Input
 
         private void ReadOneByOne()
         {
-            for (var i = 0; i < playKeys.Length; i++)
+            for (var i = 0; i < playKeys.Count; i++)
             {
                 var key = playKeys[i];
                 if (Keyboard.current[key].isPressed) inputReader.OnPlayKey(i);
@@ -128,7 +129,7 @@ namespace Input
                 }
             }
 
-            for (var i = 4; i < playKeys.Length; i++)
+            for (var i = 4; i < playKeys.Count; i++)
             {
                 var key = playKeys[i];
                 if (Keyboard.current[key].isPressed) inputReader.OnPlayKey(i - 1);

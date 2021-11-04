@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using FileIO;
 using UnityEngine;
@@ -25,12 +24,12 @@ namespace Core
         {
             this.desc = desc;
             this.directoryPath = directoryPath;
-            pattern = FileExplorer.FromFile<SerializablePattern>(patternPath);
+            pattern = Serialize.FromFile<SerializablePattern>(patternPath);
         }
 
         public IEnumerator SetAudioClip(UnityAction callback)
         {
-            return FileExplorer.GetAudioClip(Path.Combine(directoryPath, desc.musicPath), value =>
+            return Serialize.GetAudioClip(Path.Combine(directoryPath, desc.musicPath), value =>
             {
                 audioClip = value;
                 callback?.Invoke();

@@ -1,6 +1,6 @@
 using Core;
+using Core.SO.NormalChannel;
 using SO;
-using SO.NormalChannel;
 using UnityEngine;
 using UnityEngine.UI;
 

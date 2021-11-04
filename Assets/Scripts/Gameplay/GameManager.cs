@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
 using Core;
+using Core.SO.NormalChannel;
 using Input;
 using SO;
-using SO.NormalChannel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

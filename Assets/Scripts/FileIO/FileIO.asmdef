@@ -1,0 +1,17 @@
+{
+    "name": "FileIO",
+    "rootNamespace": "",
+    "references": [
+        "GUID:06912783dba18ce40a3e99a7309a4b0b",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

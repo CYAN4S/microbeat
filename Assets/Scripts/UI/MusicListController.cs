@@ -1,9 +1,5 @@
-using Core;
-using FileIO;
-using SO;
-using SO.NormalChannel;
+using Gameplay;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UI

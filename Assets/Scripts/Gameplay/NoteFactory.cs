@@ -1,12 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using FileIO;
+using Core.SO.NormalChannel;
 using Gameplay.Visual;
-using Input;
 using SO;
-using SO.NormalChannel;
-using SO.ParticularChannel;
 using UnityEngine;
 
 namespace Gameplay

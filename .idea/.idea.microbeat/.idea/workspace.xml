@@ -23,6 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0851dcdb-5f3a-4f40-bb9f-e897b3df0312" name="Default Changelist" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/AlertManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AlertManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animations/Eyecatch.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Eyecatch.anim" afterDir="false" />
@@ -52,6 +53,118 @@
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/KeyBinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/KeyBinding.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Core.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Core.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/DataContainer.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/DataContainer/GearSkin.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/DataContainer/GearSkin.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/DataContainer/NoteSkin.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/NormalChannel.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/NormalChannel/AudioClipEventChannelSO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/NormalChannel/AudioClipEventChannelSO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/NormalChannel/ChartEventChannelSO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/NormalChannel/ChartEventChannelSO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/NormalChannel/EventChannelSO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/NormalChannel/EventChannelSO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/NormalChannel/FloatEventChannelSO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/NormalChannel/FloatEventChannelSO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/NormalChannel/IntEventChannelSO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/NormalChannel/IntEventChannelSO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/NormalChannel/StringEventChannelSO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/NormalChannel/StringEventChannelSO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/NormalChannel/VoidEventChannelSO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/NormalChannel/VoidEventChannelSO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/ParticularChannel.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/ParticularChannel/PlayerSO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/ParticularChannel/PlayerSO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/ParticularChannel/SkinSelectionSO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/ParticularChannel/SkinSelectionSO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileIO.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileIO.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Gameplay.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Gameplay.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MusicData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MusicData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MusicDataEventChannelSO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MusicDataEventChannelSO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/SkinCollection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/SkinCollection.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/Input.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/Input.asmdef.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.microbeat/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Alert.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Alert.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AlertManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AlertManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Eyecatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Eyecatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KeyBindingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KeyBindingController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KeyField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KeyField.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Skin/Note/Long Note.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Skin/Note/Long Note.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Skin/Note/Note.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Skin/Note/Note.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResumeAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResumeAnimation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MusicSelect.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/BpmMeta.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/BpmMeta.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Chart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Chart.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/SClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/SClass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/SClass.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/SClass.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/Binding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/Binding.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/FileExplorer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/FileExplorer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/FileExplorer.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FileIO/Serializable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FileIO/Serializable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/LongNoteSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/LongNoteSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/NoteSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PlayManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/MusicVideoPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/DataContainer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/DataContainer/GearSkin.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/DataContainer/GearSkin.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/DataContainer/NoteSkin.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/DataContainer/NoteSkin.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/AudioClipEventChannelSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/AudioClipEventChannelSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/ChartEventChannelSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/ChartEventChannelSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/EventChannelSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/EventChannelSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/FloatEventChannelSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/FloatEventChannelSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/IntEventChannelSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/IntEventChannelSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/MusicDataEventChannelSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/MusicDataEventChannelSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/StringEventChannelSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/StringEventChannelSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/VoidEventChannelSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/NormalChannel/VoidEventChannelSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/PlayerSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/SkinCollection.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/SkinCollection.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/SkinSelectionSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SO/ParticularChannel/SkinSelectionSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/MusicListContent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MusicListContent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/MusicListController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MusicListController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PatternList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PreviewImage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PreviewImage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Result.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Result.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tests/NewTestScript.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tests/NewTestScript.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SO/DataContainer/NoteSkin.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tests/Tests.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tests/Tests.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,13 +175,35 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="e6975935-1de6-496a-a8f2-987f6c856381" />
+        <option name="url" value="https://github.com/CYAN4S/microbeat.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Visual/GrooveMeter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AlertManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Mask.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ResumeAnimation.cs" root0="FORCE_HIGHLIGHTING" />
+<<<<<<< Updated upstream
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.27/UnityEditor.TestRunner/GUI/Views/EditModeTestListGUI.cs" root0="SKIP_HIGHLIGHTING" />
+=======
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+>>>>>>> Stashed changes
     <setting file="file://$PROJECT_DIR$/Assets/Eyecatch.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FileIO/Binding.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/SO/DataContainer/GearSkin.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -129,7 +264,8 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
@@ -260,6 +396,23 @@
       <workItem from="1629465919448" duration="2816000" />
       <workItem from="1629625163941" duration="3325000" />
       <workItem from="1629713046158" duration="8091000" />
+<<<<<<< Updated upstream
+=======
+      <workItem from="1629778549074" duration="19198000" />
+      <workItem from="1629813288867" duration="3087000" />
+      <workItem from="1629858030747" duration="9901000" />
+      <workItem from="1630235364256" duration="4607000" />
+      <workItem from="1631629405093" duration="2650000" />
+      <workItem from="1633595480862" duration="1413000" />
+      <workItem from="1633651068600" duration="643000" />
+      <workItem from="1633665455473" duration="3246000" />
+      <workItem from="1633737818048" duration="3407000" />
+      <workItem from="1633764986402" duration="1965000" />
+      <workItem from="1636028347406" duration="671000" />
+      <workItem from="1636029071553" duration="1308000" />
+      <workItem from="1636034759736" duration="4132000" />
+      <workItem from="1636043954528" duration="2603000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="Change state mechanism when player pauses or resumes">
       <created>1616851547688</created>
@@ -294,5 +447,17 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Change state mechanism when player pauses or resumes" />
     <option name="LAST_COMMIT_MESSAGE" value="Change state mechanism when player pauses or resumes" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet Exception Breakpoints">
+          <properties exception="System.InvalidOperationException" isInternal="false" displayValue="InvalidOperationException" namespaceName="System">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using FileIO;
+using Gameplay;
 using UnityEngine;
 
 public class KeyBindingController : MonoBehaviour
@@ -49,13 +46,13 @@ public class KeyBindingController : MonoBehaviour
 
     public void OnDialogOpen()
     {
-        keyBinding = FileExplorer.FromFile<KeyBinding>(KeyBinding.Path) ?? KeyBinding.Default();
+        keyBinding = Serialize.FromFile<KeyBinding>(KeyBinding.Path) ?? KeyBinding.Default();
         ResetValue(4);
     }
 
     public void OnDialogClose()
     {
-        FileExplorer.ToFile(keyBinding, KeyBinding.Path);
+        Serialize.ToFile(keyBinding, KeyBinding.Path);
     }
 
     public void OnDropdownValueChange(int value)

@@ -1,88 +1,116 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Core;
 using FileIO;
+using UnityEditor;
 using Gameplay;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class KeyBindingController : MonoBehaviour
 {
     [SerializeField] private KeyField[] speedKeys;
     [SerializeField] private KeyField[] playKeys;
+    [SerializeField] private GameObject[] Info;
 
-    private KeyBinding keyBinding;
-
+    private Binding binding;
     private int currentKey;
-    private KeyBinding.KeyPair currentPair;
+    private BindingByMode currentBindingByMode;
 
     private void Awake()
     {
         for (var index = 0; index < speedKeys.Length; index++)
         {
             var keyField = speedKeys[index];
-            keyField.targetArray = speedKeys;
+
+            keyField.targetEnum = BindingEnum.Speed;
             keyField.targetIndex = index;
-            keyField.OnValueChangeByInput += keyCode => { OnKeyFieldValueChanged(keyCode, keyField); };
+
+            keyField.OnValueChangeByInput += key => { OnKeyFieldValueChanged(key, keyField); };
         }
 
         for (var index = 0; index < playKeys.Length; index++)
         {
             var keyField = playKeys[index];
-            keyField.targetArray = playKeys;
+
+            keyField.targetEnum = BindingEnum.Play;
             keyField.targetIndex = index;
-            keyField.OnValueChangeByInput += keyCode => { OnKeyFieldValueChanged(keyCode, keyField); };
+
+            keyField.OnValueChangeByInput += key => { OnKeyFieldValueChanged(key, keyField); };
         }
     }
 
-    public void OnKeyFieldValueChanged(KeyCode keyCode, KeyField target)
+    public void OnKeyFieldValueChanged(Key key, KeyField target)
     {
-        if (target.targetArray == speedKeys)
+        var prev = binding[currentKey][(int) target.targetEnum][target.targetIndex];
+
+        for (var i = 0; i < binding[currentKey].Count; i++)
         {
-            keyBinding[currentKey].speedKeys[target.targetIndex] = keyCode;
+            var list = binding[currentKey][i];
+            for (var index = 0; index < list.Count; index++)
+            {
+                if (list[index] != key) continue;
+
+                list[index] = prev;
+                ((BindingEnum) i switch
+                {
+                    BindingEnum.Speed => speedKeys,
+                    BindingEnum.Play => playKeys,
+                    _ => throw new ArgumentOutOfRangeException()
+                })[index].SetValue(prev);
+            }
         }
-        else if (target.targetArray == playKeys)
-        {
-            keyBinding[currentKey].playKeys[target.targetIndex] = keyCode;
-        }
-        target.SetValue(keyCode);
+        binding[currentKey][(int) target.targetEnum][target.targetIndex] = key;
+        target.SetValue(key);
     }
 
     public void OnDialogOpen()
     {
-        keyBinding = Serialize.FromFile<KeyBinding>(KeyBinding.Path) ?? KeyBinding.Default();
+        binding = Serialize.FromFile<Binding>(Binding.Path) ?? Binding.Default();
+
         ResetValue(4);
     }
 
     public void OnDialogClose()
     {
+        Serialize.ToFile(binding, Binding.Path);
         Serialize.ToFile(keyBinding, KeyBinding.Path);
     }
 
     public void OnDropdownValueChange(int value)
     {
-        ResetValue(value switch
-        {
-            0 => 4, 1 => 5, 2 => 6, 3 => 8, _ => -1
-        });
+        ResetValue(value switch {0 => 4, 1 => 5, 2 => 6, 3 => 8, _ => -1});
     }
 
     private void ResetValue(int key)
     {
         currentKey = key;
-        currentPair = keyBinding[currentKey];
+        currentBindingByMode = binding[currentKey];
 
         for (var i = 0; i < 4; i++)
         {
-            speedKeys[i].SetValue(currentPair.speedKeys[i]);
+            speedKeys[i].SetValue(currentBindingByMode.Speed[i]);
         }
 
-        for (var i = 0; i < currentPair.playKeys.Length; i++)
+        for (var i = 0; i < currentBindingByMode.Play.Count; i++)
         {
-            playKeys[i].SetValue(currentPair.playKeys[i]);
+            playKeys[i].SetValue(currentBindingByMode.Play[i]);
             playKeys[i].SetInteractable(true);
         }
 
-        for (var i = currentPair.playKeys.Length; i < 8; i++)
+        for (var i = currentBindingByMode.Play.Count; i < playKeys.Length; i++)
         {
             playKeys[i].RemoveValue();
             playKeys[i].SetInteractable(false);
         }
+
+        foreach (var o in Info)
+        {
+            o.SetActive(false);
+        }
+
+        Info[key switch {4 => 0, 5 => 1, 6 => 2, 8 => 3, _ => -1}].SetActive(true);
     }
 }

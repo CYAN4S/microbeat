@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using FileIO;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
@@ -10,15 +13,15 @@ public class KeyField : MonoBehaviour
     [SerializeField] private Text text;
     [SerializeField] private Image panel;
 
-    public event UnityAction<KeyCode> OnValueChangeByInput;
+    public event UnityAction<Key> OnValueChangeByInput;
 
     private Button button;
-    private KeyCode value;
+    private Key value;
 
-    public KeyField[] targetArray;
+    public BindingEnum targetEnum;
     public int targetIndex;
 
-    public KeyCode Value
+    public Key Value
     {
         get => value;
         set
@@ -28,8 +31,7 @@ public class KeyField : MonoBehaviour
         }
     }
 
-
-    public static readonly Array Keycodes = Enum.GetValues(typeof(KeyCode));
+    public static readonly IEnumerable<Key> Keys = Enum.GetValues(typeof(Key)).Cast<Key>();
     public static KeyField target = null;
 
     private void Awake()
@@ -49,23 +51,23 @@ public class KeyField : MonoBehaviour
             return;
         }
 
-        if (UnityEngine.Input.anyKeyDown)
+        if (Keyboard.current.anyKey.wasPressedThisFrame)
         {
-            foreach (KeyCode keycode in Keycodes)
+            foreach (Key key in Keys)
             {
-                if (keycode == KeyCode.Escape) continue;
-                if (keycode >= KeyCode.Mouse0) break;
+                if (key == Key.Escape || key == Key.None) continue;
+                if (key >= Key.F1) break;
 
-                if (UnityEngine.Input.GetKeyDown(keycode))
+                if (Keyboard.current[key].wasPressedThisFrame)
                 {
-                    OnValueChangeByInput?.Invoke(keycode);
+                    OnValueChangeByInput?.Invoke(key);
                     target = null;
                 }
             }
         }
     }
 
-    public void SetValue(KeyCode key)
+    public void SetValue(Key key)
     {
         Value = key;
         text.text = key.ToString();

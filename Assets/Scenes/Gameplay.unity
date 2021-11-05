@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 522699033}
   - component: {fileID: 522699029}
   - component: {fileID: 522699036}
+  - component: {fileID: 522699034}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -463,6 +464,136 @@ MonoBehaviour:
   player: {fileID: 11400000, guid: 10088d471648e9d4c8a693bf6f9a75cb, type: 2}
   skins: {fileID: 11400000, guid: 738ef673032d9224c804ac403ea99425, type: 2}
   note: {fileID: 11400000, guid: af8d9225553923344ada6d94ac745fd9, type: 2}
+--- !u!114 &522699034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522699028}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: 0}
+  m_NotificationBehavior: 3
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f70527a9-0417-4f30-8262-5137b514711c
+    m_ActionName: MusicSelect/Play[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 522699029}
+        m_TargetAssemblyTypeName: Input.InputManager, Assembly-CSharp
+        m_MethodName: Test
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1e2eca45-bb56-4041-b36d-4e5b7ac98652
+    m_ActionName: Gameplay/Play4K0[/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 522699029}
+        m_TargetAssemblyTypeName: Input.InputManager, Assembly-CSharp
+        m_MethodName: Test
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: af70f87c-bb27-47bd-8fac-1ba733db5a12
+    m_ActionName: Gameplay/Play4K1[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 522699029}
+        m_TargetAssemblyTypeName: Input.InputManager, Assembly-CSharp
+        m_MethodName: Test
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dfb56c88-442a-486e-b6a8-095fe6a46202
+    m_ActionName: Gameplay/Play4K2[/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 522699029}
+        m_TargetAssemblyTypeName: Input.InputManager, Assembly-CSharp
+        m_MethodName: Test
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8fb51bb4-c331-4eef-ab82-8ccf80098035
+    m_ActionName: Gameplay/Play4K3[/Keyboard/k]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 522699029}
+        m_TargetAssemblyTypeName: Input.InputManager, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 393a7f34-bf23-4e7d-8920-d00bbca1c21a
+    m_ActionName: Gameplay/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9a21ad35-c694-48c9-b2f2-d1d129db6b92
+    m_ActionName: Gameplay/Speed4K0[/Keyboard/t]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8e2953da-48b3-45aa-bbd3-386d97bbe3f5
+    m_ActionName: Gameplay/Speed4K1[/Keyboard/g]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8e844a66-a336-4f31-835b-10a313162520
+    m_ActionName: Gameplay/Speed4K2[/Keyboard/h]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1eecb03d-f681-40bd-8adb-cc3d0c68f199
+    m_ActionName: Gameplay/Speed4K3[/Keyboard/y]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Gameplay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!82 &522699036
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1007,8 +1138,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 6f48c039cc543ad4ba8b736d91a6b417, type: 3}
-    m_FontSize: 141
+    m_Font: {fileID: 12800000, guid: b004895e14f0a3041b4d64cd9f41f520, type: 3}
+    m_FontSize: 144
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0

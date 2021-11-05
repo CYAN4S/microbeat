@@ -1,7 +1,7 @@
-﻿using FileIO;
+﻿using Core.SO.NormalChannel;
 using UnityEngine;
 
-namespace SO.NormalChannel
+namespace Gameplay
 {
     [CreateAssetMenu(menuName = "Events/MusicData Event Channel", order = 0)]
     public class MusicDataEventChannelSO : EventChannelSO<MusicData>

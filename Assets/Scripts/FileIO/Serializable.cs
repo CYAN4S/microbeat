@@ -1,6 +1,92 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Networking;
+
+namespace FileIO
+{
+    public class Serialize
+    {
+        public static T FromFile<T>(FileInfo file) where T : class
+        {
+            try
+            {
+                using var sr = file.OpenText();
+                return JsonUtility.FromJson<T>(sr.ReadToEnd());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public static T FromFile<T>(string filePath) where T : class
+        {
+            try
+            {
+                using var sr = File.OpenText(filePath);
+                return JsonUtility.FromJson<T>(sr.ReadToEnd());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public static void ToFile<T>(T target, string filePath)
+        {
+            using var stream = new StreamWriter(filePath);
+            stream.Write(JsonUtility.ToJson(target));
+        }
+
+        public static IEnumerator GetAudioClip(string audioPath, UnityAction<AudioClip> callback)
+        {
+            var audioType = Path.GetExtension(audioPath) switch
+            {
+                ".wav" => AudioType.WAV,
+                ".aif" => AudioType.AIFF,
+                ".aiff" => AudioType.AIFF,
+                ".mp2" => AudioType.MPEG,
+                ".mp3" => AudioType.MPEG,
+                ".ogg" => AudioType.OGGVORBIS,
+                _ => AudioType.UNKNOWN
+            };
+
+            using var www = UnityWebRequestMultimedia.GetAudioClip(audioPath, audioType);
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.ConnectionError)
+            {
+                Debug.Log(www.error + " / " + audioPath);
+            }
+            else
+            {
+                callback?.Invoke(DownloadHandlerAudioClip.GetContent(www));
+            }
+        }
+
+        public static IEnumerator GetTexture(string imgPath, UnityAction<Texture2D> callback)
+        {
+            using var www = UnityWebRequestTexture.GetTexture(imgPath);
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.ConnectionError)
+            {
+                Debug.Log(www.error + " / " + imgPath);
+            }
+            else
+            {
+                callback.Invoke(DownloadHandlerTexture.GetContent(www));
+            }
+        }
+    }
+}
+
 
 [Serializable]
 public class SerializableData

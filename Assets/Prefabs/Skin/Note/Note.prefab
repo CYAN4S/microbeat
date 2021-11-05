@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: 10088d471648e9d4c8a693bf6f9a75cb, type: 2}
   animator: {fileID: 2377992671555439726}
+  multiply: 0
 --- !u!1 &6804332176690774898
 GameObject:
   m_ObjectHideFlags: 0

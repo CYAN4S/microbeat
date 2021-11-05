@@ -1,6 +1,6 @@
 using System.IO;
 using FileIO;
-using SO.NormalChannel;
+using Gameplay;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -43,7 +43,7 @@ namespace UI
             }
 
             var path = Path.Combine(musicData.path, musicData.desc.previewImgPath);
-            StartCoroutine(FileExplorer.GetTexture(path,
+            StartCoroutine(Serialize.GetTexture(path,
                 (value) => { rawImage.texture = value; }));
         }
     }

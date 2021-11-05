@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using Core;
-using FileIO;
-using SO.NormalChannel;
+using Core.SO.NormalChannel;
+using Gameplay;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UI

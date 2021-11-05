@@ -5,6 +5,7 @@ using System.Linq;
 using Core;
 using FileIO;
 using UnityEditor;
+using Gameplay;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -67,13 +68,15 @@ public class KeyBindingController : MonoBehaviour
 
     public void OnDialogOpen()
     {
-        binding = FileExplorer.FromFile<Binding>(Binding.Path) ?? Binding.Default();
+        binding = Serialize.FromFile<Binding>(Binding.Path) ?? Binding.Default();
+
         ResetValue(4);
     }
 
     public void OnDialogClose()
     {
-        FileExplorer.ToFile(binding, Binding.Path);
+        Serialize.ToFile(binding, Binding.Path);
+        Serialize.ToFile(keyBinding, KeyBinding.Path);
     }
 
     public void OnDropdownValueChange(int value)

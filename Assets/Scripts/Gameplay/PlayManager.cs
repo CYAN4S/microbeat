@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core;
-using FileIO;
+using Core.SO.NormalChannel;
 using Gameplay.Visual;
 using Input;
 using SO;
-using SO.NormalChannel;
-using SO.ParticularChannel;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Gameplay
 {

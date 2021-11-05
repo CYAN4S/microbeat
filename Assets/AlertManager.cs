@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using SO.NormalChannel;
+using Core.SO.NormalChannel;
 using UnityEngine;
 
 public class AlertManager : MonoBehaviour

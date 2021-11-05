@@ -1,11 +1,9 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using Core;
+using Core.SO.NormalChannel;
 using FileIO;
-using SO.NormalChannel;
-using UnityEditor;
+using Gameplay;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -33,7 +31,7 @@ public class Eyecatch : MonoBehaviour
         if (path != null)
         {
             path = Path.Combine(chart.directoryPath, path);
-            StartCoroutine(FileExplorer.GetTexture(path, (value) =>
+            StartCoroutine(Serialize.GetTexture(path, (value) =>
             {
                 image.texture = value;
                 mask.SetActive(true);

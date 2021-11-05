@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Collections.Generic;
+using Core.SO.NormalChannel;
 using FileIO;
-using SO.NormalChannel;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -37,8 +38,13 @@ namespace Input
             }
             var line = (int)linex;
             
-            _binding = FileExplorer.FromFile<Binding>(Binding.Path) ?? Binding.Default();
+
+            _binding = Serialize.FromFile<Binding>(Binding.Path) ?? Binding.Default();
             Debug.Log(JsonUtility.ToJson(_binding));
+
+            var tmp = Serialize.FromFile<KeyBinding>(KeyBinding.Path) ?? KeyBinding.Default();
+            var x = tmp[line];
+
             
             speedKeys = _binding[line].Speed;
             playKeys = _binding[line].Play;

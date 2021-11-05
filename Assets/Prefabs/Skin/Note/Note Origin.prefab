@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 1462977543257870842}
   - component: {fileID: 8126821047155903844}
   m_Layer: 5
-  m_Name: Long Note
+  m_Name: Note Origin
   m_TagString: LongNote
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: 10088d471648e9d4c8a693bf6f9a75cb, type: 2}
   animator: {fileID: 1186324784443090198}
+  multiply: 0
 --- !u!1 &4541262878578977915
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SO.DataContainer
+namespace Core.SO.DataContainer
 {
     [CreateAssetMenu(menuName = "Data Container/GearSkin")]
     public class GearSkin : ScriptableObject

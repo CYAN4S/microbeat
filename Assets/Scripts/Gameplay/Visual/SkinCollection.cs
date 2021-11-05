@@ -3,8 +3,7 @@ using Gameplay;
 using Gameplay.Visual;
 using UnityEngine;
 
-namespace SO.ParticularChannel
-{
+
     [CreateAssetMenu(menuName = "Skin Collection", order = 0)]
     public class SkinCollection : ScriptableObject
     {
@@ -34,4 +33,3 @@ namespace SO.ParticularChannel
         public NoteSystem bumperNotePrefab;
         public LongNoteSystem bumperLongNotePrefab;
     }
-}
